@@ -1,0 +1,18 @@
+services:
+  layoutcomponents.route_subscriber:
+    class: Drupal\layoutcomponents\Routing\LcRouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  plugin.manager.layoutcomponents_layouts:
+    class: \Drupal\layoutcomponents\LcLayoutsManager
+    arguments: ['@plugin.manager.core.layout']
+
+  layoutcomponents.LayoutComponentsTwigExtension:
+    class: Drupal\layoutcomponents\LayoutComponentsTwigExtension
+    tags:
+      - { name: twig.extension }
+
+  layoutcomponents.apiComponent:
+    class: Drupal\layoutcomponents\Api\Component
+    arguments: ['@config.factory']

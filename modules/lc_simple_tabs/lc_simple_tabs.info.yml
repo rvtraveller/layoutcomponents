@@ -1,0 +1,7 @@
+name: Layoutcomponents - Simple Tabs
+type: module
+description: Simple tabs block
+package: LayoutComponents
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - layoutcomponents

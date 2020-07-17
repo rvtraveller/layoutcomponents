@@ -1,0 +1,160 @@
+<?php
+
+/**
+ * @file
+ * Contains layoutcomponents.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function layoutcomponents_theme() {
+  return [
+    'layoutcomponents_block_content' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_element_plugin_alter().
+ */
+function layoutcomponents_element_plugin_alter(array &$definitions) {
+  $definitions['layout_builder']['class'] = '\Drupal\layoutcomponents\Element\LcElement';
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter() for block_content.
+ */
+function layoutcomponents_block_content_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  if (isset($build['_layout_builder']) || isset($entity->view) || isset($entity->_referringItem)) {
+    $build['#theme'] = 'layoutcomponents_block_content';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function layoutcomponents_theme_suggestions_layoutcomponents_block_content(array $variables) {
+  $suggestions = [];
+  $block_content = $variables['elements']['#block_content'];
+  $suggestions[] = 'layoutcomponents_block_content__' . $block_content->bundle();
+  $suggestions[] = 'layoutcomponents_block_content__' . $block_content->id();
+
+  return $suggestions;
+}
+
+/**
+ * Preprocess function for block content template.
+ */
+function template_preprocess_layoutcomponents_block_content(&$variables) {
+  $variables['content'] = $variables['elements'];
+  // Set configurations.
+  $block_content = $variables['elements']['#block_content'];
+  $variables['plugin_id'] = 'inline-block' . $block_content->bundle();
+  $variables['configuration'] = [
+    'provider' => 'layout-builder',
+  ];
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function layoutcomponents_page_attachments(&$page) {
+  $page['#attached']['library'][] = 'layoutcomponents/layoutcomponents';
+  $page['#attached']['library'][] = 'layoutcomponents/layoutcomponents.lateral';
+  $page['#attached']['library'][] = 'layoutcomponents/layoutcomponents.modal';
+}
+
+/**
+ * Implements hook_help().
+ */
+function layoutcomponents_help($route_name, RouteMatchInterface $route_match) {
+
+  if ($route_match->getRouteObject()->getOption('_layout_builder')) {
+    return '';
+  }
+
+  switch ($route_name) {
+    // Main module help for the layoutcomponents module.
+    case 'help.page.layoutcomponents':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Block type creation') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function layoutcomponents_theme_registry_alter(&$theme_registry) {
+  if (!\Drupal::hasService('plugin.manager.core.layout')) {
+    return;
+  }
+
+  // Find all Layoutcomponents Layouts.
+  $layouts = \Drupal::service('plugin.manager.core.layout')->getDefinitions();
+  $layout_theme_hooks = [];
+
+  foreach ($layouts as $info) {
+    if ($info->getClass() === 'Drupal\layoutcomponents\Plugin\Layout\LcBase') {
+      $layout_theme_hooks[] = $info->getThemeHook();
+    }
+  }
+
+  foreach ($theme_registry as $theme_hook => $info) {
+    if (in_array($theme_hook, $layout_theme_hooks) || (!empty($info['base hook']) && in_array($info['base hook'], $layout_theme_hooks))) {
+      // Include file.
+      $theme_registry[$theme_hook]['includes'][] = drupal_get_path('module', 'layoutcomponents') . '/layoutcomponents.theme.inc';
+      // Set new preprocess function.
+      $theme_registry[$theme_hook]['preprocess functions'][] = '_layoutcomponents_preprocess_layout';
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_block().
+ */
+function layoutcomponents_preprocess_block(array &$variables) {
+  // Filter blocks with layout_builder.
+  if (array_key_exists('title_suffix', $variables)) {
+    if (array_key_exists('contextual_links', $variables['title_suffix'])) {
+      $id = $variables['title_suffix']['contextual_links']['#id'] ?: NULL;
+      if (!empty($id)) {
+        if (strpos($id, "layout_builder_block:") !== FALSE) {
+          // Insert configuration block.
+          $variables['title_suffix']['layout_builder-configuration'] = $variables['content']['layout_builder-configuration'];
+
+          // Remove contextual links to all layout builder elements.
+          unset($variables['title_suffix']['contextual_links']);
+          unset($variables['content']['layout_builder-configuration']);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function layoutcomponents_page_attachments_alter(array &$attachments) {
+  $module_handler = \Drupal::service('module_handler');
+  /** @var \Drupal\Core\Config\Config $config */
+  $config = \Drupal::configFactory()->getEditable('layoutcomponents.fields');
+  $theme = (!empty($config->get('theme'))) ? $config->get('theme') : 'color-dark';
+  $attachments['#attached']['html_head_link'][] = [
+    0 => [
+      'rel' => 'stylesheet',
+      'href' => '/' . $module_handler->getModule('layoutcomponents')->getPath() . '/css/lc-' . $theme . '.css',
+      'media' => 'all',
+    ],
+    1 => TRUE,
+  ];
+}

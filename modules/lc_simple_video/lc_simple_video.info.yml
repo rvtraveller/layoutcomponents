@@ -1,0 +1,11 @@
+name: Layoutcomponents - Simple Video
+type: module
+description: Simple video block
+package: LayoutComponents
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - layoutcomponents
+  - image
+  - file
+  - media
+  - video_embed_field

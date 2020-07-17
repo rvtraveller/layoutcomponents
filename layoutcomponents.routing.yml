@@ -1,0 +1,30 @@
+layoutcomponents.field_settings:
+  path: '/admin/layoutcomponents/settings'
+  defaults:
+    _form: '\Drupal\layoutcomponents\Form\LcSettings'
+    _title: 'Fields settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+layoutcomponents.update_column:
+  path: '/layout_builder/configure/column/{section_storage_type}/{section_storage}/{delta}/{region}'
+  defaults:
+    _title: 'Configure column'
+    _form: '\Drupal\layoutcomponents\Form\LcUpdateColumn'
+  requirements:
+    _layout_builder_access: 'view'
+  options:
+    _admin_route: TRUE
+    parameters:
+      section_storage:
+        layout_builder_tempstore: TRUE
+
+layoutcomponents.getmedia:
+  path: '/layoutcomponents/media/{id}'
+  defaults:
+   _controller: '\Drupal\layoutcomponents\Controller\LcInlineMedia::getMedia'
+   _title: 'Choose a layout for this section'
+  requirements:
+    _permission: 'access content'
+  options:
+    _admin_route: FALSE
