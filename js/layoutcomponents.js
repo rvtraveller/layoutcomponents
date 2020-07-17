@@ -736,7 +736,7 @@
     if (style === "image") {
       if (!item.is('img')) {
         let element = info.id + "-edit";
-        item.find(".content").first().append("<img class='" + element + "'>");
+        item.find(".content").first().append("<img class='" + element + "' style='max-width: 100%'>");
         item = item.find("." + element);
       }
 
