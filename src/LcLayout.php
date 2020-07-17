@@ -477,8 +477,8 @@ class LcLayout {
     }
 
     // Column border.
-    if ($border !== 'none') {
-      if (!empty($border_size) && $border !== 'none') {
+    if ($border !== '-none') {
+      if (!empty($border_size)) {
         $column_styles[] = 'border' . $border . ': ' . $border_size . 'px solid';
         if (!empty($border_color)) {
           $column_styles[] = 'border-color: ' . $border_color;
@@ -496,6 +496,9 @@ class LcLayout {
         if (!empty($border_radius_bottom_right)) {
           $column_styles[] = 'border-bottom-right-radius: ' . $border_radius_bottom_right . '%';
         }
+      }
+      else {
+        $column_styles[] = 'border: none';
       }
     }
 
