@@ -152,6 +152,9 @@ function lc_simple_image_preprocess_field(&$variables) {
         }
       }
 
+      $styles[] = 'max-width: 100%;';
+      $styles[] = 'height: auto;';
+
 
       // Set classes.
       if (!empty($extra_class)) {
