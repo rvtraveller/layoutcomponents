@@ -74,24 +74,26 @@ function lc_simple_accordion_preprocess_block(&$variables) {
       'lc-inline_block_' . $block_item->uuid() . '-accordion-item-edit',
       'card-header'
     ]);
-    $header->setAttribute('id', 'card-' . $i);
+    $header->setAttribute('id', 'card-' . $block_id . '-' . $i);
 
     // Card attributes.
     $item = new Attribute();
     $item->addClass([
       'collapse',
     ]);
-    $item->setAttribute('aria-labelledby', 'card-' . $i);
+    $item->setAttribute('aria-labelledby', 'card-' . $block_id . '-' . $i);
 
     // Store.
     $items['field_sa_accordion_item'][$i]['header_attributes'] = $header;
     $items['field_sa_accordion_item'][$i]['card_attributes'] = $item;
+    $items['field_sa_accordion_item'][$i]['uuid'] = $block_id;
   }
 
   // Store container.
   $variables['content']['container'] = [
     '#type' => 'container',
     'attributes' => $container_attr,
+    'id' => $block_id,
     'content' => $items,
   ];
 }
