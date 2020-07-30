@@ -1,10 +1,9 @@
 {
-    "name": "drupal/layoutcomponents",
-    "description": "Fully extension of Layout Builder to implement grid, components, auto preview and a full customization of each field",
-    "type": "drupal-module",
-    "keywords": ["Drupal", "Layout Builder", "Components", "Blocks", "Customization", "Administration"],
+    "name": "everdrup/layoutcomponents",
+    "description": "Fully extension of Layout Builder to implement grid, components, auto preview and a full configuration of each element",
+    "type": "drupal-custom-module",
     "license": "GPL-2.0-or-later",
-    "homepage": "https://www.drupal.org/project/layoutcomponents",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "David Biescas Gaspar",
@@ -23,7 +22,7 @@
         },
         {
             "name": "Alberto Perez Dosaula",
-            "email": "email.albertoperez@gmail.com",
+            "email": "srvazquez95@gmail.com",
             "role": "Maintainer"
         }
     ],

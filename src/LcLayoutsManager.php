@@ -3,10 +3,22 @@
 namespace Drupal\layoutcomponents;
 
 use Drupal\Core\Layout\LayoutPluginManager;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\layout_builder\Section;
+use Drupal\layout_builder\SectionComponent;
+use Drupal\layout_builder\SectionStorageInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\Component\Uuid\UuidInterface;
+
 /**
  * Class LCLayoutsManager.
  */
 class LcLayoutsManager {
+
+  use StringTranslationTrait;
 
   /**
    * Section options.
@@ -76,12 +88,40 @@ class LcLayoutsManager {
    *
    * @var \Drupal\Core\Layout\LayoutPluginManager
    */
-  protected $LayoutPluginManager;
+  protected $layoutPluginManager;
+
+  /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * The current user.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $currentUser;
+
+  /**
+   * The entity display repository.
+   *
+   * @var \Drupal\Core\Entity\EntityDisplayRepositoryInterface
+   */
+  protected $entityDisplayRepository;
+
+  /**
+   * The UUID generator.
+   *
+   * @var \Drupal\Component\Uuid\UuidInterface
+   */
+  protected $uuidGenerator;
 
   /**
    * Constructs a new \Drupal\layoutcomponents\LcLayoutsManager object.
    */
-  public function __construct(LayoutPluginManager $layout_plugin_manager) {
+  public function __construct(LayoutPluginManager $layout_plugin_manager, EntityTypeManagerInterface $entity_type_manager, EntityDisplayRepositoryInterface $entity_display_repository, AccountInterface $current_user, UuidInterface $uuid) {
     $this->wrapperOptions = [
       'div' => 'Div',
       'span' => 'Span',
@@ -174,8 +214,11 @@ class LcLayoutsManager {
       'all' => 'All',
     ];
 
-    $this->LayoutPluginManager = $layout_plugin_manager;
-
+    $this->layoutPluginManager = $layout_plugin_manager;
+    $this->entityTypeManager = $entity_type_manager;
+    $this->entityDisplayRepository = $entity_display_repository;
+    $this->currentUser = $current_user;
+    $this->uuidGenerator = $uuid;
     $this->getLayoutComponentsLayouts();
   }
 
@@ -183,7 +226,7 @@ class LcLayoutsManager {
    * Set the layouts filtered by LC class.
    */
   protected function getLayoutComponentsLayouts() {
-    $layoutList = $this->LayoutPluginManager->getDefinitions();
+    $layoutList = $this->layoutPluginManager->getDefinitions();
     foreach ($layoutList as $name => $layout) {
       /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
       if ($layout->getClass() === 'Drupal\layoutcomponents\Plugin\Layout\LcBase') {
@@ -379,14 +422,268 @@ class LcLayoutsManager {
    */
   public function hexToRgba($hex, $opacity = NULL) {
     if (isset($hex) && isset($opacity)) {
-      list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+      [$r, $g, $b] = sscanf($hex, "#%02x%02x%02x");
       $background_color = 'rgba(' . $r . ',' . $g . ',' . $b . ',' . $opacity . ')';
     }
     else {
-      list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+      [$r, $g, $b] = sscanf($hex, "#%02x%02x%02x");
       $background_color = 'rgb(' . $r . ',' . $g . ',' . $b . ')';
     }
     return $background_color;
+  }
+
+  /**
+   * Clone the block.
+   *
+   * @param \Drupal\layout_builder\SectionStorageInterface $section_storage
+   *   The section storage being configured.
+   * @param int $delta
+   *   The delta.
+   * @param string $region
+   *   The region.
+   * @param \Drupal\layout_builder\SectionComponent $component
+   *   The component.
+   */
+  public function duplicateBlock(SectionStorageInterface &$section_storage, $delta, $region, SectionComponent $component) {
+
+    $new_uuid = '';
+    while (TRUE) {
+      $new_uuid = $this->uuidGenerator->generate();
+      if ($this->checkUuid($section_storage, $new_uuid)) {
+        break;
+      }
+    }
+
+    $inline = $component->getPlugin();
+    $block = $inline->build()['#block_content'];
+
+    // Generate the duplicate of parent block.
+    $block = $block->createDuplicate();
+    $block->setReusable();
+    $block->enforceIsNew();
+    $block->save();
+    $component = $component->toArray();
+
+    // The field definitions.
+    $fields = $block->getFieldDefinitions();
+
+    /** @var \Drupal\field\Entity\FieldConfig $field */
+    foreach ($fields as $name => $field) {
+      // Filter by config.
+      if ($field instanceof FieldConfig) {
+        // IF the block have references.
+        if ($field->getType() == 'entity_reference_revisions') {
+          $current_values = $block->get($field->getName())->getValue();
+          foreach ($current_values as $i => $value) {
+            // Duplicate the items reference.
+            $old = $this->entityTypeManager->getStorage('block_content')->loadRevision($value['target_revision_id']);
+
+            // We have to create one new, if not the reference will be the same.
+            $new = $this->entityTypeManager->getStorage('block_content')->create([
+              'type' => $old->get('type')->getString(),
+            ]);
+            $new->enforceIsNew();
+            $new->save();
+
+            // Store new ids.
+            $current_values[$i] = [
+              'target_id' => $new->get('id')->getString(),
+              'target_revision_id' => $new->get('revision_id')->getString(),
+            ];
+
+            foreach ($old->getFieldDefinitions() as $u => $item_field) {
+              if ($item_field instanceof FieldConfig) {
+                $item_value = $old->get($item_field->getName())->getValue();
+                $item_old = \Drupal::entityTypeManager()->getStorage('block_content')->loadRevision($item_value[0]['target_revision_id']);
+
+                $item_new = $item_old->createDuplicate();
+                $item_new->enforceIsNew();
+
+                $item_new->save();
+                $new->set($item_field->getName(), [
+                  'target_id' => $item_new->get('id')->getString(),
+                  'target_revision_id' => $item_new->get('revision_id')->getString(),
+                ]);
+                $new->save();
+              }
+            }
+          }
+          $block->set($field->getName(), $current_values);
+        }
+      }
+    }
+
+    $block->save();
+
+    $component['configuration']['block_serialized'] = serialize($block);
+
+    // Store the new uuid.
+    $component['configuration']['uuid'] = $new_uuid;
+
+    // Generate the new component with the configuration.
+    $new_component = new SectionComponent($new_uuid, $region, $component['configuration']);
+    $section_storage->getSection($delta)->appendComponent($new_component);
+  }
+
+  /**
+   * Clone the column.
+   *
+   * @param \Drupal\layout_builder\SectionStorageInterface $section_storage
+   *   The section storage being configured.
+   * @param int $delta
+   *   The delta.
+   * @param string $region
+   *   The region.
+   * @param array $column
+   *   The delta of the section.
+   * @param array $old_components
+   *   The component.
+   */
+  public function duplicateColumn(SectionStorageInterface &$section_storage, $delta, $region, array $column, array $old_components) {
+    $section = $section_storage->getSection($delta);
+    $settings = $section->getLayoutSettings();
+    $settings['regions'][$region] = $column;
+    $section->setLayoutSettings($settings);
+    foreach ($old_components as $component) {
+      $this->duplicateBlock($section_storage, $delta, $region, $component);
+    }
+  }
+
+  /**
+   * Clone the section.
+   *
+   * @param \Drupal\layout_builder\SectionStorageInterface $section_storage
+   *   The section storage being configured.
+   * @param int $delta
+   *   The delta.
+   * @param \Drupal\layout_builder\Section $section
+   *   The section.
+   */
+  public function duplicateSection(SectionStorageInterface &$section_storage, $delta, Section $section) {
+    $new_section = new Section($section->getLayoutId(), $section->getLayoutSettings());
+    $section_storage->insertSection($delta, $new_section);
+    foreach ($section->getComponents() as $component) {
+      $this->duplicateBlock($section_storage, $delta, $component->getRegion(), $component);
+    }
+  }
+
+  /**
+   * Check if the new UUID generated is not in used.
+   *
+   * @param \Drupal\layout_builder\SectionStorageInterface $section_storage
+   *   The section storage being configured.
+   * @param string $uuid
+   *   The delta of the section.
+   *
+   * @return bool
+   *   If it is used or not.
+   */
+  public function checkUuid(SectionStorageInterface $section_storage = NULL, $uuid = NULL) {
+    if (empty($uuid) || !isset($uuid)) {
+      return FALSE;
+    }
+
+    $sections = $section_storage->getSections();
+    foreach ($sections as $section) {
+      foreach ($section->getComponents() as $i => $component) {
+        if ($i == $uuid) {
+          return FALSE;
+        }
+      }
+    }
+    return TRUE;
+  }
+
+  /**
+   * Insert element in array by position.
+   *
+   * @param array $array
+   *   The array.
+   * @param int $position
+   *   The delta of the section.
+   * @param array $new
+   *   The new element.
+   */
+  public function arrayInsert(array &$array, $position, array $new) {
+    $first = array_slice($array, 0, $position);
+    $second = array_slice($array, $position);
+    $first[] = $new;
+    foreach ($second as $item) {
+      $first[] = $item;
+    }
+    $array = $first;
+  }
+
+  /**
+   * Get default cancel button for LC.
+   *
+   * @param string $message
+   *   The message.
+   */
+  public function getDefaultCancel($message) {
+    $build = [];
+    $build['description']['#markup'] = '<div class="layout_builder__add-section-confirm"> ' . $this->t('@message', ['@message' => $message]) . ' </div>';
+    $build['actions']['cancel'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('Close'),
+      '#ajax' => [
+        'callback' => '::ajaxSubmit',
+      ],
+      '#button_type' => 'cancel',
+      '#attributes' => [
+        'class' => ['button', 'dialog-cancel'],
+      ],
+    ];
+
+    return $build;
+  }
+
+  /**
+   * Get the default section.
+   *
+   * @param array $defaults
+   *   The array.
+   * @param string $label
+   *   The label of default section.
+   * @param int $new_delta
+   *   The new delta.
+   *
+   * @return array|null
+   *   The default array.
+   */
+  public function getDefault(array &$defaults, $label, &$new_delta) {
+    foreach ($defaults as $delta => $default) {
+      $settings = $default->getLayoutSettings();
+      $d_label = $settings['section']['general']['basic']['section_label'];
+      $d_delta = $settings['section']['general']['basic']['section_delta'];
+      if ($d_label == $label) {
+        $new_delta = $d_delta;
+        unset($defaults[$delta]);
+        return $default;
+      }
+    }
+    return NULL;
+  }
+
+  /**
+   * Check if the section exists on default sections.
+   *
+   * @param array $defaults
+   *   The array.
+   * @param string $label
+   *   The label of default section.
+   *
+   * @return bool
+   *   If the default exists.
+   */
+  public function checkDefaultExists(array $defaults, $label) {
+    /** @var \Drupal\layout_builder\Section $default */
+    foreach ($defaults as $delta => $default) {
+      if ($default->getLayoutSettings()['section']['general']['basic']['section_label'] == $label) {
+        return TRUE;
+      }
+    }
+    return FALSE;
   }
 
 }

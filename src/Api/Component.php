@@ -139,11 +139,7 @@ class Component implements ContainerInjectionInterface {
         break;
 
       case 'media':
-        // Remove old desriptions.
-        $data['description'] = str_replace('<br />The maximum number of media items have been selected.', '', $data['description']);
-        $data['description'] = str_replace('<br />One media item remaining.', '', $data['description']);
         $data['allowed_bundles'] = $element['#target_bundles'];
-
         // Get new element.
         $new_element = $this->lcApiMedia->mediaLibrary($data, $element['#type'], $data['attributes']['lc']['input']);
 

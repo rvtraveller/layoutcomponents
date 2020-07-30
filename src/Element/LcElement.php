@@ -4,6 +4,7 @@ namespace Drupal\layoutcomponents\Element;
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\layout_builder\Element\LayoutBuilder;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\layout_builder\LayoutTempstoreRepositoryInterface;
@@ -12,6 +13,8 @@ use Drupal\Core\Url;
 use Drupal\Core\Render\Element;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Extension\ThemeHandlerInterface;
+use Drupal\layoutcomponents\LcLayoutsManager;
+use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
 
 /**
  * {@inheritdoc}
@@ -33,12 +36,28 @@ class LcElement extends LayoutBuilder {
   protected $configFactory;
 
   /**
+   * Drupal\Core\TempStore\PrivateTempStoreFactory definition.
+   *
+   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
+   */
+  protected $tempStoreFactory;
+
+  /**
+   * The LC manager.
+   *
+   * @var \Drupal\layoutcomponents\LcLayoutsManager
+   */
+  protected $lcLayoutManager;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, LayoutTempstoreRepositoryInterface $layout_tempstore_repository, MessengerInterface $messenger, ThemeHandlerInterface $theme_handler, ConfigFactory $config_factory) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, LayoutTempstoreRepositoryInterface $layout_tempstore_repository, MessengerInterface $messenger, ThemeHandlerInterface $theme_handler, ConfigFactory $config_factory, PrivateTempStoreFactory $temp_store, LcLayoutsManager $layout_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $layout_tempstore_repository, $messenger);
     $this->themeHandler = $theme_handler;
     $this->configFactory = $config_factory;
+    $this->tempStoreFactory = $temp_store;
+    $this->lcLayoutManager = $layout_manager;
   }
 
   /**
@@ -52,7 +71,9 @@ class LcElement extends LayoutBuilder {
       $container->get('layout_builder.tempstore_repository'),
       $container->get('messenger'),
       $container->get('theme_handler'),
-      $container->get('config.factory')
+      $container->get('config.factory'),
+      $container->get('tempstore.private'),
+      $container->get('plugin.manager.layoutcomponents_layouts')
     );
   }
 
@@ -60,6 +81,12 @@ class LcElement extends LayoutBuilder {
    * {@inheritdoc}
    */
   public function layout(SectionStorageInterface $section_storage) {
+    /** @var \Drupal\Core\Config\Config $lc_settings */
+    $lcSettings = $this->configFactory->getEditable('layoutcomponents.general');
+    $dialogOptions = Json::encode([
+      'width' => $lcSettings->get('width'),
+    ]);
+
     $output = parent::layout($section_storage);
     $output['#attached']['library'][] = 'layoutcomponents/layoutcomponents.editform';
 
@@ -68,7 +95,109 @@ class LcElement extends LayoutBuilder {
       $output = [];
     }
 
+    // Storage settings.
+    $storage_type = $section_storage->getStorageType();
+    $storage_id = $section_storage->getStorageId();
+
+    // Allow remove clipboard.
+    /** @var \Drupal\Core\TempStore\PrivateTempStore $store */
+    $store = $this->tempStoreFactory->get('lc');
+    $data = $store->get('lc_element');
+    $clipboard_attr = (!empty($data)) ?: 'hidden';
+
+    // Remove the content of clipboard.
+    $output['clipboard'] = [
+      '#type' => 'link',
+      '#title' => 'Remove clipboard',
+      '#url' => Url::fromRoute('layoutcomponents.copy_remove',
+      [
+        'section_storage_type' => $storage_type,
+        'section_storage' => $storage_id,
+      ],
+      [
+        'attributes' => [
+          'class' => [
+            'use-ajax',
+            'lc_editor-link',
+            'layout-builder__link',
+            'lc-clipboard',
+            $clipboard_attr,
+          ],
+          'data-dialog-type' => 'dialog',
+          'data-dialog-renderer' => 'off_canvas',
+          'data-dialog-options' => $dialogOptions,
+          'title' => $this->t('Remove the content of clipboard'),
+        ],
+      ]),
+      '#weight' => -1,
+    ];
+
     return $output;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareLayout(SectionStorageInterface $section_storage) {
+    parent::prepareLayout($section_storage);
+
+    if ($section_storage instanceof DefaultsSectionStorage) {
+      return;
+    }
+
+    // Default sections.
+    $defaults = $section_storage->getDefaultSectionStorage()->getSections();
+
+    // Content sections.
+    $sections = $section_storage->getSections();
+
+    // Reset sections.
+    $section_storage->removeAllSections(FALSE);
+
+    foreach ($sections as $delta => $section) {
+      $settings = $section->getLayoutSettings();
+      $section_label = $settings['section']['general']['basic']['section_label'];
+      $section_overwrite = $settings['section']['general']['basic']['section_overwrite'];
+      if (boolval($section_overwrite)) {
+        if ($this->lcLayoutManager->checkDefaultExists($defaults, $section_label)) {
+          // Remplace if the section is a defualt.
+          $d_delta = $delta;
+          unset($sections[$delta]);
+          $default = $this->lcLayoutManager->getDefault($defaults, $section_label, $d_delta);
+          if (isset($default)) {
+            $this->lcLayoutManager->arrayInsert($sections, $d_delta, $default);
+          }
+        }
+        else {
+          // Remove the section if is default and not exists.
+          unset($sections[$delta]);
+        }
+      }
+    }
+
+    // Store the rest of defaults.
+    /** @var \Drupal\layout_builder\Section $default */
+    foreach ($defaults as $delta => $default) {
+      if ($default->getLayoutId() == 'layout_builder_blank') {
+        continue;
+      }
+      $settings = $default->getLayoutSettings();
+      $default_delta = $settings['section']['general']['basic']['section_delta'];
+      $this->lcLayoutManager->arrayInsert($sections, $default_delta, $default);
+      unset($defaults[$delta]);
+    }
+
+    ksort($sections);
+
+    // Set the rest of defaults.
+    foreach ($sections as $delta => $section) {
+      if ($section->getLayoutId() == 'layout_builder_blank') {
+        continue;
+      }
+      $section_storage->insertSection($delta, $section);
+    }
+
+    $this->layoutTempstoreRepository->set($section_storage);
   }
 
   /**
@@ -77,7 +206,7 @@ class LcElement extends LayoutBuilder {
   public function buildAddSectionLink(SectionStorageInterface $section_storage, $delta) {
     $build = parent::buildAddSectionLink($section_storage, $delta);
     /** @var \Drupal\Core\Config\Config $lc_settings */
-    $lcSettings = $this->configFactory->getEditable('layoutcomponents.fields');
+    $lcSettings = $this->configFactory->getEditable('layoutcomponents.general');
     $dialogOptions = Json::encode([
       'width' => $lcSettings->get('width'),
     ]);
@@ -103,6 +232,11 @@ class LcElement extends LayoutBuilder {
     $options['attributes']['data-dialog-options'] = $dialogOptions;
     $options['attributes']['title'] = $this->t('Add new section');
 
+    // Check if a section is ready to copy.
+    $store = $this->tempStoreFactory->get('lc');
+    $data = $store->get('lc_element');
+    $options['attributes']['class']['lc-copy'] = ($data['type'] == 'section') ? 'lc-copy' : '';
+
     // Save new options.
     $url->setOptions($options);
 
@@ -115,13 +249,8 @@ class LcElement extends LayoutBuilder {
   public function buildAdministrativeSection(SectionStorageInterface $section_storage, $delta) {
     $build = parent::buildAdministrativeSection($section_storage, $delta);
 
-    // Remove default section.
-    if ($build['layout-builder__section']['#theme'] == 'layout__onecol') {
-      return [];
-    }
-
     /** @var \Drupal\Core\Config\Config $lc_settings */
-    $lcSettings = $this->configFactory->getEditable('layoutcomponents.fields');
+    $lcSettings = $this->configFactory->getEditable('layoutcomponents.general');
     $dialogOptions = Json::encode([
       'width' => $lcSettings->get('width'),
     ]);
@@ -210,6 +339,31 @@ class LcElement extends LayoutBuilder {
           ]
         ),
       ],
+      'copy' => [
+        '#type' => 'link',
+        '#title' => '',
+        '#url' => Url::fromRoute('layoutcomponents.copy_section',
+          [
+            'section_storage_type' => $storage_type,
+            'section_storage' => $storage_id,
+            'delta' => $delta,
+          ],
+          [
+            'attributes' => [
+              'class' => [
+                'use-ajax',
+                'lc_editor-link',
+                'layout-builder__section_link',
+                'layout-builder__section_link-copy',
+              ],
+              'data-dialog-type' => 'dialog',
+              'data-dialog-renderer' => 'off_canvas',
+              'data-dialog-options' => $dialogOptions,
+              'title' => $this->t('Copy to clipboard'),
+            ],
+          ]
+        ),
+      ],
     ];
 
     // Reorder section links.
@@ -256,6 +410,12 @@ class LcElement extends LayoutBuilder {
       ];
       $options['attributes']['data-dialog-options'] = $dialogOptions;
       $options['attributes']['title'] = $this->t('Add new block');
+
+      // Check if a block is ready to copy.
+      $store = $this->tempStoreFactory->get('lc');
+      $data = $store->get('lc_element');
+      $options['attributes']['class'][] = ($data['type'] == 'block') ? 'lc-copy' : '';
+
       $url->setOptions($options);
 
       // Column.
@@ -266,6 +426,11 @@ class LcElement extends LayoutBuilder {
         ],
         '#weight' => 1,
       ];
+
+      // Check if a column is ready to copy.
+      $store = $this->tempStoreFactory->get('lc');
+      $data = $store->get('lc_element');
+      $copy = ($data['type'] == 'column') ? 'lc-copy' : '';
 
       $configureSection['configure'] = [
         '#type' => 'link',
@@ -284,6 +449,7 @@ class LcElement extends LayoutBuilder {
                 'lc_editor-link',
                 'layout-builder__column_link',
                 'layout-builder__column_link-configure',
+                $copy,
               ],
               'data-dialog-type' => 'dialog',
               'data-dialog-renderer' => 'off_canvas',
@@ -293,6 +459,35 @@ class LcElement extends LayoutBuilder {
           ]
         ),
       ];
+
+      if ($copy !== 'lc-copy') {
+        $configureSection['copy'] = [
+          '#type' => 'link',
+          '#title' => '',
+          '#url' => Url::fromRoute('layoutcomponents.copy_column',
+            [
+              'section_storage_type' => $storage_type,
+              'section_storage' => $storage_id,
+              'delta' => $delta,
+              'region' => $region,
+            ],
+            [
+              'attributes' => [
+                'class' => [
+                  'use-ajax',
+                  'lc_editor-link',
+                  'layout-builder__column_link',
+                  'layout-builder__column_link-copy',
+                ],
+                'data-dialog-type' => 'dialog',
+                'data-dialog-renderer' => 'off_canvas',
+                'data-dialog-options' => $dialogOptions,
+                'title' => $this->t('Copy to clipboard'),
+              ],
+            ]
+          ),
+        ];
+      }
 
       // Reorder block links.
       $build['layout-builder__section'][$region][] = $configureSection;
@@ -320,7 +515,7 @@ class LcElement extends LayoutBuilder {
    */
   public function buildAdministrativeBlock($storage_type, $storage_id, $delta, $region, $uuid) {
     /** @var \Drupal\Core\Config\Config $lc_settings */
-    $lcSettings = $this->configFactory->getEditable('layoutcomponents.fields');
+    $lcSettings = $this->configFactory->getEditable('layoutcomponents.general');
 
     $dialogOptions = Json::encode([
       'width' => $lcSettings->get('width'),
@@ -406,6 +601,35 @@ class LcElement extends LayoutBuilder {
             'data-dialog-renderer' => 'off_canvas',
             'data-dialog-options' => $dialogOptions,
             'title' => $this->t('Configure block'),
+            'resizable' => TRUE,
+          ],
+        ]
+      ),
+    ];
+
+    $configureBlock['copy'] = [
+      '#type' => 'link',
+      '#title' => '',
+      '#url' => Url::fromRoute('layoutcomponents.copy_block',
+        [
+          'section_storage_type' => $storage_type,
+          'section_storage' => $storage_id,
+          'delta' => $delta,
+          'region' => $region,
+          'uuid' => $uuid,
+        ],
+        [
+          'attributes' => [
+            'class' => [
+              'use-ajax',
+              'lc_editor-link',
+              'layout-builder__block_link',
+              'layout-builder__block_link-copy',
+            ],
+            'data-dialog-type' => 'dialog',
+            'data-dialog-renderer' => 'off_canvas',
+            'data-dialog-options' => $dialogOptions,
+            'title' => $this->t('Copy to clipboard'),
             'resizable' => TRUE,
           ],
         ]

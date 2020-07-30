@@ -13,7 +13,7 @@
   // Focus of all links.
   behaviors.removeFocus = {
     attach: function (context) {
-      $(".layout-builder a").on('click', function() {
+      $(".layout-builder a").on('click', function () {
         this.blur();
         this.hideFocus = true;
         this.style.outline = 'none';
@@ -24,7 +24,7 @@
   // Control the configuration of the blocks.
   behaviors.configureBlock = {
     attach: function (context) {
-      $('div[data-layout-block-uuid]').hover(function() {
+      $('div[data-layout-block-uuid]').hover(function () {
         $(this).find('.layout-builder__configure-block').css('visibility', 'initial');
       },function () {
         $(this).find('.layout-builder__configure-block').css('visibility', 'hidden');
@@ -36,7 +36,7 @@
   behaviors.moveBlock = {
     attach: function (context) {
       var selector = 'div[data-layout-block-uuid]';
-      $(".layout-builder__configure-block").next().hover(function() {
+      $(".layout-builder__configure-block").next().hover(function () {
         $(this).parents(selector).removeClass('js-layout-builder-block layout-builder-block');
       },function () {
         var currentClasses = $(this).parents(selector).prop("class");
@@ -44,7 +44,6 @@
       });
     }
   };
-
 
   behaviors.editInlineElements = {
     attach: function (context) {

@@ -30,7 +30,6 @@ trait General {
       $class .= '-' . $data['class'];
     }
 
-    // lc-inline_column_first-title
     // Serialize the LC attributes.
     $data['attributes']['input'] = $data['attributes']['lc']['input'];
     $data['attributes']['lc']['id'] = 'lc-inline_' . $data['id'];
@@ -43,6 +42,7 @@ trait General {
       '#default_value' => $data['default_value'],
       '#title' => $this->getLcTitle($data),
       '#attributes' => $data['attributes'],
+      '#access' => $data['#access'],
     ];
 
     // Merge with old element.
@@ -58,6 +58,11 @@ trait General {
    *   The default values.
    */
   public function getLcTitle(array $data) {
+    $data['description'] = str_replace('<br />The maximum number of media items have been selected.', '', $data['description']);
+    $data['description'] = str_replace('<br />One media item remaining.', '', $data['description']);
+    if (strpos($data['title'], 'lc-lateral-title')) {
+      return $data['title'];
+    }
     return '<span class="lc-lateral-title">' . $data['title'] . '</span>' . '<span class="lc-lateral-info" title="' . $data['description'] . '"/>';
   }
 

@@ -71,7 +71,7 @@ class LcColorField extends FormElement {
       '#type' => 'textfield',
       '#required' => $element['#required'],
       '#default_value' => $element['#default_value']['color'],
-      '#suffix' => "<div class='color-field-widget-box-form' id='" . $element['#uid'] . "'></div>" . t('<p><a class="lc-url-settings" href=":url">Color Settings</a></p>', [':url' => Url::fromRoute('layoutcomponents.field_settings')->toString()]),
+      '#suffix' => "<div class='color-field-widget-box-form' id='" . $element['#uid'] . "'></div>" . t('<p><a class="lc-url-settings" href=":url">Color Settings</a></p>', [':url' => Url::fromRoute('layoutcomponents.colors_settings')->toString()]),
     ];
     $element['settings']['opacity'] = [
       '#title' => '<span class="lc-lateral-title">' . t('Opacity') . '</span>' . '<span class="lc-lateral-info" title="' . t('Set the opacity') . '"/>',
@@ -95,8 +95,8 @@ class LcColorField extends FormElement {
     }
 
     if (isset($element['#attributes']) && is_array($element['#attributes'])) {
-      $element['settings']['color']['#attributes'] = NestedArray::mergeDeepArray([$_attributes_new, $element['#attributes']], TRUE);
-      $element['settings']['opacity']['#attributes']['lc'] = Json::encode(NestedArray::mergeDeepArray([$_attributes_new, $element['#attributes']['opacity']['lc']], TRUE));
+      $element['settings']['color']['#attributes'] = NestedArray::mergeDeepArray([$element['#attributes']], TRUE);
+      $element['settings']['opacity']['#attributes']['lc'] = Json::encode(NestedArray::mergeDeepArray([$element['#attributes']['opacity']['lc']], TRUE));
       $element['settings']['opacity']['#attributes']['class'][] = $element['#attributes']['opacity']['class'];
       $element['settings']['opacity']['#attributes']['input'] = $element['#attributes']['opacity']['input'];
     }

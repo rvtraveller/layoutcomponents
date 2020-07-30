@@ -3,7 +3,7 @@
 
 @import "utils/variables.scss";
 
-//---------------------------------------- header
+//---------------------------------------- Color palette
 
 $primary-color-darkest: $blue-darkest;
 $primary-color-darker: $blue-darker;
@@ -21,6 +21,10 @@ $secondary-color-medium: $red-medium;
 $secondary-color-light: $red-light;
 $secondary-color-lighter: $red-lighter;
 
+$tertiary: $orange;
+$tertiary-dark:$orange-dark;
+
+//---------------------------------------- Ingredients
 
 %checkbox{
   position: relative;
@@ -29,6 +33,13 @@ $secondary-color-lighter: $red-lighter;
   opacity: 1;
   z-index: 1;
   margin-right: 10px;
+  width: 16px;
+  height: 16px;
+
+  &:focus{
+    outline: 2px dotted transparent;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+  }
 
   &:before {
     content: "";
@@ -57,19 +68,67 @@ $secondary-color-lighter: $red-lighter;
   }
 }
 
+%link{
+  color: $primary-color-light;
+  text-decoration: underline;
+  font-weight: 600;
+  @extend %librefranklin;
+
+  &:focus{
+    outline: none;
+    color: $primary-color-medium;
+    text-decoration: none;
+    box-shadow:inset 0 -2px 0 0 $primary-color-medium;
+  }
+
+  &:hover{
+    color: $primary-color-medium;
+  }
+}
+
+%primary-button{
+
+  font-weight: 800;
+  border: none;
+  background: $primary-color-dark;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  color: white;
+  margin: 0.75rem 0.5rem 0.75rem 0.5rem;
+  padding: calc(0.75rem - 1px) calc(1rem - 1px);
+
+  &:focus{
+    outline: 2px dotted transparent;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+  }
+
+  &:hover{
+    background: $primary-color-darker;
+  }
+}
+
+%light-background{
+  background: $primary-color-bg;
+  border: 2px solid $primary-color-bg-border;
+  border-radius: $border-radius-base;
+}
+
+//---------------------------------------- Header
 
 .layout-builder-form{
 
   @extend %librefranklin;
-  background: white;
   color: $primary-color-darkest;
   font-weight: 600;
   font-size: $font-size-base;
   -webkit-font-smoothing: antialiased;
 
+  //---------------------------------------- Header button wrapper
+
   .form-actions{
     width: 100%;
     padding: $padding-base-large;
+    @extend %light-background;
     input[type="checkbox"] {
       @extend %checkbox;
     }
@@ -86,30 +145,89 @@ $secondary-color-lighter: $red-lighter;
       }
     }
 
-    // buttons
-
     .button{
       margin-left: 0.5rem;
       margin-right: 0.5rem;
     }
-
     .btn, .button{
-      font-weight: 800;
-      border: none;
-      background: $primary-color-dark;
-      border-radius: $border-radius-base;
-      font-size: $font-size-base;
-      color: white;
-      margin: 0.75rem 0.5rem 0.75rem 0.5rem;
-      padding: calc(0.75rem - 1px) calc(1rem - 1px);
+      @extend %primary-button;
+    }
+  }
 
-      &:focus{
-        outline: 2px dotted transparent;
-        box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+  //---------------------------------------- Header message
+
+  .layout-builder__message{
+    .alert-success{
+      a{
+        @extend %link;
       }
+    }
+  }
 
-      &:hover{
-        background: $primary-color-darker;
+  //---------------------------------------- Header vertical tabs
+
+  .form-type-vertical-tabs{
+    @extend %light-background;
+    .vertical-tabs{
+      border: none;
+      .vertical-tabs__menu{
+        border: none;
+        padding-left: $padding-base-large;
+        .vertical-tabs__menu-item{
+          border: none;
+          background: transparent;
+          color: $primary-color-darkest;
+          a{
+            text-decoration: underline;
+            @extend %librefranklin;
+            display: block;
+
+            &:focus{
+              outline: none;
+              .vertical-tabs__menu-item-summary{
+                display: block;
+                color: $primary-color-medium;
+              }
+            }
+
+            .vertical-tabs__menu-item-title{
+              color: $primary-color-darkest;
+              text-decoration-color: $primary-color-darkest;
+            }
+            .vertical-tabs__menu-item-summary{
+              text-decoration: underline;
+              color: $primary-color-light;
+              &:focus{
+                outline: none;
+                color: $primary-color-medium;
+                text-decoration: none;
+                box-shadow:inset 0 -2px 0 0 $primary-color-medium;
+              }
+
+              &:hover{
+                color: $primary-color-medium;
+              }
+            }
+          }
+        }
+      }
+      .vertical-tabs__panes{
+        .details-wrapper{
+          .form-item{
+            margin: 0;
+            &.form-type-checkbox{
+              padding: 0;
+              input{
+                @extend %checkbox;
+              }
+              label{
+                font-weight: 600;
+                @extend %librefranklin;
+                font-size: $font-size-base;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -916,10 +1034,8 @@ div.contextual {
   // Menú lateral
 
   #drupal-off-canvas{
-
     background: $primary-color-darkest;
     padding: 0px !important;
-
 
     //---------------------- General
 
@@ -1341,7 +1457,7 @@ div.contextual {
       div[id*="--description"] {
         margin-left: 20px;
         font-weight: 600;
-        color: $blue-darkest;
+        color: $primary-color-darkest;
         line-height: 1.5em;
         font-size: $font-size-base;
         pointer-events: none;
@@ -1407,7 +1523,7 @@ div.contextual {
 
       select{
         option {
-          color: $blue-darkest;
+          color: $primary-color-darkest;
           @extend %librefranklin;
         }
 
@@ -1435,12 +1551,12 @@ div.contextual {
       input{
         .form-date, .form-time{
           background: $grey-theme-extralight;
-          color: $blue-darkest;
+          color: $primary-color-darkest;
           font-size: $font-size-base;
           font-weight: 600;
           text-transform: none;
           line-height: normal;
-          border: 1px solid $blue-darkest;
+          border: 1px solid $primary-color-darkest;
           box-shadow: none;
           letter-spacing: normal;
           @extend %librefranklin;
@@ -1459,7 +1575,7 @@ div.contextual {
             background: $grey-theme-extralight;
 
             & > span {
-              background: $blue-darkest;
+              background: $primary-color-darkest;
             }
           }
 
@@ -1470,12 +1586,12 @@ div.contextual {
             border-radius: 2px;
             background: $grey-theme-extralight;
             margin: 5px auto;
-            color: $blue-darkest;
+            color: $primary-color-darkest;
             font-size: 13px;
             font-weight: 600;
             text-transform: none;
             line-height: normal;
-            border: 1px solid $blue-darkest;
+            border: 1px solid $primary-color-darkest;
             box-shadow: none;
             letter-spacing: normal;
             @extend %librefranklin;
@@ -1543,7 +1659,7 @@ div.contextual {
       &.js-form-type-checkbox {
         display: inline-block;
         background: transparent;
-        color: $blue-dark;
+        color: $primary-color-dark;
         font-weight: 600;
         line-height: 20px;
         font-size: $font-size-large;
@@ -2170,10 +2286,10 @@ div.contextual {
     svg{
       .layout-icon{
         + div {
-          color: $blue-dark;
+          color: $primary-color-dark;
         }
         g rect {
-          fill: $blue-dark;
+          fill: $primary-color-dark;
         }
       }
     }

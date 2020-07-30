@@ -3,7 +3,7 @@
 
 @import "utils/variables.scss";
 
-//---------------------------------------- header
+//---------------------------------------- Color Variables
 
 $primary-color-darkest: $blue-darkest;
 $primary-color-darker: $blue-darker;
@@ -21,6 +21,12 @@ $secondary-color-medium: $red-medium;
 $secondary-color-light: $red-light;
 $secondary-color-lighter: $red-lighter;
 
+$tertiary: $orange;
+$tertiary-dark:$orange-dark;
+
+//--------------------------------------------------------------------- INGREDIENTS
+
+//---------------------------------------- Checkbox
 
 %checkbox{
   position: relative;
@@ -29,6 +35,13 @@ $secondary-color-lighter: $red-lighter;
   opacity: 1;
   z-index: 1;
   margin-right: 10px;
+  width: 16px;
+  height: 16px;
+
+  &:focus{
+    outline: 2px dotted transparent;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+  }
 
   &:before {
     content: "";
@@ -57,20 +70,70 @@ $secondary-color-lighter: $red-lighter;
   }
 }
 
+//---------------------------------------- Link
+
+%link{
+  color: $primary-color-light;
+  text-decoration: underline;
+  font-weight: 600;
+  @extend %librefranklin;
+
+  &:focus{
+    outline: none;
+    color: $primary-color-medium;
+    text-decoration: none;
+    box-shadow:inset 0 -2px 0 0 $primary-color-medium;
+  }
+
+  &:hover{
+    color: $primary-color-medium;
+  }
+}
+
+//---------------------------------------- Button
+
+%primary-button{
+  font-weight: 800;
+  border: none;
+  background: $primary-color-dark;
+  border-radius: $border-radius-base;
+  font-size: $font-size-base;
+  color: white;
+  padding: calc(0.65rem - 1px) calc(1rem - 1px);
+
+  &:focus{
+    outline: 2px dotted transparent;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+  }
+
+  &:hover{
+    background: $primary-color-darker;
+  }
+}
+
+
+//---------------------------------------- Light background
+
 %light-background{
   background: $primary-color-bg;
   border: 2px solid $primary-color-bg-border;
   border-radius: $border-radius-base;
 }
 
+
+//-----------------------------START----------------------------//
+
+//--------------------------------------------------------------------- HEADER
+
 .layout-builder-form{
 
   @extend %librefranklin;
-  background: white;
   color: $primary-color-darkest;
   font-weight: 600;
   font-size: $font-size-base;
   -webkit-font-smoothing: antialiased;
+
+  //---------------------------------------- Header button wrapper
 
   .form-actions{
     width: 100%;
@@ -92,80 +155,255 @@ $secondary-color-lighter: $red-lighter;
       }
     }
 
-    // buttons
-
     .button{
       margin-left: 0.5rem;
       margin-right: 0.5rem;
     }
-
     .btn, .button{
-      font-weight: 800;
-      border: none;
-      background: $primary-color-dark;
-      border-radius: $border-radius-base;
-      font-size: $font-size-base;
-      color: white;
+      @extend %primary-button;
       margin: 0.75rem 0.5rem 0.75rem 0.5rem;
-      padding: calc(0.75rem - 1px) calc(1rem - 1px);
+    }
+  }
 
-      &:focus{
-        outline: 2px dotted transparent;
-        box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+  //---------------------------------------- Header message
+
+  .layout-builder__message{
+    .alert-success{
+      a{
+        @extend %link;
       }
+    }
+  }
 
-      &:hover{
-        background: $primary-color-darker;
+  //---------------------------------------- Header vertical tabs
+
+  .form-type-vertical-tabs{
+    @extend %light-background;
+    .vertical-tabs{
+      border: none;
+      .vertical-tabs__menu{
+        border: none;
+        padding-left: $padding-base-large;
+        .vertical-tabs__menu-item{
+          border: none;
+          background: transparent;
+          color: $primary-color-darkest;
+          a{
+            text-decoration: underline;
+            @extend %librefranklin;
+            display: block;
+
+            &:focus{
+              outline: none;
+              .vertical-tabs__menu-item-summary{
+                display: block;
+                color: $primary-color-medium;
+              }
+            }
+
+            .vertical-tabs__menu-item-title{
+              color: $primary-color-darkest;
+              text-decoration-color: $primary-color-darkest;
+            }
+            .vertical-tabs__menu-item-summary{
+              text-decoration: underline;
+              color: $primary-color-light;
+              &:focus{
+                outline: none;
+                color: $primary-color-medium;
+                text-decoration: none;
+                box-shadow:inset 0 -2px 0 0 $primary-color-medium;
+              }
+
+              &:hover{
+                color: $primary-color-medium;
+              }
+            }
+          }
+        }
+      }
+      .vertical-tabs__panes{
+        .details-wrapper{
+          .form-item{
+            margin: 0;
+            &.form-type-checkbox{
+              padding: 0;
+              input{
+                @extend %checkbox;
+              }
+              label{
+                font-weight: 600;
+                @extend %librefranklin;
+                font-size: $font-size-base;
+              }
+            }
+          }
+        }
       }
     }
   }
 }
 
+//--------------------------------------------------------------------- GENERAL
+
+div.contextual {
+  top: 50px !important;
+}
+
+.lc-tooltip {
+  border: 2px solid $primary-color-bg !important;
+  background-color: $primary-color-darkest !important;
+  color: white !important;
+  @extend %librefranklin;
+  font-size: $font-size-base !important;
+  font-weight: 500;
+  border-radius: $border-radius-xl;
+  box-shadow: none !important;
+}
+
+
+div#drupal-off-canvas *,
+div#drupal-off-canvas details,
+div#drupal-off-canvas div.details-wrapper,
+div#drupal-off-canvas fieldset label,
+div#drupal-off-canvas *:not(div) {
+  color: white;
+  background: $primary-color-darkest;
+  @extend %librefranklin;
+  font-size: $font-size-base;
+  font-weight: 500;
+}
+
+.colorpicker {
+  z-index: 1000;
+}
+.info {
+  margin-right: 10px;
+}
+.element-hidden {
+  display: none;
+}
+.parallax-mirror {
+  z-index: 0 !important;
+}
+
+//--------------------------------------------------------------------- LAYOUT BUILDER -- COLUMNS GRID
+
 #layout-builder{
 
-  // columnas
+  .lc-section {
+
+    &.simple-margin-none, &.simple-margin-small, &.simple-margin-medium, &.simple-margin-large{
+      clear: both;
+    }
+
+    &.simple-margin-none {
+      margin-top: 0px;
+    }
+
+    &.simple-margin-small {
+      margin-top: 10px;
+    }
+
+    &.simple-margin-medium {
+      margin-top: 30px;
+    }
+
+    &.simple-margin-large {
+      margin-top: 60px;
+    }
+
+    &.full-height-wrapper {
+      height: 100vh;
+    }
+
+    &.medium-height-wrapper {
+      height: 50vh;
+    }
+
+    .lc-container-cols {
+      .block-layoutcomponents-parent {
+      }
+      .lc-column-title {
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .lc-column-title.border-type-left {
+        border-left: 10px solid;
+      }
+      .lc-column-title.border-type-right {
+        border-right: 10px solid;
+      }
+      .lc-column-title.border-type-top {
+        border-top: 5px solid;
+      }
+      .lc-column-title.border-type-bottom {
+        border-bottom: 5px solid;
+      }
+    }
+    .field__item {
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  //---------------------------------------- Columns
 
   .container{
     padding: 0;
   }
-
-
   .col-md-2 {
     flex: 0 0 14.66667%;
     max-width: 14.66667%;
   }
-
   .col-md-3{
     flex: 0 0 23%;
     max-width: 23%;
   }
-
   .col-md-4{
     flex: 0 0 31.33333%;
     max-width: 31.33333%;
   }
-
   .col-md-6{
     flex: 0 0 48%;
     max-width: 48%;
   }
-
   .col-md-8{
     flex: 0 0 64.66666%;
     max-width: 64.66666%;
   }
-
   .col-md-12{
     flex: 0 0 98%;
     max-width: 98%;
   }
-
   &.layout-builder {
     padding: calc(0.75rem - 1px);
     border: 4px solid $primary-color-bg-border;
     background-color: $primary-color-bg;
     border-radius: $border-radius-base;
     color: $primary-color-darkest;
+
+    .layout-builder__configure-block{
+      position: relative;
+      top: -2px;
+      margin: auto;
+      z-index: 10;
+      background-color:$primary-color-light;
+      border-radius: 0px 0px 4px 4px;
+      text-align: center;
+      display: table;
+      visibility: visible !important;
+
+      .layout-builder__block_link{
+        padding: 5px;
+        color: $primary-color-bg-border;
+        &:hover{
+          color: white;
+        }
+      }
+    }
 
     .row{
       margin: 0;
@@ -185,10 +423,32 @@ $secondary-color-lighter: $red-lighter;
     //-------- link + icons
 
     a{
+
+      &.lc-clipboard{
+        display: table;
+        margin:10px;
+        @extend %primary-button;
+        background: $secondary-color-medium;
+
+        &.hidden{display: none !important;}
+
+        &:after{
+          content: "\f24d";
+          @extend %fontawesome;
+          margin-left: 10px;
+
+        }
+
+        &:hover{
+          background: $secondary-color-dark;
+        }
+      }
+
       color: $primary-color-bg;
       &:hover{
         text-decoration: none;
       }
+
       &:hover,
       &:visited,
       &:active{
@@ -233,6 +493,22 @@ $secondary-color-lighter: $red-lighter;
         }
       }
 
+      &.layout-builder__section_link-copy,
+      &.layout-builder__block_link-copy{
+        &:before {
+          content: "\f24d";
+          @extend %fontawesome;
+        }
+      }
+
+      &.layout-builder__column_link-copy{
+        &:before {
+          content: "\f24d";
+          @extend %fontawesome;
+          margin-left: 7.5px;
+        }
+      }
+
       &.layout-builder__link-add,
       &.layout-builder__link-add-section,
       &.layout-builder__column_link-add{
@@ -271,7 +547,6 @@ $secondary-color-lighter: $red-lighter;
         flex-direction: column;
         height: auto;
         min-height: 50px;
-        /*margin: 20px 0 15px 0;*/
       }
     }
 
@@ -312,7 +587,6 @@ $secondary-color-lighter: $red-lighter;
         &:hover {
           text-decoration: none;
           transition: 0.9s;
-
         }
         &.layout-builder__link-add-section {
           color: white;
@@ -326,17 +600,38 @@ $secondary-color-lighter: $red-lighter;
           color: $primary-color-bg-border;
           background:$primary-color-darkest;
 
-          &:hover{
-            background:$primary-color-darker;
+          &.lc-copy{
+            background: $tertiary;
+            &:before {
+              content: "\f24d";
+              @extend %fontawesome;
+              color: white;
+              background: transparent !important;
+              display: block;
+              position: unset !important;
+              padding: 0;
+              font-size: 18px;
+            }
+
+            &:hover{
+              background: $tertiary-dark;
+            }
           }
+
 
           &.layout-builder__link-add {
             font-size: 15px;
             z-index: 10;
             position: absolute;
             top: -15px;
-          }
 
+
+
+            &:hover{
+              background:$primary-color-darker;
+            }
+
+          }
           &:hover{
             color: white;
           }
@@ -350,18 +645,35 @@ $secondary-color-lighter: $red-lighter;
         &.layout-builder__column_link-add {
           background-color: $primary-color-light;
           font-size: 13px;
-          width: 30px;
-          height: 30px;
+          width: 35px;
+          height: 35px;
           -webkit-transition: 0.6s ease-out;
           -moz-transition:  0.6s ease-out;
           transition:  0.6s ease-out;
-          line-height: 30px;
+          line-height: 35px;
+
+          &.lc-copy{
+            background: $tertiary;
+            &:before {
+              content: "\f24d";
+              @extend %fontawesome;
+              color: white;
+              background: transparent !important;
+              display: block;
+              position: unset !important;
+              padding: 0;
+              font-size: 18px;
+            }
+
+            &:hover{
+              background: $tertiary-dark;
+            }
+          }
 
           &:hover {
             text-decoration: none;
             transition: 0.9s;
             background: $primary-color-light;
-
           }
         }
       }
@@ -395,26 +707,6 @@ $secondary-color-lighter: $red-lighter;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
       }
-
-      .layout-builder__configure-block{
-        position: relative;
-        top: -2px;
-        margin: auto;
-        z-index: 10;
-        background-color:$primary-color-light;
-        border-radius: 0px 0px 4px 4px;
-        text-align: center;
-        display: table;
-        visibility: visible !important;
-
-        .layout-builder__block_link{
-          padding: 5px;
-          color: $primary-color-bg-border;
-          &:hover{
-            color: white;
-          }
-        }
-      }
     }
 
     .layout-builder-block{
@@ -431,7 +723,7 @@ $secondary-color-lighter: $red-lighter;
       }
 
       &.is-layout-builder-highlighted{
-        border: 4px solid $primary-color-light;
+        border: 4px solid $primary-color-light !important;
         border-radius: $border-radius-base;
         box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -458,6 +750,27 @@ $secondary-color-lighter: $red-lighter;
 
       a{
         color: $primary-color-bg-border;
+
+        &.lc-copy{
+          &:before {
+            position: absolute;
+            display: block;
+            content: "\f24d";
+            @extend %fontawesome;
+            color: white !important;
+            display: block;
+            background: $tertiary;
+            padding: 5px 9px;
+            border-radius: 0px 4px 0px 4px;
+            right: 0px;
+            font-size: 18px;
+          }
+
+          &:hover{
+            background: $tertiary-dark;
+          }
+        }
+
         &:hover{
           color: white;
         }
@@ -505,16 +818,6 @@ $secondary-color-lighter: $red-lighter;
         &.is-layout-builder-highlighted{
           border: 4px solid $primary-color-dark;
           border-radius: $border-radius-base;
-        }
-
-        .lc-inline_container-title-edit{
-          .lc-inline_title-container-edit{
-            h2{
-              &.lc-inline_title-edit{
-
-              }
-            }
-          }
         }
 
         .lc-inline_container-section-edit{
@@ -575,90 +878,53 @@ $secondary-color-lighter: $red-lighter;
   }
 }
 
-div.contextual {
-  top: 50px !important;
-}
+//------------------------------------------------------- EMERGENT WINDOWS
 
-.ui-dialog-off-canvas{
-  #drupal-off-canvas {
-    overflow-x: visible !important;
+//---------------------------------------- Media library window
 
-  }
-}
+.media-library-widget-modal{
 
-.lc-tooltip {
-    border: 2px solid $primary-color-bg !important;
-    background-color: $primary-color-darkest !important;
-    color: white !important;
+  //---------------------------------------- Media library title
+
+  .ui-dialog-titlebar{
     @extend %librefranklin;
-    font-size: $font-size-base !important;
-    font-weight: 500;
-    border-radius: $border-radius-xl;
-    box-shadow: none !important;
-}
+    background: $primary-color-dark !important;
+    color:$primary-color-bg;
+    border-bottom: none !important;
+    font-size: $font-size-large;
 
-.ui-dialog{
+    .ui-dialog-titlebar-close{
+      background-image: none;
+      right: 0.5em;
 
-  @extend %librefranklin;
-  font-weight: 600;
-  font-size: $font-size-base;
-  -webkit-font-smoothing: antialiased;
-
-
-  .lc-lateral-info{
-    &:after{
-      cursor: pointer;
-      font-size: 18px;
-      content: "\f05a";
-      color: $primary-color-soft;
-      font-family: FontAwesome;
-      display: inline-block;
-      line-height: 18px;
-    }
-  }
-
-  .ui-dialog-buttonpane{
-    color: $primary-color-darkest;
-    font-weight: 700;
-    .btn-primary{
-      background: $primary-color-dark;
-      border-color: $primary-color-dark;
-      &:hover{
-        background: $primary-color-medium;
-      }
-    }
-  }
-
-  &.ui-dialog-off-canvas{
-    background: none;
-    box-shadow: none;
-    border: none !important;
-    box-shadow: none !important;
-
-    .ui-dialog-titlebar {
-      @extend %librefranklin;
-      background: $primary-color-medium !important;
-      color:$primary-color-bg-border;
-      border-bottom: none !important;
-      font-size: $font-size-base;
-      &:hover{
-        color: white;
-      }
-
-      .ui-dialog-titlebar-close{
-        background-image: none;
-
-        &:hover{
-          background-image: none;
-          border: none;
-        }
+      &:focus{
         &:after{
-          content: "\f00d";
-          @extend %fontawesome;
-          font-size: 14px;
-          margin-right: 5px;
+          outline: 2px dotted transparent;
+          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+        }
+      }
+
+      &:hover{
+        background-image: none;
+        border: none;
+
+        &:after{
           color: white;
         }
+      }
+      &:after{
+        position: relative;
+        float: left;
+        content: "\f00d";
+        width: 20px;
+        display: inline-block;
+        cursor: pointer;
+        font-size: $font-size-large;
+        color: $primary-color-bg-border;
+        @extend %fontawesome;
+        line-height: 18px;
+
+
       }
 
       span {
@@ -674,1083 +940,498 @@ div.contextual {
     }
   }
 
-  // ventana imagen
+  //---------------------------------------- Media library content
 
-  &.ui-widget-content{
-    border: 1px solid $primary-color-darkest !important;
-    @extend %librefranklin;
-    color:  $primary-color-darkest;
-
-     input[type="text"]{
-      background: white;
-      color: $primary-color-darkest;
-      font-size: $font-size-base;
-      font-weight: 500;
-      text-transform: none;
-      line-height: normal;
-      border: 1px solid $primary-color-medium;
-      box-shadow: none;
-      letter-spacing: normal;
-      @extend %librefranklin;
-      border-radius: $border-radius-base;
-      padding: 7px 10px;
-      box-sizing: border-box;
-      transition: .2s ease;
-
-      &:focus{
-        outline-color: none;
-      }
-    }
-
-    // pantalla añadir
+  .ui-dialog-content{
+    padding: 1em !important;
 
     .js-media-library-add-form{
+      border: none;
+      outline: none;
       @extend %librefranklin;
+      font-weight:400;
       color:  $primary-color-darkest;
-      p{
-        color:  $primary-color-darkest;
-        font-weight: 500;
-        font-size: $font-size-base;
-      }
+
+      //----------------------- .item-list
+
       .item-list{
-        @extend %light-background;
+        border: none;
+        &:focus{
+          outline: 2px dotted transparent;
+          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+        }
         ul{
           list-style: none;
-          &:focus{
-            border: none;
-            outline: none;
-          }
+          outline: none;
           li{
-            margin:0;
-            padding:20px;
-            &:focus{
-              border: none;
-              outline: none;
-            }
+            margin: 0;
+            outline: none;
 
             .form-item{
-              color:  $primary-color-darkest;
-              @extend %librefranklin;
-              font-weight: 500;
-              font-size: $font-size-base;
+              margin-bottom: 0 !important;
+            }
 
+            .image-widget-data{
               label{
-                font-size: 700 !important;
+                font-weight: 700;
               }
-
-              .description{
-                font-weight: 500;
-                font-size: $font-size-base;
-                margin: 10px 0px;
-              }
-
-              .field--type-image{
-                .image-widget-data{
-                  .js-form-required{
-                    font-size: $font-size-base;
-                    font-weight: 700;
+              input{
+                &.form-text{
+                  position: relative;
+                  float: left;
+                  margin-bottom: 10px;
+                  &:focus{
+                    outline: 2px dotted transparent;
+                    box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
                   }
                 }
               }
             }
-          }
-          input{
-            margin-left: 0px;
-            &.btn-primary{
-              background: $primary-color-dark;
-              border-color: $primary-color-dark;
-              &:hover{
-                background: $primary-color-medium;
-              }
+            .btn-primary{
+              @extend %primary-button;
+              margin-left: 0px;
+              margin-top: 0px;
             }
           }
         }
       }
     }
 
-    .views-element-container{
+    .media-library-wrapper{
+      .media-library-content{
 
-      .form-type-checkbox{
-        position: relative;
-        float: left;
-        width: 100%;
-        margin-top: 0;
-        &:hover{
-          .media-library-item{
-            border: $primary-color-lighter;
-          }
+        &.js-media-library-item {
+          padding-left: 15px;
+          width: 100%;
         }
-      }
 
-      .view-content{
-        .views-form{
-          @extend %light-background;
-          table{
-            @extend %librefranklin;
-            border:1px solid $primary-color-dark;
-            border-radius: $border-radius-base;
-            font-weight: 500;
-            margin: 1rem;
-            thead{
-              color: white;
-              background: $primary-color-darkest;
-              font-weight: 700;
-            }
+        //---------------------------------------- Messages
 
-            input[type="checkbox"] {
-              @extend %checkbox;
-            }
-          }
+        .messages{
+          position: relative;
+          float: left;
+          @extend %librefranklin;
+          font-weight: 400;
+          margin-left: 8px;
+        }
 
-          .media-library-item{
-            border: 4px solid $primary-color-bg-border;
-            background: white;
-            border-radius: $border-radius-base;
-            padding: 10px;
+        //---------------------------------------- Add button + info // Add window
 
-            img{
-              position: relative;
-              float: left;
-              width: 100%;
-              cursor: pointer;
-            }
+        .js-media-library-add-form{
+          position: relative;
+          float: left;
+          width: 100%;
+          margin-bottom: 10px;
 
-            .media-library-item__attributes{
-              .media-library-item__name{
+
+          //----------------------- Add button
+
+          .form-wrapper{
+            position: relative;
+            float: left;
+            .form-item{
+              margin-top: 0;
+              label{
+                margin-bottom: 0px;
+              }
+              &.form-item-upload{
                 position: relative;
                 float: left;
+                color: $primary-color-darkest;
                 @extend %librefranklin;
-                color:  $primary-color-darkest;
-                font-weight: 500;
-                margin: 5px 0px;
-                width: 100%;
+
+                .form-managed-file{
+                  height: 30px;
+                  input{
+                    position: relative;
+                    float: left;
+                    height: 30px;
+                    margin: 10px 0px;
+
+                     &:focus{
+                      outline: 2px dotted transparent;
+                      box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+                    }
+                  }
+                }
+
+                .description{
+                  position: relative;
+                  float: left;
+                  width: 100%;
+                  @extend %librefranklin;
+                  font-weight: 500;
+                  color:  $primary-color-darkest;
+                }
+                .form-control{
+                  border: none;
+                  margin-left: 0;
+                  padding: 0;
+                  color:  $primary-color-darkest;
+                  @extend %librefranklin;
+                }
               }
             }
-
-          }
-
-          .js-click-to-select-checkbox{
-            input[type="checkbox"] {
-              @extend %checkbox;
-            }
           }
         }
-      }
 
-      .view-filters{
-        .form--inline{
-          color: $primary-color-darkest;
-          @extend %librefranklin;
-          .btn-primary{
-            margin-top: 48px;
-            background: $primary-color-dark;
-            font-weight: 700;
-            border: none;
-            &:hover{
-              background: $primary-color-medium;
+        //---------------------------------------- Elements container
+
+        .views-element-container{
+
+          //---------------------------------------- Buttons
+
+          .view-header{
+            position: relative;
+            float: left;
+            width: 100%;
+            .views-display-link{
+              display: inline-block;
+              font-weight: 800;
+              border: none;
+              background: $primary-color-darker;
+              border-radius: $border-radius-base;
+              font-size: $font-size-base;
+              color: white;
+              padding: calc(0.75rem - 1px) calc(1rem - 1px);
+
+              &.is-active{
+                background: $primary-color-dark;
+                outline: 2px dotted transparent;
+                box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+              }
+
+              &:focus{
+                outline: 2px dotted transparent;
+                box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+              }
+
+              &:hover{
+                background: $primary-color-medium;
+                text-decoration: none;
+              }
             }
           }
-        }
-      }
-      .view-header{
-        .views-display-link{
-          border-radius: $border-radius-base;
-          padding: 10px 20px;
-          background: $primary-color-dark;
-          color: white;
-          &:hover{
-            background: $primary-color-medium;
+
+          //---------------------------------------- filters
+
+          .view-filters{
+            .form--inline{
+              color: $primary-color-darkest;
+              @extend %librefranklin;
+
+              input{
+                &:focus{
+                  box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+                }
+              }
+              select{
+                &:focus{
+                  box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+                }
+              }
+
+              .btn-primary{
+                display: inline-block;
+                @extend %primary-button;
+                margin: 47px 0.5rem 0.75rem 0.5rem;
+                padding: calc(0.60rem - 1px) calc(1rem - 1px);
+                &:focus{
+                  outline: 2px dotted transparent;
+                  box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+                }
+
+                &:hover{
+                  background: $primary-color-medium;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+
+          //---------------------------------------- content
+
+          .view-content{
+            .views-form{
+              @extend %light-background;
+
+              .js-media-library-views-form{
+                padding: 15px;
+              }
+
+              //---------------------------------------- Table format
+
+              table{
+                @extend %librefranklin;
+                border:1px solid $primary-color-dark;
+                border-radius: $border-radius-base;
+                font-weight: 500;
+                margin: 1rem;
+                thead{
+                  color: white;
+                  background: $primary-color-dark;
+                  font-weight: 700;
+                }
+
+                td{
+                  a{
+                    color: $primary-color-light;
+                    text-decoration: underline;
+                  }
+                }
+
+                input[type="checkbox"] {
+                  @extend %checkbox;
+                }
+              }
+
+              //---------------------------------------- Grid format
+
+              .media-library-item{
+                border: 2px solid $primary-color-bg-border;
+                background: white;
+                border-radius: $border-radius-base;
+                padding: 15px;
+                margin: 0px 15px 0px 0px;
+
+                &.checked{
+                  border: 2px solid $primary-color-medium;
+                }
+
+                img{
+                  position: relative;
+                  float: left;
+                  width: auto;
+                  cursor: pointer;
+                  max-width: 100%;
+                  height: auto;
+                }
+                .media-library-item__name{
+                  position: relative;
+                  float: left;
+                  @extend %librefranklin;
+                  color:  $primary-color-darkest;
+                  font-weight: 500;
+                  margin: 5px 0px 0px 0px;
+                  width: 100%;
+                  font-size: 14px;
+                  line-height: 18px;
+                }
+              }
+
+              .js-click-to-select-checkbox{
+                input[type="checkbox"] {
+                  @extend %checkbox;
+                }
+              }
+            }
+          }
+
+          .form-type-checkbox{
+            position: relative;
+            float: left;
+            width: 100%;
+            margin-top: 0;
+            margin-bottom: 0.5em;
           }
         }
       }
     }
+  }
 
-    .form-item-upload{
-      color: $primary-color-darkest;
+  //---------------------------------------- Button panel
+
+  .ui-dialog-buttonpane{
+    .ui-dialog-buttonset{
+      button{
+        @extend %primary-button;
+        &:focus{
+          outline: 2px dotted transparent;
+          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+        }
+
+        &:hover{
+          background: $primary-color-medium;
+          text-decoration: none;
+        }
+      }
+    }
+    .media-library-selected-count{
       @extend %librefranklin;
-      .description{
-        @extend %librefranklin;
+      color: $primary-color-darkest;
+    }
+  }
+}
+
+//------------------------------------------------------- UI DIALOG -- LATERAL MENU
+
+.ui-dialog{
+
+  @extend %librefranklin;
+  font-weight: 600;
+  font-size: $font-size-base;
+  -webkit-font-smoothing: antialiased;
+  background: none;
+  border: none !important;
+  box-shadow: none !important;
+  color:  $primary-color-darkest;
+
+
+
+  &.ui-dialog-off-canvas{
+
+    //-------------------------- Lateral Menu Title
+
+    .ui-dialog-titlebar {
+      @extend %librefranklin;
+      background: $primary-color-medium !important;
+      color:$primary-color-bg-border;
+      border-bottom: none !important;
+      font-size: $font-size-base;
+
+      .ui-dialog-titlebar-close{
+        background-image: none;
+
+        &:hover{
+          background-image: none;
+          border: none;
+
+          &:after{
+            color: white;
+          }
+        }
+        &:after{
+          cursor: pointer;
+          font-size: 18px;
+          content: "\f00d";
+          color: $primary-color-soft;
+          @extend %fontawesome;
+          display: inline-block;
+          line-height: 22px;
+        }
+
+        span {
+          font-size: 1.1em;
+          font-weight: 200;
+          border: 0;
+        }
+        .ui-dialog-title{
+          max-width: none !important;
+          @extend %librefranklin;
+          font-weight: 700;
+        }
+      }
+    }
+
+    //-------------------------- Lateral Menu Content
+
+    #drupal-off-canvas{
+      overflow-x: visible !important;
+      background: $primary-color-darkest;
+      padding: 0px !important;
+
+      .alert-error{}
+
+
+
+      //-------------------- General
+
+      select{
+        &:after {
+          color: $primary-color-darkest;
+          content: "▼";
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1;
+          margin-top: -0.5em;
+          padding-right: 0.5em;
+          pointer-events: none;
+          position: absolute;
+          right: 0px;
+          top: 50%;
+          z-index: 10;
+        }
+      }
+
+      p{
+        position: relative;
+        float: left;
+        margin:20px;
+        font-size: $font-size-base;
         font-weight: 500;
+        a{
+          font-weight: 600;
+          text-decoration: underline;
+        }
       }
 
       .form-control{
-        border: none;
-        margin-left: 0;
-        padding: 0;
-        color:  $primary-color-darkest;
-        @extend %librefranklin;
-
-      }
-    }
-  }
-  .ui-dialog-titlebar{
-    background: $primary-color-darker !important;
-    color: white !important;
-    @extend %librefranklin;
-    color:  $primary-color-darkest;
-    .ui-dialog-titlebar-close{
-      &:after{
-
-        content: "\f00d";
-        @extend %fontawesome;
-        font-size: 14px;
-        margin-right: 5px;
-        color: white;
-
-      }
-    }
-  }
-
-  &.ui-corner-all{
-    &.ui-widget{
-      &.ui-widget-content{
-        &.ui-front {
-          width: 75% !important;
-          margin-left: auto;
-          margin-right: auto;
-          left: 0 !important;
-          right: 0 !important;
-          &.ui-dialog-off-canvas{
-            &.ui-dialog-position-side {
-              width: 25% !important;
-              left: 75% !important;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  // Menú lateral
-
-  #drupal-off-canvas{
-
-    background: $primary-color-darkest;
-    padding: 0px !important;
-
-
-    //---------------------- General
-
-    th, td{
-      &:first-child{
-        width: auto;
-      }
-    }
-
-    p{
-      position: relative;
-      float: left;
-      margin:20px;
-      font-size: $font-size-base;
-      font-weight: 500;
-      a{
-        font-weight: 600;
-        text-decoration: underline;
-      }
-    }
-
-    .form-required{
-      .lc-lateral-info{
-        &:after{
-          margin-left: 5px;
-        }
-      }
-    }
-    .layout-builder-add-block{
-      .label{
-        margin-bottom: 10px !important;
-      }
-    }
-
-    tbody{
-      .tabledrag-hide{
-        .form-item{
-          margin: 0;
-        }
-      }
-    }
-
-    tr{
-      td{
-        abbr{
-          background: transparent;
-          text-decoration: none;
-          border-bottom: 0;
-        }
-      }
-    }
-
-    button{
-      &.link {
-        display: inline;
-        transition: color 0.5s ease;
-        color: $primary-color-bg-border;
-        background: transparent;
-        font-size: $font-size-base;
-        margin: 10px 20px;
-        text-decoration: underline;
-        font-weight: 600;
-        &:hover{
-          text-decoration: underline;
-          color: white;
-        }
         &:focus{
-          text-decoration: underline;
-          color: white;
-        }
-      }
-    }
-
-    //-------------------- Barra lateral
-
-    .sliderwidget{
-      position: relative;
-      float: left;
-      width: 100%;
-      margin-top: 0;
-      margin-bottom: 15px;
-
-      .sliderwidget-container{
-        position: relative;
-        float: left;
-        width: 100%;
-        background: $primary-color-darker;
-      }
-
-      .sliderwidget-event-field-container{
-        display: none;
-      }
-      .sliderwidget-display-values-field{
-        position: relative;
-        float: left;
-        width: 100%;
-        margin-bottom: 8px;
-      }
-      .lc-range-slide{
-        position: relative;
-        float: left;
-        width: 100%;
-      }
-    }
-
-    .ui-state-default,
-    .ui-widget-content .ui-state-default,
-    .ui-widget-header .ui-state-default{
-      color: $primary-color-medium;
-      border: 1px solid $primary-color-bg-border;
-      background: $primary-color-lighter;
-      top:-3px
-    }
-
-    .lc-range-slide{
-      background:$primary-color-darker;
-    }
-
-    .form-item{
-      width: calc(100% - 40px) ;
-      margin: 20px;
-      @extend %librefranklin;
-      font-size: $font-size-base;
-
-      &.form-type-checkbox{
-        input{
-          position: relative;
-          float: left;
-        }
-        label{
-          position: relative;
-          float: left;
-          width: calc(100% - 40px);
+          outline: none;
+          box-shadow:inset 0 -2px 0 0 $primary-color-medium;
         }
       }
 
-      .form-item{
-        width: 100%;
-        margin: 0px;
-      }
+      //-------------------- Copy block
 
-      label{
-        position: relative;
-        float: left;
-        font-weight: 500;
-        @extend %librefranklin;
-        font-size: $font-size-base;
-        width: inherit;
-        margin-bottom: 5px;
-      }
-
-      .description{
-        position: relative;
-        float: left;
-        width: 100%;
-        margin-bottom: 10px;
-        color: $primary-color-bg-border;
-        font-size: $font-size-base;
-        font-weight: 500;
-      }
-
-      &.form-type-radio{
-        margin: 5px 0px;
-      }
-
-      select, input[type='checkbox'], input[type='radio']{
-        cursor: pointer;
-        margin: 0;
-        label{
-          cursor: pointer;
-        }
-      }
-
-      .webform-element-description{
-        background: transparent;
-        color: white;
-        @extend %librefranklin;
-        border-radius: $border-radius-base;
-        pre{
-          background: white;
-          color: $primary-color-darkest;
-        }
-      }
-
-      input, select, textarea, input[type="number"]{
-        @extend %light-background;
-        font-size: 1em;
-        color: $primary-color-darkest;
-        @extend %librefranklin;
-        font-weight: 500;
-        font-size: $font-size-base;
-
-        &:focus{
-          border-color: $primary-color-light;
-          box-shadow: none !important;
-        }
-
-        &::placeholder, &:-ms-input-placeholder {
-          color: $primary-color-medium !important;
-        }
-      }
-    }
-
-
-    &::-webkit-scrollbar-thumb {
-      background-color: $primary-color-medium;
-      outline: 1px solid $primary-color-medium;
-    }
-
-    .layout-icon__region{
-      fill: $primary-color-bg;
-      stroke: $primary-color-bg-border;
-    }
-
-    input[type="submit"]{
-      &.button{
-        position: relative;
-        display: inline-block;
-        @extend %librefranklin;
-        font-weight: 800;
-        border: none;
-        background: $primary-color-medium;
-        border-radius: $border-radius-base;
-        font-size: $font-size-base;
-        color: white;
-        width: calc(100% - 40px) ;
-        margin: 20px;
-        padding: calc(0.75rem - 1px) calc(1rem - 1px);
-
-        &:hover{
-          background: $primary-color-light;
-        }
-      }
-    }
-    &::-webkit-scrollbar {
-      width: 1em;
-    }
-
-    .inline-block-create-button {
-      padding: 10px 45px !important;
-      margin: 0;
-      @extend %librefranklin;
-      font-weight: 700;
-      border-bottom: 1px solid $primary-color-dark;
-      border-top: 1px solid $primary-color-dark;
-
-      &:hover{
-        background-color: $primary-color-dark;
-      }
-    }
-
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      background: $primary-color-darkest;
-    }
-
-    .form-type-search{
-      margin: 10px;
-      width: calc(100% - 20px);
-      background: $primary-color-darkest;
-
-      input{
-
-        &.js-layout-builder-filter{
-          &.form-search {
-            @extend %light-background;
-            font-size: 1em;
-            color: $primary-color-darkest;
-            @extend %librefranklin;
-            &:focus{
-              border-color: $primary-color-light;
-              box-shadow: none !important;
-            }
-            &::placeholder, &:-ms-input-placeholder {
-              color: $primary-color-medium !important;
-            }
-          }
-        }
-      }
-    }
-
-    a[data-drupal-selector*="back"] {
-      position: relative;
-      float: left;
-      display: inline-block;
-      @extend %librefranklin;
-      font-weight: 800;
-      border: none;
-      background: $secondary-color-medium;
-      border-radius: $border-radius-base;
-      font-size: $font-size-base;
-      color: white;
-      width: calc(50% - 20px) ;
-      margin: 20px 20px 0px 20px;
-      padding: calc(0.75rem - 1px) calc(1rem - 1px);
-      text-align: center;
-
-      &:hover{
-        background: $secondary-color-dark;
-      }
-      &:before {
-        content: "\f30a";
-        font-family: FontAwesome;
-        font-size: 14px;
-        margin-right: 5px;
-        color: white;
-      }
-    }
-
-    .color_field_widget_box__square,  .color_field_widget_box__square--transparent {
-      width: 30px;
-      height: 31px;
-      margin: 0 5px;
-      border-radius: 50%;
-      &.active {
-        border: 3px solid white;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-      }
-    }
-
-    button[data-drupal-selector*="submit"] {
-      background-color: $primary-color-light;
-      width: 25%;
-      margin-top: 10px;
-    }
-
-    a[data-drupal-selector="edit-cancel"] {
-      margin-top: 10px;
-    }
-
-    button[data-drupal-selector*="remove-button"]{
-      padding: 5px;
-      font-weight: normal;
-      font-size: 0.7em;
-      &:before{
-        content: "\f2ed";
-        font-family: FontAwesome;
-        font-size: 11px;
-        margin-right: 5px;
-      }
-    }
-
-    button[name^="image-media-library-update-"], div[id^="image-media-library-wrapper-"] {
-      display: none;
-    }
-
-    button[data-drupal-selector*="remove-button"], a[data-drupal-selector*="cancel"]{
-      position: relative;
-      display: inline-block;
-      @extend %librefranklin;
-      font-weight: 800;
-      border: none;
-      background: $secondary-color-medium;
-      border-radius: $border-radius-base;
-      font-size: $font-size-base;
-      color: white;
-      width: calc(100% - 40px) ;
-      margin: 20px 20px 0px 20px;
-      padding: calc(0.75rem - 1px) calc(1rem - 1px);
-
-      &:focus{
-        outline: 2px dotted transparent;
-        box-shadow: 0 0 0 2px #fff, 0 0 0 5px $secondary-color-dark;
-      }
-
-      &:hover{
-        background: $secondary-color-dark;
-      }
-
-    }
-
-    .color-field-widget-box-form{
-      margin: 0px 20px;
-    }
-
-    button[data-drupal-selector*="submit"] {
-      display: inline-block;
-      @extend %librefranklin;
-      font-weight: 800;
-      border: none;
-      background: $primary-color-light;
-      border-radius: $border-radius-base;
-      font-size: $font-size-base;
-      color: white;
-      width: calc(100% - 40px) ;
-      margin: 20px 20px 0px 20px;
-      padding: calc(0.75rem - 1px) calc(1rem - 1px);
-
-      &:focus{
-        outline: 2px dotted transparent;
-        box-shadow: 0 0 0 2px #fff, 0 0 0 5px $secondary-color-dark;
-      }
-
-      &:hover{
-        background: $secondary-color-dark;
-      }
-    }
-
-    fieldset{
-      width: 100%;
-
-      .media-library-form-element{
-
-        input{
-          &.js-media-library-open-button {
-            width: 80%;
-            display: block;
-            margin: 0 auto 30px auto;
-          }
-        }
-
-        p{
-          &.media-library-form-element-empty-text {
-            margin: 10px 20px;
-          }
-        }
-      }
-
-      div[id*="--description"] {
-        margin-left: 20px;
-        font-weight: 600;
-        color: $blue-darkest;
-        line-height: 1.5em;
-        font-size: $font-size-base;
-        pointer-events: none;
-        transition: visibility 0s, opacity 0.5s linear;
-      }
-
-      div{
-        &.form-inline, &.jquery_colorpicker, &.color-field-widget-box-form {
-          width: 90%;
-          margin: 15px 20px 30px 20px;
-        }
-        &.js-form-type-checkbox{
-          .checkbox {
-            margin: 5px 0 15px 0;
-            position: initial;
-            small {
-              display: inline-block;
-              font-size: 15px;
-              margin-left: 5px;
-            }
-          }
-        }
-        &.color-field-widget-box-form {
-          margin:0px;
-        }
-      }
-
-      &.js-form-type-search{
-        .form-type-search{
-          &:before {
-            content: "\f002";
-            @extend %fontawesome;
-            font-size: 25px;
-            display: inline-table;
-            margin: 0 auto;
-            position: absolute;
-            right: 20px;
-            top: 5px;
-          }
-        }
-      }
-
-      &.media-library-form-element {
-        display: contents;
-      }
-
-      select, .form-select, input[type="number"], input[type="text"]{
-        background: white;
-        color: $primary-color-darkest;
-        font-size: $font-size-base;
-        font-weight: 500;
-        text-transform: none;
-        line-height: normal;
-        border: 1px solid $primary-color-medium;
-        box-shadow: none;
-        letter-spacing: normal;
-        @extend %librefranklin;
-        border-radius: $border-radius-base;
-        padding: 7px 10px;
-        box-sizing: border-box;
-        transition: .2s ease;
-      }
-
-      select{
-        option {
-          color: $blue-darkest;
-          @extend %librefranklin;
-        }
-
-        &.form-select{
-          &.tabs{
-            display: inline-block;
-            overflow: hidden;
-            border: 0;
-            background: transparent;
-            padding: 4px;
-
-            option {
-              display: inline-block;
-              width: auto;
-              float: left;
-              border: 2px solid $grey-theme-extralight;
-              padding: 8px;
-              margin: 1px 3px;
-              border-radius: 3px 3px 0 0;
-            }
-          }
-        }
-      }
-
-      input{
-        .form-date, .form-time{
-          background: $grey-theme-extralight;
-          color: $blue-darkest;
-          font-size: $font-size-base;
-          font-weight: 600;
-          text-transform: none;
-          line-height: normal;
-          border: 1px solid $blue-darkest;
-          box-shadow: none;
-          letter-spacing: normal;
-          @extend %librefranklin;
-        }
-      }
-
-      &.js-form-type-slider{
-        div{
-          &.sliderwidget {
-            width: 100%;
-            padding: 5px;
-            margin-top: 0;
-          }
-
-          &.ui-slider-horizontal {
-            background: $grey-theme-extralight;
-
-            & > span {
-              background: $blue-darkest;
-            }
-          }
-
-          &.sliderwidget-display-values-field {
-            width: 60px;
-            padding: 5px;
-            text-align: center;
-            border-radius: 2px;
-            background: $grey-theme-extralight;
-            margin: 5px auto;
-            color: $blue-darkest;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: none;
-            line-height: normal;
-            border: 1px solid $blue-darkest;
-            box-shadow: none;
-            letter-spacing: normal;
-            @extend %librefranklin;
-          }
-
-          &.sliderwidget-event-field-container {
-            display: none;
-          }
-        }
-      }
-    }
-
-
-    //--------------------------- checkbox
-
-    .formatter-settings-wrapper{
-      .form-item{
-        &.form-type-checkbox{
-          position: relative;
-          float: left;
-          margin:5px 20px !important;
-          input[type='checkbox']{
-            position: relative;
-            float: left;
-            margin-right: 10px;
-
-          }
-          label{
-            position: relative;
-            float: left;
-            width: calc(100% - 40px);
-
-          }
-
-        }
-      }
-    }
-
-    .form-type-checkbox{
-
-      input[type="checkbox"] {
-        position: relative;
-        float: left;
-        @extend %checkbox;
-        margin-right: 10px;
-      }
-
-      .label{
-        position: relative;
-        float: left;
-        width: calc(100% - 40px);
-      }
-
-      .description{
-        margin-left: 0px;
-      }
-    }
-    .edit-settings-formatter-third-party-settings-linked-field-destination-field-message{
-      margin: 20px;
-      border-color: white;
-      font-weight: 500;
-    }
-
-    .form-composite > legend, .label{
-      font-weight: 500;
-    }
-
-    span{
-      .fieldset-legend{
-        margin: 0px 20px;
+      .layoutcomponents-copy-block, .layoutcomponents-copy-section, .layoutcomponents-copy-column{
         span{
-          &.lc-lateral-title{
-            position: relative;
-            float: left;
-            color: white;
-            line-height: 20px;
-            font-weight: 500;
-            font-size: $font-size-base;
-            @extend %librefranklin;
-            margin: 0px 5px 5px 0px;
-          }
-          &.lc-lateral-info{
-            &:after{
-               margin: 0px 5px 5px 0px;
-               line-height: 18px;
-            }
-          }
-        }
-      }
-    }
-
-    select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-    }
-
-    label{
-      &.js-form-type-checkbox {
-        display: inline-block;
-        background: transparent;
-        color: $blue-dark;
-        font-weight: 600;
-        line-height: 20px;
-        font-size: $font-size-large;
-
-        span{
-          &.lc-lateral-info{
-            &:after{
-              cursor: pointer;
-              font-size: $font-size-large;
-              content: "\f05a";
-              color: $primary-color-soft;
-              @extend %fontawesome;
-              display: inline-block;
-              line-height: 18px;
-            }
-          }
-        }
-      }
-    }
-
-    select[multiple] {
-      padding: 0;
-      overflow: scroll;
-    }
-
-    form{
-      &.layout-builder-section-move{
-        .table {
-          margin: 0;
-        }
-      }
-    }
-
-    .table-responsive {
-      & > span{
-        &.lc-lateral-title{
           position: relative;
           float: left;
-          color: white;
-          font-weight: 500;
-          font-size: $font-size-base;
-          line-height: 20px;
-          @extend %librefranklin;
-          margin: 0px 5px 5px 0px;
-        }
-      }
-    }
-
-    label[for^="edit-settings-block-"] {
-      margin: 0 5px 5px 0px;
-
-      & > span{
-        .lc-lateral-title{
-          color: white;
-          line-height: 20px;
-          font-weight: 500;
-          font-size: $font-size-base;
-          @extend %librefranklin;
-          margin: 0px 5px 5px 0px;
-
-        }
-        &.lc-lateral-info{
-          &:after {
-            cursor: pointer;
-            font-size: $font-size-large;
-            content: "\f05a";
-            color:$primary-color-soft;
-            @extend %fontawesome;
-            display: inline-block;
-            margin-right: 5px;
-            line-height: 18px;
-          }
-        }
-      }
-    }
-
-    div{
-
-      button{
-        &.color_field_widget_box__square{
-          &.active{
+          width: 100%;
+          &.lc-copy{
+            position: relative;
+            margin-bottom: 10px;
             &:before {
-              content: "\f00c";
+              display: block;
+              margin: auto;
+              width: 38px;
+              height: 38px;
+              border-radius:38px;
+              background: $tertiary;
+              content: "\f24d";
               @extend %fontawesome;
-              font-size: $font-size-base;
               color: white;
+              text-align: center;
+              line-height: 40px;
+              &:hover{
+                background: $tertiary-dark;
+              }
             }
           }
         }
       }
 
-      &.js-media-library-item {
-        padding-left: 15px;
-        width: 100%;
-      }
-
-      &.color-field-widget-box-form > button {
-        margin: 5px;
-        border: 1px solid $grey-theme-extralight;
-      }
+      //-------------------- Initial message
 
 
-      &.media-library-item{
-        button{
-          &.media-library-item__remove{
-            background-color: $secondary-color-medium;
-            border: 0;
-            border-radius: 0;
-            color: white;
-            display: flow-root;
-            font-weight: bold;
-            padding: 5px;
-            font-size: 0.7em;
-            &:before {
-              content: "\f2ed";
-              @extend %fontawesome;
-              font-size: 11px;
-              margin-right: 5px;
-            }
-          }
-        }
-      }
 
-
-      &.layout_builder__add-section-confirm, &.layout_builder__remove-description{
+      .layout_builder__add-section-confirm, .layout_builder__remove-description{
         color: white;
         font-size: $font-size-base;
         font-weight: 700;
         text-align: center;
         padding: 20px;
         @extend %librefranklin;
+
       }
 
-      &.details-wrapper{
-        span{
-          &.lc-lateral-title{
-            color: white;
-            position: relative;
-            float: left;
-            font-weight: 500;
-            font-size: $font-size-base;
-            line-height: 20px;
-            @extend %librefranklin;
-            margin: 0px 5px 5px 0px;
-          }
-        }
 
-        div{
-          &.horizontal-tabs > ul {
-            margin: -6px 0 15px 0;
-            display: flex;
-          }
-        }
-      }
 
-      &.horizontal-tabs{
+      //-------------------- Horizontal tabs
+
+      .horizontal-tabs{
         border: none;
         background: none;
         color: #444;
         padding: 0;
         ul{
+          display: flex;
           color: white;
           background: $primary-color-darkest;
           li {
+            flex-grow: 1;
+            flex-direction: column;
             text-align: center;
             color: white;
             background: $primary-color-darker;
@@ -1778,654 +1459,1524 @@ div.contextual {
         }
       }
 
-      &.block-categories{
-        &.js-layout-builder-categories{
-          details{
-            ul{
-              &.links{
-                li {
-                  padding: 5px 20px;
-                  a {
-                    @extend %librefranklin;
-                    color: $primary-color-bg-border;
-                    font-size: $font-size-base;
-                    font-weight: 500;
-                    text-align: center;
-                    &:hover {
-                      text-decoration: underline;
-                      color: white;
+      //-------------------- Inputs
+
+      input[type="text"]{
+
+        background: white;
+        color: $primary-color-darkest;
+        font-size: $font-size-base;
+        font-weight: 500;
+        text-transform: none;
+        line-height: normal;
+        border: 1px solid $primary-color-medium;
+        box-shadow: none;
+        letter-spacing: normal;
+        @extend %librefranklin;
+        border-radius: $border-radius-base;
+        padding: 7px 10px;
+        box-sizing: border-box;
+        transition: .2s ease;
+
+        &:focus{
+          outline-color: none;
+        }
+      }
+
+
+      button{
+        &.link {
+          display: inline;
+          transition: color 0.5s ease;
+          color: $primary-color-bg-border;
+          background: transparent;
+          font-size: $font-size-base;
+          margin: 10px 20px;
+          text-decoration: underline;
+          font-weight: 600;
+          &:hover{
+            text-decoration: underline;
+            color: white;
+          }
+          &:focus{
+            text-decoration: underline;
+            color: white;
+          }
+        }
+      }
+
+      input[type="submit"]{
+        &.button{
+          position: relative;
+          display: inline-block;
+          @extend %librefranklin;
+          font-weight: 800;
+          border: none;
+          background: $primary-color-medium;
+          border-radius: $border-radius-base;
+          font-size: $font-size-base;
+          color: white;
+          width: calc(100% - 40px) ;
+          margin: 10px 20px;
+          padding: calc(0.75rem - 1px) calc(1rem - 1px);
+
+          &:hover{
+            background: $primary-color-light;
+          }
+        }
+      }
+
+      a[data-drupal-selector*="back"] {
+        position: relative;
+        float: left;
+        display: inline-block;
+        @extend %librefranklin;
+        font-weight: 800;
+        border: none;
+        background: $secondary-color-medium;
+        border-radius: $border-radius-base;
+        font-size: $font-size-base;
+        color: white;
+        width: calc(50% - 20px) ;
+        margin: 20px 20px 0px 20px;
+        padding: calc(0.75rem - 1px) calc(1rem - 1px);
+        text-align: center;
+
+        &:hover{
+          background: $secondary-color-dark;
+        }
+        &:before {
+          content: "\f30a";
+          @extend %fontawesome;
+          font-size: 14px;
+          margin-right: 5px;
+          color: white;
+        }
+      }
+
+
+
+      button[data-drupal-selector*="submit"] {
+        background-color: $primary-color-light;
+        width: 25%;
+        margin-top: 10px;
+      }
+
+      a[data-drupal-selector="edit-cancel"] {
+        margin-top: 10px;
+      }
+
+      button[data-drupal-selector*="remove-button"]{
+        padding: 5px;
+        font-weight: normal;
+        font-size: 0.7em;
+        &:before{
+          content: "\f2ed";
+          @extend %fontawesome;
+          font-size: 11px;
+          margin-right: 5px;
+        }
+      }
+
+      button[name^="image-media-library-update-"], div[id^="image-media-library-wrapper-"] {
+        display: none;
+      }
+
+      button[data-drupal-selector*="remove-button"], a[data-drupal-selector*="cancel"]{
+        position: relative;
+        display: inline-block;
+        @extend %librefranklin;
+        font-weight: 800;
+        border: none;
+        background: $secondary-color-medium;
+        border-radius: $border-radius-base;
+        font-size: $font-size-base;
+        color: white;
+        width: calc(100% - 40px) ;
+        margin: 20px 20px 0px 20px;
+        padding: calc(0.75rem - 1px) calc(1rem - 1px);
+
+        &:focus{
+          outline: 2px dotted transparent;
+          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $secondary-color-dark;
+        }
+
+        &:hover{
+          background: $secondary-color-dark;
+        }
+
+      }
+
+      button[data-drupal-selector*="submit"] {
+        display: inline-block;
+        @extend %librefranklin;
+        font-weight: 800;
+        border: none;
+        background: $primary-color-light;
+        border-radius: $border-radius-base;
+        font-size: $font-size-base;
+        color: white;
+        width: calc(100% - 40px) ;
+        margin: 20px 20px 0px 20px;
+        padding: calc(0.75rem - 1px) calc(1rem - 1px);
+
+        &:focus{
+          outline: 2px dotted transparent;
+          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $secondary-color-dark;
+        }
+
+        &:hover{
+          background: $secondary-color-dark;
+        }
+      }
+
+      //-------------------- Add form
+
+      .js-media-library-add-form{
+        @extend %librefranklin;
+        color:  $primary-color-darkest;
+        p{
+          color:  $primary-color-darkest;
+          font-weight: 500;
+          font-size: $font-size-base;
+        }
+        .item-list{
+          @extend %light-background;
+          ul{
+            list-style: none;
+            &:focus{
+              border: none;
+              outline: none;
+            }
+            li{
+              margin:0;
+              padding:20px;
+              &:focus{
+                border: none;
+                outline: none;
+              }
+
+              .form-item{
+                color:  $primary-color-darkest;
+                @extend %librefranklin;
+                font-weight: 500;
+                font-size: $font-size-base;
+
+                label{
+                  font-size: 700 !important;
+                }
+
+                .description{
+                  font-weight: 500;
+                  font-size: $font-size-base;
+                  margin: 10px 0px;
+                }
+
+                .field--type-image{
+                  .image-widget-data{
+                    .js-form-required{
+                      font-size: $font-size-base;
+                      font-weight: 700;
                     }
                   }
                 }
               }
             }
-          }
-        }
-      }
-    }
-
-    .lc-lateral-regions {
-      margin-top: 7px;
-
-    }
-
-    .components-title {
-      margin: 20px 0;
-      border-bottom: 1px solid #fff;
-    }
-
-    .customblock-menuitem-modal {
-      background-image: url(../../../misc/icons/bebebe/plus.svg) transparent 16px no-repeat ;
-      background-color: $primary-color-darker;
-
-      &:hover{
-        background-color: $primary-color-dark;
-      }
-
-    }
-    .components-title {
-      margin: 20px 0;
-      border-bottom: 1px solid #fff;
-    }
-
-    a {
-      @extend %librefranklin;
-      &:visited, &:hover, &:active, &:focus{
-        color: white;
-        text-decoration: none;
-      }
-      .inline-block-create-button, .inline-block-list__item{
-        margin: 0;
-        color: white;
-        font-size: 1em;
-      }
-    }
-
-    .text-format-wrapper{
-
-      padding: 20px;
-      border: 1px solid $primary-color-medium;
-      border-radius: $border-radius-base;
-      @extend %librefranklin;
-
-      .filter-wrapper{
-        border: none;
-        padding: 0;
-        .filter-help{
-          position: relative;
-          float: left;
-          width: 100%;
-          margin:10px 0px;
-          font-size: $font-size-base;
-          @extend %librefranklin;
-        }
-      }
-    }
-
-    .details-wrapper{
-
-      .form-item{
-        input[type='checkbox']{
-          position: relative;
-          float: left;
-          margin-right: 10px;
-        }
-      }
-
-      .form-inline{
-        margin: 0px;
-        width: 100%;
-      }
-
-      .fieldset-wrapper{
-        @extend %librefranklin;
-        border: 1px solid $primary-color-medium;
-        border-radius: $border-radius-base;
-        padding: 20px;
-
-        select{
-          option{
-            color: white;
-            padding:5px 0px;
-          }
-        }
-
-        .tabledrag-toggle-weight-wrapper{
-          padding-top: 0px;
-        }
-
-        table{
-          position: relative;
-          float: left;
-          width: 100%;
-          min-width: 100%;
-          margin: 0;
-          @extend %librefranklin;
-
-          .form-type-select{
-            margin-right: 10px;
-          }
-
-          .btn-success{
-            position: relative;
-            display: inline-block;
-            @extend %librefranklin;
-            font-weight: 800;
-            border: none;
-            box-shadow: inset 0px 0px 0px 2px white;
-            border-radius: $border-radius-base;
-            font-size: $font-size-base;
-            color: white;
-            width: auto;
-            margin: 5px 0px;
-            padding: calc(0.75rem - 1px) calc(1rem - 1px);
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-
-            &:hover{
-              box-shadow: inset 0px 0px 0px 4px white;
-            }
-
-          }
-
-          .form-wrapper{
-            background: transparent;
-
-            input[type="submit"]{
-              width: auto;
-              margin: 10px 0px;
-            }
-          }
-
-          .form-item label{
-            margin-top: 10px;
-          }
-
-          .details-wrapper{
-            label{
-              margin: 0px;
-            }
-          }
-
-          th{
-            border-bottom: 1px solid white !important;
-          }
-          td{
-            margin: 10px;
-            &.inline-entity-form-block_content-label{
-              margin: 10px;
-              position: relative;
-              float: left;
-            }
-          }
-          tr{
-            &.drag-previous td{
-              background: transparent;
-            }
-            margin-top: 10px;
-          }
-          thead{
-            border-bottom: 1px solid white;
-          }
-          tbody{
-            border-bottom: 1px solid white;
-            tr{
-              padding: 0;
-              &:hover{
-                td{
-                  background:transparent;
+            input{
+              margin-left: 0px;
+              &.btn-primary{
+                background: $primary-color-dark;
+                border-color: $primary-color-dark;
+                &:hover{
+                  background: $primary-color-medium;
                 }
               }
-              td{
-                border: 0;
-                padding: 0;
-              }
             }
           }
         }
+      }
 
-        p{
-          margin: 10px 0px;
-        }
 
-        button.link{
-          margin: 10px 0px;
-        }
+      //-------------------- Listing
 
-        .js-media-library-item{
-          padding: 0px;
-        }
-
-        .description{
-          margin-left: 0;
-        }
-
-        .media-library-item__preview{
-          margin: 20px 0px;
-          .field--type-image{
-
-          }
-        }
-        .media-library-item__attributes{
-          margin:20px 0px;
-          .media-library-item__name{
-            font-weight: 500;
-          }
-        }
-
-        input{
-          width: 100%;
-          margin: 10px 0px;
-          @extend %librefranklin;
-          font-size: $font-size-base;
-        }
-
-        .field-prefix{
-          @extend %librefranklin;
-          font-weight: 500;
+      ol{
+        li{
+          flex-basis: 50%;
         }
       }
 
       ul{
-        border: none;
         margin: 0;
-      }
-      div.js-form-item {
-        .js-form-type-checkbox {
-          .checkbox {
-            .form-check {
-              border-bottom: 1px solid gray;
-              margin: 5px -20px 5px -20px;
-              padding: 0;
-              label {
-                display: inline-block;
-              }
-              small {
-                display: block;
-              }
-            }
-          }
-        }
-      }
-      div{
-        &.js-form-item{
-          .js-form-type-checkbox{
-            .checkbox{
-              .form-check {
-                border-bottom: 1px solid gray;
-                margin: 5px -20px 5px -20px;
-              }
-            }
-          }
-        }
-      }
-    }
+        @extend %librefranklin;
+        font-weight: 700;
+        background: $primary-color-dark;
 
-    .inline-block-list__item.use-ajax{
-      &.js-layout-builder-block-link{
-        &.inline-block-list__item {
-          width: 100%;
-          display: inline-grid;
-          text-align: center;
-          margin: 0;
-          padding: 15px 25px 15px 25px;
-          text-decoration: none;
-          opacity: 0.8;
-          &:hover{
-            opacity: 1;
-            color: white;
-            &:before{
-              transform: scale(1.2);
-            }
-          }
+        &.links{
+          margin: 10px 0px 10px 0px !important;
+          background: transparent;
+
           li{
+            background: transparent;
+            padding: 5px 20px;
             a {
-              transition: all 0.1s linear;
+              @extend %librefranklin;
+              color: $primary-color-bg-border;
+              font-size: $font-size-base;
+              font-weight: 500;
+              text-align: center;
               &:hover {
-                transform: scale(1.1);
+                text-decoration: underline;
+                color: white;
+              }
+            }
+          }
+        }
+
+        &.inline-block-list{
+          display: flex;
+          flex-flow: row wrap;
+        }
+
+        li{
+          flex-basis: 50%;
+          background: $primary-color-dark;
+
+          a{
+            color: white !important;
+            font-weight: 700;
+            background: transparent;
+
+            &.inline-block-list__item{
+              &:hover{
+                background-color: $primary-color-medium;
+              }
+              &.simple_accordion{
+                &::before{
+                  content: "\f03c";
+                  @extend %fontawesome;
+                }
+              }
+
+              &.basic{
+                &::before{
+                  content: "\f096";
+                  @extend %fontawesome;
+                }
+              }
+
+              &.simple_button{
+                &::before{
+                  position: relative;
+                  float: left;
+                  content: url(../modules/lc_simple_button/images/button.svg);
+                  width: 60px;
+                  height: 80px;
+                  margin-top: 10px;
+                }
+              }
+
+              &.simple_countdown{
+                &::before{
+                  content: "\f254";
+                  @extend %fontawesome;
+                }
+              }
+
+              &.simple_iframe{
+                &::before{
+                  content: "\f2d0";
+                  @extend %fontawesome;
+                }
+              }
+
+              &.simple_image{
+                &::before{
+                  content: "\f03e";
+                  @extend %fontawesome;
+                }
+              }
+
+              &.simple_tabs{
+                &::before{
+                  content: "\f0ce";
+                  @extend %fontawesome;
+                }
+              }
+
+              &.simple_text{
+                &::before{
+                  content: "\f031";
+                  @extend %fontawesome;
+                }
+              }
+
+              &.simple_title{
+                &::before{
+                  position: relative;
+                  float: left;
+                  content: url(../modules/lc_simple_title/images/title.svg);
+                  width: 60px;
+                  height: 80px;
+                  margin-top: 10px;
+                }
+              }
+
+              &.simple_video{
+                &::before{
+                  content: "\f03d";
+                  @extend %fontawesome;
+                }
+              }
+
+
+
+              &:before {
+                content: "\f00d";
+                @extend %fontawesome;
+                color: white;
+                font-size: 60px;
+                display: block;
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+
+        &.layout-selection{
+          &.list-group {
+            li {
+              a {
+                color: transparent;
+              }
+            }
+            display: flex;
+            flex-flow: row wrap;
+          }
+          * {
+            background: none;
+            &:not(div) {
+              background: none;
+              option {
+                color: $grey;
               }
             }
           }
         }
       }
-    }
 
-    .lc-inline_block_iframe-iframe-edit{
-      border: none !important;
-    }
 
-    details {
-      margin: 0;
-      width: 100%;
-      float: left;
-      padding: 0;
+      //-------------------- Tables
 
-      &[open]{
-        & > summary {
-          background: $primary-color-darker;
-          color: white;
-          &:focus{
-            outline: none;
-            border: none;
-          }
-          &:hover{
-            background: $primary-color-dark;
+      .table-responsive {
+        & > span{
+          &.lc-lateral-title{
+            position: relative;
+            float: left;
+            color: white;
+            font-weight: 500;
+            font-size: $font-size-base;
+            line-height: 20px;
+            @extend %librefranklin;
+            margin: 0px 5px 5px 0px;
           }
         }
       }
 
-      & > summary {
+      th, td{
+        &:first-child{
+          width: auto;
+        }
+      }
+
+      tbody{
+        .tabledrag-hide{
+          .form-item{
+            margin: 0;
+          }
+        }
+      }
+
+      tr{
+        td{
+          abbr{
+            background: transparent;
+            text-decoration: none;
+            border-bottom: 0;
+          }
+        }
+      }
+
+      //-------------------- Scroll bar
+
+      .sliderwidget{
+        position: relative;
         float: left;
-        padding: 10px 20px;
-        margin: 0;
         width: 100%;
+        margin-top: 0;
+        margin-bottom: 15px;
+
+        .sliderwidget-container{
+          position: relative;
+          float: left;
+          width: 100%;
+          background: $primary-color-darker;
+        }
+
+        .sliderwidget-event-field-container{
+          display: none;
+        }
+        .sliderwidget-display-values-field{
+          position: relative;
+          float: left;
+          width: 100%;
+          margin-bottom: 8px;
+        }
+        .lc-range-slide{
+          position: relative;
+          float: left;
+          width: 100%;
+        }
+      }
+
+      &::-webkit-scrollbar {
+        width: 1em;
+      }
+
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background: $primary-color-darkest;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $primary-color-medium;
+        outline: 1px solid $primary-color-medium;
+      }
+
+
+      .ui-state-default,
+      .ui-widget-content .ui-state-default,
+      .ui-widget-header .ui-state-default{
+        color: $primary-color-medium;
+        border: 1px solid $primary-color-bg-border;
+        background: $primary-color-lighter;
+        top:-3px
+      }
+
+      .lc-range-slide{
+        background:$primary-color-darker;
+      }
+
+      //--------------------- Rest
+
+      .lc-lateral-info{
+        &:after{
+          cursor: pointer;
+          font-size: 18px;
+          content: "\f05a";
+          color: $primary-color-soft;
+          @extend %fontawesome;
+          display: inline-block;
+          line-height: 18px;
+          margin-left: 5px;
+        }
+      }
+
+
+      .form-required{
+        .lc-lateral-info{
+          &:after{
+            margin-left: 5px;
+          }
+        }
+      }
+      .layout-builder-add-block{
+        .label{
+          margin-bottom: 10px !important;
+        }
+      }
+
+
+      .form-item{
+        width: calc(100% - 40px) ;
+        margin: 20px;
+        @extend %librefranklin;
+        font-size: $font-size-base;
+
+        &.form-type-checkbox{
+          input{
+            position: relative;
+            float: left;
+          }
+          label{
+            position: relative;
+            float: left;
+            width: calc(100% - 40px);
+          }
+        }
+
+        .form-item{
+          width: 100%;
+          margin: 0px;
+        }
+
+        label{
+          position: relative;
+          float: left;
+          font-weight: 500;
+          @extend %librefranklin;
+          font-size: $font-size-base;
+          width: inherit;
+          margin-bottom: 5px;
+        }
+
+        .description{
+          position: relative;
+          float: left;
+          width: 100%;
+          margin-bottom: 10px;
+          color: $primary-color-bg-border;
+          font-size: $font-size-base;
+          font-weight: 500;
+        }
+
+        &.form-type-radio{
+          margin: 5px 0px;
+        }
+
+        select, input[type='checkbox'], input[type='radio']{
+          cursor: pointer;
+          margin: 0;
+          label{
+            cursor: pointer;
+          }
+        }
+
+        .webform-element-description{
+          background: transparent;
+          color: white;
+          @extend %librefranklin;
+          border-radius: $border-radius-base;
+          pre{
+            background: white;
+            color: $primary-color-darkest;
+          }
+        }
+
+        input, select, textarea, input[type="number"]{
+          @extend %light-background;
+          font-size: 1em;
+          color: $primary-color-darkest;
+          @extend %librefranklin;
+          font-weight: 500;
+          font-size: $font-size-base;
+
+          &:focus{
+            border-color: $primary-color-light;
+            box-shadow: none !important;
+          }
+
+          &::placeholder, &:-ms-input-placeholder {
+            color: $primary-color-medium !important;
+          }
+        }
+      }
+
+      .layout-icon__region{
+        fill: $primary-color-bg;
+        stroke: $primary-color-bg-border;
+      }
+
+      .inline-block-create-button {
+        padding: 10px 45px !important;
+        margin: 0;
         @extend %librefranklin;
         font-weight: 700;
         border-bottom: 1px solid $primary-color-dark;
         border-top: 1px solid $primary-color-dark;
-        background: $primary-color-darker;
-        font-size: $font-size-base;
 
         &:hover{
           background-color: $primary-color-dark;
         }
       }
-      .details-wrapper {
-        padding: 0px !important;
-        width: 100%;
-        float: left;
-        margin: 0 ;
-        margin-top: 0px;
 
-        .media-library-form-element{
-          legend{
-            .fieldset-legend{
-              .lc-lateral-title{
-                position: relative;
-                float: left;
-                margin: 0px 5px 5px 20px;
+      .form-type-search{
+        margin: 10px;
+        width: calc(100% - 20px);
+        background: $primary-color-darkest;
+        input{
+          &.js-layout-builder-filter{
+            &.form-search {
+              @extend %light-background;
+              font-size: 1em;
+              color: $primary-color-darkest;
+              @extend %librefranklin;
+              &:focus{
+                border-color: $primary-color-light;
+                box-shadow: none !important;
+              }
+              &::placeholder, &:-ms-input-placeholder {
+                color: $primary-color-medium !important;
               }
             }
           }
-          .fieldset-wrapper{
+        }
+      }
 
-            margin: 20px;
+      .color_field_widget_box__square,  .color_field_widget_box__square--transparent {
+        width: 30px;
+        height: 31px;
+        margin: 0 5px;
+        border-radius: 50%;
+        &.active {
+          border: 3px solid white;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+        }
+      }
+
+
+      .color-field-widget-box-form{
+        margin: 0px 20px 20px 20px;
+        button{
+          margin:5px;
+        }
+      }
+
+
+      //---------------------------- fieldset
+
+      fieldset{
+        width: 100%;
+        .media-library-form-element{
+
+          input{
+            &.js-media-library-open-button {
+              width: 80%;
+              display: block;
+              margin: 0 auto 30px auto;
+            }
+          }
+
+          p{
+            &.media-library-form-element-empty-text {
+              margin: 10px 20px;
+            }
           }
         }
 
-        .details-description{
-          margin: 20px;
-          @extend %librefranklin;
-          color: $primary-color-bg-border;
+        div[id*="--description"] {
+          margin-left: 20px;
+          font-weight: 600;
+          color: $primary-color-darkest;
+          line-height: 1.5em;
+          font-size: $font-size-base;
+          pointer-events: none;
+          transition: visibility 0s, opacity 0.5s linear;
+        }
+
+        div{
+          &.form-inline, &.jquery_colorpicker, &.color-field-widget-box-form {
+            width: 90%;
+            margin: 15px 20px 30px 20px;
+          }
+          &.js-form-type-checkbox{
+            .checkbox {
+              margin: 5px 0 15px 0;
+              position: initial;
+              small {
+                display: inline-block;
+                font-size: 15px;
+                margin-left: 5px;
+              }
+            }
+          }
+          &.color-field-widget-box-form {
+            margin:0px;
+          }
+        }
+
+        &.js-form-type-search{
+          .form-type-search{
+            &:before {
+              content: "\f002";
+              @extend %fontawesome;
+              font-size: 25px;
+              display: inline-table;
+              margin: 0 auto;
+              position: absolute;
+              right: 20px;
+              top: 5px;
+            }
+          }
+        }
+
+        select, .form-select, input[type="number"], input[type="text"]{
+          background: white;
+          color: $primary-color-darkest;
           font-size: $font-size-base;
           font-weight: 500;
+          text-transform: none;
+          line-height: normal;
+          border: 1px solid $primary-color-medium;
+          box-shadow: none;
+          letter-spacing: normal;
+          @extend %librefranklin;
+          border-radius: $border-radius-base;
+          padding: 7px 10px;
+          box-sizing: border-box;
+          transition: .2s ease;
+        }
+
+        select{
+
+          option {
+            color: $primary-color-darkest;
+            @extend %librefranklin;
+          }
+
+          &.form-select{
+
+            &.tabs{
+              display: inline-block;
+              overflow: hidden;
+              border: 0;
+              background: transparent;
+              padding: 4px;
+
+              option {
+                display: inline-block;
+                width: auto;
+                float: left;
+                border: 2px solid $grey-theme-extralight;
+                padding: 8px;
+                margin: 1px 3px;
+                border-radius: 3px 3px 0 0;
+              }
+            }
+          }
+        }
+
+        input{
+          .form-date, .form-time{
+            background: $grey-theme-extralight;
+            color: $primary-color-darkest;
+            font-size: $font-size-base;
+            font-weight: 600;
+            text-transform: none;
+            line-height: normal;
+            border: 1px solid $primary-color-darkest;
+            box-shadow: none;
+            letter-spacing: normal;
+            @extend %librefranklin;
+          }
+        }
+
+        &.js-form-type-slider{
+          div{
+            &.sliderwidget {
+              width: 100%;
+              padding: 5px;
+              margin-top: 0;
+            }
+
+            &.ui-slider-horizontal {
+              background: $grey-theme-extralight;
+
+              & > span {
+                background: $primary-color-darkest;
+              }
+            }
+
+            &.sliderwidget-display-values-field {
+              width: 60px;
+              padding: 5px;
+              text-align: center;
+              border-radius: 2px;
+              background: $grey-theme-extralight;
+              margin: 5px auto;
+              color: $primary-color-darkest;
+              font-size: 13px;
+              font-weight: 600;
+              text-transform: none;
+              line-height: normal;
+              border: 1px solid $primary-color-darkest;
+              box-shadow: none;
+              letter-spacing: normal;
+              @extend %librefranklin;
+            }
+
+            &.sliderwidget-event-field-container {
+              display: none;
+            }
+          }
         }
       }
-    }
 
-    .form-inline > fieldset {
-      width: auto;
-    }
 
-    .layout-selection{
-      li{
-        width: 50%;
-        display: inline-grid;
-        text-align: center;
-        margin: 0;
-        padding: 15px;
-        text-decoration: none;
-        opacity: 0.85;
-        flex-basis: 50%;
+      //--------------------------- checkbox
+
+      .formatter-settings-wrapper{
+        .form-item{
+          &.form-type-checkbox{
+            position: relative;
+            float: left;
+            margin:5px 20px !important;
+            input[type='checkbox']{
+              position: relative;
+              float: left;
+              margin-right: 10px;
+            }
+            label{
+              position: relative;
+              float: left;
+              width: calc(100% - 40px);
+            }
+          }
+        }
+      }
+
+      .form-type-checkbox{
+
+        input[type="checkbox"] {
+          position: relative;
+          float: left;
+          @extend %checkbox;
+          margin-right: 10px;
+        }
+
+        .label{
+          position: relative;
+          float: left;
+          width: calc(100% - 40px);
+        }
+
+        .description{
+          margin-left: 0px;
+        }
+      }
+      .edit-settings-formatter-third-party-settings-linked-field-destination-field-message{
+        margin: 20px;
+        border-color: white;
+        font-weight: 500;
+      }
+
+      .form-composite > legend, .label{
+        font-weight: 500;
+      }
+
+      span{
+        .fieldset-legend{
+          margin: 0px 20px;
+          span{
+            &.lc-lateral-title{
+              position: relative;
+              float: left;
+              color: white;
+              line-height: 20px;
+              font-weight: 500;
+              font-size: $font-size-base;
+              @extend %librefranklin;
+              margin: 0px 5px 5px 0px;
+            }
+            &.lc-lateral-info{
+              &:after{
+                margin: 0px 5px 5px 0px;
+                line-height: 18px;
+              }
+            }
+          }
+        }
+      }
+
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+
+      label{
+        &.js-form-type-checkbox {
+          display: inline-block;
+          background: transparent;
+          color: $primary-color-dark;
+          font-weight: 600;
+          line-height: 20px;
+          font-size: $font-size-large;
+
+          span{
+            &.lc-lateral-info{
+              &:after{
+                cursor: pointer;
+                font-size: $font-size-large;
+                content: "\f05a";
+                color: $primary-color-soft;
+                @extend %fontawesome;
+                display: inline-block;
+                line-height: 18px;
+              }
+            }
+          }
+        }
+      }
+
+      select[multiple] {
+        padding: 0;
+        overflow: scroll;
+      }
+
+      form{
+        &.layout-builder-section-move{
+          .table {
+            margin: 0;
+          }
+        }
+      }
+
+
+      label[for^="edit-settings-block-"] {
+        margin: 0 5px 5px 0px;
+
+        & > span{
+          .lc-lateral-title{
+            color: white;
+            line-height: 20px;
+            font-weight: 500;
+            font-size: $font-size-base;
+            @extend %librefranklin;
+            margin: 0px 5px 5px 0px;
+
+          }
+          &.lc-lateral-info{
+            &:after {
+              cursor: pointer;
+              font-size: $font-size-large;
+              content: "\f05a";
+              color:$primary-color-soft;
+              @extend %fontawesome;
+              display: inline-block;
+              margin-right: 5px;
+              line-height: 18px;
+            }
+          }
+        }
+      }
+
+      button{
+        &.color_field_widget_box__square{
+          &.active{
+            &:before {
+              content: "\f00c";
+              @extend %fontawesome;
+              font-size: $font-size-base;
+              color: white;
+            }
+          }
+        }
+      }
+
+
+
+      &.color-field-widget-box-form > button {
+        margin: 5px;
+        border: 1px solid $grey-theme-extralight;
+      }
+
+       &.media-library-form-element {
+        display: contents;
+      }
+
+
+      &.media-library-item{
+        button{
+          &.media-library-item__remove{
+            background-color: $secondary-color-medium;
+            border: 0;
+            border-radius: 0;
+            color: white;
+            display: flow-root;
+            font-weight: bold;
+            padding: 5px;
+            font-size: 0.7em;
+            &:before {
+              content: "\f2ed";
+              @extend %fontawesome;
+              font-size: 11px;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+
+      &.details-wrapper{
+        span{
+          &.lc-lateral-title{
+            color: white;
+            position: relative;
+            float: left;
+            font-weight: 500;
+            font-size: $font-size-base;
+            line-height: 20px;
+            @extend %librefranklin;
+            margin: 0px 5px 5px 0px;
+          }
+        }
+
+        div{
+          &.horizontal-tabs > ul {
+            margin: -6px 0 15px 0;
+            display: flex;
+          }
+        }
+      }
+
+      .components-title {
+        margin: 20px 0;
+        border-bottom: 1px solid #fff;
+      }
+
+      .customblock-menuitem-modal {
+        background-image: url(../../../misc/icons/bebebe/plus.svg) transparent 16px no-repeat ;
+        background-color: $primary-color-darker;
 
         &:hover{
-          opacity: 1;
-          transform: scale(1.05);
+          background-color: $primary-color-dark;
+        }
+
+      }
+      .components-title {
+        margin: 20px 0;
+        border-bottom: 1px solid #fff;
+      }
+
+      a {
+        @extend %librefranklin;
+        &:visited, &:hover, &:active, &:focus{
           color: white;
+          text-decoration: none;
+        }
+        .inline-block-create-button, .inline-block-list__item{
+          margin: 0;
+          color: white;
+          font-size: 1em;
+        }
+      }
+
+      .text-format-wrapper{
+
+        padding: 20px;
+        border: 1px solid $primary-color-medium;
+        border-radius: $border-radius-base;
+        @extend %librefranklin;
+
+        .filter-wrapper{
+          border: none;
+          padding: 0;
+          .filter-help{
+            position: relative;
+            float: left;
+            width: 100%;
+            margin:10px 0px;
+            font-size: $font-size-base;
+            @extend %librefranklin;
+          }
+        }
+      }
+
+      .details-wrapper{
+        .form-item{
+          input[type='checkbox']{
+            position: relative;
+            float: left;
+            margin-right: 10px;
+          }
         }
 
-        a{
-          border:1px solid white;
+        .form-inline{
+          margin: 0px;
+          width: 100%;
+        }
+
+        .fieldset-wrapper{
+          @extend %librefranklin;
+          border: 1px solid $primary-color-medium;
           border-radius: $border-radius-base;
-          padding: 10px;
-          transition: all 0.1s linear;
+          padding: 20px;
 
-          div{
-            margin-top: 10px;
-            @extend %librefranklin;
-            font-size: $font-size-base;
-          }
-
-          &:hover{
-            transform: scale(1.05);
-          }
-        }
-      }
-    }
-
-    ol{
-      li{
-        flex-basis: 50%;
-      }
-    }
-
-    svg{
-      .layout-icon{
-        + div {
-          color: $blue-dark;
-        }
-        g rect {
-          fill: $blue-dark;
-        }
-      }
-    }
-
-    ul{
-      margin: 0;
-      @extend %librefranklin;
-      font-weight: 700;
-      background: $primary-color-dark;
-
-      &.links{
-        background: transparent;
-        margin-top: 10px;
-        li{
-          background: transparent;
-        }
-      }
-
-      &.inline-block-list{
-        display: flex;
-        flex-flow: row wrap;
-      }
-
-      li{
-        flex-basis: 50%;
-        background: $primary-color-dark;
-
-        a{
-          color: white !important;
-          font-weight: 700;
-          background: transparent;
-
-          &.inline-block-list__item{
-            &:hover{
-              background-color: $primary-color-medium;
-            }
-
-            &:before {
-              content: "\f00d";
-              @extend %fontawesome;
+          select{
+            option{
               color: white;
-              font-size: 60px;
-              display: block;
-              margin: 0 auto;
+              padding:5px 0px;
             }
           }
-        }
-      }
 
-      &.layout-selection{
-        &.list-group {
-          li {
-            a {
-              color: transparent;
-            }
+          .tabledrag-toggle-weight-wrapper{
+            padding-top: 0px;
           }
-          display: flex;
-          flex-flow: row wrap;
-        }
-        * {
-          background: none;
-          &:not(div) {
-            background: none;
-            option {
-              color: $grey;
-            }
-          }
-        }
-      }
-    }
-    .logo {
-      margin: 0 0 20px 0;
-    }
 
-    form{
-      width: 100%;
-      float: left;
-      &.layout-builder-section-move{
-        .table{
-          thead tr th, tbody tr td{
-            @extend %librefranklin;
-            color: white;
-            font-weight: 700;
-            font-size: $font-size-base;
-            padding: 20px;
-            line-height: 20px;
-            border-bottom: 1px solid $primary-color-dark;
-            border-top: 1px solid $primary-color-dark;
-
-          }
-          tbody tr td {
-            padding: 15px 20px;
+          table{
+            position: relative;
+            float: left;
+            width: 100%;
+            min-width: 100%;
             margin: 0;
             @extend %librefranklin;
-            font-weight: 500;
-            border-bottom: 1px solid $primary-color-dark;
-            border-top: 1px solid $primary-color-dark;
-            color: white;
-            background: $primary-color-darker;
+
+            .form-type-select{
+              margin-right: 10px;
+            }
+
+            .btn-success{
+              position: relative;
+              display: inline-block;
+              @extend %librefranklin;
+              font-weight: 800;
+              border: none;
+              box-shadow: inset 0px 0px 0px 2px white;
+              border-radius: $border-radius-base;
+              font-size: $font-size-base;
+              color: white;
+              width: auto;
+              margin: 5px 0px;
+              padding: calc(0.75rem - 1px) calc(1rem - 1px);
+              box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+
+              &:hover{
+                box-shadow: inset 0px 0px 0px 4px white;
+              }
+
+            }
+
+            .form-wrapper{
+              background: transparent;
+
+              input[type="submit"]{
+                width: auto;
+                margin: 10px 0px;
+              }
+            }
+
+            .form-item label{
+              margin-top: 10px;
+            }
+
+            .details-wrapper{
+              label{
+                margin: 0px;
+              }
+            }
+
+            th{
+              border-bottom: 1px solid white !important;
+            }
+            td{
+              margin: 10px;
+              &.inline-entity-form-block_content-label{
+                margin: 10px;
+                position: relative;
+                float: left;
+              }
+            }
+            tr{
+              &.drag-previous td{
+                background: transparent;
+              }
+              margin-top: 10px;
+            }
+            thead{
+              border-bottom: 1px solid white;
+            }
+            tbody{
+              border-bottom: 1px solid white;
+              tr{
+                padding: 0;
+                &:hover{
+                  td{
+                    background:transparent;
+                  }
+                }
+                td{
+                  border: 0;
+                  padding: 0;
+                }
+              }
+            }
           }
-          tbody tr.drag-previous td, tr td:hover{
+
+          p{
+            margin: 10px 0px;
+          }
+
+          button.link{
+            margin: 10px 0px;
+          }
+
+          .js-media-library-item{
+            padding: 0px;
+          }
+
+          .description{
+            margin-left: 0;
+          }
+
+          .media-library-item__preview{
+            margin: 20px 0px;
+            .field--type-image{
+
+            }
+          }
+          .media-library-item__attributes{
+            margin:20px 0px;
+            .media-library-item__name{
+              font-weight: 500;
+            }
+          }
+
+          input{
+            width: 100%;
+            margin: 10px 0px;
+            @extend %librefranklin;
+            font-size: $font-size-base;
+          }
+
+          .field-prefix{
+            @extend %librefranklin;
+            font-weight: 500;
+          }
+        }
+
+        ul{
+          border: none;
+          margin: 0;
+        }
+        div.js-form-item {
+          .js-form-type-checkbox {
+            .checkbox {
+              .form-check {
+                border-bottom: 1px solid gray;
+                margin: 5px -20px 5px -20px;
+                padding: 0;
+                label {
+                  display: inline-block;
+                }
+                small {
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+        div{
+          &.js-form-item{
+            .js-form-type-checkbox{
+              .checkbox{
+                .form-check {
+                  border-bottom: 1px solid gray;
+                  margin: 5px -20px 5px -20px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .inline-block-list__item.use-ajax{
+        &.js-layout-builder-block-link{
+          &.inline-block-list__item {
+            width: 100%;
+            display: inline-grid;
+            text-align: center;
+            margin: 0;
+            padding: 15px 25px 15px 25px;
+            text-decoration: none;
+            opacity: 0.8;
+            &:hover{
+              opacity: 1;
+              color: white;
+              &:before{
+                transform: scale(1.2);
+              }
+            }
+            li{
+              a {
+                transition: all 0.1s linear;
+                &:hover {
+                  transform: scale(1.1);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .lc-inline_block_iframe-iframe-edit{
+        border: none !important;
+      }
+
+      details {
+        margin: 0;
+        width: 100%;
+        float: left;
+        padding: 0;
+
+        &[open]{
+          & > summary {
+            background: $primary-color-darker;
+            color: white;
+            &:focus{
+              outline: none;
+              border: none;
+            }
+            &:hover{
+              background: $primary-color-dark;
+            }
+          }
+        }
+
+        & > summary {
+          float: left;
+          padding: 10px 20px;
+          margin: 0;
+          width: 100%;
+          @extend %librefranklin;
+          font-weight: 700;
+          border-bottom: 1px solid $primary-color-dark;
+          border-top: 1px solid $primary-color-dark;
+          background: $primary-color-darker;
+          font-size: $font-size-base;
+
+          &:hover{
             background-color: $primary-color-dark;
           }
         }
+        .details-wrapper {
+          padding: 0px !important;
+          width: 100%;
+          float: left;
+          margin: 0 ;
+          margin-top: 0px;
+
+          .media-library-form-element{
+            legend{
+              .fieldset-legend{
+                .lc-lateral-title{
+                  position: relative;
+                  float: left;
+                  margin: 0px 5px 5px 20px;
+                }
+              }
+            }
+            .fieldset-wrapper{
+
+              margin: 20px;
+            }
+          }
+
+          .details-description{
+            margin: 20px;
+            @extend %librefranklin;
+            color: $primary-color-bg-border;
+            font-size: $font-size-base;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .form-inline > fieldset {
+        width: auto;
+      }
+
+      .layout-selection{
+        li{
+          width: 50%;
+          display: inline-grid;
+          text-align: center;
+          margin: 0;
+          padding: 15px;
+          text-decoration: none;
+          opacity: 0.85;
+          flex-basis: 50%;
+
+          &:hover{
+            opacity: 1;
+            transform: scale(1.05);
+            color: white;
+          }
+
+          a{
+            border:1px solid white;
+            border-radius: $border-radius-base;
+            padding: 10px;
+            transition: all 0.1s linear;
+
+            div{
+              margin-top: 10px;
+              @extend %librefranklin;
+              font-size: $font-size-base;
+            }
+
+            &:hover{
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+
+      svg{
+        .layout-icon{
+          + div {
+            color: $primary-color-dark;
+          }
+          g rect {
+            fill: $primary-color-dark;
+          }
+        }
+      }
+
+      .logo {
+        margin: 0 0 20px 0;
+      }
+
+      form{
+        width: 100%;
+        float: left;
+        &.layout-builder-section-move{
+          .table{
+            thead tr th, tbody tr td{
+              @extend %librefranklin;
+              color: white;
+              font-weight: 700;
+              font-size: $font-size-base;
+              padding: 20px;
+              line-height: 20px;
+              border-bottom: 1px solid $primary-color-dark;
+              border-top: 1px solid $primary-color-dark;
+
+            }
+            tbody tr td {
+              padding: 15px 20px;
+              margin: 0;
+              @extend %librefranklin;
+              font-weight: 500;
+              border-bottom: 1px solid $primary-color-dark;
+              border-top: 1px solid $primary-color-dark;
+              color: white;
+              background: $primary-color-darker;
+            }
+            tbody tr.drag-previous td, tr td:hover{
+              background-color: $primary-color-dark;
+            }
+          }
+        }
       }
     }
   }
-
-}
-
-div{
-  &.ui-widget{
-    &.ui-dialog{
-      &.ui-dialog-off-canvas {
-        border: 1px solid #cdd1d5;
-      }
-    }
-  }
 }
 
 
-div#drupal-off-canvas *,
-div#drupal-off-canvas details,
-div#drupal-off-canvas div.details-wrapper,
-div#drupal-off-canvas fieldset label,
-div#drupal-off-canvas *:not(div) {
-  color: white;
-  background: $primary-color-darkest;
-  @extend %librefranklin;
-  font-size: $font-size-base;
-  font-weight: 500;
-}
 
-
-.lc-region {
-  width: 100%;
-}
-.lc-section {
-
-  &.simple-margin-none, &.simple-margin-small, &.simple-margin-medium, &.simple-margin-large{
-    clear: both;
-  }
-
-  &.simple-margin-none {
-    margin-top: 0px;
-  }
-
-  &.simple-margin-small {
-    margin-top: 10px;
-  }
-
-  &.simple-margin-medium {
-    margin-top: 30px;
-  }
-
-  &.simple-margin-large {
-    margin-top: 60px;
-  }
-
-  &.full-height-wrapper {
-    height: 100vh;
-  }
-
-  &.medium-height-wrapper {
-    height: 50vh;
-  }
-
-  .lc-container-cols {
-    .block-layoutcomponents-parent {
-    }
-    .lc-column-title {
-      font-weight: bold;
-      font-size: 18px;
-    }
-    .lc-column-title.border-type-left {
-      border-left: 10px solid;
-    }
-    .lc-column-title.border-type-right {
-      border-right: 10px solid;
-    }
-    .lc-column-title.border-type-top {
-      border-top: 5px solid;
-    }
-    .lc-column-title.border-type-bottom {
-      border-bottom: 5px solid;
-    }
-  }
-  .field__item {
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  }
-}
-
-.colorpicker {
-  z-index: 1000;
-}
-.info {
-  margin-right: 10px;
-}
-.element-hidden {
-  display: none;
-}
-.parallax-mirror {
-  z-index: 0 !important;
-}
-
-//------------------------------------------------------------------ Responsive
+//--------------------------------------------------------------------- RESPONSIVE
 
 //---------------------------------------- Extra small screen - Mobile
 

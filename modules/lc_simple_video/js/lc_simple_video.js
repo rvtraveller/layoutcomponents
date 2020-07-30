@@ -1,5 +1,4 @@
 (function ($, Drupal) {
-
   Drupal.behaviors.video = {
     attach: function (context, settings) {
       $('.lc-video-bg', context).once('video').each(function () {
@@ -29,5 +28,4 @@
       });
     }
   };
-})
-(jQuery, Drupal);
+})(jQuery, Drupal);

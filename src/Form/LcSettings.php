@@ -14,7 +14,7 @@ class LcSettings extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'layoutcomponents_field_settings';
+    return 'layoutcomponents_settings_general';
   }
 
   /**
@@ -22,7 +22,7 @@ class LcSettings extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {
     return [
-      'layoutcomponents.fields',
+      'layoutcomponents.general',
     ];
   }
 
@@ -32,54 +32,25 @@ class LcSettings extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
 
     /** @var \Drupal\Core\Config\Config $config */
-    $config = $this->config('layoutcomponents.fields');
+    $config = $this->config('layoutcomponents.general');
 
-    $form['interfaz'] = [
-      '#type' => 'fieldset',
-      '#title' => $this->t('Interfaz settings'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-    ];
-
-    $form['interfaz']['theme'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Theme'),
-      '#options' => [
-        'color-dark' => $this->t('Color Dark'),
-        'grey-dark' => $this->t('Color Grey Dark'),
+    $form['general'] = [
+      '#type' => 'vertical_tabs',
+      '#title' => $this->t('Provide the general configuration'),
+      'menu' => [
+        '#type' => 'details',
+        '#title' => $this->t('Lateral menu'),
+        '#group' => 'general',
+        'width' => [
+          '#type' => 'number',
+          '#title' => $this->t('Width'),
+          '#min' => 200,
+          '#max' => 1000,
+          '#step' => 10,
+          '#default_value' => $config->get('width') ?? 200,
+          '#description' => $this->t('Select the width of the lateral menu'),
+        ],
       ],
-      '#default_value' => $config->get('theme') ?? 'color-dark',
-    ];
-
-    $form['menu'] = [
-      '#type' => 'fieldset',
-      '#title' => $this->t('Lateral menu settings'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-    ];
-
-    $form['menu']['width'] = [
-      '#type' => 'number',
-      '#title' => $this->t('Width'),
-      '#min' => 200,
-      '#max' => 1000,
-      '#step' => 10,
-      '#default_value' => $config->get('width') ?? 200,
-    ];
-
-    $form['color'] = [
-      '#type' => 'fieldset',
-      '#title' => $this->t('Color settings'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-    ];
-
-    $form['color']['colors'] = [
-      '#type' => 'textarea',
-      '#title' => $this->t('Colors'),
-      '#rows' => 5,
-      '#cols' => 5,
-      '#default_value' => $config->get('colors') ?? '',
     ];
 
     return parent::buildForm($form, $form_state);
@@ -89,14 +60,10 @@ class LcSettings extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $theme = $form_state->getValue('theme') ?: 'color-light';
-    $colors = $form_state->getValue('colors') ?: '#000000';
     $width = $form_state->getValue('width') ?: 200;
 
-    $this->config('layoutcomponents.fields')
-      ->set('theme', $theme)
+    $this->config('layoutcomponents.general')
       ->set('width', $width)
-      ->set('colors', $colors)
       ->save();
 
     parent::submitForm($form, $form_state);

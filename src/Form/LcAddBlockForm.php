@@ -55,7 +55,7 @@ class LcAddBlockForm extends AddBlockForm {
     $response = $this->rebuildAndClose($this->sectionStorage);
     $section = $this->sectionStorage->getSection($this->delta);
     $selector = $this->sectionStorage->getStorageId() . '/' . $this->delta . '/' . $section->getComponent($this->uuid)->getRegion() . '/' . $section->getComponent($this->uuid)->getUuid();
-    $response->addCommand(new InvokeCommand('a[href*="' . $selector . '"]', 'click', []));
+    $response->addCommand(new InvokeCommand('a[href*="' . $selector . '"].layout-builder__block_link-configure', 'click', []));
 
     return $response;
   }

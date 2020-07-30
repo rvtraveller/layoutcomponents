@@ -6,7 +6,7 @@ services:
 
   plugin.manager.layoutcomponents_layouts:
     class: \Drupal\layoutcomponents\LcLayoutsManager
-    arguments: ['@plugin.manager.core.layout']
+    arguments: ['@plugin.manager.core.layout', '@entity_type.manager', '@entity_display.repository', '@current_user', '@uuid', '@tempstore.private']
 
   layoutcomponents.LayoutComponentsTwigExtension:
     class: Drupal\layoutcomponents\LayoutComponentsTwigExtension

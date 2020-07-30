@@ -12,7 +12,7 @@
 
   behaviors.lcEditTooltip = {
     attach: function (context) {
-      $(".lc_editor-link, .lc-lateral-info").tooltip({
+      $(".lc_editor-link, .lc-lateral-info").once('tooltip').tooltip({
         tooltipClass:"lc-tooltip"
       });
     }

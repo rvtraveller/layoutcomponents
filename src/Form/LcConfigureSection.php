@@ -2,14 +2,18 @@
 
 namespace Drupal\layoutcomponents\Form;
 
+use Drupal\Core\Ajax\AjaxFormHelperTrait;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\PluginFormFactoryInterface;
+use Drupal\layout_builder\Controller\LayoutRebuildTrait;
 use Drupal\layout_builder\Form\ConfigureSectionForm;
 use Drupal\layout_builder\LayoutTempstoreRepositoryInterface;
 use Drupal\layout_builder\SectionStorageInterface;
 use Drupal\layout_builder\Section;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Drupal\layoutcomponents\LcLayoutsManager;
+use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
 
 /**
  * Provides a form for configuring a layout section.
@@ -19,6 +23,9 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class LcConfigureSection extends ConfigureSectionForm {
 
+  use AjaxFormHelperTrait;
+  use LayoutRebuildTrait;
+
   /**
    * RequestStack.
    *
@@ -27,11 +34,26 @@ class LcConfigureSection extends ConfigureSectionForm {
   protected $request;
 
   /**
+   * The LC manager.
+   *
+   * @var \Drupal\layoutcomponents\LcLayoutsManager
+   */
+  protected $lcLayoutManager;
+
+  /**
+   * Is a default section.
+   *
+   * @var bool
+   */
+  protected $isDefault;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(LayoutTempstoreRepositoryInterface $layout_tempstore_repository, PluginFormFactoryInterface $plugin_form_manager, RequestStack $request) {
+  public function __construct(LayoutTempstoreRepositoryInterface $layout_tempstore_repository, PluginFormFactoryInterface $plugin_form_manager, RequestStack $request, LcLayoutsManager $layout_manager) {
     parent::__construct($layout_tempstore_repository, $plugin_form_manager);
     $this->request = $request;
+    $this->lcLayoutManager = $layout_manager;
   }
 
   /**
@@ -41,7 +63,8 @@ class LcConfigureSection extends ConfigureSectionForm {
     return new static(
       $container->get('layout_builder.tempstore_repository'),
       $container->get('plugin_form.factory'),
-      $container->get('request_stack')
+      $container->get('request_stack'),
+      $container->get('plugin.manager.layoutcomponents_layouts')
     );
   }
 
@@ -49,6 +72,14 @@ class LcConfigureSection extends ConfigureSectionForm {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, SectionStorageInterface $section_storage = NULL, $delta = NULL, $plugin_id = NULL) {
+    // Check section type.
+    try {
+      $section_overwrite = $section_storage->getSection($delta)->getLayoutSettings()['section']['general']['basic']['section_overwrite'];
+      $this->isDefault = (boolval($section_overwrite) && !$section_storage instanceof DefaultsSectionStorage) ? TRUE : FALSE;
+    }
+    catch (\Exception $e) {
+      $this->isDefault = 0;
+    }
 
     // Get custom params.
     $update_layout = $this->request->getCurrentRequest()->query->get('update_layout');
@@ -78,6 +109,13 @@ class LcConfigureSection extends ConfigureSectionForm {
 
     $build = parent::buildForm($form, $form_state, $section_storage, $delta, $plugin_id);
 
+    if ($this->isDefault && !boolval($autosave)) {
+      // This section cannot be configured.
+      $message = 'This section cannot be configured because is configurated as default';
+      $build = $this->lcLayoutManager->getDefaultCancel($message);
+      return $build;
+    }
+
     // Add new step if is new section or is a update.
     if (boolval($autosave)) {
       $build['new_section'] = [
@@ -97,7 +135,6 @@ class LcConfigureSection extends ConfigureSectionForm {
     // Hidde other configurations.
     $build['layout_settings']['container']['regions']['#access'] = FALSE;
     $build['layout_settings']['container']['section']['#open'] = TRUE;
-
     return $build;
   }
 

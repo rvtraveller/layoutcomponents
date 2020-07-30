@@ -66,7 +66,7 @@ class Color {
 
     if ($type == 'color_field_element_box') {
       // Get LC colors.
-      $colors = $this->configFactory->getEditable('layoutcomponents.fields')->getRawData()['colors'];
+      $colors = $this->configFactory->getEditable('layoutcomponents.colors')->getRawData()['editor_colors_list'];
       $colors = str_replace(' ', '', $colors);
       $colors = explode(',', $colors);
 

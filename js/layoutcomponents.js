@@ -49,7 +49,7 @@
       });
 
       // Handle
-      $('#layout-builder').on('replaceWith', function(event) {
+      $('#layout-builder').on('replaceWith', function (event) {
         alert('closed');
       });
     }
@@ -63,7 +63,7 @@
    * @return boolean
    *   True or false.
    */
-  Drupal.isEmpty = function(data) {
+  Drupal.isEmpty = function (data) {
     if (data == null || data.length < 1 || data === '') {
       return true;
     }
@@ -95,12 +95,14 @@
           (data.value.length > 0 ? item.show() : item.hide());
 
           break;
+
         }
         case "element": {
 
           item.changeElementType(data.value);
 
           break;
+
         }
         case "class": {
 
@@ -113,6 +115,7 @@
           item.addClass(data.value);
 
           break;
+
         }
         case "style": {
 
@@ -145,11 +148,13 @@
 
           }
           break;
+
         }
         case "attribute": {
           // Alter attribute.
           item.attr(data.attribute, data.value);
           break;
+
         }
       }
     })
@@ -411,7 +416,6 @@
 
       return style;
     };
-
 
     if (style === 'font-size') {
       if (value !== '') {
@@ -708,7 +712,7 @@
     return data;
   }
 
-  behaviors.inlineTypeAttribute = function(input, item) {
+  behaviors.inlineTypeAttribute = function (input, item) {
     input = $(input);
     let input_type = input.attr('lc-input');
     let value = input.val();
@@ -772,7 +776,7 @@
     return data;
   }
 
-  Drupal.setHeight = function(type, size) {
+  Drupal.setHeight = function (type, size) {
     let nvalue = '';
     let nsize = 0;
 
@@ -798,7 +802,7 @@
     }
   }
 
-  Drupal.builBorder = function(type, size, color) {
+  Drupal.builBorder = function (type, size, color) {
     let value = '';
 
     let ntype = 'border';
@@ -823,7 +827,7 @@
     };
   }
 
-  Drupal.getMedia = function(media) {
+  Drupal.getMedia = function (media) {
 
     if (Drupal.isEmpty(media)) {
       return '';
@@ -836,7 +840,6 @@
       async: false
     }).responseText;
 
-
     if (Drupal.isEmpty(data)) {
       throw new Error('Empty image');
     }
@@ -844,7 +847,7 @@
     return $.parseJSON(data).uri;
   }
 
-  Drupal.buildBackground = function(media, color, opacity, item) {
+  Drupal.buildBackground = function (media, color, opacity, item) {
     let res = '';
 
     // Get media url from Drupal.
@@ -860,19 +863,19 @@
     }
     else {
       // If item has not parallax return normal item.
-      res = 'linear-gradient(' + color + ', ' + color + '), ' + 'url('+ media +')' + '';
+      res = 'linear-gradient(' + color + ', ' + color + '), ' + 'url(' + media + ')' + '';
     }
 
     return res;
   }
 
-  Drupal.buildParallax = function(item, src, color) {
+  Drupal.buildParallax = function (item, src, color) {
     if (!Drupal.isEmpty(src)) {
       item.parallax({ imageSrc: src });
     }
   }
 
-  Drupal.hexToRgbA = function(hex, opacity) {
+  Drupal.hexToRgbA = function (hex, opacity) {
 
     if (Drupal.isEmpty(opacity)) {
       opacity = 1;
@@ -883,12 +886,12 @@
     }
     let c;
     if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
-      c= hex.substring(1).split('');
+      c = hex.substring(1).split('');
       if(c.length === 3){
-        c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        c = [c[0], c[0], c[1], c[1], c[2], c[2]];
       }
-      c= '0x'+c.join('');
-      return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + opacity + ')';
+      c = '0x' + c.join('');
+      return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + opacity + ')';
     }
     throw new Error('Bad Hex');
   }
@@ -911,6 +914,5 @@
       });
     }
   };
-
 
 })(jQuery, Drupal, drupalSettings);

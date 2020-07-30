@@ -2,6 +2,7 @@ name: Layout Components
 type: module
 description: Blocks for placing into layout builder.
 core_version_requirement: ^8.8 || ^9
+configure: layoutcomponents.settings_general
 package: LayoutComponents
 dependencies:
   - ctools:ctools

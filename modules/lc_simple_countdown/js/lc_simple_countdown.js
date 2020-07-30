@@ -8,13 +8,13 @@
 
   Drupal.behaviors.LayoutComponentsSimpleCountdown = {
     attach: function (context, settings) {
-      $('*[id^="lc-simple_countdown"]').each(function() {
+      $('*[id^="lc-simple_countdown"]').each(function () {
         let id = $(this).attr('id');
         let date = $(this).attr('countdown');
         if (id && date) {
           let element = $('#' + id);
           let countDownDate = new Date(date).getTime();
-          let x = setInterval(function() {
+          let x = setInterval(function () {
             let now = new Date().getTime();
             let distance = countDownDate - now;
             let days = Math.floor(distance / (1000 * 60 * 60 * 24));

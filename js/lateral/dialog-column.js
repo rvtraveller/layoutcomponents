@@ -9,7 +9,7 @@
 
   var ajax = Drupal.ajax,
       behaviors = Drupal.behaviors;
-  
+
   // Hidde container if is a column.
   behaviors.lateralContainerColumn = {
     attach: function (context) {
@@ -18,6 +18,5 @@
       });
     }
   }
-
 
 })(jQuery, Drupal);
