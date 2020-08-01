@@ -18,6 +18,7 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\layout_builder\SectionComponent;
 use Drupal\layoutcomponents\LcLayoutsManager;
 use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
+use Drupal\block_content\Entity\BlockContent;
 
 /**
  * Provides a form to update a block.
@@ -129,22 +130,11 @@ class LcUpdateBlockForm extends UpdateBlockForm {
     }
 
     if ($this->isDefault) {
-      $message = 'This block cannot be deleted because is configurated as default in your display settings';
+      $message = 'This block cannot be updated because is configurated as default in your display settings';
       $build['description']['#markup'] = '<div class="layout_builder__add-section-confirm"> ' . $this->t('@message', ['@message' => $message]) . ' </div>';
       $build['description']['#weight'] = -1;
-      $build['actions']['cancel'] = [
-        '#type' => 'submit',
-        '#value' => $this->t('Close'),
-        '#ajax' => [
-          'callback' => '::ajaxSubmit',
-        ],
-        '#button_type' => 'cancel',
-        '#attributes' => [
-          'class' => ['button', 'dialog-cancel'],
-        ],
-        '#weight' => 999,
-      ];
       $build['settings']['block_form']['#access'] = FALSE;
+      $build['settings']['formatter']['#access'] = FALSE;
       unset($build['actions']['submit']);
     }
 
@@ -195,6 +185,9 @@ class LcUpdateBlockForm extends UpdateBlockForm {
       /** @var \Drupal\block_content\Entity\BlockContent $block_content */
       $block_content = $component->getPlugin()->build();
       $block_content = reset($block_content);
+      if (!$block_content instanceof BlockContent) {
+        return;
+      }
       if (!$block_content->hasTranslation($this->languageManager->getCurrentLanguage()->getId())) {
         $block_content->addTranslation($this->languageManager->getCurrentLanguage()->getId(), $block_content->getFields());
         $trans = $block_content->getTranslation($this->languageManager->getCurrentLanguage()->getId());

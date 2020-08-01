@@ -92,7 +92,7 @@ class LcSectionSettings extends ConfigFormBase {
           '#title' => $this->t('Text color'),
           '#color_options' => $colors,
           '#default_value' => [
-            'color' => $config->get('title_color')['settings']['color'] ?: '#f75461',
+            'color' => $config->get('title_color')['settings']['color'] ?: '',
             'opacity' => $config->get('title_color')['settings']['opacity'] ?: 1,
           ],
           '#description' => $this->t('Set the default color for the section titles'),
@@ -139,7 +139,7 @@ class LcSectionSettings extends ConfigFormBase {
           '#title' => $this->t('Border color'),
           '#color_options' => $colors,
           '#default_value' => [
-            'color' => $config->get('title_border_color')['settings']['color'] ?: '#f75461',
+            'color' => $config->get('title_border_color')['settings']['color'] ?: '',
             'opacity' => $config->get('title_border_color')['settings']['opacity'] ?: 1,
           ],
           '#description' => $this->t('Set the default border color for the section titles'),
@@ -182,7 +182,7 @@ class LcSectionSettings extends ConfigFormBase {
           '#title' => $this->t('Background color'),
           '#color_options' => $colors,
           '#default_value' => [
-            'color' => $config->get('background_color')['settings']['color'] ?: '#f75461',
+            'color' => $config->get('background_color')['settings']['color'] ?: '',
             'opacity' => $config->get('background_color')['settings']['opacity'] ?: 1,
           ],
           '#description' => $this->t('Set the default background color for the sections'),

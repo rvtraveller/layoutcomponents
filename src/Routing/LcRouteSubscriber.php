@@ -65,6 +65,13 @@ class LcRouteSubscriber extends RouteSubscriberBase {
         '_form' => '\Drupal\layoutcomponents\Form\LcRemoveBlock',
       ]);
     }
+
+    if ($route = $collection->get('layout_builder.move_sections_form')) {
+      $route->setDefaults([
+        '_title' => 'Move Sections',
+        '_form' => '\Drupal\layoutcomponents\Form\LcMoveSections',
+      ]);
+    }
   }
 
 }

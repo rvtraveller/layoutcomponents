@@ -15,7 +15,7 @@ function lc_simple_accordion_theme($existing, $type, $theme, $path) {
   return [
     'layoutcomponents_block_content__simple_accordion' => [
       'base hook' => 'block',
-      'variables' => ['countdown_attributes' => null]
+      'variables' => ['countdown_attributes' => NULL],
     ],
   ];
 }
@@ -72,7 +72,7 @@ function lc_simple_accordion_preprocess_block(&$variables) {
     $header = new Attribute();
     $header->addClass([
       'lc-inline_block_' . $block_item->uuid() . '-accordion-item-edit',
-      'card-header'
+      'card-header',
     ]);
     $header->setAttribute('id', 'card-' . $block_id . '-' . $i);
 
@@ -132,12 +132,11 @@ function lc_simple_accordion_block_type_form_alter(array &$form, FormStateInterf
  * Change the elements with LayoutComponents Api.
  *
  * @param array $form
- *  The array with the form.
- *
+ *   The array with the form.
  * @param string $block_id
- *  The id of the block.
+ *   The id of the block.
  */
-function _lc_simple_accordion_form_alter(array &$form, $block_id){
+function _lc_simple_accordion_form_alter(array &$form, $block_id) {
   /** @var \Drupal\layoutcomponents\Api\Component $lcApi */
   $lcApi = Drupal::service('layoutcomponents.apiComponent');
 

@@ -9,10 +9,12 @@ use Drupal\layout_builder\Controller\LayoutRebuildTrait;
 use Drupal\layout_builder\LayoutTempstoreRepositoryInterface;
 use Drupal\layout_builder\SectionStorageInterface;
 use Drupal\Core\Url;
+use Drupal\layoutcomponents\LcDialogHelperTrait;
 use Drupal\layoutcomponents\LcLayoutsManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
+use Drupal\Core\Config\ConfigFactory;
 
 /**
  * Defines a controller to add a new section.
@@ -23,6 +25,7 @@ use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
 class LcChooseSectionController extends ChooseSectionController {
 
   use LayoutRebuildTrait;
+  use LcDialogHelperTrait;
 
   /**
    * RequestStack.
@@ -53,6 +56,13 @@ class LcChooseSectionController extends ChooseSectionController {
   private $tempStoreFactory;
 
   /**
+   * Config factory object.
+   *
+   * @var \Drupal\Core\Config\ConfigFactory
+   */
+  protected $configFactory;
+
+  /**
    * Is a default section.
    *
    * @var bool
@@ -72,13 +82,16 @@ class LcChooseSectionController extends ChooseSectionController {
    *   The LcLayoutsManager object.
    * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store
    *   The PrivateTempStoreFactory object.
+   * @param \Drupal\Core\Config\ConfigFactory $config_factory
+   *   The config factory object.
    */
-  public function __construct(LayoutPluginManagerInterface $layout_manager, RequestStack $request, LayoutTempstoreRepositoryInterface $layout_tempstore_repository, LcLayoutsManager $lc_layout_manager, PrivateTempStoreFactory $temp_store) {
+  public function __construct(LayoutPluginManagerInterface $layout_manager, RequestStack $request, LayoutTempstoreRepositoryInterface $layout_tempstore_repository, LcLayoutsManager $lc_layout_manager, PrivateTempStoreFactory $temp_store, ConfigFactory $config_factory) {
     parent::__construct($layout_manager);
     $this->request = $request;
     $this->layoutTempstoreRepository = $layout_tempstore_repository;
     $this->lcLayoutManager = $lc_layout_manager;
     $this->tempStoreFactory = $temp_store;
+    $this->configFactory = $config_factory;
   }
 
   /**
@@ -90,7 +103,8 @@ class LcChooseSectionController extends ChooseSectionController {
       $container->get('request_stack'),
       $container->get('layout_builder.tempstore_repository'),
       $container->get('plugin.manager.layoutcomponents_layouts'),
-      $container->get('tempstore.private')
+      $container->get('tempstore.private'),
+      $container->get('config.factory'),
     );
   }
 
@@ -171,6 +185,7 @@ class LcChooseSectionController extends ChooseSectionController {
           'update_layout' => $updateLayout,
           'autosave' => 1,
         ]);
+      $item['#attributes']['data-dialog-options'] = $this->dialogOptions();;
 
       $plugin_id = $url->getRouteParameters()['plugin_id'];
       if (array_key_exists('plugin_id', $url->getRouteParameters())) {

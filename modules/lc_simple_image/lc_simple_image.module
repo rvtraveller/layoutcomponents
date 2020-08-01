@@ -7,8 +7,8 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Template\Attribute;
 use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\block_content\Entity\BlockContent;
 
 /**
  * Implements hook_theme().
@@ -73,7 +73,7 @@ function lc_simple_image_preprocess_field(&$variables) {
       // Get block entity.
       $parent = $imageItem->getEntity()->_referringItem->getEntity();
 
-      if (!$parent instanceof Drupal\block_content\Entity\BlockContent) {
+      if (!$parent instanceof BlockContent) {
         continue;
       }
 
@@ -81,7 +81,7 @@ function lc_simple_image_preprocess_field(&$variables) {
         continue;
       }
 
-      // Block
+      // Block.
       $parent_id = str_replace(" ", "_", $parent->uuid());
 
       // Default item.
@@ -97,7 +97,6 @@ function lc_simple_image_preprocess_field(&$variables) {
       $border_color = $parent->get('field_si_border_color')->getString();
       $border_radius = $parent->get('field_si_border_radius')->getString();
 
-
       // Margins.
       $align = $parent->get('field_si_align')->getString();
       $margin_top = $parent->get('field_si_margin_top')->getString();
@@ -110,7 +109,6 @@ function lc_simple_image_preprocess_field(&$variables) {
       $extra_class = $parent->get('field_si_extra_class')->getString();
       $extra_attributes = $parent->get('field_si_extra_attributes')->getString();
 
-
       // Set new border.
       if (!empty($border_type)) {
         $border = 'border';
@@ -121,30 +119,30 @@ function lc_simple_image_preprocess_field(&$variables) {
           $border .= ":";
         }
         if (!empty($border_size)) {
-          $styles[] = $border . " $border_size" . "px solid;";
+          $styles[] = $border . " " . $border_size . "px solid;";
           $styles[] = "border-color: $border_color ;";
         }
       }
 
       // Set border radius.
       if (!empty($border_radius)) {
-        $styles[] = "border-radius: $border_radius" . "px;";
+        $styles[] = "border-radius: " . $border_radius . "px;";
       }
 
       // Set margin top.
       if (!empty($margin_top)) {
-        $styles[] = "margin-top: $margin_top" . "px;";
+        $styles[] = "margin-top: " . $margin_top . "px;";
       }
 
       // Set margin bottom.
       if (!empty($margin_bottom)) {
-        $styles[] = "margin-bottom: $margin_bottom" . "px;";
+        $styles[] = "margin-bottom: " . $margin_bottom . "px;";
       }
 
       // Set width.
       if (!empty($width)) {
         if ($width > 0) {
-          $styles[] = "width: $width" . "%;";
+          $styles[] = "width: " . $width . "%;";
         }
         else {
           $styles[] = "width: 100%;";
@@ -154,7 +152,6 @@ function lc_simple_image_preprocess_field(&$variables) {
 
       $styles[] = 'max-width: 100%;';
       $styles[] = 'height: auto;';
-
 
       // Set classes.
       if (!empty($extra_class)) {
@@ -239,12 +236,11 @@ function lc_simple_image_block_type_form_alter(array &$form, FormStateInterface 
  * Change the elements with LayoutComponents Api.
  *
  * @param array $form
- *  The array with the form.
- *
+ *   The array with the form.
  * @param string $block_id
- *  The id of the block.
+ *   The id of the block.
  */
-function _lc_simple_image_form_alter(array &$form, $block_id){
+function _lc_simple_image_form_alter(array &$form, $block_id) {
   /** @var \Drupal\layoutcomponents\Api\Component $lcApi */
   $lcApi = Drupal::service('layoutcomponents.apiComponent');
 

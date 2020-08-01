@@ -7,7 +7,6 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\layoutcomponents\Api\Component;
 
 /**
  * Implements hook_help().
@@ -77,7 +76,7 @@ function lc_simple_button_preprocess_field(&$variables) {
       // Background.
       $background_color = $block->get('field_sb_background_color')->getString();
 
-      // Border
+      // Border.
       $border_type = $block->get('field_sb_border_type')->getString();
       $border_size = $block->get('field_sb_border_size')->getString();
       $border_color = $block->get('field_sb_border_color')->getString();
@@ -98,14 +97,13 @@ function lc_simple_button_preprocess_field(&$variables) {
       $extra_class = $block->get('field_sb_extra_class')->getString();
       $extra_attributes = $block->get('field_sb_extra_attributes')->getString();
 
-
       // Set title.
       if (!empty($text_size)) {
-        $styles[] = "font-size: $text_size" . "px";
+        $styles[] = "font-size: " . $text_size . "px";
       }
 
       if (!empty($text_color)) {
-        $styles[] = "color: $text_color";
+        $styles[] = "color: " . $text_color;
       }
 
       // Set background.
@@ -113,7 +111,7 @@ function lc_simple_button_preprocess_field(&$variables) {
         // By now the opacity cannot be changed by LC Inline.
         $opacity = 1;
         $rgba = $helper->hexToRgba($background_color, $opacity);
-        $styles[] = "background: $rgba";
+        $styles[] = "background: " . $rgba;
       }
 
       // Set border color.
@@ -122,33 +120,33 @@ function lc_simple_button_preprocess_field(&$variables) {
         if ($border_type != 'all') {
           $border .= '-' . $border_type;
         }
-        $styles[] = "$border: $border_size" . "px solid $border_color";
+        $styles[] = "$border: " . $border_size . "px solid $border_color";
       }
 
       // Set margin top.
       if (!empty($margin_top)) {
-        $styles[] = "margin-top: $margin_top" . "px;";
+        $styles[] = "margin-top: " . $margin_top . "px;";
       }
 
       // Set margin bottom.
       if (!empty($margin_bottom)) {
-        $styles[] = "margin-bottom: $margin_bottom" . "px;";
+        $styles[] = "margin-bottom: " . $margin_bottom . "px;";
       }
 
       // Set padding top.
       if (!empty($padding_top)) {
-        $styles[] = "padding-top: $padding_top" . "px;";
+        $styles[] = "padding-top: " . $padding_top . "px;";
       }
 
       // Set padding bottom.
       if (!empty($padding_bottom)) {
-        $styles[] = "padding-bottom: $padding_bottom" . "px;";
+        $styles[] = "padding-bottom: " . $padding_bottom . "px;";
       }
 
       // Set width.
       if (!empty($width)) {
         if ($width > 0) {
-          $styles[] = "width: $width" . "%;";
+          $styles[] = "width: " . $width . "%;";
         }
         else {
           $styles[] = "width: 100%;";
@@ -238,12 +236,11 @@ function lc_simple_button_block_type_form_alter(array &$form, FormStateInterface
  * Change the elements with LayoutComponents Api.
  *
  * @param array $form
- *  The array with the form.
- *
+ *   The array with the form.
  * @param string $block_id
- *  The id of the block.
+ *   The id of the block.
  */
-function _lc_simple_button_form_alter(array &$form, $block_id){
+function _lc_simple_button_form_alter(array &$form, $block_id) {
   /** @var \Drupal\layoutcomponents\Api\Component $lcApi */
   $lcApi = Drupal::service('layoutcomponents.apiComponent');
 

@@ -1070,9 +1070,9 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'id' => 'section',
             'title' => $this->t('Disable the overwrite'),
             'description' => $this->t('If you check this chekbox, this section wont be modified from the rest of nodes'),
-            'default_value' => ($is_default_storage) ? TRUE : FALSE,
+            'default_value' => $general['basic']['section_overwrite'],
             'class' => 'section-overwrite',
-            '#access' => FALSE,
+            '#access' => ($is_default_storage) ? TRUE : FALSE,
           ]
         ),
         'section_label' => [

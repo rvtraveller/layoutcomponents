@@ -7,12 +7,14 @@ use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Plugin\Context\EntityContext;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay;
-use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
+use Drupal\layoutcomponents\LcDisplayHelperTrait;
 
 /**
  * Provides an entity view display entity that has a layout by LC.
  */
 class LcEntityViewDisplay extends LayoutBuilderEntityViewDisplay {
+
+  use LcDisplayHelperTrait;
 
   /**
    * Gets the section storage manager.
@@ -43,6 +45,7 @@ class LcEntityViewDisplay extends LayoutBuilderEntityViewDisplay {
     $label = new TranslatableMarkup('@entity being viewed', [
       '@entity' => $entity->getEntityType()->getSingularLabel(),
     ]);
+
     $contexts['layout_builder.entity'] = EntityContext::fromEntity($entity, $label);
 
     $cacheability = new CacheableMetadata();
@@ -50,57 +53,19 @@ class LcEntityViewDisplay extends LayoutBuilderEntityViewDisplay {
 
     $build = [];
     if ($section_storage) {
-      if (!$section_storage instanceof DefaultsSectionStorage) {
-        // Default sections.
-        $defaults = $section_storage->getDefaultSectionStorage()->getSections();
+      // Content sections.
+      $sections = $this->getOrderedSections($section_storage);
 
-        // Content sections.
-        $sections = $section_storage->getSections();
-
-        // Reset sections.
-        $section_storage->removeAllSections(FALSE);
-
-        foreach ($sections as $delta => $section) {
-          $settings = $section->getLayoutSettings();
-          $section_label = $settings['section']['general']['basic']['section_label'];
-          $section_overwrite = $settings['section']['general']['basic']['section_overwrite'];
-          if (boolval($section_overwrite)) {
-            if ($this->lcLayoutManager()->checkDefaultExists($defaults, $section_label)) {
-              // Remplace if the section is a defualt.
-              $d_delta = $delta;
-              unset($sections[$delta]);
-              $default = $this->lcLayoutManager()->getDefault($defaults, $section_label, $d_delta);
-              if (isset($default)) {
-                $this->lcLayoutManager()->arrayInsert($sections, $d_delta, $default);
-              }
-            }
-            else {
-              // Remove the section if is default and not exists.
-              unset($sections[$delta]);
-            }
-          }
+      // Set the rest of defaults.
+      foreach ($sections as $delta => $section) {
+        if (!isset($section)) {
+          continue;
+        }
+        if ($section->getLayoutId() == 'layout_builder_blank') {
+          continue;
         }
 
-        // Store the rest of defaults.
-        /** @var \Drupal\layout_builder\Section $default */
-        foreach ($defaults as $delta => $default) {
-          $settings = $default->getLayoutSettings();
-          $default_delta = $settings['section']['general']['basic']['section_delta'];
-          $this->lcLayoutManager()->arrayInsert($sections, $default_delta, $default);
-          unset($defaults[$delta]);
-        }
-
-        ksort($sections);
-
-        // Set the rest of defaults.
-        foreach ($sections as $delta => $section) {
-          $build[$delta] = $section->toRenderArray($contexts);
-        }
-      }
-      else {
-        foreach ($section_storage->getSections() as $delta => $section) {
-          $build[$delta] = $section->toRenderArray($contexts);
-        }
+        $build[$delta] = $section->toRenderArray($contexts);
       }
     }
 

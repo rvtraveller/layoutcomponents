@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Config\FileStorage;
+use Drupal\layoutcomponents\Entity\LcEntityViewDisplay;
 
 /**
  * Add the default configuration.
@@ -24,21 +25,48 @@ function layoutcomponents_update_8001() {
 }
 
 /**
+ * Update the default sections with the new config().
+ */
+function layoutcomponents_update_8002() {
+  /** @var \Drupal\Core\Entity\EntityTypeBundleInfo $bundle_info */
+  $bundles = \Drupal::service('entity_type.bundle.info')->getBundleInfo('node');
+  foreach ($bundles as $id => $bundle) {
+    $displays = \Drupal::entityTypeManager()->getStorage('entity_view_display')->loadByProperties(['bundle' => $id]);
+    foreach ($displays as $display) {
+      if ($display instanceof LcEntityViewDisplay) {
+        $settings = $display->getThirdPartySettings('layout_builder');
+        if (array_key_exists('sections', $settings)) {
+          /** @var \Drupal\layout_builder\Section $section */
+          foreach ($settings['sections'] as $delta => $section) {
+            $section_settings = $section->getLayoutSettings();
+            $section_settings['section']['general']['basic']['section_overwrite'] = FALSE;
+            $section_settings['section']['general']['basic']['section_label'] = \Drupal::currentUser()->id() . (\Drupal::time()->getCurrentTime() + rand()) . $delta;
+            $section_settings['section']['general']['basic']['section_delta'] = $delta;
+            $section->setLayoutSettings($section_settings);
+          }
+          $display->setThirdPartySetting('layout_builder', 'sections', $settings['sections']);
+          $display->save();
+        }
+      }
+    }
+  }
+}
+
+/**
  * Update the current configuration.
  *
  * @param array $config_names
  *   An array with the configuration names.
  */
-function _layoutcomponents_update_config($config_names) {
+function _layoutcomponents_update_config(array $config_names) {
   $config_path    = drupal_get_path('module', 'layoutcomponents') . '/config/install';
   $source         = new FileStorage($config_path);
   $config_storage = \Drupal::service('config.storage');
   $config_factory = \Drupal::configFactory();
-  $uuid_service = \Drupal::service('uuid');
+  $uuid_service   = \Drupal::service('uuid');
 
   foreach ($config_names as $name) {
     $config_storage->write($name, $source->read($name));
     $config_factory->getEditable($name)->set('uuid', $uuid_service->generate())->save();
   }
 }
-

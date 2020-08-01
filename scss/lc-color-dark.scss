@@ -261,18 +261,21 @@ div.contextual {
   box-shadow: none !important;
 }
 
-
-div#drupal-off-canvas *,
-div#drupal-off-canvas details,
-div#drupal-off-canvas div.details-wrapper,
-div#drupal-off-canvas fieldset label,
-div#drupal-off-canvas *:not(div) {
-  color: white;
-  background: $primary-color-darkest;
-  @extend %librefranklin;
-  font-size: $font-size-base;
-  font-weight: 500;
+.lc-ui-dialog{
+  div#drupal-off-canvas *,
+  div#drupal-off-canvas details,
+  div#drupal-off-canvas div.details-wrapper,
+  div#drupal-off-canvas fieldset label,
+  div#drupal-off-canvas *:not(div) {
+    color: white;
+    background: $primary-color-darkest;
+    @extend %librefranklin;
+    font-size: $font-size-base;
+    font-weight: 500;
+  }
 }
+
+
 
 .colorpicker {
   z-index: 1000;
@@ -354,6 +357,12 @@ div#drupal-off-canvas *:not(div) {
   .container{
     padding: 0;
   }
+
+  .col-md-1 {
+    flex: 0 0 6.33333%;
+    max-width: 6.33333%;
+  }
+
   .col-md-2 {
     flex: 0 0 14.66667%;
     max-width: 14.66667%;
@@ -366,18 +375,46 @@ div#drupal-off-canvas *:not(div) {
     flex: 0 0 31.33333%;
     max-width: 31.33333%;
   }
+
+  .col-md-5{
+    flex: 0 0 38%;
+    max-width: 38%;
+  }
+
   .col-md-6{
     flex: 0 0 48%;
     max-width: 48%;
   }
+
+  .col-md-7{
+    flex: 0 0 58%;
+    max-width: 58%;
+  }
+
   .col-md-8{
     flex: 0 0 64.66666%;
     max-width: 64.66666%;
   }
+
+  .col-md-9{
+    flex: 0 0 73%;
+    max-width: 73%;
+  }
+  .col-md-10{
+    flex: 0 0 81.33333%;
+    max-width: 81.33333%;
+  }
+
+  .col-md-11 {
+    flex: 0 0 89.66667%;
+    max-width: 89.66667%;
+  }
+
   .col-md-12{
     flex: 0 0 98%;
     max-width: 98%;
   }
+
   &.layout-builder {
     padding: calc(0.75rem - 1px);
     border: 4px solid $primary-color-bg-border;
@@ -882,1336 +919,587 @@ div#drupal-off-canvas *:not(div) {
 
 //---------------------------------------- Media library window
 
-.media-library-widget-modal{
+// .media-library-widget-modal{
 
-  //---------------------------------------- Media library title
+//   //---------------------------------------- Media library title
 
-  .ui-dialog-titlebar{
-    @extend %librefranklin;
-    background: $primary-color-dark !important;
-    color:$primary-color-bg;
-    border-bottom: none !important;
-    font-size: $font-size-large;
+//   .ui-dialog-titlebar{
+//     @extend %librefranklin;
+//     background: $primary-color-dark !important;
+//     color:$primary-color-bg;
+//     border-bottom: none !important;
+//     font-size: $font-size-large;
 
-    .ui-dialog-titlebar-close{
-      background-image: none;
-      right: 0.5em;
+//     .ui-dialog-titlebar-close{
+//       background-image: none;
+//       right: 0.5em;
 
-      &:focus{
-        &:after{
-          outline: 2px dotted transparent;
-          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-        }
-      }
+//       &:focus{
+//         &:after{
+//           outline: 2px dotted transparent;
+//           box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//         }
+//       }
 
-      &:hover{
-        background-image: none;
-        border: none;
+//       &:hover{
+//         background-image: none;
+//         border: none;
 
-        &:after{
-          color: white;
-        }
-      }
-      &:after{
-        position: relative;
-        float: left;
-        content: "\f00d";
-        width: 20px;
-        display: inline-block;
-        cursor: pointer;
-        font-size: $font-size-large;
-        color: $primary-color-bg-border;
-        @extend %fontawesome;
-        line-height: 18px;
-
-
-      }
-
-      span {
-        font-size: 1.1em;
-        font-weight: 200;
-        border: 0;
-      }
-      .ui-dialog-title{
-        max-width: none !important;
-        @extend %librefranklin;
-        font-weight: 700;
-      }
-    }
-  }
-
-  //---------------------------------------- Media library content
-
-  .ui-dialog-content{
-    padding: 1em !important;
-
-    .js-media-library-add-form{
-      border: none;
-      outline: none;
-      @extend %librefranklin;
-      font-weight:400;
-      color:  $primary-color-darkest;
-
-      //----------------------- .item-list
-
-      .item-list{
-        border: none;
-        &:focus{
-          outline: 2px dotted transparent;
-          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-        }
-        ul{
-          list-style: none;
-          outline: none;
-          li{
-            margin: 0;
-            outline: none;
-
-            .form-item{
-              margin-bottom: 0 !important;
-            }
-
-            .image-widget-data{
-              label{
-                font-weight: 700;
-              }
-              input{
-                &.form-text{
-                  position: relative;
-                  float: left;
-                  margin-bottom: 10px;
-                  &:focus{
-                    outline: 2px dotted transparent;
-                    box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-                  }
-                }
-              }
-            }
-            .btn-primary{
-              @extend %primary-button;
-              margin-left: 0px;
-              margin-top: 0px;
-            }
-          }
-        }
-      }
-    }
-
-    .media-library-wrapper{
-      .media-library-content{
-
-        &.js-media-library-item {
-          padding-left: 15px;
-          width: 100%;
-        }
-
-        //---------------------------------------- Messages
-
-        .messages{
-          position: relative;
-          float: left;
-          @extend %librefranklin;
-          font-weight: 400;
-          margin-left: 8px;
-        }
-
-        //---------------------------------------- Add button + info // Add window
-
-        .js-media-library-add-form{
-          position: relative;
-          float: left;
-          width: 100%;
-          margin-bottom: 10px;
+//         &:after{
+//           color: white;
+//         }
+//       }
+//       &:after{
+//         position: relative;
+//         float: left;
+//         content: "\f00d";
+//         width: 20px;
+//         display: inline-block;
+//         cursor: pointer;
+//         font-size: $font-size-large;
+//         color: $primary-color-bg-border;
+//         @extend %fontawesome;
+//         line-height: 18px;
 
 
-          //----------------------- Add button
+//       }
 
-          .form-wrapper{
-            position: relative;
-            float: left;
-            .form-item{
-              margin-top: 0;
-              label{
-                margin-bottom: 0px;
-              }
-              &.form-item-upload{
-                position: relative;
-                float: left;
-                color: $primary-color-darkest;
-                @extend %librefranklin;
+//       span {
+//         font-size: 1.1em;
+//         font-weight: 200;
+//         border: 0;
+//       }
+//       .ui-dialog-title{
+//         max-width: none !important;
+//         @extend %librefranklin;
+//         font-weight: 700;
+//       }
+//     }
+//   }
 
-                .form-managed-file{
-                  height: 30px;
-                  input{
-                    position: relative;
-                    float: left;
-                    height: 30px;
-                    margin: 10px 0px;
+//   //---------------------------------------- Media library content
 
-                     &:focus{
-                      outline: 2px dotted transparent;
-                      box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-                    }
-                  }
-                }
+//   .ui-dialog-content{
+//     padding: 1em !important;
 
-                .description{
-                  position: relative;
-                  float: left;
-                  width: 100%;
-                  @extend %librefranklin;
-                  font-weight: 500;
-                  color:  $primary-color-darkest;
-                }
-                .form-control{
-                  border: none;
-                  margin-left: 0;
-                  padding: 0;
-                  color:  $primary-color-darkest;
-                  @extend %librefranklin;
-                }
-              }
-            }
-          }
-        }
+//     .js-media-library-add-form{
+//       border: none;
+//       outline: none;
+//       @extend %librefranklin;
+//       font-weight:400;
+//       color:  $primary-color-darkest;
 
-        //---------------------------------------- Elements container
+//       //----------------------- .item-list
 
-        .views-element-container{
+//       .item-list{
+//         border: none;
+//         &:focus{
+//           outline: 2px dotted transparent;
+//           box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//         }
+//         ul{
+//           list-style: none;
+//           outline: none;
+//           li{
+//             margin: 0;
+//             outline: none;
 
-          //---------------------------------------- Buttons
+//             .form-item{
+//               margin-bottom: 0 !important;
+//             }
 
-          .view-header{
-            position: relative;
-            float: left;
-            width: 100%;
-            .views-display-link{
-              display: inline-block;
-              font-weight: 800;
-              border: none;
-              background: $primary-color-darker;
-              border-radius: $border-radius-base;
-              font-size: $font-size-base;
-              color: white;
-              padding: calc(0.75rem - 1px) calc(1rem - 1px);
+//             .image-widget-data{
+//               label{
+//                 font-weight: 700;
+//               }
+//               input{
+//                 &.form-text{
+//                   position: relative;
+//                   float: left;
+//                   margin-bottom: 10px;
+//                   &:focus{
+//                     outline: 2px dotted transparent;
+//                     box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//                   }
+//                 }
+//               }
+//             }
+//             .btn-primary{
+//               @extend %primary-button;
+//               margin-left: 0px;
+//               margin-top: 0px;
+//             }
+//           }
+//         }
+//       }
+//     }
 
-              &.is-active{
-                background: $primary-color-dark;
-                outline: 2px dotted transparent;
-                box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-              }
+//     .media-library-wrapper{
+//       .media-library-content{
 
-              &:focus{
-                outline: 2px dotted transparent;
-                box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-              }
+//         &.js-media-library-item {
+//           padding-left: 15px;
+//           width: 100%;
+//         }
 
-              &:hover{
-                background: $primary-color-medium;
-                text-decoration: none;
-              }
-            }
-          }
+//         //---------------------------------------- Messages
 
-          //---------------------------------------- filters
+//         .messages{
+//           position: relative;
+//           float: left;
+//           @extend %librefranklin;
+//           font-weight: 400;
+//           margin-left: 8px;
+//         }
 
-          .view-filters{
-            .form--inline{
-              color: $primary-color-darkest;
-              @extend %librefranklin;
+//         //---------------------------------------- Add button + info // Add window
 
-              input{
-                &:focus{
-                  box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-                }
-              }
-              select{
-                &:focus{
-                  box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-                }
-              }
+//         .js-media-library-add-form{
+//           position: relative;
+//           float: left;
+//           width: 100%;
+//           margin-bottom: 10px;
 
-              .btn-primary{
-                display: inline-block;
-                @extend %primary-button;
-                margin: 47px 0.5rem 0.75rem 0.5rem;
-                padding: calc(0.60rem - 1px) calc(1rem - 1px);
-                &:focus{
-                  outline: 2px dotted transparent;
-                  box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-                }
 
-                &:hover{
-                  background: $primary-color-medium;
-                  text-decoration: none;
-                }
-              }
-            }
-          }
+//           //----------------------- Add button
 
-          //---------------------------------------- content
+//           .form-wrapper{
+//             position: relative;
+//             float: left;
+//             .form-item{
+//               margin-top: 0;
+//               label{
+//                 margin-bottom: 0px;
+//               }
+//               &.form-item-upload{
+//                 position: relative;
+//                 float: left;
+//                 color: $primary-color-darkest;
+//                 @extend %librefranklin;
 
-          .view-content{
-            .views-form{
-              @extend %light-background;
+//                 .form-managed-file{
+//                   height: 30px;
+//                   input{
+//                     position: relative;
+//                     float: left;
+//                     height: 30px;
+//                     margin: 10px 0px;
 
-              .js-media-library-views-form{
-                padding: 15px;
-              }
+//                      &:focus{
+//                       outline: 2px dotted transparent;
+//                       box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//                     }
+//                   }
+//                 }
 
-              //---------------------------------------- Table format
+//                 .description{
+//                   position: relative;
+//                   float: left;
+//                   width: 100%;
+//                   @extend %librefranklin;
+//                   font-weight: 500;
+//                   color:  $primary-color-darkest;
+//                 }
+//                 .form-control{
+//                   border: none;
+//                   margin-left: 0;
+//                   padding: 0;
+//                   color:  $primary-color-darkest;
+//                   @extend %librefranklin;
+//                 }
+//               }
+//             }
+//           }
+//         }
 
-              table{
-                @extend %librefranklin;
-                border:1px solid $primary-color-dark;
-                border-radius: $border-radius-base;
-                font-weight: 500;
-                margin: 1rem;
-                thead{
-                  color: white;
-                  background: $primary-color-dark;
-                  font-weight: 700;
-                }
+//         //---------------------------------------- Elements container
 
-                td{
-                  a{
-                    color: $primary-color-light;
-                    text-decoration: underline;
-                  }
-                }
+//         .views-element-container{
 
-                input[type="checkbox"] {
-                  @extend %checkbox;
-                }
-              }
+//           //---------------------------------------- Buttons
 
-              //---------------------------------------- Grid format
+//           .view-header{
+//             position: relative;
+//             float: left;
+//             width: 100%;
+//             .views-display-link{
+//               display: inline-block;
+//               font-weight: 800;
+//               border: none;
+//               background: $primary-color-darker;
+//               border-radius: $border-radius-base;
+//               font-size: $font-size-base;
+//               color: white;
+//               padding: calc(0.75rem - 1px) calc(1rem - 1px);
 
-              .media-library-item{
-                border: 2px solid $primary-color-bg-border;
-                background: white;
-                border-radius: $border-radius-base;
-                padding: 15px;
-                margin: 0px 15px 0px 0px;
+//               &.is-active{
+//                 background: $primary-color-dark;
+//                 outline: 2px dotted transparent;
+//                 box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//               }
 
-                &.checked{
-                  border: 2px solid $primary-color-medium;
-                }
+//               &:focus{
+//                 outline: 2px dotted transparent;
+//                 box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//               }
 
-                img{
-                  position: relative;
-                  float: left;
-                  width: auto;
-                  cursor: pointer;
-                  max-width: 100%;
-                  height: auto;
-                }
-                .media-library-item__name{
-                  position: relative;
-                  float: left;
-                  @extend %librefranklin;
-                  color:  $primary-color-darkest;
-                  font-weight: 500;
-                  margin: 5px 0px 0px 0px;
-                  width: 100%;
-                  font-size: 14px;
-                  line-height: 18px;
-                }
-              }
+//               &:hover{
+//                 background: $primary-color-medium;
+//                 text-decoration: none;
+//               }
+//             }
+//           }
 
-              .js-click-to-select-checkbox{
-                input[type="checkbox"] {
-                  @extend %checkbox;
-                }
-              }
-            }
-          }
+//           //---------------------------------------- filters
 
-          .form-type-checkbox{
-            position: relative;
-            float: left;
-            width: 100%;
-            margin-top: 0;
-            margin-bottom: 0.5em;
-          }
-        }
-      }
-    }
-  }
+//           .view-filters{
+//             .form--inline{
+//               color: $primary-color-darkest;
+//               @extend %librefranklin;
 
-  //---------------------------------------- Button panel
+//               input{
+//                 &:focus{
+//                   box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//                 }
+//               }
+//               select{
+//                 &:focus{
+//                   box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//                 }
+//               }
 
-  .ui-dialog-buttonpane{
-    .ui-dialog-buttonset{
-      button{
-        @extend %primary-button;
-        &:focus{
-          outline: 2px dotted transparent;
-          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-        }
+//               .btn-primary{
+//                 display: inline-block;
+//                 @extend %primary-button;
+//                 margin: 47px 0.5rem 0.75rem 0.5rem;
+//                 padding: calc(0.60rem - 1px) calc(1rem - 1px);
+//                 &:focus{
+//                   outline: 2px dotted transparent;
+//                   box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//                 }
 
-        &:hover{
-          background: $primary-color-medium;
-          text-decoration: none;
-        }
-      }
-    }
-    .media-library-selected-count{
-      @extend %librefranklin;
-      color: $primary-color-darkest;
-    }
-  }
-}
+//                 &:hover{
+//                   background: $primary-color-medium;
+//                   text-decoration: none;
+//                 }
+//               }
+//             }
+//           }
+
+//           //---------------------------------------- content
+
+//           .view-content{
+//             .views-form{
+//               @extend %light-background;
+
+//               .js-media-library-views-form{
+//                 padding: 15px;
+//               }
+
+//               //---------------------------------------- Table format
+
+//               table{
+//                 @extend %librefranklin;
+//                 border:1px solid $primary-color-dark;
+//                 border-radius: $border-radius-base;
+//                 font-weight: 500;
+//                 margin: 1rem;
+//                 thead{
+//                   color: white;
+//                   background: $primary-color-dark;
+//                   font-weight: 700;
+//                 }
+
+//                 td{
+//                   a{
+//                     color: $primary-color-light;
+//                     text-decoration: underline;
+//                   }
+//                 }
+
+//                 input[type="checkbox"] {
+//                   @extend %checkbox;
+//                 }
+//               }
+
+//               //---------------------------------------- Grid format
+
+//               .media-library-item{
+//                 border: 2px solid $primary-color-bg-border;
+//                 background: white;
+//                 border-radius: $border-radius-base;
+//                 padding: 15px;
+//                 margin: 0px 15px 0px 0px;
+
+//                 &.checked{
+//                   border: 2px solid $primary-color-medium;
+//                 }
+
+//                 img{
+//                   position: relative;
+//                   float: left;
+//                   width: auto;
+//                   cursor: pointer;
+//                   max-width: 100%;
+//                   height: auto;
+//                 }
+//                 .media-library-item__name{
+//                   position: relative;
+//                   float: left;
+//                   @extend %librefranklin;
+//                   color:  $primary-color-darkest;
+//                   font-weight: 500;
+//                   margin: 5px 0px 0px 0px;
+//                   width: 100%;
+//                   font-size: 14px;
+//                   line-height: 18px;
+//                 }
+//               }
+
+//               .js-click-to-select-checkbox{
+//                 input[type="checkbox"] {
+//                   @extend %checkbox;
+//                 }
+//               }
+//             }
+//           }
+
+//           .form-type-checkbox{
+//             position: relative;
+//             float: left;
+//             width: 100%;
+//             margin-top: 0;
+//             margin-bottom: 0.5em;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   //---------------------------------------- Button panel
+
+//   .ui-dialog-buttonpane{
+//     .ui-dialog-buttonset{
+//       button{
+//         @extend %primary-button;
+//         &:focus{
+//           outline: 2px dotted transparent;
+//           box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//         }
+
+//         &:hover{
+//           background: $primary-color-medium;
+//           text-decoration: none;
+//         }
+//       }
+//     }
+//     .media-library-selected-count{
+//       @extend %librefranklin;
+//       color: $primary-color-darkest;
+//     }
+//   }
+// }
 
 //------------------------------------------------------- UI DIALOG -- LATERAL MENU
 
-.ui-dialog{
+.lc-ui-dialog{
 
-  @extend %librefranklin;
-  font-weight: 600;
-  font-size: $font-size-base;
-  -webkit-font-smoothing: antialiased;
-  background: none;
-  border: none !important;
-  box-shadow: none !important;
-  color:  $primary-color-darkest;
+  &.ui-dialog{
 
+    @extend %librefranklin;
+    font-weight: 600;
+    font-size: $font-size-base;
+    -webkit-font-smoothing: antialiased;
+    background: none;
+    border: none !important;
+    box-shadow: none !important;
+    color:  $primary-color-darkest;
 
+    &.ui-dialog-off-canvas{
 
-  &.ui-dialog-off-canvas{
+      //-------------------------- Lateral Menu Title
 
-    //-------------------------- Lateral Menu Title
+      .ui-dialog-titlebar {
+        @extend %librefranklin;
+        background: $primary-color-medium !important;
+        color:$primary-color-bg-border;
+        border-bottom: none !important;
+        font-size: $font-size-base;
 
-    .ui-dialog-titlebar {
-      @extend %librefranklin;
-      background: $primary-color-medium !important;
-      color:$primary-color-bg-border;
-      border-bottom: none !important;
-      font-size: $font-size-base;
-
-      .ui-dialog-titlebar-close{
-        background-image: none;
-
-        &:hover{
+        .ui-dialog-titlebar-close{
           background-image: none;
-          border: none;
 
+          &:hover{
+            background-image: none;
+            border: none;
+
+            &:after{
+              color: white;
+            }
+          }
           &:after{
-            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            content: "\f00d";
+            color: $primary-color-soft;
+            @extend %fontawesome;
+            display: inline-block;
+            line-height: 22px;
+          }
+
+          span {
+            font-size: 1.1em;
+            font-weight: 200;
+            border: 0;
+          }
+          .ui-dialog-title{
+            max-width: none !important;
+            @extend %librefranklin;
+            font-weight: 700;
           }
         }
-        &:after{
-          cursor: pointer;
-          font-size: 18px;
-          content: "\f00d";
-          color: $primary-color-soft;
-          @extend %fontawesome;
-          display: inline-block;
-          line-height: 22px;
-        }
-
-        span {
-          font-size: 1.1em;
-          font-weight: 200;
-          border: 0;
-        }
-        .ui-dialog-title{
-          max-width: none !important;
-          @extend %librefranklin;
-          font-weight: 700;
-        }
-      }
-    }
-
-    //-------------------------- Lateral Menu Content
-
-    #drupal-off-canvas{
-      overflow-x: visible !important;
-      background: $primary-color-darkest;
-      padding: 0px !important;
-
-      .alert-error{}
-
-
-
-      //-------------------- General
-
-      select{
-        &:after {
-          color: $primary-color-darkest;
-          content: "▼";
-          font-style: normal;
-          font-weight: 400;
-          line-height: 1;
-          margin-top: -0.5em;
-          padding-right: 0.5em;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 50%;
-          z-index: 10;
-        }
       }
 
-      p{
-        position: relative;
-        float: left;
-        margin:20px;
-        font-size: $font-size-base;
-        font-weight: 500;
-        a{
-          font-weight: 600;
-          text-decoration: underline;
+      //-------------------------- Lateral Menu Content
+
+      #drupal-off-canvas{
+        overflow-x: visible !important;
+        background: $primary-color-darkest;
+        padding: 0px !important;
+
+        .alert-error{}
+
+
+
+        //-------------------- General
+
+        select{
+          &:after {
+            color: $primary-color-darkest;
+            content: "▼";
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            margin-top: -0.5em;
+            padding-right: 0.5em;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            z-index: 10;
+          }
         }
-      }
 
-      .form-control{
-        &:focus{
-          outline: none;
-          box-shadow:inset 0 -2px 0 0 $primary-color-medium;
-        }
-      }
-
-      //-------------------- Copy block
-
-      .layoutcomponents-copy-block, .layoutcomponents-copy-section, .layoutcomponents-copy-column{
-        span{
+        p{
           position: relative;
           float: left;
-          width: 100%;
-          &.lc-copy{
-            position: relative;
-            margin-bottom: 10px;
-            &:before {
-              display: block;
-              margin: auto;
-              width: 38px;
-              height: 38px;
-              border-radius:38px;
-              background: $tertiary;
-              content: "\f24d";
-              @extend %fontawesome;
-              color: white;
-              text-align: center;
-              line-height: 40px;
-              &:hover{
-                background: $tertiary-dark;
-              }
-            }
-          }
-        }
-      }
-
-      //-------------------- Initial message
-
-
-
-      .layout_builder__add-section-confirm, .layout_builder__remove-description{
-        color: white;
-        font-size: $font-size-base;
-        font-weight: 700;
-        text-align: center;
-        padding: 20px;
-        @extend %librefranklin;
-
-      }
-
-
-
-      //-------------------- Horizontal tabs
-
-      .horizontal-tabs{
-        border: none;
-        background: none;
-        color: #444;
-        padding: 0;
-        ul{
-          display: flex;
-          color: white;
-          background: $primary-color-darkest;
-          li {
-            flex-grow: 1;
-            flex-direction: column;
-            text-align: center;
-            color: white;
-            background: $primary-color-darker;
-            opacity: 0.8;
-            &.selected {
-              background: $primary-color-dark;
-              box-shadow:inset 0 -4px 0 0 $primary-color-lighter;
-              opacity: 1;
-            }
-            &:hover {
-              background: $primary-color-medium;
-              opacity: 1;
-            }
-            a {
-              padding: 11px;
-              font-size: 17px;
-            }
-
-            a, strong {
-              color: white;
-              @extend %librefranklin;
-              background: transparent;
-            }
-          }
-        }
-      }
-
-      //-------------------- Inputs
-
-      input[type="text"]{
-
-        background: white;
-        color: $primary-color-darkest;
-        font-size: $font-size-base;
-        font-weight: 500;
-        text-transform: none;
-        line-height: normal;
-        border: 1px solid $primary-color-medium;
-        box-shadow: none;
-        letter-spacing: normal;
-        @extend %librefranklin;
-        border-radius: $border-radius-base;
-        padding: 7px 10px;
-        box-sizing: border-box;
-        transition: .2s ease;
-
-        &:focus{
-          outline-color: none;
-        }
-      }
-
-
-      button{
-        &.link {
-          display: inline;
-          transition: color 0.5s ease;
-          color: $primary-color-bg-border;
-          background: transparent;
+          margin:20px;
           font-size: $font-size-base;
-          margin: 10px 20px;
-          text-decoration: underline;
-          font-weight: 600;
-          &:hover{
-            text-decoration: underline;
-            color: white;
-          }
-          &:focus{
-            text-decoration: underline;
-            color: white;
-          }
-        }
-      }
-
-      input[type="submit"]{
-        &.button{
-          position: relative;
-          display: inline-block;
-          @extend %librefranklin;
-          font-weight: 800;
-          border: none;
-          background: $primary-color-medium;
-          border-radius: $border-radius-base;
-          font-size: $font-size-base;
-          color: white;
-          width: calc(100% - 40px) ;
-          margin: 10px 20px;
-          padding: calc(0.75rem - 1px) calc(1rem - 1px);
-
-          &:hover{
-            background: $primary-color-light;
-          }
-        }
-      }
-
-      a[data-drupal-selector*="back"] {
-        position: relative;
-        float: left;
-        display: inline-block;
-        @extend %librefranklin;
-        font-weight: 800;
-        border: none;
-        background: $secondary-color-medium;
-        border-radius: $border-radius-base;
-        font-size: $font-size-base;
-        color: white;
-        width: calc(50% - 20px) ;
-        margin: 20px 20px 0px 20px;
-        padding: calc(0.75rem - 1px) calc(1rem - 1px);
-        text-align: center;
-
-        &:hover{
-          background: $secondary-color-dark;
-        }
-        &:before {
-          content: "\f30a";
-          @extend %fontawesome;
-          font-size: 14px;
-          margin-right: 5px;
-          color: white;
-        }
-      }
-
-
-
-      button[data-drupal-selector*="submit"] {
-        background-color: $primary-color-light;
-        width: 25%;
-        margin-top: 10px;
-      }
-
-      a[data-drupal-selector="edit-cancel"] {
-        margin-top: 10px;
-      }
-
-      button[data-drupal-selector*="remove-button"]{
-        padding: 5px;
-        font-weight: normal;
-        font-size: 0.7em;
-        &:before{
-          content: "\f2ed";
-          @extend %fontawesome;
-          font-size: 11px;
-          margin-right: 5px;
-        }
-      }
-
-      button[name^="image-media-library-update-"], div[id^="image-media-library-wrapper-"] {
-        display: none;
-      }
-
-      button[data-drupal-selector*="remove-button"], a[data-drupal-selector*="cancel"]{
-        position: relative;
-        display: inline-block;
-        @extend %librefranklin;
-        font-weight: 800;
-        border: none;
-        background: $secondary-color-medium;
-        border-radius: $border-radius-base;
-        font-size: $font-size-base;
-        color: white;
-        width: calc(100% - 40px) ;
-        margin: 20px 20px 0px 20px;
-        padding: calc(0.75rem - 1px) calc(1rem - 1px);
-
-        &:focus{
-          outline: 2px dotted transparent;
-          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $secondary-color-dark;
-        }
-
-        &:hover{
-          background: $secondary-color-dark;
-        }
-
-      }
-
-      button[data-drupal-selector*="submit"] {
-        display: inline-block;
-        @extend %librefranklin;
-        font-weight: 800;
-        border: none;
-        background: $primary-color-light;
-        border-radius: $border-radius-base;
-        font-size: $font-size-base;
-        color: white;
-        width: calc(100% - 40px) ;
-        margin: 20px 20px 0px 20px;
-        padding: calc(0.75rem - 1px) calc(1rem - 1px);
-
-        &:focus{
-          outline: 2px dotted transparent;
-          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $secondary-color-dark;
-        }
-
-        &:hover{
-          background: $secondary-color-dark;
-        }
-      }
-
-      //-------------------- Add form
-
-      .js-media-library-add-form{
-        @extend %librefranklin;
-        color:  $primary-color-darkest;
-        p{
-          color:  $primary-color-darkest;
           font-weight: 500;
-          font-size: $font-size-base;
-        }
-        .item-list{
-          @extend %light-background;
-          ul{
-            list-style: none;
-            &:focus{
-              border: none;
-              outline: none;
-            }
-            li{
-              margin:0;
-              padding:20px;
-              &:focus{
-                border: none;
-                outline: none;
-              }
-
-              .form-item{
-                color:  $primary-color-darkest;
-                @extend %librefranklin;
-                font-weight: 500;
-                font-size: $font-size-base;
-
-                label{
-                  font-size: 700 !important;
-                }
-
-                .description{
-                  font-weight: 500;
-                  font-size: $font-size-base;
-                  margin: 10px 0px;
-                }
-
-                .field--type-image{
-                  .image-widget-data{
-                    .js-form-required{
-                      font-size: $font-size-base;
-                      font-weight: 700;
-                    }
-                  }
-                }
-              }
-            }
-            input{
-              margin-left: 0px;
-              &.btn-primary{
-                background: $primary-color-dark;
-                border-color: $primary-color-dark;
-                &:hover{
-                  background: $primary-color-medium;
-                }
-              }
-            }
-          }
-        }
-      }
-
-
-      //-------------------- Listing
-
-      ol{
-        li{
-          flex-basis: 50%;
-        }
-      }
-
-      ul{
-        margin: 0;
-        @extend %librefranklin;
-        font-weight: 700;
-        background: $primary-color-dark;
-
-        &.links{
-          margin: 10px 0px 10px 0px !important;
-          background: transparent;
-
-          li{
-            background: transparent;
-            padding: 5px 20px;
-            a {
-              @extend %librefranklin;
-              color: $primary-color-bg-border;
-              font-size: $font-size-base;
-              font-weight: 500;
-              text-align: center;
-              &:hover {
-                text-decoration: underline;
-                color: white;
-              }
-            }
-          }
-        }
-
-        &.inline-block-list{
-          display: flex;
-          flex-flow: row wrap;
-        }
-
-        li{
-          flex-basis: 50%;
-          background: $primary-color-dark;
-
           a{
-            color: white !important;
-            font-weight: 700;
-            background: transparent;
+            font-weight: 600;
+            text-decoration: underline;
+          }
+        }
 
-            &.inline-block-list__item{
-              &:hover{
-                background-color: $primary-color-medium;
-              }
-              &.simple_accordion{
-                &::before{
-                  content: "\f03c";
-                  @extend %fontawesome;
-                }
-              }
+        .form-control{
+          &:focus{
+            outline: none;
+            box-shadow:inset 0 -2px 0 0 $primary-color-medium;
+          }
+        }
 
-              &.basic{
-                &::before{
-                  content: "\f096";
-                  @extend %fontawesome;
-                }
-              }
+        //-------------------- Copy block
 
-              &.simple_button{
-                &::before{
-                  position: relative;
-                  float: left;
-                  content: url(../modules/lc_simple_button/images/button.svg);
-                  width: 60px;
-                  height: 80px;
-                  margin-top: 10px;
-                }
-              }
-
-              &.simple_countdown{
-                &::before{
-                  content: "\f254";
-                  @extend %fontawesome;
-                }
-              }
-
-              &.simple_iframe{
-                &::before{
-                  content: "\f2d0";
-                  @extend %fontawesome;
-                }
-              }
-
-              &.simple_image{
-                &::before{
-                  content: "\f03e";
-                  @extend %fontawesome;
-                }
-              }
-
-              &.simple_tabs{
-                &::before{
-                  content: "\f0ce";
-                  @extend %fontawesome;
-                }
-              }
-
-              &.simple_text{
-                &::before{
-                  content: "\f031";
-                  @extend %fontawesome;
-                }
-              }
-
-              &.simple_title{
-                &::before{
-                  position: relative;
-                  float: left;
-                  content: url(../modules/lc_simple_title/images/title.svg);
-                  width: 60px;
-                  height: 80px;
-                  margin-top: 10px;
-                }
-              }
-
-              &.simple_video{
-                &::before{
-                  content: "\f03d";
-                  @extend %fontawesome;
-                }
-              }
-
-
-
+        .layoutcomponents-copy-block, .layoutcomponents-copy-section, .layoutcomponents-copy-column{
+          span{
+            position: relative;
+            float: left;
+            width: 100%;
+            &.lc-copy{
+              position: relative;
+              margin-bottom: 10px;
               &:before {
-                content: "\f00d";
+                display: block;
+                margin: auto;
+                width: 38px;
+                height: 38px;
+                border-radius:38px;
+                background: $tertiary;
+                content: "\f24d";
                 @extend %fontawesome;
                 color: white;
-                font-size: 60px;
-                display: block;
-                margin: 0 auto;
+                text-align: center;
+                line-height: 40px;
+                &:hover{
+                  background: $tertiary-dark;
+                }
               }
             }
           }
         }
 
-        &.layout-selection{
-          &.list-group {
-            li {
-              a {
-                color: transparent;
-              }
-            }
-            display: flex;
-            flex-flow: row wrap;
-          }
-          * {
-            background: none;
-            &:not(div) {
-              background: none;
-              option {
-                color: $grey;
-              }
-            }
-          }
-        }
-      }
+        //-------------------- Initial message
 
 
-      //-------------------- Tables
 
-      .table-responsive {
-        & > span{
-          &.lc-lateral-title{
-            position: relative;
-            float: left;
-            color: white;
-            font-weight: 500;
-            font-size: $font-size-base;
-            line-height: 20px;
-            @extend %librefranklin;
-            margin: 0px 5px 5px 0px;
-          }
-        }
-      }
-
-      th, td{
-        &:first-child{
-          width: auto;
-        }
-      }
-
-      tbody{
-        .tabledrag-hide{
-          .form-item{
-            margin: 0;
-          }
-        }
-      }
-
-      tr{
-        td{
-          abbr{
-            background: transparent;
-            text-decoration: none;
-            border-bottom: 0;
-          }
-        }
-      }
-
-      //-------------------- Scroll bar
-
-      .sliderwidget{
-        position: relative;
-        float: left;
-        width: 100%;
-        margin-top: 0;
-        margin-bottom: 15px;
-
-        .sliderwidget-container{
-          position: relative;
-          float: left;
-          width: 100%;
-          background: $primary-color-darker;
-        }
-
-        .sliderwidget-event-field-container{
-          display: none;
-        }
-        .sliderwidget-display-values-field{
-          position: relative;
-          float: left;
-          width: 100%;
-          margin-bottom: 8px;
-        }
-        .lc-range-slide{
-          position: relative;
-          float: left;
-          width: 100%;
-        }
-      }
-
-      &::-webkit-scrollbar {
-        width: 1em;
-      }
-
-      &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        background: $primary-color-darkest;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: $primary-color-medium;
-        outline: 1px solid $primary-color-medium;
-      }
-
-
-      .ui-state-default,
-      .ui-widget-content .ui-state-default,
-      .ui-widget-header .ui-state-default{
-        color: $primary-color-medium;
-        border: 1px solid $primary-color-bg-border;
-        background: $primary-color-lighter;
-        top:-3px
-      }
-
-      .lc-range-slide{
-        background:$primary-color-darker;
-      }
-
-      //--------------------- Rest
-
-      .lc-lateral-info{
-        &:after{
-          cursor: pointer;
-          font-size: 18px;
-          content: "\f05a";
-          color: $primary-color-soft;
-          @extend %fontawesome;
-          display: inline-block;
-          line-height: 18px;
-          margin-left: 5px;
-        }
-      }
-
-
-      .form-required{
-        .lc-lateral-info{
-          &:after{
-            margin-left: 5px;
-          }
-        }
-      }
-      .layout-builder-add-block{
-        .label{
-          margin-bottom: 10px !important;
-        }
-      }
-
-
-      .form-item{
-        width: calc(100% - 40px) ;
-        margin: 20px;
-        @extend %librefranklin;
-        font-size: $font-size-base;
-
-        &.form-type-checkbox{
-          input{
-            position: relative;
-            float: left;
-          }
-          label{
-            position: relative;
-            float: left;
-            width: calc(100% - 40px);
-          }
-        }
-
-        .form-item{
-          width: 100%;
-          margin: 0px;
-        }
-
-        label{
-          position: relative;
-          float: left;
-          font-weight: 500;
-          @extend %librefranklin;
-          font-size: $font-size-base;
-          width: inherit;
-          margin-bottom: 5px;
-        }
-
-        .description{
-          position: relative;
-          float: left;
-          width: 100%;
-          margin-bottom: 10px;
-          color: $primary-color-bg-border;
-          font-size: $font-size-base;
-          font-weight: 500;
-        }
-
-        &.form-type-radio{
-          margin: 5px 0px;
-        }
-
-        select, input[type='checkbox'], input[type='radio']{
-          cursor: pointer;
-          margin: 0;
-          label{
-            cursor: pointer;
-          }
-        }
-
-        .webform-element-description{
-          background: transparent;
+        .layout_builder__add-section-confirm, .layout_builder__remove-description{
           color: white;
-          @extend %librefranklin;
-          border-radius: $border-radius-base;
-          pre{
-            background: white;
-            color: $primary-color-darkest;
-          }
-        }
-
-        input, select, textarea, input[type="number"]{
-          @extend %light-background;
-          font-size: 1em;
-          color: $primary-color-darkest;
-          @extend %librefranklin;
-          font-weight: 500;
           font-size: $font-size-base;
+          font-weight: 700;
+          text-align: center;
+          padding: 20px;
+          @extend %librefranklin;
 
-          &:focus{
-            border-color: $primary-color-light;
-            box-shadow: none !important;
-          }
-
-          &::placeholder, &:-ms-input-placeholder {
-            color: $primary-color-medium !important;
-          }
         }
-      }
 
-      .layout-icon__region{
-        fill: $primary-color-bg;
-        stroke: $primary-color-bg-border;
-      }
 
-      .inline-block-create-button {
-        padding: 10px 45px !important;
-        margin: 0;
-        @extend %librefranklin;
-        font-weight: 700;
-        border-bottom: 1px solid $primary-color-dark;
-        border-top: 1px solid $primary-color-dark;
 
-        &:hover{
-          background-color: $primary-color-dark;
-        }
-      }
+        //-------------------- Horizontal tabs
 
-      .form-type-search{
-        margin: 10px;
-        width: calc(100% - 20px);
-        background: $primary-color-darkest;
-        input{
-          &.js-layout-builder-filter{
-            &.form-search {
-              @extend %light-background;
-              font-size: 1em;
-              color: $primary-color-darkest;
-              @extend %librefranklin;
-              &:focus{
-                border-color: $primary-color-light;
-                box-shadow: none !important;
+        .horizontal-tabs{
+          border: none;
+          background: none;
+          color: #444;
+          padding: 0;
+          ul{
+            display: flex;
+            color: white;
+            background: $primary-color-darkest;
+            li {
+              flex-grow: 1;
+              flex-direction: column;
+              text-align: center;
+              color: white;
+              background: $primary-color-darker;
+              opacity: 0.8;
+              &.selected {
+                background: $primary-color-dark;
+                box-shadow:inset 0 -4px 0 0 $primary-color-lighter;
+                opacity: 1;
               }
-              &::placeholder, &:-ms-input-placeholder {
-                color: $primary-color-medium !important;
+              &:hover {
+                background: $primary-color-medium;
+                opacity: 1;
+              }
+              a {
+                padding: 11px;
+                font-size: 17px;
+              }
+
+              a, strong {
+                color: white;
+                @extend %librefranklin;
+                background: transparent;
               }
             }
           }
         }
-      }
 
-      .color_field_widget_box__square,  .color_field_widget_box__square--transparent {
-        width: 30px;
-        height: 31px;
-        margin: 0 5px;
-        border-radius: 50%;
-        &.active {
-          border: 3px solid white;
-          box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          -webkit-box-sizing: border-box;
-        }
-      }
+        //-------------------- Inputs
 
+        input[type="text"]{
 
-      .color-field-widget-box-form{
-        margin: 0px 20px 20px 20px;
-        button{
-          margin:5px;
-        }
-      }
-
-
-      //---------------------------- fieldset
-
-      fieldset{
-        width: 100%;
-        .media-library-form-element{
-
-          input{
-            &.js-media-library-open-button {
-              width: 80%;
-              display: block;
-              margin: 0 auto 30px auto;
-            }
-          }
-
-          p{
-            &.media-library-form-element-empty-text {
-              margin: 10px 20px;
-            }
-          }
-        }
-
-        div[id*="--description"] {
-          margin-left: 20px;
-          font-weight: 600;
-          color: $primary-color-darkest;
-          line-height: 1.5em;
-          font-size: $font-size-base;
-          pointer-events: none;
-          transition: visibility 0s, opacity 0.5s linear;
-        }
-
-        div{
-          &.form-inline, &.jquery_colorpicker, &.color-field-widget-box-form {
-            width: 90%;
-            margin: 15px 20px 30px 20px;
-          }
-          &.js-form-type-checkbox{
-            .checkbox {
-              margin: 5px 0 15px 0;
-              position: initial;
-              small {
-                display: inline-block;
-                font-size: 15px;
-                margin-left: 5px;
-              }
-            }
-          }
-          &.color-field-widget-box-form {
-            margin:0px;
-          }
-        }
-
-        &.js-form-type-search{
-          .form-type-search{
-            &:before {
-              content: "\f002";
-              @extend %fontawesome;
-              font-size: 25px;
-              display: inline-table;
-              margin: 0 auto;
-              position: absolute;
-              right: 20px;
-              top: 5px;
-            }
-          }
-        }
-
-        select, .form-select, input[type="number"], input[type="text"]{
           background: white;
           color: $primary-color-darkest;
           font-size: $font-size-base;
@@ -2226,77 +1514,791 @@ div#drupal-off-canvas *:not(div) {
           padding: 7px 10px;
           box-sizing: border-box;
           transition: .2s ease;
+
+          &:focus{
+            outline-color: none;
+          }
         }
 
-        select{
 
-          option {
-            color: $primary-color-darkest;
+        button{
+          &.link {
+            display: inline;
+            transition: color 0.5s ease;
+            color: $primary-color-bg-border;
+            background: transparent;
+            font-size: $font-size-base;
+            margin: 10px 20px;
+            text-decoration: underline;
+            font-weight: 600;
+            &:hover{
+              text-decoration: underline;
+              color: white;
+            }
+            &:focus{
+              text-decoration: underline;
+              color: white;
+            }
+          }
+        }
+
+        input[type="submit"]{
+          &.button{
+            position: relative;
+            display: inline-block;
             @extend %librefranklin;
+            font-weight: 800;
+            border: none;
+            background: $primary-color-medium;
+            border-radius: $border-radius-base;
+            font-size: $font-size-base;
+            color: white;
+            width: calc(100% - 40px) ;
+            margin: 10px 20px;
+            padding: calc(0.75rem - 1px) calc(1rem - 1px);
+
+            &:hover{
+              background: $primary-color-light;
+            }
+          }
+        }
+
+        a[data-drupal-selector*="back"] {
+          position: relative;
+          float: left;
+          display: inline-block;
+          @extend %librefranklin;
+          font-weight: 800;
+          border: none;
+          background: $secondary-color-medium;
+          border-radius: $border-radius-base;
+          font-size: $font-size-base;
+          color: white;
+          width: calc(50% - 20px) ;
+          margin: 20px 20px 0px 20px;
+          padding: calc(0.75rem - 1px) calc(1rem - 1px);
+          text-align: center;
+
+          &:hover{
+            background: $secondary-color-dark;
+          }
+          &:before {
+            content: "\f30a";
+            @extend %fontawesome;
+            font-size: 14px;
+            margin-right: 5px;
+            color: white;
+          }
+        }
+
+
+
+        button[data-drupal-selector*="submit"] {
+          background-color: $primary-color-light;
+          width: 25%;
+          margin-top: 10px;
+        }
+
+        a[data-drupal-selector="edit-cancel"] {
+          margin-top: 10px;
+        }
+
+        button[data-drupal-selector*="remove-button"]{
+          padding: 5px;
+          font-weight: normal;
+          font-size: 0.7em;
+          &:before{
+            content: "\f2ed";
+            @extend %fontawesome;
+            font-size: 11px;
+            margin-right: 5px;
+          }
+        }
+
+        button[name^="image-media-library-update-"], div[id^="image-media-library-wrapper-"] {
+          display: none;
+        }
+
+        button[data-drupal-selector*="remove-button"], a[data-drupal-selector*="cancel"]{
+          position: relative;
+          display: inline-block;
+          @extend %librefranklin;
+          font-weight: 800;
+          border: none;
+          background: $secondary-color-medium;
+          border-radius: $border-radius-base;
+          font-size: $font-size-base;
+          color: white;
+          width: calc(100% - 40px) ;
+          margin: 20px 20px 0px 20px;
+          padding: calc(0.75rem - 1px) calc(1rem - 1px);
+
+          &:focus{
+            outline: 2px dotted transparent;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 5px $secondary-color-dark;
           }
 
-          &.form-select{
+          &:hover{
+            background: $secondary-color-dark;
+          }
 
-            &.tabs{
-              display: inline-block;
-              overflow: hidden;
-              border: 0;
-              background: transparent;
-              padding: 4px;
+        }
 
-              option {
-                display: inline-block;
-                width: auto;
-                float: left;
-                border: 2px solid $grey-theme-extralight;
-                padding: 8px;
-                margin: 1px 3px;
-                border-radius: 3px 3px 0 0;
+        button[data-drupal-selector*="submit"] {
+          display: inline-block;
+          @extend %librefranklin;
+          font-weight: 800;
+          border: none;
+          background: $primary-color-light;
+          border-radius: $border-radius-base;
+          font-size: $font-size-base;
+          color: white;
+          width: calc(100% - 40px) ;
+          margin: 20px 20px 0px 20px;
+          padding: calc(0.75rem - 1px) calc(1rem - 1px);
+
+          &:focus{
+            outline: 2px dotted transparent;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 5px $secondary-color-dark;
+          }
+
+          &:hover{
+            background: $secondary-color-dark;
+          }
+        }
+
+        //-------------------- Add form
+
+        .js-media-library-add-form{
+          @extend %librefranklin;
+          color:  $primary-color-darkest;
+          p{
+            color:  $primary-color-darkest;
+            font-weight: 500;
+            font-size: $font-size-base;
+          }
+          .item-list{
+            @extend %light-background;
+            ul{
+              list-style: none;
+              &:focus{
+                border: none;
+                outline: none;
+              }
+              li{
+                margin:0;
+                padding:20px;
+                &:focus{
+                  border: none;
+                  outline: none;
+                }
+
+                .form-item{
+                  color:  $primary-color-darkest;
+                  @extend %librefranklin;
+                  font-weight: 500;
+                  font-size: $font-size-base;
+
+                  label{
+                    font-size: 700 !important;
+                  }
+
+                  .description{
+                    font-weight: 500;
+                    font-size: $font-size-base;
+                    margin: 10px 0px;
+                  }
+
+                  .field--type-image{
+                    .image-widget-data{
+                      .js-form-required{
+                        font-size: $font-size-base;
+                        font-weight: 700;
+                      }
+                    }
+                  }
+                }
+              }
+              input{
+                margin-left: 0px;
+                &.btn-primary{
+                  background: $primary-color-dark;
+                  border-color: $primary-color-dark;
+                  &:hover{
+                    background: $primary-color-medium;
+                  }
+                }
               }
             }
           }
         }
 
-        input{
-          .form-date, .form-time{
-            background: $grey-theme-extralight;
+
+        //-------------------- Listing
+
+        ol{
+          li{
+            flex-basis: 50%;
+          }
+        }
+
+        ul{
+          margin: 0;
+          @extend %librefranklin;
+          font-weight: 700;
+          background: $primary-color-dark;
+
+          &.links{
+            margin: 10px 0px 10px 0px !important;
+            background: transparent;
+
+            li{
+              background: transparent;
+              padding: 5px 20px;
+              a {
+                @extend %librefranklin;
+                color: $primary-color-bg-border;
+                font-size: $font-size-base;
+                font-weight: 500;
+                text-align: center;
+                &:hover {
+                  text-decoration: underline;
+                  color: white;
+                }
+              }
+            }
+          }
+
+          &.inline-block-list{
+            display: flex;
+            flex-flow: row wrap;
+          }
+
+          li{
+            flex-basis: 50%;
+            background: $primary-color-dark;
+
+            a{
+              color: white !important;
+              font-weight: 700;
+              background: transparent;
+
+              &.inline-block-list__item{
+                &:hover{
+                  background-color: $primary-color-medium;
+                }
+                &.simple_accordion{
+                  &::before{
+                    content: "\f03c";
+                    @extend %fontawesome;
+                  }
+                }
+
+                &.basic{
+                  &::before{
+                    content: "\f096";
+                    @extend %fontawesome;
+                  }
+                }
+
+                &.simple_button{
+                  &::before{
+                    position: relative;
+                    float: left;
+                    content: url(../modules/lc_simple_button/images/button.svg);
+                    width: 60px;
+                    height: 80px;
+                    margin-top: 10px;
+                  }
+                }
+
+                &.simple_countdown{
+                  &::before{
+                    content: "\f254";
+                    @extend %fontawesome;
+                  }
+                }
+
+                &.simple_iframe{
+                  &::before{
+                    content: "\f2d0";
+                    @extend %fontawesome;
+                  }
+                }
+
+                &.simple_image{
+                  &::before{
+                    content: "\f03e";
+                    @extend %fontawesome;
+                  }
+                }
+
+                &.simple_tabs{
+                  &::before{
+                    content: "\f0ce";
+                    @extend %fontawesome;
+                  }
+                }
+
+                &.simple_text{
+                  &::before{
+                    content: "\f031";
+                    @extend %fontawesome;
+                  }
+                }
+
+                &.simple_title{
+                  &::before{
+                    position: relative;
+                    float: left;
+                    content: url(../modules/lc_simple_title/images/title.svg);
+                    width: 60px;
+                    height: 80px;
+                    margin-top: 10px;
+                  }
+                }
+
+                &.simple_video{
+                  &::before{
+                    content: "\f03d";
+                    @extend %fontawesome;
+                  }
+                }
+
+
+
+                &:before {
+                  content: "\f00d";
+                  @extend %fontawesome;
+                  color: white;
+                  font-size: 60px;
+                  display: block;
+                  margin: 0 auto;
+                }
+              }
+            }
+          }
+
+          &.layout-selection{
+            &.list-group {
+              li {
+                a {
+                  color: transparent;
+                }
+              }
+              display: flex;
+              flex-flow: row wrap;
+            }
+            * {
+              background: none;
+              &:not(div) {
+                background: none;
+                option {
+                  color: $grey;
+                }
+              }
+            }
+          }
+        }
+
+
+        //-------------------- Tables
+
+        .table-responsive {
+          & > span{
+            &.lc-lateral-title{
+              position: relative;
+              float: left;
+              color: white;
+              font-weight: 500;
+              font-size: $font-size-base;
+              line-height: 20px;
+              @extend %librefranklin;
+              margin: 0px 5px 5px 0px;
+            }
+          }
+        }
+
+        th, td{
+          &:first-child{
+            width: auto;
+          }
+        }
+
+        tbody{
+          .tabledrag-hide{
+            .form-item{
+              margin: 0;
+            }
+          }
+        }
+
+        tr{
+          td{
+            abbr{
+              background: transparent;
+              text-decoration: none;
+              border-bottom: 0;
+            }
+          }
+        }
+
+        //-------------------- Scroll bar
+
+        .sliderwidget{
+          position: relative;
+          float: left;
+          width: 100%;
+          margin-top: 0;
+          margin-bottom: 15px;
+
+          .sliderwidget-container{
+            position: relative;
+            float: left;
+            width: 100%;
+            background: $primary-color-darker;
+          }
+
+          .sliderwidget-event-field-container{
+            display: none;
+          }
+          .sliderwidget-display-values-field{
+            position: relative;
+            float: left;
+            width: 100%;
+            margin-bottom: 8px;
+          }
+          .lc-range-slide{
+            position: relative;
+            float: left;
+            width: 100%;
+          }
+        }
+
+        &::-webkit-scrollbar {
+          width: 1em;
+        }
+
+        &::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          background: $primary-color-darkest;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $primary-color-medium;
+          outline: 1px solid $primary-color-medium;
+        }
+
+
+        .ui-state-default,
+        .ui-widget-content .ui-state-default,
+        .ui-widget-header .ui-state-default{
+          color: $primary-color-medium;
+          border: 1px solid $primary-color-bg-border;
+          background: $primary-color-lighter;
+          top:-3px
+        }
+
+        .lc-range-slide{
+          background:$primary-color-darker;
+        }
+
+        //--------------------- Rest
+
+        .lc-lateral-info{
+          &:after{
+            cursor: pointer;
+            font-size: 18px;
+            content: "\f05a";
+            color: $primary-color-soft;
+            @extend %fontawesome;
+            display: inline-block;
+            line-height: 18px;
+            margin-left: 5px;
+          }
+        }
+
+
+        .form-required{
+          .lc-lateral-info{
+            &:after{
+              margin-left: 5px;
+            }
+          }
+        }
+        .layout-builder-add-block{
+          .label{
+            margin-bottom: 10px !important;
+          }
+        }
+
+
+        .form-item{
+          width: calc(100% - 40px) ;
+          margin: 20px;
+          @extend %librefranklin;
+          font-size: $font-size-base;
+
+          &.form-type-checkbox{
+            input{
+              position: relative;
+              float: left;
+            }
+            label{
+              position: relative;
+              float: left;
+              width: calc(100% - 40px);
+            }
+          }
+
+          .form-item{
+            width: 100%;
+            margin: 0px;
+          }
+
+          label{
+            position: relative;
+            float: left;
+            font-weight: 500;
+            @extend %librefranklin;
+            font-size: $font-size-base;
+            width: inherit;
+            margin-bottom: 5px;
+          }
+
+          .description{
+            position: relative;
+            float: left;
+            width: 100%;
+            margin-bottom: 10px;
+            color: $primary-color-bg-border;
+            font-size: $font-size-base;
+            font-weight: 500;
+          }
+
+          &.form-type-radio{
+            margin: 5px 0px;
+          }
+
+          select, input[type='checkbox'], input[type='radio']{
+            cursor: pointer;
+            margin: 0;
+            label{
+              cursor: pointer;
+            }
+          }
+
+          .webform-element-description{
+            background: transparent;
+            color: white;
+            @extend %librefranklin;
+            border-radius: $border-radius-base;
+            pre{
+              background: white;
+              color: $primary-color-darkest;
+            }
+          }
+
+          input, select, textarea, input[type="number"]{
+            @extend %light-background;
+            font-size: 1em;
+            color: $primary-color-darkest;
+            @extend %librefranklin;
+            font-weight: 500;
+            font-size: $font-size-base;
+
+            &:focus{
+              border-color: $primary-color-light;
+              box-shadow: none !important;
+            }
+
+            &::placeholder, &:-ms-input-placeholder {
+              color: $primary-color-medium !important;
+            }
+          }
+        }
+
+        .layout-icon__region{
+          fill: $primary-color-bg;
+          stroke: $primary-color-bg-border;
+        }
+
+        .inline-block-create-button {
+          padding: 10px 45px !important;
+          margin: 0;
+          @extend %librefranklin;
+          font-weight: 700;
+          border-bottom: 1px solid $primary-color-dark;
+          border-top: 1px solid $primary-color-dark;
+
+          &:hover{
+            background-color: $primary-color-dark;
+          }
+        }
+
+        .form-type-search{
+          margin: 10px;
+          width: calc(100% - 20px);
+          background: $primary-color-darkest;
+          input{
+            &.js-layout-builder-filter{
+              &.form-search {
+                @extend %light-background;
+                font-size: 1em;
+                color: $primary-color-darkest;
+                @extend %librefranklin;
+                &:focus{
+                  border-color: $primary-color-light;
+                  box-shadow: none !important;
+                }
+                &::placeholder, &:-ms-input-placeholder {
+                  color: $primary-color-medium !important;
+                }
+              }
+            }
+          }
+        }
+
+        .color_field_widget_box__square,  .color_field_widget_box__square--transparent {
+          width: 30px;
+          height: 31px;
+          margin: 0 5px;
+          border-radius: 50%;
+          &.active {
+            border: 3px solid white;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+          }
+        }
+
+
+        .color-field-widget-box-form{
+          margin: 0px 20px 20px 20px;
+          button{
+            margin:5px;
+          }
+        }
+
+
+        //---------------------------- fieldset
+
+        fieldset{
+          width: 100%;
+          .media-library-form-element{
+
+            input{
+              &.js-media-library-open-button {
+                width: 80%;
+                display: block;
+                margin: 0 auto 30px auto;
+              }
+            }
+
+            p{
+              &.media-library-form-element-empty-text {
+                margin: 10px 20px;
+              }
+            }
+          }
+
+          div[id*="--description"] {
+            margin-left: 20px;
+            font-weight: 600;
+            color: $primary-color-darkest;
+            line-height: 1.5em;
+            font-size: $font-size-base;
+            pointer-events: none;
+            transition: visibility 0s, opacity 0.5s linear;
+          }
+
+          div{
+            &.form-inline, &.jquery_colorpicker, &.color-field-widget-box-form {
+              width: 90%;
+              margin: 15px 20px 30px 20px;
+            }
+            &.js-form-type-checkbox{
+              .checkbox {
+                margin: 5px 0 15px 0;
+                position: initial;
+                small {
+                  display: inline-block;
+                  font-size: 15px;
+                  margin-left: 5px;
+                }
+              }
+            }
+            &.color-field-widget-box-form {
+              margin:0px;
+            }
+          }
+
+          &.js-form-type-search{
+            .form-type-search{
+              &:before {
+                content: "\f002";
+                @extend %fontawesome;
+                font-size: 25px;
+                display: inline-table;
+                margin: 0 auto;
+                position: absolute;
+                right: 20px;
+                top: 5px;
+              }
+            }
+          }
+
+          select, .form-select, input[type="number"], input[type="text"]{
+            background: white;
             color: $primary-color-darkest;
             font-size: $font-size-base;
-            font-weight: 600;
+            font-weight: 500;
             text-transform: none;
             line-height: normal;
-            border: 1px solid $primary-color-darkest;
+            border: 1px solid $primary-color-medium;
             box-shadow: none;
             letter-spacing: normal;
             @extend %librefranklin;
+            border-radius: $border-radius-base;
+            padding: 7px 10px;
+            box-sizing: border-box;
+            transition: .2s ease;
           }
-        }
 
-        &.js-form-type-slider{
-          div{
-            &.sliderwidget {
-              width: 100%;
-              padding: 5px;
-              margin-top: 0;
+          select{
+
+            option {
+              color: $primary-color-darkest;
+              @extend %librefranklin;
             }
 
-            &.ui-slider-horizontal {
-              background: $grey-theme-extralight;
+            &.form-select{
 
-              & > span {
-                background: $primary-color-darkest;
+              &.tabs{
+                display: inline-block;
+                overflow: hidden;
+                border: 0;
+                background: transparent;
+                padding: 4px;
+
+                option {
+                  display: inline-block;
+                  width: auto;
+                  float: left;
+                  border: 2px solid $grey-theme-extralight;
+                  padding: 8px;
+                  margin: 1px 3px;
+                  border-radius: 3px 3px 0 0;
+                }
               }
             }
+          }
 
-            &.sliderwidget-display-values-field {
-              width: 60px;
-              padding: 5px;
-              text-align: center;
-              border-radius: 2px;
+          input{
+            .form-date, .form-time{
               background: $grey-theme-extralight;
-              margin: 5px auto;
               color: $primary-color-darkest;
-              font-size: 13px;
+              font-size: $font-size-base;
               font-weight: 600;
               text-transform: none;
               line-height: normal;
@@ -2305,674 +2307,712 @@ div#drupal-off-canvas *:not(div) {
               letter-spacing: normal;
               @extend %librefranklin;
             }
+          }
 
-            &.sliderwidget-event-field-container {
-              display: none;
+          &.js-form-type-slider{
+            div{
+              &.sliderwidget {
+                width: 100%;
+                padding: 5px;
+                margin-top: 0;
+              }
+
+              &.ui-slider-horizontal {
+                background: $grey-theme-extralight;
+
+                & > span {
+                  background: $primary-color-darkest;
+                }
+              }
+
+              &.sliderwidget-display-values-field {
+                width: 60px;
+                padding: 5px;
+                text-align: center;
+                border-radius: 2px;
+                background: $grey-theme-extralight;
+                margin: 5px auto;
+                color: $primary-color-darkest;
+                font-size: 13px;
+                font-weight: 600;
+                text-transform: none;
+                line-height: normal;
+                border: 1px solid $primary-color-darkest;
+                box-shadow: none;
+                letter-spacing: normal;
+                @extend %librefranklin;
+              }
+
+              &.sliderwidget-event-field-container {
+                display: none;
+              }
             }
           }
         }
-      }
 
 
-      //--------------------------- checkbox
+        //--------------------------- checkbox
 
-      .formatter-settings-wrapper{
-        .form-item{
-          &.form-type-checkbox{
+        .formatter-settings-wrapper{
+          .form-item{
+            &.form-type-checkbox{
+              position: relative;
+              float: left;
+              margin:5px 20px !important;
+              input[type='checkbox']{
+                position: relative;
+                float: left;
+                margin-right: 10px;
+              }
+              label{
+                position: relative;
+                float: left;
+                width: calc(100% - 40px);
+              }
+            }
+          }
+        }
+
+        .form-type-checkbox{
+
+          input[type="checkbox"] {
             position: relative;
             float: left;
-            margin:5px 20px !important;
-            input[type='checkbox']{
-              position: relative;
-              float: left;
-              margin-right: 10px;
-            }
-            label{
-              position: relative;
-              float: left;
-              width: calc(100% - 40px);
+            @extend %checkbox;
+            margin-right: 10px;
+          }
+
+          .label{
+            position: relative;
+            float: left;
+            width: calc(100% - 40px);
+          }
+
+          .description{
+            margin-left: 0px;
+          }
+        }
+        .edit-settings-formatter-third-party-settings-linked-field-destination-field-message{
+          margin: 20px;
+          border-color: white;
+          font-weight: 500;
+        }
+
+        .form-composite > legend, .label{
+          font-weight: 500;
+        }
+
+        span{
+          .fieldset-legend{
+            margin: 0px 20px;
+            span{
+              &.lc-lateral-title{
+                position: relative;
+                float: left;
+                color: white;
+                line-height: 20px;
+                font-weight: 500;
+                font-size: $font-size-base;
+                @extend %librefranklin;
+                margin: 0px 5px 5px 0px;
+              }
+              &.lc-lateral-info{
+                &:after{
+                  margin: 0px 5px 5px 0px;
+                  line-height: 18px;
+                }
+              }
             }
           }
         }
-      }
 
-      .form-type-checkbox{
-
-        input[type="checkbox"] {
-          position: relative;
-          float: left;
-          @extend %checkbox;
-          margin-right: 10px;
+        select {
+          -webkit-appearance: none;
+          -moz-appearance: none;
         }
 
-        .label{
-          position: relative;
-          float: left;
-          width: calc(100% - 40px);
+        label{
+          &.js-form-type-checkbox {
+            display: inline-block;
+            background: transparent;
+            color: $primary-color-dark;
+            font-weight: 600;
+            line-height: 20px;
+            font-size: $font-size-large;
+
+            span{
+              &.lc-lateral-info{
+                &:after{
+                  cursor: pointer;
+                  font-size: $font-size-large;
+                  content: "\f05a";
+                  color: $primary-color-soft;
+                  @extend %fontawesome;
+                  display: inline-block;
+                  line-height: 18px;
+                }
+              }
+            }
+          }
         }
 
-        .description{
-          margin-left: 0px;
+        select[multiple] {
+          padding: 0;
+          overflow: scroll;
         }
-      }
-      .edit-settings-formatter-third-party-settings-linked-field-destination-field-message{
-        margin: 20px;
-        border-color: white;
-        font-weight: 500;
-      }
 
-      .form-composite > legend, .label{
-        font-weight: 500;
-      }
+        form{
+          &.layout-builder-section-move{
+            .table {
+              margin: 0;
+            }
+          }
+        }
 
-      span{
-        .fieldset-legend{
-          margin: 0px 20px;
-          span{
-            &.lc-lateral-title{
-              position: relative;
-              float: left;
+
+        label[for^="edit-settings-block-"] {
+          margin: 0 5px 5px 0px;
+
+          & > span{
+            .lc-lateral-title{
               color: white;
               line-height: 20px;
               font-weight: 500;
               font-size: $font-size-base;
               @extend %librefranklin;
               margin: 0px 5px 5px 0px;
+
             }
             &.lc-lateral-info{
-              &:after{
-                margin: 0px 5px 5px 0px;
-                line-height: 18px;
-              }
-            }
-          }
-        }
-      }
-
-      select {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-      }
-
-      label{
-        &.js-form-type-checkbox {
-          display: inline-block;
-          background: transparent;
-          color: $primary-color-dark;
-          font-weight: 600;
-          line-height: 20px;
-          font-size: $font-size-large;
-
-          span{
-            &.lc-lateral-info{
-              &:after{
+              &:after {
                 cursor: pointer;
                 font-size: $font-size-large;
                 content: "\f05a";
-                color: $primary-color-soft;
+                color:$primary-color-soft;
                 @extend %fontawesome;
                 display: inline-block;
+                margin-right: 5px;
                 line-height: 18px;
               }
             }
           }
         }
-      }
 
-      select[multiple] {
-        padding: 0;
-        overflow: scroll;
-      }
-
-      form{
-        &.layout-builder-section-move{
-          .table {
-            margin: 0;
-          }
-        }
-      }
-
-
-      label[for^="edit-settings-block-"] {
-        margin: 0 5px 5px 0px;
-
-        & > span{
-          .lc-lateral-title{
-            color: white;
-            line-height: 20px;
-            font-weight: 500;
-            font-size: $font-size-base;
-            @extend %librefranklin;
-            margin: 0px 5px 5px 0px;
-
-          }
-          &.lc-lateral-info{
-            &:after {
-              cursor: pointer;
-              font-size: $font-size-large;
-              content: "\f05a";
-              color:$primary-color-soft;
-              @extend %fontawesome;
-              display: inline-block;
-              margin-right: 5px;
-              line-height: 18px;
-            }
-          }
-        }
-      }
-
-      button{
-        &.color_field_widget_box__square{
-          &.active{
-            &:before {
-              content: "\f00c";
-              @extend %fontawesome;
-              font-size: $font-size-base;
-              color: white;
-            }
-          }
-        }
-      }
-
-
-
-      &.color-field-widget-box-form > button {
-        margin: 5px;
-        border: 1px solid $grey-theme-extralight;
-      }
-
-       &.media-library-form-element {
-        display: contents;
-      }
-
-
-      &.media-library-item{
         button{
-          &.media-library-item__remove{
-            background-color: $secondary-color-medium;
-            border: 0;
-            border-radius: 0;
-            color: white;
-            display: flow-root;
-            font-weight: bold;
-            padding: 5px;
-            font-size: 0.7em;
-            &:before {
-              content: "\f2ed";
-              @extend %fontawesome;
-              font-size: 11px;
-              margin-right: 5px;
+          &.color_field_widget_box__square{
+            &.active{
+              &:before {
+                content: "\f00c";
+                @extend %fontawesome;
+                font-size: $font-size-base;
+                color: white;
+              }
             }
           }
         }
-      }
 
-      &.details-wrapper{
-        span{
-          &.lc-lateral-title{
-            color: white;
-            position: relative;
-            float: left;
-            font-weight: 500;
-            font-size: $font-size-base;
-            line-height: 20px;
-            @extend %librefranklin;
-            margin: 0px 5px 5px 0px;
-          }
+
+
+        &.color-field-widget-box-form > button {
+          margin: 5px;
+          border: 1px solid $grey-theme-extralight;
         }
 
-        div{
-          &.horizontal-tabs > ul {
-            margin: -6px 0 15px 0;
-            display: flex;
-          }
-        }
-      }
-
-      .components-title {
-        margin: 20px 0;
-        border-bottom: 1px solid #fff;
-      }
-
-      .customblock-menuitem-modal {
-        background-image: url(../../../misc/icons/bebebe/plus.svg) transparent 16px no-repeat ;
-        background-color: $primary-color-darker;
-
-        &:hover{
-          background-color: $primary-color-dark;
+        &.media-library-form-element {
+          display: contents;
         }
 
-      }
-      .components-title {
-        margin: 20px 0;
-        border-bottom: 1px solid #fff;
-      }
 
-      a {
-        @extend %librefranklin;
-        &:visited, &:hover, &:active, &:focus{
-          color: white;
-          text-decoration: none;
-        }
-        .inline-block-create-button, .inline-block-list__item{
-          margin: 0;
-          color: white;
-          font-size: 1em;
-        }
-      }
-
-      .text-format-wrapper{
-
-        padding: 20px;
-        border: 1px solid $primary-color-medium;
-        border-radius: $border-radius-base;
-        @extend %librefranklin;
-
-        .filter-wrapper{
-          border: none;
-          padding: 0;
-          .filter-help{
-            position: relative;
-            float: left;
-            width: 100%;
-            margin:10px 0px;
-            font-size: $font-size-base;
-            @extend %librefranklin;
-          }
-        }
-      }
-
-      .details-wrapper{
-        .form-item{
-          input[type='checkbox']{
-            position: relative;
-            float: left;
-            margin-right: 10px;
-          }
-        }
-
-        .form-inline{
-          margin: 0px;
-          width: 100%;
-        }
-
-        .fieldset-wrapper{
-          @extend %librefranklin;
-          border: 1px solid $primary-color-medium;
-          border-radius: $border-radius-base;
-          padding: 20px;
-
-          select{
-            option{
+        &.media-library-item{
+          button{
+            &.media-library-item__remove{
+              background-color: $secondary-color-medium;
+              border: 0;
+              border-radius: 0;
               color: white;
-              padding:5px 0px;
+              display: flow-root;
+              font-weight: bold;
+              padding: 5px;
+              font-size: 0.7em;
+              &:before {
+                content: "\f2ed";
+                @extend %fontawesome;
+                font-size: 11px;
+                margin-right: 5px;
+              }
             }
           }
+        }
 
-          .tabledrag-toggle-weight-wrapper{
-            padding-top: 0px;
-          }
-
-          table{
-            position: relative;
-            float: left;
-            width: 100%;
-            min-width: 100%;
-            margin: 0;
-            @extend %librefranklin;
-
-            .form-type-select{
-              margin-right: 10px;
-            }
-
-            .btn-success{
+        &.details-wrapper{
+          span{
+            &.lc-lateral-title{
+              color: white;
               position: relative;
-              display: inline-block;
-              @extend %librefranklin;
-              font-weight: 800;
-              border: none;
-              box-shadow: inset 0px 0px 0px 2px white;
-              border-radius: $border-radius-base;
-              font-size: $font-size-base;
-              color: white;
-              width: auto;
-              margin: 5px 0px;
-              padding: calc(0.75rem - 1px) calc(1rem - 1px);
-              box-sizing: border-box;
-              -moz-box-sizing: border-box;
-              -webkit-box-sizing: border-box;
-
-              &:hover{
-                box-shadow: inset 0px 0px 0px 4px white;
-              }
-
-            }
-
-            .form-wrapper{
-              background: transparent;
-
-              input[type="submit"]{
-                width: auto;
-                margin: 10px 0px;
-              }
-            }
-
-            .form-item label{
-              margin-top: 10px;
-            }
-
-            .details-wrapper{
-              label{
-                margin: 0px;
-              }
-            }
-
-            th{
-              border-bottom: 1px solid white !important;
-            }
-            td{
-              margin: 10px;
-              &.inline-entity-form-block_content-label{
-                margin: 10px;
-                position: relative;
-                float: left;
-              }
-            }
-            tr{
-              &.drag-previous td{
-                background: transparent;
-              }
-              margin-top: 10px;
-            }
-            thead{
-              border-bottom: 1px solid white;
-            }
-            tbody{
-              border-bottom: 1px solid white;
-              tr{
-                padding: 0;
-                &:hover{
-                  td{
-                    background:transparent;
-                  }
-                }
-                td{
-                  border: 0;
-                  padding: 0;
-                }
-              }
-            }
-          }
-
-          p{
-            margin: 10px 0px;
-          }
-
-          button.link{
-            margin: 10px 0px;
-          }
-
-          .js-media-library-item{
-            padding: 0px;
-          }
-
-          .description{
-            margin-left: 0;
-          }
-
-          .media-library-item__preview{
-            margin: 20px 0px;
-            .field--type-image{
-
-            }
-          }
-          .media-library-item__attributes{
-            margin:20px 0px;
-            .media-library-item__name{
+              float: left;
               font-weight: 500;
+              font-size: $font-size-base;
+              line-height: 20px;
+              @extend %librefranklin;
+              margin: 0px 5px 5px 0px;
             }
           }
 
-          input{
-            width: 100%;
-            margin: 10px 0px;
-            @extend %librefranklin;
-            font-size: $font-size-base;
-          }
-
-          .field-prefix{
-            @extend %librefranklin;
-            font-weight: 500;
-          }
-        }
-
-        ul{
-          border: none;
-          margin: 0;
-        }
-        div.js-form-item {
-          .js-form-type-checkbox {
-            .checkbox {
-              .form-check {
-                border-bottom: 1px solid gray;
-                margin: 5px -20px 5px -20px;
-                padding: 0;
-                label {
-                  display: inline-block;
-                }
-                small {
-                  display: block;
-                }
-              }
-            }
-          }
-        }
-        div{
-          &.js-form-item{
-            .js-form-type-checkbox{
-              .checkbox{
-                .form-check {
-                  border-bottom: 1px solid gray;
-                  margin: 5px -20px 5px -20px;
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .inline-block-list__item.use-ajax{
-        &.js-layout-builder-block-link{
-          &.inline-block-list__item {
-            width: 100%;
-            display: inline-grid;
-            text-align: center;
-            margin: 0;
-            padding: 15px 25px 15px 25px;
-            text-decoration: none;
-            opacity: 0.8;
-            &:hover{
-              opacity: 1;
-              color: white;
-              &:before{
-                transform: scale(1.2);
-              }
-            }
-            li{
-              a {
-                transition: all 0.1s linear;
-                &:hover {
-                  transform: scale(1.1);
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .lc-inline_block_iframe-iframe-edit{
-        border: none !important;
-      }
-
-      details {
-        margin: 0;
-        width: 100%;
-        float: left;
-        padding: 0;
-
-        &[open]{
-          & > summary {
-            background: $primary-color-darker;
-            color: white;
-            &:focus{
-              outline: none;
-              border: none;
-            }
-            &:hover{
-              background: $primary-color-dark;
+          div{
+            &.horizontal-tabs > ul {
+              margin: -6px 0 15px 0;
+              display: flex;
             }
           }
         }
 
-        & > summary {
-          float: left;
-          padding: 10px 20px;
-          margin: 0;
-          width: 100%;
-          @extend %librefranklin;
-          font-weight: 700;
-          border-bottom: 1px solid $primary-color-dark;
-          border-top: 1px solid $primary-color-dark;
-          background: $primary-color-darker;
-          font-size: $font-size-base;
+        .components-title {
+          margin: 20px 0;
+          border-bottom: 1px solid #fff;
+        }
+
+        .customblock-menuitem-modal {
+          background-image: url(../../../misc/icons/bebebe/plus.svg) transparent 16px no-repeat ;
+          background-color: $primary-color-darker;
 
           &:hover{
             background-color: $primary-color-dark;
           }
-        }
-        .details-wrapper {
-          padding: 0px !important;
-          width: 100%;
-          float: left;
-          margin: 0 ;
-          margin-top: 0px;
 
-          .media-library-form-element{
-            legend{
-              .fieldset-legend{
-                .lc-lateral-title{
+        }
+        .components-title {
+          margin: 20px 0;
+          border-bottom: 1px solid #fff;
+        }
+
+        a {
+          @extend %librefranklin;
+          &:visited, &:hover, &:active, &:focus{
+            color: white;
+            text-decoration: none;
+          }
+          .inline-block-create-button, .inline-block-list__item{
+            margin: 0;
+            color: white;
+            font-size: 1em;
+          }
+        }
+
+        .text-format-wrapper{
+
+          padding: 20px;
+          border: 1px solid $primary-color-medium;
+          border-radius: $border-radius-base;
+          @extend %librefranklin;
+
+          .filter-wrapper{
+            border: none;
+            padding: 0;
+            .filter-help{
+              position: relative;
+              float: left;
+              width: 100%;
+              margin:10px 0px;
+              font-size: $font-size-base;
+              @extend %librefranklin;
+            }
+          }
+        }
+
+        .details-wrapper{
+          .form-item{
+            input[type='checkbox']{
+              position: relative;
+              float: left;
+              margin-right: 10px;
+            }
+          }
+
+          .form-inline{
+            margin: 0px;
+            width: 100%;
+          }
+
+          .fieldset-wrapper{
+            @extend %librefranklin;
+            border: 1px solid $primary-color-medium;
+            border-radius: $border-radius-base;
+            padding: 20px;
+
+            select{
+              option{
+                color: white;
+                padding:5px 0px;
+              }
+            }
+
+            .tabledrag-toggle-weight-wrapper{
+              padding-top: 0px;
+            }
+
+            table{
+              position: relative;
+              float: left;
+              width: 100%;
+              min-width: 100%;
+              margin: 0;
+              @extend %librefranklin;
+
+              .form-type-select{
+                margin-right: 10px;
+              }
+
+              .btn-success{
+                position: relative;
+                display: inline-block;
+                @extend %librefranklin;
+                font-weight: 800;
+                border: none;
+                box-shadow: inset 0px 0px 0px 2px white;
+                border-radius: $border-radius-base;
+                font-size: $font-size-base;
+                color: white;
+                width: auto;
+                margin: 5px 0px;
+                padding: calc(0.75rem - 1px) calc(1rem - 1px);
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+
+                &:hover{
+                  box-shadow: inset 0px 0px 0px 4px white;
+                }
+
+              }
+
+              .form-wrapper{
+                background: transparent;
+
+                input[type="submit"]{
+                  width: auto;
+                  margin: 10px 0px;
+                }
+              }
+
+              .form-item label{
+                margin-top: 10px;
+              }
+
+              .details-wrapper{
+                label{
+                  margin: 0px;
+                }
+              }
+
+              th{
+                border-bottom: 1px solid white !important;
+              }
+              td{
+                margin: 10px;
+                &.inline-entity-form-block_content-label{
+                  margin: 10px;
                   position: relative;
                   float: left;
-                  margin: 0px 5px 5px 20px;
+                }
+              }
+              tr{
+                &.drag-previous td{
+                  background: transparent;
+                }
+                margin-top: 10px;
+              }
+              thead{
+                border-bottom: 1px solid white;
+              }
+              tbody{
+                border-bottom: 1px solid white;
+                tr{
+                  padding: 0;
+                  &:hover{
+                    td{
+                      background:transparent;
+                    }
+                  }
+                  td{
+                    border: 0;
+                    padding: 0;
+                  }
                 }
               }
             }
-            .fieldset-wrapper{
 
-              margin: 20px;
+            p{
+              margin: 10px 0px;
             }
-          }
 
-          .details-description{
-            margin: 20px;
-            @extend %librefranklin;
-            color: $primary-color-bg-border;
-            font-size: $font-size-base;
-            font-weight: 500;
-          }
-        }
-      }
+            button.link{
+              margin: 10px 0px;
+            }
 
-      .form-inline > fieldset {
-        width: auto;
-      }
+            .js-media-library-item{
+              padding: 0px;
+            }
 
-      .layout-selection{
-        li{
-          width: 50%;
-          display: inline-grid;
-          text-align: center;
-          margin: 0;
-          padding: 15px;
-          text-decoration: none;
-          opacity: 0.85;
-          flex-basis: 50%;
+            .description{
+              margin-left: 0;
+            }
 
-          &:hover{
-            opacity: 1;
-            transform: scale(1.05);
-            color: white;
-          }
+            .media-library-item__preview{
+              margin: 20px 0px;
+              .field--type-image{
 
-          a{
-            border:1px solid white;
-            border-radius: $border-radius-base;
-            padding: 10px;
-            transition: all 0.1s linear;
+              }
+            }
+            .media-library-item__attributes{
+              margin:20px 0px;
+              .media-library-item__name{
+                font-weight: 500;
+              }
+            }
 
-            div{
-              margin-top: 10px;
+            input{
+              width: 100%;
+              margin: 10px 0px;
               @extend %librefranklin;
               font-size: $font-size-base;
             }
 
-            &:hover{
-              transform: scale(1.05);
-            }
-          }
-        }
-      }
-
-      svg{
-        .layout-icon{
-          + div {
-            color: $primary-color-dark;
-          }
-          g rect {
-            fill: $primary-color-dark;
-          }
-        }
-      }
-
-      .logo {
-        margin: 0 0 20px 0;
-      }
-
-      form{
-        width: 100%;
-        float: left;
-        &.layout-builder-section-move{
-          .table{
-            thead tr th, tbody tr td{
-              @extend %librefranklin;
-              color: white;
-              font-weight: 700;
-              font-size: $font-size-base;
-              padding: 20px;
-              line-height: 20px;
-              border-bottom: 1px solid $primary-color-dark;
-              border-top: 1px solid $primary-color-dark;
-
-            }
-            tbody tr td {
-              padding: 15px 20px;
-              margin: 0;
+            .field-prefix{
               @extend %librefranklin;
               font-weight: 500;
-              border-bottom: 1px solid $primary-color-dark;
-              border-top: 1px solid $primary-color-dark;
-              color: white;
-              background: $primary-color-darker;
             }
-            tbody tr.drag-previous td, tr td:hover{
+          }
+
+          ul{
+            border: none;
+            margin: 0;
+          }
+          div.js-form-item {
+            .js-form-type-checkbox {
+              .checkbox {
+                .form-check {
+                  border-bottom: 1px solid gray;
+                  margin: 5px -20px 5px -20px;
+                  padding: 0;
+                  label {
+                    display: inline-block;
+                  }
+                  small {
+                    display: block;
+                  }
+                }
+              }
+            }
+          }
+          div{
+            &.js-form-item{
+              .js-form-type-checkbox{
+                .checkbox{
+                  .form-check {
+                    border-bottom: 1px solid gray;
+                    margin: 5px -20px 5px -20px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .inline-block-list__item.use-ajax{
+          &.js-layout-builder-block-link{
+            &.inline-block-list__item {
+              width: 100%;
+              display: inline-grid;
+              text-align: center;
+              margin: 0;
+              padding: 15px 25px 15px 25px;
+              text-decoration: none;
+              opacity: 0.8;
+              &:hover{
+                opacity: 1;
+                color: white;
+                &:before{
+                  transform: scale(1.2);
+                }
+              }
+              li{
+                a {
+                  transition: all 0.1s linear;
+                  &:hover {
+                    transform: scale(1.1);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .lc-inline_block_iframe-iframe-edit{
+          border: none !important;
+        }
+
+        details {
+          margin: 0;
+          width: 100%;
+          float: left;
+          padding: 0;
+
+          &[open]{
+            & > summary {
+              background: $primary-color-darker;
+              color: white;
+              &:focus{
+                outline: none;
+                border: none;
+              }
+              &:hover{
+                background: $primary-color-dark;
+              }
+            }
+          }
+
+          & > summary {
+            float: left;
+            padding: 10px 20px;
+            margin: 0;
+            width: 100%;
+            @extend %librefranklin;
+            font-weight: 700;
+            border-bottom: 1px solid $primary-color-dark;
+            border-top: 1px solid $primary-color-dark;
+            background: $primary-color-darker;
+            font-size: $font-size-base;
+
+            &:hover{
               background-color: $primary-color-dark;
+            }
+          }
+          .details-wrapper {
+            padding: 0px !important;
+            width: 100%;
+            float: left;
+            margin: 0 ;
+            margin-top: 0px;
+
+            .media-library-form-element{
+              legend{
+                .fieldset-legend{
+                  .lc-lateral-title{
+                    position: relative;
+                    float: left;
+                    margin: 0px 5px 5px 20px;
+                  }
+                }
+              }
+              .fieldset-wrapper{
+
+                margin: 20px;
+              }
+            }
+
+            .details-description{
+              margin: 20px;
+              @extend %librefranklin;
+              color: $primary-color-bg-border;
+              font-size: $font-size-base;
+              font-weight: 500;
+            }
+          }
+        }
+
+        .form-inline > fieldset {
+          width: auto;
+        }
+
+        .layout-selection{
+          li{
+            width: 50%;
+            display: inline-grid;
+            text-align: center;
+            margin: 0;
+            padding: 15px;
+            text-decoration: none;
+            opacity: 0.85;
+            flex-basis: 50%;
+
+            &:hover{
+              opacity: 1;
+              transform: scale(1.05);
+              color: white;
+            }
+
+            a{
+              border:1px solid white;
+              border-radius: $border-radius-base;
+              padding: 10px;
+              transition: all 0.1s linear;
+
+              div{
+                margin-top: 10px;
+                @extend %librefranklin;
+                font-size: $font-size-base;
+              }
+
+              &:hover{
+                transform: scale(1.05);
+              }
+            }
+          }
+        }
+
+        svg{
+          .layout-icon{
+            + div {
+              color: $primary-color-dark;
+            }
+            g rect {
+              fill: $primary-color-dark;
+            }
+          }
+        }
+
+        .logo {
+          margin: 0 0 20px 0;
+        }
+
+        form{
+          width: 100%;
+          float: left;
+          &.layout-builder-section-move{
+            .table{
+              thead tr th, tbody tr td{
+                @extend %librefranklin;
+                color: white;
+                font-weight: 700;
+                font-size: $font-size-base;
+                padding: 20px;
+                line-height: 20px;
+                border-bottom: 1px solid $primary-color-dark;
+                border-top: 1px solid $primary-color-dark;
+
+              }
+              tbody tr td {
+                padding: 15px 20px;
+                margin: 0;
+                @extend %librefranklin;
+                font-weight: 500;
+                border-bottom: 1px solid $primary-color-dark;
+                border-top: 1px solid $primary-color-dark;
+                color: white;
+                background: $primary-color-darker;
+              }
+              tbody tr.drag-previous td, tr td:hover{
+                background-color: $primary-color-dark;
+              }
             }
           }
         }
       }
     }
   }
+
 }
+
 
 
 
@@ -3012,8 +3052,10 @@ div#drupal-off-canvas *:not(div) {
 
 
 @media screen and (max-width: 1600px) {
-  #drupal-off-canvas .layout-selection li {
-    flex-basis: 100%;
+  .lc-ui-dialog{
+    #drupal-off-canvas .layout-selection li {
+      flex-basis: 100%;
+    }
   }
 }
 

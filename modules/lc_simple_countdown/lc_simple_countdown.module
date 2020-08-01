@@ -56,17 +56,14 @@ function lc_simple_countdown_preprocess_block(&$variables) {
   // Color.
   $date_color = $block->get('field_sc_color')->getString();
 
-
   if (!empty($date_size)) {
-    $date_styles[] = "font-size: $date_size" . "px";
+    $date_styles[] = "font-size: " . $date_size . "px";
   }
-
 
   if (!empty($date_color)) {
     $rgba = $helper->hexToRgba($date_color, 1);
     $date_styles[] = "color: $rgba";
   }
-
 
   $variables['content_attributes']['class'] = [
     'lc-inline_block_' . $block_id . '-countdown-container-edit',
@@ -126,10 +123,9 @@ function lc_simple_countdown_block_type_form_alter(array &$form, FormStateInterf
  * Change the elements with LayoutComponents Api.
  *
  * @param array $form
- *  The array with the form.
- *
+ *   The array with the form.
  * @param string $block_id
- *  The id of the block.
+ *   The id of the block.
  */
 function _lc_simple_countdown_form_alter(array &$form, $block_id) {
   /** @var \Drupal\layoutcomponents\Api\Component $lcApi */
@@ -171,4 +167,3 @@ function _lc_simple_countdown_form_alter(array &$form, $block_id) {
   );
 
 }
-

@@ -4,6 +4,7 @@ namespace Drupal\layoutcomponents\Controller;
 
 use Drupal\Component\Uuid\UuidInterface;
 use Drupal\Core\Block\BlockManagerInterface;
+use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
@@ -11,6 +12,7 @@ use Drupal\layout_builder\Controller\ChooseBlockController;
 use Drupal\layout_builder\Controller\LayoutRebuildTrait;
 use Drupal\layout_builder\LayoutTempstoreRepositoryInterface;
 use Drupal\layout_builder\SectionStorageInterface;
+use Drupal\layoutcomponents\LcDialogHelperTrait;
 use Drupal\layoutcomponents\LcLayoutsManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
@@ -24,6 +26,7 @@ use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
 class LcChooseBlockController extends ChooseBlockController {
 
   use LayoutRebuildTrait;
+  use LcDialogHelperTrait;
 
   /**
    * The section storage.
@@ -61,6 +64,14 @@ class LcChooseBlockController extends ChooseBlockController {
   protected $sectionStorage;
 
   /**
+   * Config factory object.
+   *
+   * @var \Drupal\Core\Config\ConfigFactory
+   */
+  protected $configFactory;
+
+
+  /**
    * Is a default section.
    *
    * @var bool
@@ -84,13 +95,16 @@ class LcChooseBlockController extends ChooseBlockController {
    *   The LayoutTempstoreRepositoryInterface object.
    * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store
    *   The PrivateTempStoreFactory object.
+   * @param \Drupal\Core\Config\ConfigFactory $config_factory
+   *   The config factory object.
    */
-  public function __construct(BlockManagerInterface $block_manager, EntityTypeManagerInterface $entity_type_manager, AccountInterface $current_user, LcLayoutsManager $layout_manager, UuidInterface $uuid, LayoutTempstoreRepositoryInterface $layout_tempstore_repository, PrivateTempStoreFactory $temp_store) {
+  public function __construct(BlockManagerInterface $block_manager, EntityTypeManagerInterface $entity_type_manager, AccountInterface $current_user, LcLayoutsManager $layout_manager, UuidInterface $uuid, LayoutTempstoreRepositoryInterface $layout_tempstore_repository, PrivateTempStoreFactory $temp_store, ConfigFactory $config_factory) {
     parent::__construct($block_manager, $entity_type_manager, $current_user);
     $this->layoutManager = $layout_manager;
     $this->uuidGenerator = $uuid;
     $this->layoutTempstoreRepository = $layout_tempstore_repository;
     $this->tempStoreFactory = $temp_store;
+    $this->configFactory = $config_factory;
   }
 
   /**
@@ -104,7 +118,8 @@ class LcChooseBlockController extends ChooseBlockController {
       $container->get('plugin.manager.layoutcomponents_layouts'),
       $container->get('uuid'),
       $container->get('layout_builder.tempstore_repository'),
-      $container->get('tempstore.private')
+      $container->get('tempstore.private'),
+      $container->get('config.factory')
     );
   }
 
@@ -130,6 +145,9 @@ class LcChooseBlockController extends ChooseBlockController {
     /** @var \Drupal\Core\TempStore\PrivateTempStore $store */
     $store = $this->tempStoreFactory->get('lc');
     $data = $store->get('lc_element');
+
+    /** @var \Drupal\Core\Config\Config $lc_settings */
+    $lcSettings = $this->configFactory->getEditable('layoutcomponents.general');
 
     // If a new element must be copied.
     if (!empty($data)) {
@@ -166,6 +184,7 @@ class LcChooseBlockController extends ChooseBlockController {
 
     // Add class to menu item "Create custom block".
     $build['add_block']['#attributes']['class'][] = 'customblock-menuitem-modal';
+    $build['add_block']['#attributes']['data-dialog-options'] = $this->dialogOptions();
     // Alter layoutcomponents blocks names.
     foreach ($build['block_categories'] as $name => $category) {
       // Remove unnecesary categories.
@@ -176,6 +195,12 @@ class LcChooseBlockController extends ChooseBlockController {
       // Close category.
       if (is_array($build['block_categories'][$name])) {
         $build['block_categories'][$name]['#open'] = FALSE;
+      }
+      // Append lc dialog options.
+      if (array_key_exists('links', $build['block_categories'][$name])) {
+        foreach ($build['block_categories'][$name]['links']['#links'] as $i => $link){
+          $build['block_categories'][$name]['links']['#links'][$i]['attributes']['data-dialog-options'] = $this->dialogOptions();
+        }
       }
     }
 
@@ -214,6 +239,7 @@ class LcChooseBlockController extends ChooseBlockController {
         if ($type['admin_label'] == $link['title']) {
           $blockId = explode(':', $name);
           $build['links']['#links'][$key]['attributes']['class'][] = $blockId[1];
+          $build['links']['#links'][$key]['attributes']['data-dialog-options'] = $this->dialogOptions();
         }
       }
       // Remove link if in array.
@@ -229,6 +255,7 @@ class LcChooseBlockController extends ChooseBlockController {
 
     // Add custom selector.
     $build['back_button']['#attributes']['data-drupal-selector'] = 'back';
+    $build['back_button']['#attributes']['data-dialog-options'] = $this->dialogOptions();
 
     return $build;
   }

@@ -197,12 +197,11 @@ function lc_simple_video_block_type_form_alter(array &$form, FormStateInterface 
  * Change the elements with LayoutComponents Api.
  *
  * @param array $form
- *  The array with the form.
- *
+ *   The array with the form.
  * @param string $block_id
- *  The id of the block.
+ *   The id of the block.
  */
-function _lc_simple_video_form_alter(array &$form, $block_id){
+function _lc_simple_video_form_alter(array &$form, $block_id) {
   /** @var \Drupal\layoutcomponents\Api\Component $lcApi */
   $lcApi = Drupal::service('layoutcomponents.apiComponent');
 

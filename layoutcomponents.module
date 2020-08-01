@@ -11,6 +11,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\layoutcomponents\Entity\LcEntityViewDisplay;
+use Drupal\field\Entity\FieldConfig;
 
 /**
  * Implements hook_theme().
@@ -168,7 +169,7 @@ function layoutcomponents_block_type_form_alter(array &$form, FormStateInterface
  * Change the elements with LayoutComponents Api.
  *
  * @param array $form
- *  The array with the form.
+ *   The array with the form.
  */
 function _layoutcomponents_form_alter(array &$form, BlockContent $element) {
   /** @var \Drupal\layoutcomponents\Api\Component $lcApi */
@@ -179,7 +180,7 @@ function _layoutcomponents_form_alter(array &$form, BlockContent $element) {
 
   $definitions = $block->getFieldDefinitions();
   foreach ($definitions as $definition) {
-    if ($definition instanceof \Drupal\field\Entity\FieldConfig) {
+    if ($definition instanceof FieldConfig) {
       if (array_key_exists($definition->getName(), $form)) {
         $item = [];
         if ($form[$definition->getName()]['widget'][0]) {

@@ -595,26 +595,6 @@ class LcLayoutsManager {
   }
 
   /**
-   * Insert element in array by position.
-   *
-   * @param array $array
-   *   The array.
-   * @param int $position
-   *   The delta of the section.
-   * @param array $new
-   *   The new element.
-   */
-  public function arrayInsert(array &$array, $position, array $new) {
-    $first = array_slice($array, 0, $position);
-    $second = array_slice($array, $position);
-    $first[] = $new;
-    foreach ($second as $item) {
-      $first[] = $item;
-    }
-    $array = $first;
-  }
-
-  /**
    * Get default cancel button for LC.
    *
    * @param string $message
@@ -623,67 +603,7 @@ class LcLayoutsManager {
   public function getDefaultCancel($message) {
     $build = [];
     $build['description']['#markup'] = '<div class="layout_builder__add-section-confirm"> ' . $this->t('@message', ['@message' => $message]) . ' </div>';
-    $build['actions']['cancel'] = [
-      '#type' => 'submit',
-      '#value' => $this->t('Close'),
-      '#ajax' => [
-        'callback' => '::ajaxSubmit',
-      ],
-      '#button_type' => 'cancel',
-      '#attributes' => [
-        'class' => ['button', 'dialog-cancel'],
-      ],
-    ];
-
     return $build;
-  }
-
-  /**
-   * Get the default section.
-   *
-   * @param array $defaults
-   *   The array.
-   * @param string $label
-   *   The label of default section.
-   * @param int $new_delta
-   *   The new delta.
-   *
-   * @return array|null
-   *   The default array.
-   */
-  public function getDefault(array &$defaults, $label, &$new_delta) {
-    foreach ($defaults as $delta => $default) {
-      $settings = $default->getLayoutSettings();
-      $d_label = $settings['section']['general']['basic']['section_label'];
-      $d_delta = $settings['section']['general']['basic']['section_delta'];
-      if ($d_label == $label) {
-        $new_delta = $d_delta;
-        unset($defaults[$delta]);
-        return $default;
-      }
-    }
-    return NULL;
-  }
-
-  /**
-   * Check if the section exists on default sections.
-   *
-   * @param array $defaults
-   *   The array.
-   * @param string $label
-   *   The label of default section.
-   *
-   * @return bool
-   *   If the default exists.
-   */
-  public function checkDefaultExists(array $defaults, $label) {
-    /** @var \Drupal\layout_builder\Section $default */
-    foreach ($defaults as $delta => $default) {
-      if ($default->getLayoutSettings()['section']['general']['basic']['section_label'] == $label) {
-        return TRUE;
-      }
-    }
-    return FALSE;
   }
 
 }

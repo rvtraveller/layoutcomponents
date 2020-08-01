@@ -113,23 +113,23 @@ class LcConfigureSection extends ConfigureSectionForm {
       // This section cannot be configured.
       $message = 'This section cannot be configured because is configurated as default';
       $build = $this->lcLayoutManager->getDefaultCancel($message);
-      return $build;
     }
+    else {
+      // Add new step if is new section or is a update.
+      if (boolval($autosave)) {
+        $build['new_section'] = [
+          '#type' => 'help',
+          '#markup' => '<div class="layout_builder__add-section-confirm">' . $this->t("Are you sure to add a new section?") . '</div>',
+          '#weight' => -1,
+        ];
 
-    // Add new step if is new section or is a update.
-    if (boolval($autosave)) {
-      $build['new_section'] = [
-        '#type' => 'help',
-        '#markup' => '<div class="layout_builder__add-section-confirm">' . $this->t("Are you sure to add a new section?") . '</div>',
-        '#weight' => -1,
-      ];
+        if (boolval($update_layout)) {
+          $build['new_section']['#markup'] = '<div class="layout_builder__add-section-confirm">' . $this->t("Are you sure to change layout?") . '</div>';
+        }
 
-      if (boolval($update_layout)) {
-        $build['new_section']['#markup'] = '<div class="layout_builder__add-section-confirm">' . $this->t("Are you sure to change layout?") . '</div>';
+        $build['layout_settings']['container']['#prefix'] = '<div class="lc-lateral-container hidden">';
+        $build['layout_settings']['container']['#suffix'] = '</div>';
       }
-
-      $build['layout_settings']['container']['#prefix'] = '<div class="lc-lateral-container hidden">';
-      $build['layout_settings']['container']['#suffix'] = '</div>';
     }
 
     // Hidde other configurations.
