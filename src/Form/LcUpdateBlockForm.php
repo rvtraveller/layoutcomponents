@@ -164,7 +164,7 @@ class LcUpdateBlockForm extends UpdateBlockForm {
       'id' => 'inline_block:' . $block_content->get('type')->getString(),
       'label' => $configuration['label'],
       'provider' => 'layout_builder',
-      'block_serialized' => serialize($block_content->getTranslation($this->languageManager->getCurrentLanguage()->getId())),
+      'block_serialized' => serialize($block_content),
       'label_display' => FALSE,
       'status' => TRUE,
       'info' => '',
@@ -180,7 +180,7 @@ class LcUpdateBlockForm extends UpdateBlockForm {
    *   The layout builder component.
    */
   public function setCurrentLanguageTranslation(SectionComponent &$component) {
-    $configuration = $component->get('configuration');
+    $configuration = $component->get('configuration');;
     try {
       /** @var \Drupal\block_content\Entity\BlockContent $block_content */
       $block_content = $component->getPlugin()->build();
@@ -188,12 +188,15 @@ class LcUpdateBlockForm extends UpdateBlockForm {
       if (!$block_content instanceof BlockContent) {
         return;
       }
+
+      // Ensure that is default revision.
+      // This only work if the block type has checked the revisions.
+      $block_content->isDefaultRevision(TRUE);
+
       if (!$block_content->hasTranslation($this->languageManager->getCurrentLanguage()->getId())) {
         $block_content->addTranslation($this->languageManager->getCurrentLanguage()->getId(), $block_content->getFields());
-        $trans = $block_content->getTranslation($this->languageManager->getCurrentLanguage()->getId());
-        $configuration['uuid'] = $trans->uuid();
-        $block_content->save();
       }
+
       $configuration['block_serialized'] = serialize($block_content->getTranslation($this->languageManager->getCurrentLanguage()->getId()));
       $component->setConfiguration($configuration);
     }
