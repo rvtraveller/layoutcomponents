@@ -15,6 +15,10 @@ function lc_slick_page_attachments(&$page) {
  */
 function lc_slick_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   if ($form_id == 'layout_builder_configure_section') {
+    // Add the items if the form is not empty.
+    if (!array_key_exists('actions', $form)) {
+      return;
+    }
     // Form section.
     $section = &$form['layout_settings']['container']['section']['container'];
 
