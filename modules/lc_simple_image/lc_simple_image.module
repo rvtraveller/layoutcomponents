@@ -58,6 +58,11 @@ function lc_simple_image_preprocess_field(&$variables) {
     $element = $variables['element'];
 
     foreach ($variables['items'] as $i => $item) {
+      // Does not apply the following modifications to image in case the
+      // `image_url` is selected as the field display format.
+      if ($variables['element']['#formatter'] == 'image_url') {
+        continue;
+      }
 
       /** @var \Drupal\image\Plugin\Field\FieldType\ImageItem $imageItem */
       $imageItem = $variables['items'][$i]['content']['#item'];
