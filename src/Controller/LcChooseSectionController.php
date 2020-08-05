@@ -104,7 +104,7 @@ class LcChooseSectionController extends ChooseSectionController {
       $container->get('layout_builder.tempstore_repository'),
       $container->get('plugin.manager.layoutcomponents_layouts'),
       $container->get('tempstore.private'),
-      $container->get('config.factory'),
+      $container->get('config.factory')
     );
   }
 
