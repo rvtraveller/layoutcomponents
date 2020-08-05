@@ -57,7 +57,7 @@ class LcLayout {
       'default' => $default,
     ];
     $this->original = $this->data;
-    $this->delta = mt_rand(1, 100);
+    $this->delta = mt_rand(1, 1000);
   }
 
   /**
@@ -288,7 +288,7 @@ class LcLayout {
 
     // Add a layout wrapper and its attributes.
     $attributes = new Attribute($this->data['default']);
-    $attributes->addClass('lc-section');
+    $attributes->addClass(['lc-section', 'lc-section-' . $this->getDelta()]);
     $attributes->addClass(Html::cleanCssIdentifier($this->getId()));
 
     $component_container_attributes = new Attribute();
@@ -428,6 +428,69 @@ class LcLayout {
       $this->setColumn($name, $cont);
 
       $cont++;
+    }
+
+    // Carousel control.
+    $section_carousel = $this->getSetting('section.general.structure.section_carousel');
+    $section_carousel_slick = $this->getSetting('section.general.structure.section_carousel_slick');
+
+    if (boolval($section_carousel) && $section_carousel_slick !== 'none') {
+      /** @var \Drupal\slick\SlickManager $slick */
+      $slick = \Drupal::service('slick.manager');
+
+      $items = [];
+      foreach ($this->getSetting('regions') as $name => $column) {
+        $path = 'regions.' . $name . '.content';
+
+        foreach ($this->getSetting($path) as $key => $content) {
+          if (!array_key_exists('#base_plugin_id', $content)) {
+            continue;
+          }
+
+          if ($content['#base_plugin_id'] == 'inline_block') {
+            $item = $this->getSetting($path . '.' . $key . '.content');
+            unset($item['layout_builder-configuration']);
+            $items[] = [
+              'slide' => $item,
+            ];
+          }
+        }
+      }
+
+      if (!empty($items)) {
+
+        $skin = \Drupal::entityTypeManager()->getStorage('slick')->load($section_carousel_slick);
+        if (!empty($skin)) {
+          $class = 'lc-slick-section-' . $this->getDelta();
+
+          $build = [
+            'items' => $items,
+            'options' => $skin->getSettings(),
+            'attributes' => [
+              'class' => [$class],
+            ],
+          ];
+
+          // Get responsive options.
+          $options = $skin->getResponsiveOptions();
+          if (!empty($options)) {
+            // Prepare the array for JS.
+            $responsive_options = [
+              'parent' => 'lc-section-' . $this->getDelta(),
+              'options' => $options,
+            ];
+            // Normal array.
+            foreach ($options as $option) {
+              $build['options']['responsive'][] = $option;
+            }
+            // Store JS options.
+            $this->setSetting('js.responsive.' . $class, $responsive_options);
+          }
+
+          $element = $slick->build($build);
+          $this->setSetting('regions.slick', $element);
+        }
+      }
     }
 
     // Store data.
@@ -692,6 +755,16 @@ class LcLayout {
     $styles = new Attribute();
     $styles->setAttribute('style', implode(';', $title_styles));
     $this->setSetting('title.styles.attr_styles.title', $styles);
+  }
+
+  /**
+   * Get the JS settings.
+   *
+   * @return array
+   *   The JS settings.
+   */
+  public function getJsSettings() {
+    return $this->getSetting('js', []);
   }
 
   /**

@@ -138,4 +138,11 @@ class LcConfigureSection extends ConfigureSectionForm {
     return $build;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function getLayoutSettings() {
+    return $this->layout;
+  }
+
 }

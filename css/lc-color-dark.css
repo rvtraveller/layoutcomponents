@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* line 222, Z:/lc/html/web/modules/custom/layoutcomponents/scss/utils/variables.scss */
-.layout-builder-form .layout-builder__message .alert-success a, .layout-builder-form, .layout-builder-form .form-type-vertical-tabs .vertical-tabs .vertical-tabs__menu .vertical-tabs__menu-item a, .layout-builder-form .form-type-vertical-tabs .vertical-tabs .vertical-tabs__panes .details-wrapper .form-item.form-type-checkbox label, .lc-tooltip, .lc-ui-dialog div#drupal-off-canvas *,
+.layout-builder-form .layout-builder__message .alert-success a, .layout-builder-form, .layout-builder-form .form-type-vertical-tabs .vertical-tabs .vertical-tabs__menu .vertical-tabs__menu-item a, .layout-builder-form .form-type-vertical-tabs .vertical-tabs .vertical-tabs__panes .details-wrapper .form-item.form-type-checkbox label, .lc-tooltip, #layout-builder.layout-builder a, #layout-builder.layout-builder .layout-builder__section .lc-inline_container-title-edit h1, #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder .content .nav.nav-tabs .nav-item .nav-link, .lc-ui-dialog div#drupal-off-canvas *,
 .lc-ui-dialog div#drupal-off-canvas details,
 .lc-ui-dialog div#drupal-off-canvas div.details-wrapper,
 .lc-ui-dialog div#drupal-off-canvas fieldset label,
@@ -9,7 +9,7 @@
 }
 
 /* line 226, Z:/lc/html/web/modules/custom/layoutcomponents/scss/utils/variables.scss */
-.layout-builder-form .form-actions input[type="checkbox"]:checked:after, .layout-builder-form .form-type-vertical-tabs .vertical-tabs .vertical-tabs__panes .details-wrapper .form-item.form-type-checkbox input:checked:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-checkbox input[type="checkbox"]:checked:after, #layout-builder.layout-builder a.lc-clipboard:after, #layout-builder.layout-builder a.layout-builder__section_link-move:before, #layout-builder.layout-builder a.layout-builder__block_link-move:before, #layout-builder.layout-builder a.layout-builder__section_link-remove:before, #layout-builder.layout-builder a.layout-builder__block_link-remove:before, #layout-builder.layout-builder a.layout-builder__section_link-update:before, #layout-builder.layout-builder a.layout-builder__section_link-copy:before, #layout-builder.layout-builder a.layout-builder__block_link-copy:before, #layout-builder.layout-builder a.layout-builder__column_link-copy:before, #layout-builder.layout-builder a.layout-builder__link-add:before, #layout-builder.layout-builder a.layout-builder__link-add-section:before, #layout-builder.layout-builder a.layout-builder__column_link-add:before, #layout-builder.layout-builder a.layout-builder__section_link-configure:before, #layout-builder.layout-builder a.layout-builder__column_link-configure:before, #layout-builder.layout-builder a.layout-builder__block_link-configure:before, #layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link.lc-copy:before, #layout-builder.layout-builder .layout-builder__add-block a.layout-builder__column_link-add.lc-copy:before, #layout-builder.layout-builder .layout-builder__section a.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-block span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-section span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-column span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector*="back"]:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="remove-button"]:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_accordion::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.basic::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_countdown::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_iframe::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_image::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_tabs::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_text::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_video::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .lc-lateral-info:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset.js-form-type-search .form-type-search:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas label.js-form-type-checkbox span.lc-lateral-info:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas label[for^="edit-settings-block-"] > span.lc-lateral-info:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button.color_field_widget_box__square.active:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas.media-library-item button.media-library-item__remove:before {
+.layout-builder-form .form-actions input[type="checkbox"]:checked:after, .layout-builder-form .form-type-vertical-tabs .vertical-tabs .vertical-tabs__panes .details-wrapper .form-item.form-type-checkbox input:checked:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-checkbox input[type="checkbox"]:checked:after, #layout-builder.layout-builder a.lc-clipboard:after, #layout-builder.layout-builder a.layout-builder__section_link-move:before, #layout-builder.layout-builder a.layout-builder__block_link-move:before, #layout-builder.layout-builder a.layout-builder__section_link-remove:before, #layout-builder.layout-builder a.layout-builder__block_link-remove:before, #layout-builder.layout-builder a.layout-builder__section_link-update:before, #layout-builder.layout-builder a.layout-builder__section_link-copy:before, #layout-builder.layout-builder a.layout-builder__block_link-copy:before, #layout-builder.layout-builder a.layout-builder__column_link-copy:before, #layout-builder.layout-builder a.layout-builder__link-add:before, #layout-builder.layout-builder a.layout-builder__link-add-section:before, #layout-builder.layout-builder a.layout-builder__column_link-add:before, #layout-builder.layout-builder a.layout-builder__section_link-configure:before, #layout-builder.layout-builder a.layout-builder__column_link-configure:before, #layout-builder.layout-builder a.layout-builder__block_link-configure:before, #layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link.lc-copy:before, #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column a.lc-copy:before, #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block a.layout-builder__column_link-add.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-block span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-section span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-column span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector*="back"]:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="remove-button"]:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_accordion::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.basic::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_countdown::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_iframe::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_image::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_tabs::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_text::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_video::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .lc-lateral-info:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset.js-form-type-search .form-type-search:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas label.js-form-type-checkbox span.lc-lateral-info:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas label[for^="edit-settings-block-"] > span.lc-lateral-info:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button.color_field_widget_box__square.active:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas.media-library-item button.media-library-item__remove:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .customblock-menuitem-modal:before {
   font-family: "FontAwesome";
 }
 
@@ -221,12 +221,7 @@
   font-size: 14px;
 }
 
-/* line 249, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-div.contextual {
-  top: 50px !important;
-}
-
-/* line 253, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 251, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-tooltip {
   border: 2px solid #F0F7FA !important;
   background-color: #02202B !important;
@@ -237,183 +232,119 @@ div.contextual {
   box-shadow: none !important;
 }
 
-/* line 265, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-.lc-ui-dialog div#drupal-off-canvas *,
-.lc-ui-dialog div#drupal-off-canvas details,
-.lc-ui-dialog div#drupal-off-canvas div.details-wrapper,
-.lc-ui-dialog div#drupal-off-canvas fieldset label,
-.lc-ui-dialog div#drupal-off-canvas *:not(div) {
-  color: white;
-  background: #02202B;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* line 280, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-.colorpicker {
-  z-index: 1000;
-}
-
-/* line 283, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-.info {
-  margin-right: 10px;
-}
-
-/* line 286, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-.element-hidden {
-  display: none;
-}
-
-/* line 289, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-.parallax-mirror {
-  z-index: 0 !important;
-}
-
-/* line 299, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 270, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .lc-section.simple-margin-none, #layout-builder .lc-section.simple-margin-small, #layout-builder .lc-section.simple-margin-medium, #layout-builder .lc-section.simple-margin-large {
   clear: both;
 }
 
-/* line 303, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 274, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .lc-section.simple-margin-none {
   margin-top: 0px;
 }
 
-/* line 307, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 278, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .lc-section.simple-margin-small {
   margin-top: 10px;
 }
 
-/* line 311, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 282, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .lc-section.simple-margin-medium {
   margin-top: 30px;
 }
 
-/* line 315, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 286, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .lc-section.simple-margin-large {
   margin-top: 60px;
 }
 
-/* line 319, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 290, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .lc-section.full-height-wrapper {
   height: 100vh;
 }
 
-/* line 323, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 294, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .lc-section.medium-height-wrapper {
   height: 50vh;
 }
 
-/* line 330, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder .lc-section .lc-container-cols .lc-column-title {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-/* line 334, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder .lc-section .lc-container-cols .lc-column-title.border-type-left {
-  border-left: 10px solid;
-}
-
-/* line 337, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder .lc-section .lc-container-cols .lc-column-title.border-type-right {
-  border-right: 10px solid;
-}
-
-/* line 340, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder .lc-section .lc-container-cols .lc-column-title.border-type-top {
-  border-top: 5px solid;
-}
-
-/* line 343, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder .lc-section .lc-container-cols .lc-column-title.border-type-bottom {
-  border-bottom: 5px solid;
-}
-
-/* line 348, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder .lc-section .field__item img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* line 357, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 301, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .container {
   padding: 0;
 }
 
-/* line 361, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 305, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-1 {
   flex: 0 0 6.33333%;
   max-width: 6.33333%;
 }
 
-/* line 366, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 310, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-2 {
   flex: 0 0 14.66667%;
   max-width: 14.66667%;
 }
 
-/* line 370, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 314, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-3 {
   flex: 0 0 23%;
   max-width: 23%;
 }
 
-/* line 374, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 318, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-4 {
   flex: 0 0 31.33333%;
   max-width: 31.33333%;
 }
 
-/* line 379, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 323, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-5 {
   flex: 0 0 38%;
   max-width: 38%;
 }
 
-/* line 384, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 328, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-6 {
   flex: 0 0 48%;
   max-width: 48%;
 }
 
-/* line 389, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 333, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-7 {
   flex: 0 0 58%;
   max-width: 58%;
 }
 
-/* line 394, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 338, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-8 {
   flex: 0 0 64.66666%;
   max-width: 64.66666%;
 }
 
-/* line 399, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 343, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-9 {
   flex: 0 0 73%;
   max-width: 73%;
 }
 
-/* line 403, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 347, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-10 {
   flex: 0 0 81.33333%;
   max-width: 81.33333%;
 }
 
-/* line 408, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 352, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-11 {
   flex: 0 0 89.66667%;
   max-width: 89.66667%;
 }
 
-/* line 413, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 357, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder .col-md-12 {
   flex: 0 0 98%;
   max-width: 98%;
 }
 
-/* line 418, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 362, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder {
   padding: calc(0.75rem - 1px);
   border: 4px solid #E0EFF4;
@@ -422,7 +353,68 @@ div.contextual {
   color: #02202B;
 }
 
-/* line 425, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 372, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .row {
+  margin: 0;
+}
+
+/* line 379, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder a.lc-clipboard {
+  display: table;
+  margin: 10px;
+  background: #ef5555;
+  text-decoration: none;
+}
+
+/* line 386, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder a.lc-clipboard.hidden {
+  display: none !important;
+}
+
+/* line 388, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder a.lc-clipboard:after {
+  content: "\f24d";
+  margin-left: 10px;
+}
+
+/* line 395, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder a.lc-clipboard:hover {
+  background: #D93030;
+  color: white;
+}
+
+/* line 398, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder a.lc-clipboard:hover:after {
+  color: white;
+}
+
+/* line 408, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .link-rounded {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 35px;
+  color: #E0EFF4;
+}
+
+/* line 422, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .alert-warning {
+  background: #005574;
+  color: white;
+  border: 2px solid #013D55;
+  margin: 0.75rem 0.5rem 0.75rem 0.5rem;
+}
+
+/* line 429, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .alert-success {
+  color: #02202B;
+}
+
+/* line 435, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__configure-block {
   position: relative;
   top: -2px;
@@ -435,93 +427,75 @@ div.contextual {
   visibility: visible !important;
 }
 
-/* line 436, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__configure-block .layout-builder__block_link {
+/* line 447, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__configure-block a {
+  text-decoration: none;
+}
+
+/* line 449, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__configure-block a.layout-builder__block_link {
   padding: 5px;
   color: #E0EFF4;
 }
 
-/* line 439, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__configure-block .layout-builder__block_link:hover {
+/* line 452, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__configure-block a.layout-builder__block_link:hover {
   color: white;
 }
 
-/* line 445, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .row {
-  margin: 0;
-}
-
-/* line 449, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .alert-warning {
-  background: #005574;
-  color: white;
-  border: 2px solid #013D55;
-  margin: 0.75rem 0.5rem 0.75rem 0.5rem;
-}
-
-/* line 456, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .alert-success {
-  color: #02202B;
-}
-
-/* line 462, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 461, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder a {
-  color: #F0F7FA;
-}
-
-/* line 464, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder a.lc-clipboard {
-  display: table;
-  margin: 10px;
-  background: #ef5555;
+  color: #0196CE;
+  text-decoration: underline;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 /* line 470, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder a.lc-clipboard.hidden {
-  display: none !important;
-}
-
-/* line 472, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder a.lc-clipboard:after {
-  content: "\f24d";
-  margin-left: 10px;
+#layout-builder.layout-builder a:hover, #layout-builder.layout-builder a:visited, #layout-builder.layout-builder a:active {
+  color: #0077A2;
 }
 
 /* line 479, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder a.lc-clipboard:hover {
-  background: #D93030;
-}
-
-/* line 485, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder a:hover {
-  text-decoration: none;
-}
-
-/* line 489, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder a:hover, #layout-builder.layout-builder a:visited, #layout-builder.layout-builder a:active {
+#layout-builder.layout-builder a.layout-builder__section_link-move:hover::before, #layout-builder.layout-builder a.layout-builder__block_link-move:hover::before {
   color: white;
 }
 
-/* line 497, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 483, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder a.layout-builder__section_link-move:before, #layout-builder.layout-builder a.layout-builder__block_link-move:before {
   content: "\f0b2";
   cursor: move;
+  color: #E0EFF4;
 }
 
-/* line 506, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 493, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder a.layout-builder__section_link:hover, #layout-builder.layout-builder a.layout-builder__column_link:hover {
   text-decoration: none;
 }
 
-/* line 512, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 499, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder a.layout-builder__section_link-move:before {
   content: "\f338";
   cursor: pointer;
+  color: #E0EFF4;
 }
 
-/* line 520, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 501, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder a.layout-builder__section_link-move:before:hover::before {
+  color: white;
+}
+
+/* line 515, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder a.layout-builder__section_link-remove:hover::before, #layout-builder.layout-builder a.layout-builder__block_link-remove:hover::before {
+  color: white;
+}
+
+/* line 519, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder a.layout-builder__section_link-remove:before, #layout-builder.layout-builder a.layout-builder__block_link-remove:before {
   content: "\f2ed";
+  color: #E0EFF4;
 }
 
 /* line 527, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
@@ -561,30 +535,7 @@ div.contextual {
   font-size: 13px;
 }
 
-/* line 580, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__region.js-layout-builder-region {
-  outline: none;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  height: auto;
-  min-height: 50px;
-}
-
-/* line 590, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .link-rounded {
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 35px;
-  color: #E0EFF4;
-}
-
-/* line 604, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 581, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__add-section {
   width: 100%;
   height: 0px;
@@ -596,46 +547,46 @@ div.contextual {
   z-index: 998;
 }
 
-/* line 614, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-section.is-layout-builder-highlighted {
-  border: 4px solid #0077A2;
-  border: 0;
-}
-
-/* line 621, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 594, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__add-section a {
   z-index: 200;
-  box-shadow: 0px 0px 0px 4px #F0F7FA;
 }
 
-/* line 624, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 597, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__add-section a:hover {
   text-decoration: none;
-  transition: 0.9s;
-}
-
-/* line 628, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link-add-section {
+  transition: 0.3s;
   color: white;
-  font-size: 1em;
-  font-family: sans-serif;
-  position: relative;
-  top: -4px;
+  background: #013D55;
 }
 
-/* line 635, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 604, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link {
+  position: relative;
   display: inline-block;
   color: #E0EFF4;
   background: #02202B;
+  font-size: 1em;
+  z-index: 10;
+  top: -2px;
+  text-decoration: none;
+  box-shadow: 0px 0px 0px 4px #F0F7FA;
 }
 
-/* line 640, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 616, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link:hover {
+  text-decoration: none;
+  transition: 0.3s;
+  color: white;
+  background: #013D55;
+}
+
+/* line 625, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link.lc-copy {
   background: #FD850B;
 }
 
-/* line 642, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 628, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link.lc-copy:before {
   content: "\f24d";
   color: white;
@@ -646,135 +597,13 @@ div.contextual {
   font-size: 18px;
 }
 
-/* line 653, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 639, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link.lc-copy:hover {
   background: #C86500;
-}
-
-/* line 659, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link.layout-builder__link-add {
-  font-size: 15px;
-  z-index: 10;
-  position: absolute;
-  top: -15px;
-}
-
-/* line 667, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link.layout-builder__link-add:hover {
-  background: #013D55;
-}
-
-/* line 672, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link:hover {
   color: white;
 }
 
-/* line 679, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-block {
-  background: none;
-}
-
-/* line 682, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-block a.layout-builder__column_link-add {
-  background-color: #0196CE;
-  font-size: 13px;
-  width: 35px;
-  height: 35px;
-  -webkit-transition: 0.6s ease-out;
-  -moz-transition: 0.6s ease-out;
-  transition: 0.6s ease-out;
-  line-height: 35px;
-}
-
-/* line 692, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-block a.layout-builder__column_link-add.lc-copy {
-  background: #FD850B;
-}
-
-/* line 694, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-block a.layout-builder__column_link-add.lc-copy:before {
-  content: "\f24d";
-  color: white;
-  background: transparent !important;
-  display: block;
-  position: unset !important;
-  padding: 0;
-  font-size: 18px;
-}
-
-/* line 705, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-block a.layout-builder__column_link-add.lc-copy:hover {
-  background: #C86500;
-}
-
-/* line 710, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__add-block a.layout-builder__column_link-add:hover {
-  text-decoration: none;
-  transition: 0.9s;
-  background: #0196CE;
-}
-
-/* line 719, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .block-layout-builder {
-  border: 2px dashed #0196CE;
-  background-color: transparent;
-  padding: 0px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-
-/* line 728, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .block-layout-builder .field__label {
-  margin-left: 10px;
-}
-
-/* line 732, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .block-layout-builder .block-layout-builder, #layout-builder.layout-builder .block-layout-builder .block {
-  border: 2px dashed transparent;
-}
-
-/* line 736, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .block-layout-builder [tabindex="-1"] {
-  pointer-events: inherit;
-}
-
-/* line 740, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .block-layout-builder.is-layout-builder-highlighted {
-  border: 4px solid #0196CE;
-  border-radius: 4px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-
-/* line 749, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder-block {
-  border: 2px dashed #0196CE;
-  margin-bottom: 10px;
-  background-color: transparent;
-  padding: 0px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-
-/* line 758, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder-block [tabindex="-1"] {
-  pointer-events: inherit;
-}
-
-/* line 762, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder-block.is-layout-builder-highlighted {
-  border: 4px solid #0196CE !important;
-  border-radius: 4px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-
-/* line 771, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 650, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__section {
   border: 4px solid #02202B;
   margin: 0.75rem 0.5rem 0.75rem 0.5rem;
@@ -785,8 +614,8 @@ div.contextual {
   -webkit-box-sizing: border-box;
 }
 
-/* line 780, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section .is-layout-builder-highlighted {
+/* line 660, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section.is-layout-builder-highlighted {
   border: 4px solid #013D55;
   box-sizing: border-box;
   border-radius: 4px;
@@ -794,36 +623,16 @@ div.contextual {
   -webkit-box-sizing: border-box;
 }
 
-/* line 788, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section a {
-  color: #E0EFF4;
+/* line 671, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .lc-inline_container-title-edit h1 {
+  font-weight: bold;
+  padding: 0px 10px;
+  color: #02202B !important;
+  margin: 0;
+  font-size: 2rem;
 }
 
-/* line 792, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section a.lc-copy:before {
-  position: absolute;
-  display: block;
-  content: "\f24d";
-  color: white !important;
-  display: block;
-  background: #FD850B;
-  padding: 5px 9px;
-  border-radius: 0px 4px 0px 4px;
-  right: 0px;
-  font-size: 18px;
-}
-
-/* line 806, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section a.lc-copy:hover {
-  background: #C86500;
-}
-
-/* line 811, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section a:hover {
-  color: white;
-}
-
-/* line 816, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 683, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items {
   position: absolute;
   background: #02202B;
@@ -836,12 +645,13 @@ div.contextual {
   border-radius: 0px 0px 4px 0px;
 }
 
-/* line 827, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 695, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items a {
+  text-decoration: none;
   color: #E0EFF4;
 }
 
-/* line 829, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 698, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items a.layout-builder__section_link, #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items a.layout-builder__column_link, #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items a.layout-builder__block_link {
   padding: 4px 6px;
   font-size: 18px;
@@ -850,12 +660,12 @@ div.contextual {
   text-decoration: none;
 }
 
-/* line 838, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 707, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items a.layout-builder__section_link:hover, #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items a.layout-builder__column_link:hover, #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items a.layout-builder__block_link:hover {
   color: white;
 }
 
-/* line 845, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 718, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__section .layout-builder__layout {
   margin: auto;
   margin-bottom: 10px;
@@ -867,14 +677,17 @@ div.contextual {
   -webkit-box-sizing: border-box;
 }
 
-/* line 855, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 731, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 #layout-builder.layout-builder .layout-builder__section .layout-builder__layout.is-layout-builder-highlighted {
-  border: 4px solid #005574;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 4px solid #013D55;
   border-radius: 4px;
 }
 
-/* line 862, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .lc-inline_container-section-edit .lc-container-cols .layoutcomponent-column {
+/* line 741, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -885,16 +698,45 @@ div.contextual {
   padding: 15px;
 }
 
-/* line 872, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .lc-inline_container-section-edit .lc-container-cols .layoutcomponent-column:hover {
+/* line 752, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column:hover {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   border: 4px solid #0077A2;
 }
 
-/* line 879, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .lc-inline_container-section-edit .lc-container-cols .layoutcomponent-column .layout-builder__configure-column {
+/* line 759, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column a {
+  color: #E0EFF4;
+}
+
+/* line 765, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column a.lc-copy:before {
+  position: absolute;
+  display: block;
+  content: "\f24d";
+  color: white !important;
+  display: block;
+  background: #FD850B;
+  padding: 5px 9px;
+  border-radius: 0px 4px 0px 4px;
+  right: 0px;
+  font-size: 18px;
+}
+
+/* line 779, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column a.lc-copy:hover {
+  background: #C86500;
+}
+
+/* line 784, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column a:hover {
+  color: white;
+}
+
+/* line 791, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__configure-column {
   z-index: 80;
   position: absolute;
   top: -4px;
@@ -905,28 +747,198 @@ div.contextual {
   border-radius: 0px 4px 0px 4px;
 }
 
-/* line 891, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .lc-inline_container-section-edit .lc-container-cols .layoutcomponent-column .layout-builder__configure-column a:hover:before {
+/* line 802, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__configure-column a {
+  text-decoration: none;
+}
+
+/* line 806, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__configure-column a:hover:before {
   color: white;
 }
 
-/* line 895, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .lc-inline_container-section-edit .lc-container-cols .layoutcomponent-column .layout-builder__configure-column a:before {
+/* line 810, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__configure-column a:before {
   color: #E0EFF4;
 }
 
-/* line 902, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .lc-inline_container-section-edit .lc-container-cols .layoutcomponent-column .layout-builder__add-block[data-layout-builder-highlight-id^="block-"] {
+/* line 818, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: auto;
+  outline: none;
+  min-height: 50px;
+}
+
+/* line 829, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder {
+  border: 2px solid #0196CE;
+  background-color: transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 0px 5px 5px 5px;
+}
+
+/* line 840, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder .block-layout-builder, #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder .block {
+  border: 0;
+}
+
+/* line 844, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder .block-layout-builder {
+  margin-bottom: 0;
+}
+
+/* line 848, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder [tabindex="-1"] {
+  pointer-events: inherit;
+}
+
+/* line 852, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder.is-layout-builder-highlighted {
+  border: 3px solid #0077A2;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+/* line 864, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder .content .nav.nav-tabs {
+  border-bottom: 1px solid #0196CE;
+}
+
+/* line 867, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder .content .nav.nav-tabs .nav-item .nav-link {
+  color: #0196CE;
+  text-decoration: underline;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+/* line 876, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder .content .nav.nav-tabs .nav-item .nav-link:hover {
+  background-color: transparent;
+  color: #0077A2;
+  border-color: #00BAFF #00BAFF #F0F7FA;
+}
+
+/* line 882, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .block-layout-builder .content .nav.nav-tabs .nav-item .nav-link.active {
+  background-color: transparent;
+  color: #0077A2;
+  border-color: #00BAFF #0196CE #F0F7FA;
+}
+
+/* line 896, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder-block {
+  border: 2px solid #0196CE;
+  margin-bottom: 10px;
+  background-color: transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 0px 5px 5px 5px;
+}
+
+/* line 907, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder-block [tabindex="-1"] {
+  pointer-events: inherit;
+}
+
+/* line 911, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder-block.is-layout-builder-highlighted {
+  border: 3px solid #0077A2;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+/* line 922, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block {
+  background: none;
+}
+
+/* line 925, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block[data-layout-builder-highlight-id^="block-"] {
   padding: 1.5em 0;
   text-align: center;
 }
 
-/* line 906, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
-#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .lc-inline_container-section-edit .lc-container-cols .layoutcomponent-column .layout-builder__add-block.is-layout-builder-highlighted {
+/* line 930, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block.is-layout-builder-highlighted {
   border: 4px solid #0196CE;
 }
 
-/* line 1307, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 935, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block a.layout-builder__column_link-add {
+  background-color: #0196CE;
+  font-size: 13px;
+  width: 35px;
+  height: 35px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s ease-out;
+  -moz-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+  line-height: 35px;
+  text-decoration: none;
+  color: #E0EFF4;
+}
+
+/* line 950, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block a.layout-builder__column_link-add.lc-copy {
+  background: #FD850B;
+}
+
+/* line 952, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block a.layout-builder__column_link-add.lc-copy:before {
+  content: "\f24d";
+  color: white;
+  background: transparent !important;
+  display: block;
+  position: unset !important;
+  padding: 0;
+  font-size: 18px;
+}
+
+/* line 963, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block a.layout-builder__column_link-add.lc-copy:hover {
+  background: #C86500;
+}
+
+/* line 968, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+#layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block a.layout-builder__column_link-add:hover {
+  background: #0077A2;
+  color: white;
+}
+
+/* line 986, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog div#drupal-off-canvas *,
+.lc-ui-dialog div#drupal-off-canvas *:not(div) {
+  background: #02202B;
+}
+
+/* line 992, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog div#drupal-off-canvas *,
+.lc-ui-dialog div#drupal-off-canvas details,
+.lc-ui-dialog div#drupal-off-canvas div.details-wrapper,
+.lc-ui-dialog div#drupal-off-canvas fieldset label,
+.lc-ui-dialog div#drupal-off-canvas *:not(div) {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* line 1003, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog {
   font-weight: 600;
   font-size: 14px;
@@ -937,7 +949,7 @@ div.contextual {
   color: #02202B;
 }
 
-/* line 1322, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1018, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar {
   background: #0077A2 !important;
   color: #E0EFF4;
@@ -945,23 +957,23 @@ div.contextual {
   font-size: 14px;
 }
 
-/* line 1329, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1025, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close {
   background-image: none;
 }
 
-/* line 1332, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1028, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close:hover {
   background-image: none;
   border: none;
 }
 
-/* line 1336, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1032, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close:hover:after {
   color: white;
 }
 
-/* line 1340, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1036, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close:after {
   cursor: pointer;
   font-size: 18px;
@@ -971,27 +983,63 @@ div.contextual {
   line-height: 22px;
 }
 
-/* line 1350, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1046, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close span {
   font-size: 1.1em;
   font-weight: 200;
   border: 0;
 }
 
-/* line 1355, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1051, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close .ui-dialog-title {
   max-width: none !important;
   font-weight: 700;
 }
 
-/* line 1365, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1061, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas {
   overflow-x: visible !important;
   background: #02202B;
   padding: 0px !important;
 }
 
-/* line 1377, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1068, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .cke_top {
+  border-bottom: 1px solid #d1d1d1;
+  background: #f8f8f8 !important;
+  padding: 6px 8px 2px;
+  white-space: normal;
+}
+
+/* line 1075, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas #drupal-off-canvas .cke_bottom {
+  padding: 6px 8px 2px;
+  position: relative;
+  border-top: 1px solid #d1d1d1;
+  background: #f8f8f8;
+}
+
+/* line 1084, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .colorpicker {
+  z-index: 1000;
+}
+
+/* line 1088, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .info {
+  margin-right: 10px;
+}
+
+/* line 1092, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .element-hidden {
+  display: none;
+}
+
+/* line 1096, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .parallax-mirror {
+  z-index: 0 !important;
+}
+
+/* line 1103, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas select:after {
   color: #02202B;
   content: "▼";
@@ -1007,7 +1055,7 @@ div.contextual {
   z-index: 10;
 }
 
-/* line 1393, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1119, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas p {
   position: relative;
   float: left;
@@ -1016,32 +1064,32 @@ div.contextual {
   font-weight: 500;
 }
 
-/* line 1399, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1125, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas p a {
   font-weight: 600;
   text-decoration: underline;
 }
 
-/* line 1406, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1132, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-control:focus {
   outline: none;
   box-shadow: inset 0 -2px 0 0 #0077A2;
 }
 
-/* line 1415, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1141, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-block span, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-section span, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-column span {
   position: relative;
   float: left;
   width: 100%;
 }
 
-/* line 1419, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1145, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-block span.lc-copy, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-section span.lc-copy, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-column span.lc-copy {
   position: relative;
   margin-bottom: 10px;
 }
 
-/* line 1422, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1148, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-block span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-section span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-column span.lc-copy:before {
   display: block;
   margin: auto;
@@ -1055,12 +1103,12 @@ div.contextual {
   line-height: 40px;
 }
 
-/* line 1434, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1160, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-block span.lc-copy:before:hover, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-section span.lc-copy:before:hover, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-column span.lc-copy:before:hover {
   background: #C86500;
 }
 
-/* line 1446, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1172, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layout_builder__add-section-confirm, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layout_builder__remove-description {
   color: white;
   font-size: 14px;
@@ -1069,7 +1117,7 @@ div.contextual {
   padding: 20px;
 }
 
-/* line 1460, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1186, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .horizontal-tabs {
   border: none;
   background: none;
@@ -1077,14 +1125,14 @@ div.contextual {
   padding: 0;
 }
 
-/* line 1465, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1191, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .horizontal-tabs ul {
   display: flex;
   color: white;
   background: #02202B;
 }
 
-/* line 1469, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1195, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .horizontal-tabs ul li {
   flex-grow: 1;
   flex-direction: column;
@@ -1094,32 +1142,32 @@ div.contextual {
   opacity: 0.8;
 }
 
-/* line 1476, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1202, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .horizontal-tabs ul li.selected {
   background: #005574;
   box-shadow: inset 0 -4px 0 0 #00BAFF;
   opacity: 1;
 }
 
-/* line 1481, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1207, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .horizontal-tabs ul li:hover {
   background: #0077A2;
   opacity: 1;
 }
 
-/* line 1485, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1211, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .horizontal-tabs ul li a {
   padding: 11px;
   font-size: 17px;
 }
 
-/* line 1490, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1216, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .horizontal-tabs ul li a, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .horizontal-tabs ul li strong {
   color: white;
   background: transparent;
 }
 
-/* line 1501, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1227, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas input[type="text"] {
   background: white;
   color: #02202B;
@@ -1136,12 +1184,12 @@ div.contextual {
   transition: .2s ease;
 }
 
-/* line 1518, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1244, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas input[type="text"]:focus {
   outline-color: none;
 }
 
-/* line 1525, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1251, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button.link {
   display: inline;
   transition: color 0.5s ease;
@@ -1153,19 +1201,19 @@ div.contextual {
   font-weight: 600;
 }
 
-/* line 1534, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1260, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button.link:hover {
   text-decoration: underline;
   color: white;
 }
 
-/* line 1538, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1264, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button.link:focus {
   text-decoration: underline;
   color: white;
 }
 
-/* line 1546, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1272, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas input[type="submit"].button {
   position: relative;
   display: inline-block;
@@ -1180,12 +1228,12 @@ div.contextual {
   padding: calc(0.75rem - 1px) calc(1rem - 1px);
 }
 
-/* line 1560, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1286, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas input[type="submit"].button:hover {
   background: #0196CE;
 }
 
-/* line 1566, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1292, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector*="back"] {
   position: relative;
   float: left;
@@ -1202,12 +1250,12 @@ div.contextual {
   text-align: center;
 }
 
-/* line 1582, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1308, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector*="back"]:hover {
   background: #D93030;
 }
 
-/* line 1585, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1311, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector*="back"]:before {
   content: "\f30a";
   font-size: 14px;
@@ -1215,38 +1263,54 @@ div.contextual {
   color: white;
 }
 
-/* line 1596, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1321, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a.tabledrag-handle {
+  background-color: transparent;
+}
+
+/* line 1323, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a.tabledrag-handle .handle {
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* line 1335, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="submit"] {
   background-color: #0196CE;
   width: 25%;
   margin-top: 10px;
 }
 
-/* line 1602, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1341, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector="edit-cancel"] {
   margin-top: 10px;
 }
 
-/* line 1606, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1345, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="remove-button"] {
   padding: 5px;
   font-weight: normal;
   font-size: 0.7em;
 }
 
-/* line 1610, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1349, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="remove-button"]:before {
   content: "\f2ed";
   font-size: 11px;
   margin-right: 5px;
 }
 
-/* line 1618, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1357, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[name^="image-media-library-update-"], .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div[id^="image-media-library-wrapper-"] {
   display: none;
 }
 
-/* line 1622, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1361, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="remove-button"], .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector*="cancel"] {
   position: relative;
   display: inline-block;
@@ -1261,18 +1325,18 @@ div.contextual {
   padding: calc(0.75rem - 1px) calc(1rem - 1px);
 }
 
-/* line 1636, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1375, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="remove-button"]:focus, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector*="cancel"]:focus {
   outline: 2px dotted transparent;
   box-shadow: 0 0 0 2px #fff, 0 0 0 5px #D93030;
 }
 
-/* line 1641, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1380, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="remove-button"]:hover, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector*="cancel"]:hover {
   background: #D93030;
 }
 
-/* line 1647, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1386, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="submit"] {
   display: inline-block;
   font-weight: 800;
@@ -1286,118 +1350,118 @@ div.contextual {
   padding: calc(0.75rem - 1px) calc(1rem - 1px);
 }
 
-/* line 1660, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1399, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="submit"]:focus {
   outline: 2px dotted transparent;
   box-shadow: 0 0 0 2px #fff, 0 0 0 5px #D93030;
 }
 
-/* line 1665, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1404, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*="submit"]:hover {
   background: #D93030;
 }
 
-/* line 1672, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1411, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form {
   color: #02202B;
 }
 
-/* line 1675, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1414, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form p {
   color: #02202B;
   font-weight: 500;
   font-size: 14px;
 }
 
-/* line 1682, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1421, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul {
   list-style: none;
 }
 
-/* line 1684, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1423, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul:focus {
   border: none;
   outline: none;
 }
 
-/* line 1688, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1427, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul li {
   margin: 0;
   padding: 20px;
 }
 
-/* line 1691, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1430, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul li:focus {
   border: none;
   outline: none;
 }
 
-/* line 1696, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1435, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul li .form-item {
   color: #02202B;
   font-weight: 500;
   font-size: 14px;
 }
 
-/* line 1702, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1441, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul li .form-item label {
   font-size: 700 !important;
 }
 
-/* line 1706, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1445, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul li .form-item .description {
   font-weight: 500;
   font-size: 14px;
   margin: 10px 0px;
 }
 
-/* line 1714, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1453, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul li .form-item .field--type-image .image-widget-data .js-form-required {
   font-size: 14px;
   font-weight: 700;
 }
 
-/* line 1722, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1461, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul input {
   margin-left: 0px;
 }
 
-/* line 1724, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1463, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul input.btn-primary {
   background: #005574;
   border-color: #005574;
 }
 
-/* line 1727, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1466, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .js-media-library-add-form .item-list ul input.btn-primary:hover {
   background: #0077A2;
 }
 
-/* line 1740, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1479, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ol li {
   flex-basis: 50%;
 }
 
-/* line 1745, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1484, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul {
   margin: 0;
   font-weight: 700;
   background: #005574;
 }
 
-/* line 1751, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1490, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.links {
   margin: 10px 0px 10px 0px !important;
   background: transparent;
 }
 
-/* line 1755, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1494, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.links li {
   background: transparent;
   padding: 5px 20px;
 }
 
-/* line 1758, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1497, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.links li a {
   color: #E0EFF4;
   font-size: 14px;
@@ -1405,47 +1469,47 @@ div.contextual {
   text-align: center;
 }
 
-/* line 1764, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1503, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.links li a:hover {
   text-decoration: underline;
   color: white;
 }
 
-/* line 1772, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1511, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.inline-block-list {
   display: flex;
   flex-flow: row wrap;
 }
 
-/* line 1777, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1516, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li {
   flex-basis: 50%;
   background: #005574;
 }
 
-/* line 1781, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1520, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a {
   color: white !important;
   font-weight: 700;
   background: transparent;
 }
 
-/* line 1787, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1526, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item:hover {
   background-color: #0077A2;
 }
 
-/* line 1791, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1530, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_accordion::before {
   content: "\f03c";
 }
 
-/* line 1798, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1537, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.basic::before {
   content: "\f096";
 }
 
-/* line 1805, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1544, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_button::before {
   position: relative;
   float: left;
@@ -1455,32 +1519,32 @@ div.contextual {
   margin-top: 10px;
 }
 
-/* line 1816, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1555, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_countdown::before {
   content: "\f254";
 }
 
-/* line 1823, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1562, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_iframe::before {
   content: "\f2d0";
 }
 
-/* line 1830, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1569, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_image::before {
   content: "\f03e";
 }
 
-/* line 1837, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1576, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_tabs::before {
   content: "\f0ce";
 }
 
-/* line 1844, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1583, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_text::before {
   content: "\f031";
 }
 
-/* line 1851, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1590, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_title::before {
   position: relative;
   float: left;
@@ -1490,12 +1554,12 @@ div.contextual {
   margin-top: 10px;
 }
 
-/* line 1862, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1601, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_video::before {
   content: "\f03d";
 }
 
-/* line 1870, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1609, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item:before {
   content: "\f00d";
   color: white;
@@ -1504,33 +1568,33 @@ div.contextual {
   margin: 0 auto;
 }
 
-/* line 1883, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1622, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.layout-selection.list-group {
   display: flex;
   flex-flow: row wrap;
 }
 
-/* line 1885, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1624, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.layout-selection.list-group li a {
   color: transparent;
 }
 
-/* line 1892, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1631, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.layout-selection * {
   background: none;
 }
 
-/* line 1894, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1633, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.layout-selection *:not(div) {
   background: none;
 }
 
-/* line 1896, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1635, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.layout-selection *:not(div) option {
   color: #555;
 }
 
-/* line 1909, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1648, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .table-responsive > span.lc-lateral-title {
   position: relative;
   float: left;
@@ -1541,24 +1605,24 @@ div.contextual {
   margin: 0px 5px 5px 0px;
 }
 
-/* line 1923, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1662, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas th:first-child, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas td:first-child {
   width: auto;
 }
 
-/* line 1930, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1669, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas tbody .tabledrag-hide .form-item {
   margin: 0;
 }
 
-/* line 1938, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1677, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas tr td abbr {
   background: transparent;
   text-decoration: none;
   border-bottom: 0;
 }
 
-/* line 1948, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1687, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .sliderwidget {
   position: relative;
   float: left;
@@ -1567,7 +1631,7 @@ div.contextual {
   margin-bottom: 15px;
 }
 
-/* line 1955, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1694, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .sliderwidget .sliderwidget-container {
   position: relative;
   float: left;
@@ -1575,12 +1639,12 @@ div.contextual {
   background: #013D55;
 }
 
-/* line 1962, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1701, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .sliderwidget .sliderwidget-event-field-container {
   display: none;
 }
 
-/* line 1965, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1704, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .sliderwidget .sliderwidget-display-values-field {
   position: relative;
   float: left;
@@ -1588,31 +1652,31 @@ div.contextual {
   margin-bottom: 8px;
 }
 
-/* line 1971, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1710, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .sliderwidget .lc-range-slide {
   position: relative;
   float: left;
   width: 100%;
 }
 
-/* line 1978, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1717, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas::-webkit-scrollbar {
   width: 1em;
 }
 
-/* line 1982, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1721, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background: #02202B;
 }
 
-/* line 1987, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1726, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas::-webkit-scrollbar-thumb {
   background-color: #0077A2;
   outline: 1px solid #0077A2;
 }
 
-/* line 1993, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1732, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .ui-state-default,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .ui-widget-content .ui-state-default,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .ui-widget-header .ui-state-default {
@@ -1622,12 +1686,12 @@ div.contextual {
   top: -3px;
 }
 
-/* line 2002, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1741, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .lc-range-slide {
   background: #013D55;
 }
 
-/* line 2009, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1748, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .lc-lateral-info:after {
   cursor: pointer;
   font-size: 18px;
@@ -1638,43 +1702,43 @@ div.contextual {
   margin-left: 5px;
 }
 
-/* line 2024, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1763, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-required .lc-lateral-info:after {
   margin-left: 5px;
 }
 
-/* line 2030, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1769, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layout-builder-add-block .label {
   margin-bottom: 10px !important;
 }
 
-/* line 2036, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1775, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item {
   width: calc(100% - 40px);
   margin: 20px;
   font-size: 14px;
 }
 
-/* line 2043, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1782, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item.form-type-checkbox input {
   position: relative;
   float: left;
 }
 
-/* line 2047, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1786, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item.form-type-checkbox label {
   position: relative;
   float: left;
   width: calc(100% - 40px);
 }
 
-/* line 2054, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1793, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item .form-item {
   width: 100%;
   margin: 0px;
 }
 
-/* line 2059, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1798, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item label {
   position: relative;
   float: left;
@@ -1684,7 +1748,7 @@ div.contextual {
   margin-bottom: 5px;
 }
 
-/* line 2069, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1808, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item .description {
   position: relative;
   float: left;
@@ -1695,36 +1759,36 @@ div.contextual {
   font-weight: 500;
 }
 
-/* line 2079, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1818, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item.form-type-radio {
   margin: 5px 0px;
 }
 
-/* line 2083, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1822, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item select, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input[type='checkbox'], .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input[type='radio'] {
   cursor: pointer;
   margin: 0;
 }
 
-/* line 2086, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1825, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item select label, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input[type='checkbox'] label, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input[type='radio'] label {
   cursor: pointer;
 }
 
-/* line 2091, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1830, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item .webform-element-description {
   background: transparent;
   color: white;
   border-radius: 4px;
 }
 
-/* line 2096, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1835, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item .webform-element-description pre {
   background: white;
   color: #02202B;
 }
 
-/* line 2102, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1841, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item select, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item textarea, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input[type="number"] {
   font-size: 1em;
   color: #02202B;
@@ -1732,24 +1796,24 @@ div.contextual {
   font-size: 14px;
 }
 
-/* line 2110, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1849, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input:focus, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item select:focus, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item textarea:focus, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input[type="number"]:focus {
   border-color: #0196CE;
   box-shadow: none !important;
 }
 
-/* line 2115, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1854, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input::placeholder, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input:-ms-input-placeholder, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item select::placeholder, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item select:-ms-input-placeholder, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item textarea::placeholder, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item textarea:-ms-input-placeholder, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input[type="number"]::placeholder, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-item input[type="number"]:-ms-input-placeholder {
   color: #0077A2 !important;
 }
 
-/* line 2121, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1860, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layout-icon__region {
   fill: #F0F7FA;
   stroke: #E0EFF4;
 }
 
-/* line 2126, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1865, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .inline-block-create-button {
   padding: 10px 45px !important;
   margin: 0;
@@ -1758,36 +1822,36 @@ div.contextual {
   border-top: 1px solid #005574;
 }
 
-/* line 2134, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1873, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .inline-block-create-button:hover {
   background-color: #005574;
 }
 
-/* line 2139, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1878, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-search {
   margin: 10px;
   width: calc(100% - 20px);
   background: #02202B;
 }
 
-/* line 2145, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1884, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-search input.js-layout-builder-filter.form-search {
   font-size: 1em;
   color: #02202B;
 }
 
-/* line 2150, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1889, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-search input.js-layout-builder-filter.form-search:focus {
   border-color: #0196CE;
   box-shadow: none !important;
 }
 
-/* line 2154, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1893, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-search input.js-layout-builder-filter.form-search::placeholder, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-search input.js-layout-builder-filter.form-search:-ms-input-placeholder {
   color: #0077A2 !important;
 }
 
-/* line 2162, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1901, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .color_field_widget_box__square, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .color_field_widget_box__square--transparent {
   width: 30px;
   height: 31px;
@@ -1795,7 +1859,7 @@ div.contextual {
   border-radius: 50%;
 }
 
-/* line 2167, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1906, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .color_field_widget_box__square.active, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .color_field_widget_box__square--transparent.active {
   border: 3px solid white;
   box-sizing: border-box;
@@ -1803,34 +1867,34 @@ div.contextual {
   -webkit-box-sizing: border-box;
 }
 
-/* line 2176, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1915, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .color-field-widget-box-form {
   margin: 0px 20px 20px 20px;
 }
 
-/* line 2178, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1917, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .color-field-widget-box-form button {
   margin: 5px;
 }
 
-/* line 2186, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1925, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset {
   width: 100%;
 }
 
-/* line 2191, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1930, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset .media-library-form-element input.js-media-library-open-button {
   width: 80%;
   display: block;
   margin: 0 auto 30px auto;
 }
 
-/* line 2199, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1938, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset .media-library-form-element p.media-library-form-element-empty-text {
   margin: 10px 20px;
 }
 
-/* line 2205, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1944, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset div[id*="--description"] {
   margin-left: 20px;
   font-weight: 600;
@@ -1841,31 +1905,31 @@ div.contextual {
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-/* line 2216, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1955, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset div.form-inline, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset div.jquery_colorpicker, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset div.color-field-widget-box-form {
   width: 90%;
   margin: 15px 20px 30px 20px;
 }
 
-/* line 2221, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1960, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset div.js-form-type-checkbox .checkbox {
   margin: 5px 0 15px 0;
   position: initial;
 }
 
-/* line 2224, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1963, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset div.js-form-type-checkbox .checkbox small {
   display: inline-block;
   font-size: 15px;
   margin-left: 5px;
 }
 
-/* line 2231, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1970, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset div.color-field-widget-box-form {
   margin: 0px;
 }
 
-/* line 2238, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1977, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset.js-form-type-search .form-type-search:before {
   content: "\f002";
   font-size: 25px;
@@ -1876,7 +1940,7 @@ div.contextual {
   top: 5px;
 }
 
-/* line 2251, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 1990, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset select, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset .form-select, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset input[type="number"], .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset input[type="text"] {
   background: white;
   color: #02202B;
@@ -1893,12 +1957,12 @@ div.contextual {
   transition: .2s ease;
 }
 
-/* line 2270, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2009, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset select option {
   color: #02202B;
 }
 
-/* line 2277, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2016, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset select.form-select.tabs {
   display: inline-block;
   overflow: hidden;
@@ -1907,7 +1971,7 @@ div.contextual {
   padding: 4px;
 }
 
-/* line 2284, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2023, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset select.form-select.tabs option {
   display: inline-block;
   width: auto;
@@ -1918,7 +1982,7 @@ div.contextual {
   border-radius: 3px 3px 0 0;
 }
 
-/* line 2298, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2037, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset input .form-date, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset input .form-time {
   background: #f2f2f2;
   color: #02202B;
@@ -1931,24 +1995,24 @@ div.contextual {
   letter-spacing: normal;
 }
 
-/* line 2314, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2053, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset.js-form-type-slider div.sliderwidget {
   width: 100%;
   padding: 5px;
   margin-top: 0;
 }
 
-/* line 2320, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2059, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset.js-form-type-slider div.ui-slider-horizontal {
   background: #f2f2f2;
 }
 
-/* line 2323, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2062, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset.js-form-type-slider div.ui-slider-horizontal > span {
   background: #02202B;
 }
 
-/* line 2328, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2067, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset.js-form-type-slider div.sliderwidget-display-values-field {
   width: 60px;
   padding: 5px;
@@ -1966,69 +2030,69 @@ div.contextual {
   letter-spacing: normal;
 }
 
-/* line 2346, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2085, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset.js-form-type-slider div.sliderwidget-event-field-container {
   display: none;
 }
 
-/* line 2358, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2097, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .formatter-settings-wrapper .form-item.form-type-checkbox {
   position: relative;
   float: left;
   margin: 5px 20px !important;
 }
 
-/* line 2362, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2101, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .formatter-settings-wrapper .form-item.form-type-checkbox input[type='checkbox'] {
   position: relative;
   float: left;
   margin-right: 10px;
 }
 
-/* line 2367, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2106, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .formatter-settings-wrapper .form-item.form-type-checkbox label {
   position: relative;
   float: left;
   width: calc(100% - 40px);
 }
 
-/* line 2378, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2117, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-checkbox input[type="checkbox"] {
   position: relative;
   float: left;
   margin-right: 10px;
 }
 
-/* line 2385, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2124, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-checkbox .label {
   position: relative;
   float: left;
   width: calc(100% - 40px);
 }
 
-/* line 2391, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2130, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-checkbox .description {
   margin-left: 0px;
 }
 
-/* line 2395, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2134, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .edit-settings-formatter-third-party-settings-linked-field-destination-field-message {
   margin: 20px;
   border-color: white;
   font-weight: 500;
 }
 
-/* line 2401, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2140, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-composite > legend, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .label {
   font-weight: 500;
 }
 
-/* line 2406, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2145, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas span .fieldset-legend {
   margin: 0px 20px;
 }
 
-/* line 2409, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2148, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas span .fieldset-legend span.lc-lateral-title {
   position: relative;
   float: left;
@@ -2039,19 +2103,19 @@ div.contextual {
   margin: 0px 5px 5px 0px;
 }
 
-/* line 2420, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2159, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas span .fieldset-legend span.lc-lateral-info:after {
   margin: 0px 5px 5px 0px;
   line-height: 18px;
 }
 
-/* line 2429, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2168, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas select {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
 
-/* line 2435, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2174, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas label.js-form-type-checkbox {
   display: inline-block;
   background: transparent;
@@ -2061,7 +2125,7 @@ div.contextual {
   font-size: 18px;
 }
 
-/* line 2445, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2184, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas label.js-form-type-checkbox span.lc-lateral-info:after {
   cursor: pointer;
   font-size: 18px;
@@ -2071,23 +2135,23 @@ div.contextual {
   line-height: 18px;
 }
 
-/* line 2459, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2198, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas select[multiple] {
   padding: 0;
   overflow: scroll;
 }
 
-/* line 2466, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2205, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form.layout-builder-section-move .table {
   margin: 0;
 }
 
-/* line 2473, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2212, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas label[for^="edit-settings-block-"] {
   margin: 0 5px 5px 0px;
 }
 
-/* line 2477, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2216, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas label[for^="edit-settings-block-"] > span .lc-lateral-title {
   color: white;
   line-height: 20px;
@@ -2096,7 +2160,7 @@ div.contextual {
   margin: 0px 5px 5px 0px;
 }
 
-/* line 2487, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2226, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas label[for^="edit-settings-block-"] > span.lc-lateral-info:after {
   cursor: pointer;
   font-size: 18px;
@@ -2107,25 +2171,25 @@ div.contextual {
   line-height: 18px;
 }
 
-/* line 2504, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2243, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button.color_field_widget_box__square.active:before {
   content: "\f00c";
   font-size: 14px;
   color: white;
 }
 
-/* line 2516, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2255, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas.color-field-widget-box-form > button {
   margin: 5px;
   border: 1px solid #f2f2f2;
 }
 
-/* line 2521, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2260, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas.media-library-form-element {
   display: contents;
 }
 
-/* line 2528, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2267, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas.media-library-item button.media-library-item__remove {
   background-color: #ef5555;
   border: 0;
@@ -2137,14 +2201,14 @@ div.contextual {
   font-size: 0.7em;
 }
 
-/* line 2537, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2276, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas.media-library-item button.media-library-item__remove:before {
   content: "\f2ed";
   font-size: 11px;
   margin-right: 5px;
 }
 
-/* line 2549, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2288, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas.details-wrapper span.lc-lateral-title {
   color: white;
   position: relative;
@@ -2155,62 +2219,75 @@ div.contextual {
   margin: 0px 5px 5px 0px;
 }
 
-/* line 2562, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2301, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas.details-wrapper div.horizontal-tabs > ul {
   margin: -6px 0 15px 0;
   display: flex;
 }
 
-/* line 2569, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2308, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .components-title {
   margin: 20px 0;
   border-bottom: 1px solid #fff;
 }
 
-/* line 2574, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2313, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .customblock-menuitem-modal {
-  background-image: url(../../../misc/icons/bebebe/plus.svg) transparent 16px no-repeat;
-  background-color: #013D55;
+  padding: 10px 20px !important;
 }
 
-/* line 2578, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2315, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .customblock-menuitem-modal:hover {
   background-color: #005574;
 }
 
-/* line 2583, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2317, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .customblock-menuitem-modal:hover:before {
+  color: white;
+}
+
+/* line 2322, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .customblock-menuitem-modal:before {
+  content: "\f067";
+  display: inline-block;
+  color: #E0EFF4;
+  margin-right: 10px;
+  left: -25px;
+}
+
+/* line 2332, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .components-title {
   margin: 20px 0;
   border-bottom: 1px solid #fff;
 }
 
-/* line 2590, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2339, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a:visited, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a:hover, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a:active, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a:focus {
   color: white;
   text-decoration: none;
 }
 
-/* line 2594, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2343, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a .inline-block-create-button, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a .inline-block-list__item {
   margin: 0;
   color: white;
   font-size: 1em;
 }
 
-/* line 2601, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2350, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .text-format-wrapper {
   padding: 20px;
   border: 1px solid #0077A2;
   border-radius: 4px;
 }
 
-/* line 2608, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2357, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .text-format-wrapper .filter-wrapper {
   border: none;
   padding: 0;
 }
 
-/* line 2611, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2360, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .text-format-wrapper .filter-wrapper .filter-help {
   position: relative;
   float: left;
@@ -2219,38 +2296,38 @@ div.contextual {
   font-size: 14px;
 }
 
-/* line 2624, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2373, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .form-item input[type='checkbox'] {
   position: relative;
   float: left;
   margin-right: 10px;
 }
 
-/* line 2631, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2380, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .form-inline {
   margin: 0px;
   width: 100%;
 }
 
-/* line 2636, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2385, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper {
   border: 1px solid #0077A2;
   border-radius: 4px;
   padding: 20px;
 }
 
-/* line 2643, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2392, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper select option {
   color: white;
   padding: 5px 0px;
 }
 
-/* line 2649, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2398, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper .tabledrag-toggle-weight-wrapper {
   padding-top: 0px;
 }
 
-/* line 2653, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2402, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table {
   position: relative;
   float: left;
@@ -2259,12 +2336,12 @@ div.contextual {
   margin: 0;
 }
 
-/* line 2661, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2410, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table .form-type-select {
   margin-right: 10px;
 }
 
-/* line 2665, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2414, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table .btn-success {
   position: relative;
   display: inline-block;
@@ -2282,162 +2359,162 @@ div.contextual {
   -webkit-box-sizing: border-box;
 }
 
-/* line 2682, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2431, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table .btn-success:hover {
   box-shadow: inset 0px 0px 0px 4px white;
 }
 
-/* line 2688, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2437, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table .form-wrapper {
   background: transparent;
 }
 
-/* line 2691, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2440, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table .form-wrapper input[type="submit"] {
   width: auto;
   margin: 10px 0px;
 }
 
-/* line 2697, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2446, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table .form-item label {
   margin-top: 10px;
 }
 
-/* line 2702, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2451, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table .details-wrapper label {
   margin: 0px;
 }
 
-/* line 2707, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2456, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table th {
   border-bottom: 1px solid white !important;
 }
 
-/* line 2710, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2459, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table td {
   margin: 10px;
 }
 
-/* line 2712, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2461, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table td.inline-entity-form-block_content-label {
   margin: 10px;
   position: relative;
   float: left;
 }
 
-/* line 2718, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2467, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table tr {
   margin-top: 10px;
 }
 
-/* line 2719, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2468, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table tr.drag-previous td {
   background: transparent;
 }
 
-/* line 2724, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2473, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table thead {
   border-bottom: 1px solid white;
 }
 
-/* line 2727, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2476, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table tbody {
   border-bottom: 1px solid white;
 }
 
-/* line 2729, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2478, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table tbody tr {
   padding: 0;
 }
 
-/* line 2732, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2481, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table tbody tr:hover td {
   background: transparent;
 }
 
-/* line 2736, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2485, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper table tbody tr td {
   border: 0;
   padding: 0;
 }
 
-/* line 2744, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2493, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper p {
   margin: 10px 0px;
 }
 
-/* line 2748, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2497, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper button.link {
   margin: 10px 0px;
 }
 
-/* line 2752, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2501, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper .js-media-library-item {
   padding: 0px;
 }
 
-/* line 2756, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2505, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper .description {
   margin-left: 0;
 }
 
-/* line 2760, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2509, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper .media-library-item__preview {
   margin: 20px 0px;
 }
 
-/* line 2766, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2515, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper .media-library-item__attributes {
   margin: 20px 0px;
 }
 
-/* line 2768, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2517, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper .media-library-item__attributes .media-library-item__name {
   font-weight: 500;
 }
 
-/* line 2773, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2522, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper input {
   width: 100%;
   margin: 10px 0px;
   font-size: 14px;
 }
 
-/* line 2780, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2529, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper .fieldset-wrapper .field-prefix {
   font-weight: 500;
 }
 
-/* line 2786, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2535, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper ul {
   border: none;
   margin: 0;
 }
 
-/* line 2793, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2542, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper div.js-form-item .js-form-type-checkbox .checkbox .form-check {
   border-bottom: 1px solid gray;
   margin: 5px -20px 5px -20px;
   padding: 0;
 }
 
-/* line 2797, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2546, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper div.js-form-item .js-form-type-checkbox .checkbox .form-check label {
   display: inline-block;
 }
 
-/* line 2800, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2549, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper div.js-form-item .js-form-type-checkbox .checkbox .form-check small {
   display: block;
 }
 
-/* line 2811, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2560, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .details-wrapper div.js-form-item .js-form-type-checkbox .checkbox .form-check {
   border-bottom: 1px solid gray;
   margin: 5px -20px 5px -20px;
 }
 
-/* line 2823, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2572, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .inline-block-list__item.use-ajax.js-layout-builder-block-link.inline-block-list__item {
   width: 100%;
   display: inline-grid;
@@ -2448,33 +2525,33 @@ div.contextual {
   opacity: 0.8;
 }
 
-/* line 2831, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2580, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .inline-block-list__item.use-ajax.js-layout-builder-block-link.inline-block-list__item:hover {
   opacity: 1;
   color: white;
 }
 
-/* line 2834, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2583, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .inline-block-list__item.use-ajax.js-layout-builder-block-link.inline-block-list__item:hover:before {
   transform: scale(1.2);
 }
 
-/* line 2839, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2588, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .inline-block-list__item.use-ajax.js-layout-builder-block-link.inline-block-list__item li a {
   transition: all 0.1s linear;
 }
 
-/* line 2841, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2590, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .inline-block-list__item.use-ajax.js-layout-builder-block-link.inline-block-list__item li a:hover {
   transform: scale(1.1);
 }
 
-/* line 2850, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2599, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .lc-inline_block_iframe-iframe-edit {
   border: none !important;
 }
 
-/* line 2854, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2603, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details {
   margin: 0;
   width: 100%;
@@ -2482,24 +2559,24 @@ div.contextual {
   padding: 0;
 }
 
-/* line 2861, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2610, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details[open] > summary {
   background: #013D55;
   color: white;
 }
 
-/* line 2864, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2613, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details[open] > summary:focus {
   outline: none;
   border: none;
 }
 
-/* line 2868, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2617, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details[open] > summary:hover {
   background: #005574;
 }
 
-/* line 2874, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2623, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details > summary {
   float: left;
   padding: 10px 20px;
@@ -2512,12 +2589,12 @@ div.contextual {
   font-size: 14px;
 }
 
-/* line 2886, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2635, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details > summary:hover {
   background-color: #005574;
 }
 
-/* line 2890, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2639, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details .details-wrapper {
   padding: 0px !important;
   width: 100%;
@@ -2526,19 +2603,19 @@ div.contextual {
   margin-top: 0px;
 }
 
-/* line 2900, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2649, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details .details-wrapper .media-library-form-element legend .fieldset-legend .lc-lateral-title {
   position: relative;
   float: left;
   margin: 0px 5px 5px 20px;
 }
 
-/* line 2907, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2656, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details .details-wrapper .media-library-form-element .fieldset-wrapper {
   margin: 20px;
 }
 
-/* line 2913, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2662, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details .details-wrapper .details-description {
   margin: 20px;
   color: #E0EFF4;
@@ -2546,12 +2623,12 @@ div.contextual {
   font-weight: 500;
 }
 
-/* line 2923, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2672, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-inline > fieldset {
   width: auto;
 }
 
-/* line 2928, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2677, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layout-selection li {
   width: 50%;
   display: inline-grid;
@@ -2563,14 +2640,14 @@ div.contextual {
   flex-basis: 50%;
 }
 
-/* line 2938, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2687, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layout-selection li:hover {
   opacity: 1;
   transform: scale(1.05);
   color: white;
 }
 
-/* line 2944, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2693, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layout-selection li a {
   border: 1px solid white;
   border-radius: 4px;
@@ -2578,39 +2655,39 @@ div.contextual {
   transition: all 0.1s linear;
 }
 
-/* line 2950, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2699, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layout-selection li a div {
   margin-top: 10px;
   font-size: 14px;
 }
 
-/* line 2956, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2705, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layout-selection li a:hover {
   transform: scale(1.05);
 }
 
-/* line 2965, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2714, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas svg .layout-icon + div {
   color: #005574;
 }
 
-/* line 2968, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2717, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas svg .layout-icon g rect {
   fill: #005574;
 }
 
-/* line 2974, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2723, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .logo {
   margin: 0 0 20px 0;
 }
 
-/* line 2978, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2727, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form {
   width: 100%;
   float: left;
 }
 
-/* line 2983, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2732, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form.layout-builder-section-move .table thead tr th, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form.layout-builder-section-move .table tbody tr td {
   color: white;
   font-weight: 700;
@@ -2621,7 +2698,7 @@ div.contextual {
   border-top: 1px solid #005574;
 }
 
-/* line 2994, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2743, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form.layout-builder-section-move .table tbody tr td {
   padding: 15px 20px;
   margin: 0;
@@ -2632,20 +2709,20 @@ div.contextual {
   background: #013D55;
 }
 
-/* line 3004, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/* line 2753, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form.layout-builder-section-move .table tbody tr.drag-previous td, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form.layout-builder-section-move .table tr td:hover {
   background-color: #005574;
 }
 
 @media screen and (max-width: 991px) {
-  /* line 3036, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+  /* line 3169, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
   .lc {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 1600px) {
-  /* line 3056, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+  /* line 3189, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
   .lc-ui-dialog #drupal-off-canvas .layout-selection li {
     flex-basis: 100%;
   }

@@ -120,8 +120,6 @@ $tertiary-dark:$orange-dark;
   border-radius: $border-radius-base;
 }
 
-
-
 //-----------------------------START----------------------------//
 
 //--------------------------------------------------------------------- HEADER
@@ -247,9 +245,7 @@ $tertiary-dark:$orange-dark;
 
 //--------------------------------------------------------------------- GENERAL
 
-div.contextual {
-  top: 50px !important;
-}
+//---------------------------------------- Tooltip
 
 .lc-tooltip {
   border: 2px solid $primary-color-bg !important;
@@ -262,38 +258,11 @@ div.contextual {
   box-shadow: none !important;
 }
 
-.lc-ui-dialog{
-  div#drupal-off-canvas *,
-  div#drupal-off-canvas details,
-  div#drupal-off-canvas div.details-wrapper,
-  div#drupal-off-canvas fieldset label,
-  div#drupal-off-canvas *:not(div) {
-    color: white;
-    background: $primary-color-darkest;
-    @extend %librefranklin;
-    font-size: $font-size-base;
-    font-weight: 500;
-  }
-}
-
-
-
-.colorpicker {
-  z-index: 1000;
-}
-.info {
-  margin-right: 10px;
-}
-.element-hidden {
-  display: none;
-}
-.parallax-mirror {
-  z-index: 0 !important;
-}
-
 //--------------------------------------------------------------------- LAYOUT BUILDER -- COLUMNS GRID
 
 #layout-builder{
+
+  //---------------------------------------- Simple margin
 
   .lc-section {
 
@@ -323,33 +292,6 @@ div.contextual {
 
     &.medium-height-wrapper {
       height: 50vh;
-    }
-
-    .lc-container-cols {
-      .block-layoutcomponents-parent {
-      }
-      .lc-column-title {
-        font-weight: bold;
-        font-size: 18px;
-      }
-      .lc-column-title.border-type-left {
-        border-left: 10px solid;
-      }
-      .lc-column-title.border-type-right {
-        border-right: 10px solid;
-      }
-      .lc-column-title.border-type-top {
-        border-top: 5px solid;
-      }
-      .lc-column-title.border-type-bottom {
-        border-bottom: 5px solid;
-      }
-    }
-    .field__item {
-      img {
-        max-width: 100%;
-        height: auto;
-      }
     }
   }
 
@@ -417,49 +359,20 @@ div.contextual {
   }
 
   &.layout-builder {
+
     padding: calc(0.75rem - 1px);
     border: 4px solid $primary-color-bg-border;
     background-color: $primary-color-bg;
     border-radius: $border-radius-base;
     color: $primary-color-darkest;
 
-    .layout-builder__configure-block{
-      position: relative;
-      top: -2px;
-      margin: auto;
-      z-index: 10;
-      background-color:$primary-color-light;
-      border-radius: 0px 0px 4px 4px;
-      text-align: center;
-      display: table;
-      visibility: visible !important;
-
-      .layout-builder__block_link{
-        padding: 5px;
-        color: $primary-color-bg-border;
-        &:hover{
-          color: white;
-        }
-      }
-    }
+    //---------------------------------------- Adjust
 
     .row{
       margin: 0;
     }
 
-    .alert-warning{
-      background: $primary-color-dark;
-      color: white;
-      border: 2px solid $primary-color-darker;
-      margin: 0.75rem 0.5rem 0.75rem 0.5rem;
-    }
-
-    .alert-success{
-      color:$primary-color-darkest;
-    }
-
-    //-------- link + icons
-
+    //---------------------------------------- Copy clipboard
     a{
 
       &.lc-clipboard{
@@ -467,6 +380,7 @@ div.contextual {
         margin:10px;
         @extend %primary-button;
         background: $secondary-color-medium;
+        text-decoration: none;
 
         &.hidden{display: none !important;}
 
@@ -479,26 +393,97 @@ div.contextual {
 
         &:hover{
           background: $secondary-color-dark;
+          color: white;
+          &:after{
+            color: white;
+          }
         }
       }
+    }
 
-      color: $primary-color-bg;
-      &:hover{
+
+    //---------------------------------------- Icon rounded
+
+    .link-rounded {
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 35px;
+      color: $primary-color-bg-border;
+    }
+
+    //---------------------------------------- Messages
+
+    .alert-warning{
+      background: $primary-color-dark;
+      color: white;
+      border: 2px solid $primary-color-darker;
+      margin: 0.75rem 0.5rem 0.75rem 0.5rem;
+    }
+
+    .alert-success{
+      color:$primary-color-darkest;
+    }
+
+    //---------------------------------------- Configuration icons
+
+    .layout-builder__configure-block{
+
+      position: relative;
+      top: -2px;
+      margin: auto;
+      z-index: 10;
+      background-color:$primary-color-light;
+      border-radius: 0px 0px 4px 4px;
+      text-align: center;
+      display: table;
+      visibility: visible !important;
+
+      a{
         text-decoration: none;
+        &.layout-builder__block_link{
+          padding: 5px;
+          color: $primary-color-bg-border;
+          &:hover{
+            color: white;
+          }
+        }
       }
+    }
+
+    //---------------------------------------- Link + icons
+
+    a{
+      @extend %librefranklin;
+      color: $primary-color-light;
+      text-decoration: underline;
+      -webkit-transition: color 0.3s ease;
+      -moz-transition: color 0.3s ease;
+      -o-transition: color 0.3s ease;
+      transition: color 0.3s ease;
 
       &:hover,
       &:visited,
       &:active{
-        color: white;
+        color: $primary-color-medium
       }
 
       &.layout-builder__section_link-move,
       &.layout-builder__block_link-move{
+        &:hover{
+          &::before{
+            color: white;
+          }
+        }
         &:before{
           content: "\f0b2";
           @extend %fontawesome;
           cursor: move;
+          color: $primary-color-bg-border;
         }
       }
 
@@ -511,16 +496,29 @@ div.contextual {
 
       &.layout-builder__section_link-move{
         &:before {
+          &:hover{
+            &::before{
+              color: white;
+            }
+          }
           content: "\f338";
           cursor: pointer;
+          @extend %fontawesome;
+          color: $primary-color-bg-border;
         }
       }
 
       &.layout-builder__section_link-remove,
       &.layout-builder__block_link-remove{
+        &:hover{
+          &::before{
+            color: white;
+          }
+        }
         &:before{
           content: "\f2ed";
           @extend %fontawesome;
+          color: $primary-color-bg-border;
         }
       }
 
@@ -577,32 +575,10 @@ div.contextual {
       }
     }
 
-    .layout-builder__region{
-      &.js-layout-builder-region {
-        outline: none;
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column;
-        height: auto;
-        min-height: 50px;
-      }
-    }
-
-    .link-rounded {
-      display: inline-block;
-      width: 35px;
-      height: 35px;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 35px;
-      color: $primary-color-bg-border;
-    }
-
-    //------- Seccion añadir
+    //---------------------------------------- Add section
 
     .layout-builder__add-section{
+
       width: 100%;
       height: 0px;
       padding: 0;
@@ -612,164 +588,66 @@ div.contextual {
       border: none;
       z-index: 998;
 
-      &.is-layout-builder-highlighted {
-        border: 4px solid $primary-color-medium;
-        border: 0;
-      }
-
-      //------- Icono añadir
+      //---------------------------------------- Add icon
 
       a{
         z-index: 200;
-        box-shadow: 0px 0px 0px 4px $primary-color-bg;
+
         &:hover {
           text-decoration: none;
-          transition: 0.9s;
-        }
-        &.layout-builder__link-add-section {
+          transition: 0.3s;
           color: white;
-          font-size: 1em;
-          font-family: sans-serif;
-          position: relative;
-          top: -4px;
+          background:$primary-color-darker;
         }
+
         &.layout-builder__link{
+
+          position: relative;
           display: inline-block;
           color: $primary-color-bg-border;
           background:$primary-color-darkest;
-
-          &.lc-copy{
-            background: $tertiary;
-            &:before {
-              content: "\f24d";
-              @extend %fontawesome;
-              color: white;
-              background: transparent !important;
-              display: block;
-              position: unset !important;
-              padding: 0;
-              font-size: 18px;
-            }
-
-            &:hover{
-              background: $tertiary-dark;
-            }
-          }
-
-
-          &.layout-builder__link-add {
-            font-size: 15px;
-            z-index: 10;
-            position: absolute;
-            top: -15px;
-
-
-
-            &:hover{
-              background:$primary-color-darker;
-            }
-
-          }
-          &:hover{
-            color: white;
-          }
-        }
-      }
-    }
-
-    .layout-builder__add-block {
-      background: none;
-      a{
-        &.layout-builder__column_link-add {
-          background-color: $primary-color-light;
-          font-size: 13px;
-          width: 35px;
-          height: 35px;
-          -webkit-transition: 0.6s ease-out;
-          -moz-transition:  0.6s ease-out;
-          transition:  0.6s ease-out;
-          line-height: 35px;
-
-          &.lc-copy{
-            background: $tertiary;
-            &:before {
-              content: "\f24d";
-              @extend %fontawesome;
-              color: white;
-              background: transparent !important;
-              display: block;
-              position: unset !important;
-              padding: 0;
-              font-size: 18px;
-            }
-
-            &:hover{
-              background: $tertiary-dark;
-            }
-          }
+          font-size: 1em;
+          z-index: 10;
+          top: -2px;
+          text-decoration: none;
+          box-shadow: 0px 0px 0px 4px $primary-color-bg;
 
           &:hover {
             text-decoration: none;
-            transition: 0.9s;
-            background: $primary-color-light;
+            transition: 0.3s;
+            color: white;
+            background:$primary-color-darker;
+          }
+
+          //---------------------------------------- Copy icon
+
+          &.lc-copy{
+            background: $tertiary;
+
+            &:before {
+              content: "\f24d";
+              @extend %fontawesome;
+              color: white;
+              background: transparent !important;
+              display: block;
+              position: unset !important;
+              padding: 0;
+              font-size: 18px;
+            }
+
+            &:hover{
+              background: $tertiary-dark;
+              color: white;
+            }
           }
         }
       }
     }
 
-    .block-layout-builder {
-      border: 2px dashed $primary-color-light;
-      background-color: transparent;
-      padding: 0px;
-      margin-bottom: 10px;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-
-      .field__label{
-        margin-left: 10px;
-      }
-
-      .block-layout-builder, .block{
-        border: 2px dashed transparent;
-      }
-
-      [tabindex="-1"] {
-        pointer-events: inherit;
-      }
-
-      &.is-layout-builder-highlighted{
-        border: 4px solid $primary-color-light;
-        border-radius: $border-radius-base;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-      }
-    }
-
-    .layout-builder-block{
-      border: 2px dashed $primary-color-light;
-      margin-bottom: 10px;
-      background-color: transparent;
-      padding: 0px ;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-
-      [tabindex="-1"] {
-        pointer-events: inherit;
-      }
-
-      &.is-layout-builder-highlighted{
-        border: 4px solid $primary-color-light !important;
-        border-radius: $border-radius-base;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-      }
-    }
+    //---------------------------------------- Section
 
     .layout-builder__section{
+
       border: 4px solid $primary-color-darkest;
       margin: 0.75rem 0.5rem 0.75rem 0.5rem;
       border-radius: $border-radius-base;
@@ -778,7 +656,7 @@ div.contextual {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
 
-      .is-layout-builder-highlighted{
+      &.is-layout-builder-highlighted{
         border: 4px solid $primary-color-darker;
         box-sizing: border-box;
         border-radius:$border-radius-base;
@@ -786,35 +664,23 @@ div.contextual {
         -webkit-box-sizing: border-box;
       }
 
-      a{
-        color: $primary-color-bg-border;
+      //---------------------------------------- Section title
 
-        &.lc-copy{
-          &:before {
-            position: absolute;
-            display: block;
-            content: "\f24d";
-            @extend %fontawesome;
-            color: white !important;
-            display: block;
-            background: $tertiary;
-            padding: 5px 9px;
-            border-radius: 0px 4px 0px 4px;
-            right: 0px;
-            font-size: 18px;
-          }
-
-          &:hover{
-            background: $tertiary-dark;
-          }
-        }
-
-        &:hover{
-          color: white;
+      .lc-inline_container-title-edit{
+        h1{
+          @extend %librefranklin;
+          font-weight: bold;
+          padding: 0px 10px;
+          color: $primary-color-darkest !important;
+          margin: 0;
+          font-size: 2rem ;
         }
       }
 
+      //---------------------------------------- Section configure icons
+
       .layout_builder__configure_section_items{
+
         position: absolute;
         background: $primary-color-darkest;
         z-index: 10;
@@ -826,6 +692,7 @@ div.contextual {
         border-radius: 0px 0px 4px 0px;
 
         a{
+          text-decoration: none;
           color: $primary-color-bg-border;
           &.layout-builder__section_link,
           &.layout-builder__column_link,
@@ -843,7 +710,12 @@ div.contextual {
         }
       }
 
+      //---------------------------------------- Column
+
+      //---------------------------------------- Margins
+
       .layout-builder__layout{
+
         margin: auto;
         margin-bottom: 10px;
         margin-top:45px;
@@ -853,59 +725,249 @@ div.contextual {
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
 
+        //---------------------------------------- Highlighted
+
         &.is-layout-builder-highlighted{
-          border: 4px solid $primary-color-dark;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          border: 4px solid $primary-color-darker;
           border-radius: $border-radius-base;
         }
 
-        .lc-inline_container-section-edit{
-          .lc-container-cols{
-            .layoutcomponent-column{
+        //---------------------------------------- Columns
+
+        .layoutcomponent-column{
+
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          border: 4px solid $primary-color-medium;
+          z-index: 80 !important;
+          border-radius: $border-radius-base;
+          margin: 1%;
+          padding: 15px;
+
+          &:hover{
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            border: 4px solid $primary-color-medium;
+          }
+
+          a{
+            color: $primary-color-bg-border;
+
+            //---------------------------------------- Column Copy icon
+
+            &.lc-copy{
+              &:before {
+                position: absolute;
+                display: block;
+                content: "\f24d";
+                @extend %fontawesome;
+                color: white !important;
+                display: block;
+                background: $tertiary;
+                padding: 5px 9px;
+                border-radius: 0px 4px 0px 4px;
+                right: 0px;
+                font-size: 18px;
+              }
+
+              &:hover{
+                background: $tertiary-dark;
+              }
+            }
+
+            &:hover{
+              color: white;
+            }
+          }
+
+          //---------------------------------------- Column Configure icons
+
+          .layout-builder__configure-column {
+
+            z-index: 80;
+            position: absolute;
+            top:-4px;
+            right:-4px;
+            padding: 0 5px;
+            text-align: right;
+            background-color: $primary-color-medium;
+            border-radius: 0px 4px 0px 4px;
+
+            a{
+              text-decoration: none;
+
+              &:hover{
+                &:before{
+                  color: white;
+                }
+              }
+              &:before{
+                color: $primary-color-bg-border;
+              }
+            }
+          }
+
+          //---------------------------------------- Region
+
+          .layout-builder__region{
+
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            height: auto;
+            outline: none;
+            min-height: 50px;
+
+            //---------------------------------------- Default region
+
+            .block-layout-builder {
+
+              border: 2px solid $primary-color-light;
+              background-color: transparent;
+              border-radius: $border-radius-base;
               box-sizing: border-box;
               -moz-box-sizing: border-box;
               -webkit-box-sizing: border-box;
-              border: 4px solid $primary-color-medium;
-              z-index: 80 !important;
-              border-radius: $border-radius-base;
-              margin: 1%;
-              padding: 15px;
+              margin-bottom: 10px;
+              padding: 0px 5px 5px 5px;
 
-              &:hover{
+              .block-layout-builder, .block{
+                border: 0;
+              }
+
+              .block-layout-builder{
+                margin-bottom: 0;
+              }
+
+              [tabindex="-1"] {
+                pointer-events: inherit;
+              }
+
+              &.is-layout-builder-highlighted{
+                border: 3px solid $primary-color-medium;
+                border-radius: $border-radius-base;
                 box-sizing: border-box;
                 -moz-box-sizing: border-box;
                 -webkit-box-sizing: border-box;
-                border: 4px solid $primary-color-medium;
               }
 
-              .layout-builder__configure-column {
-                z-index: 80;
-                position: absolute;
-                top:-4px;
-                right:-4px;
-                padding: 0 5px;
-                text-align: right;
-                background-color: $primary-color-medium;
-                border-radius: 0px 4px 0px 4px;
+              //---------------------------------------- Content
 
-                a{
-                  &:hover{
-                    &:before{
-                      color: white;
+              .content{
+                .nav{
+                  &.nav-tabs{
+                    border-bottom: 1px solid $primary-color-light;
+                    .nav-item{
+                      .nav-link{
+                        @extend %librefranklin;
+                        color: $primary-color-light;
+                        text-decoration: underline;
+                        -webkit-transition: color 0.3s ease;
+                        -moz-transition: color 0.3s ease;
+                        -o-transition: color 0.3s ease;
+                        transition: color 0.3s ease;
+
+                        &:hover{
+                          background-color: transparent;
+                          color: $primary-color-medium;
+                          border-color: $primary-color-lighter $primary-color-lighter $primary-color-bg;
+                        }
+
+                        &.active{
+                          background-color: transparent;
+                          color: $primary-color-medium;
+                          border-color: $primary-color-lighter $primary-color-light $primary-color-bg;
+                        }
+                      }
                     }
                   }
-                  &:before{
-                    color: $primary-color-bg-border;
-                  }
                 }
               }
+            }
 
-              .layout-builder__add-block{
-                &[data-layout-builder-highlight-id^="block-"] {
-                  padding: 1.5em 0;
-                  text-align: center;
-                }
-                &.is-layout-builder-highlighted {
-                  border: 4px solid $primary-color-light;
+            //---------------------------------------- Highlighted region
+
+            .layout-builder-block{
+
+              border: 2px solid $primary-color-light;
+              margin-bottom: 10px;
+              background-color: transparent;
+              border-radius: $border-radius-base;
+              box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+              padding: 0px 5px 5px 5px;
+
+              [tabindex="-1"] {
+                pointer-events: inherit;
+              }
+
+              &.is-layout-builder-highlighted{
+                border: 3px solid $primary-color-medium;
+                border-radius: $border-radius-base;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+              }
+            }
+
+            //---------------------------------------- Add Region icon
+
+            .layout-builder__add-block {
+              background: none;
+
+              &[data-layout-builder-highlight-id^="block-"] {
+                padding: 1.5em 0;
+                text-align: center;
+              }
+
+              &.is-layout-builder-highlighted {
+                border: 4px solid $primary-color-light;
+              }
+
+              a{
+                &.layout-builder__column_link-add {
+                  background-color: $primary-color-light;
+                  font-size: 13px;
+                  width: 35px;
+                  height: 35px;
+                  transition: 0.3s;
+                  -webkit-transition: 0.3s ease-out;
+                  -moz-transition:  0.3s ease-out;
+                  transition:  0.3s ease-out;
+                  line-height: 35px;
+                  text-decoration: none;
+                  color: $primary-color-bg-border;
+
+                  //---------------------------------------- Region copy icon
+
+                  &.lc-copy{
+                    background: $tertiary;
+                    &:before {
+                      content: "\f24d";
+                      @extend %fontawesome;
+                      color: white;
+                      background: transparent !important;
+                      display: block;
+                      position: unset !important;
+                      padding: 0;
+                      font-size: 18px;
+                    }
+
+                    &:hover{
+                      background: $tertiary-dark;
+                    }
+                  }
+
+                  &:hover {
+                    background: $primary-color-medium;
+                    color: white;
+                  }
                 }
               }
             }
@@ -916,394 +978,26 @@ div.contextual {
   }
 }
 
-//------------------------------------------------------- EMERGENT WINDOWS
-
-//---------------------------------------- Media library window
-
-// .media-library-widget-modal{
-
-//   //---------------------------------------- Media library title
-
-//   .ui-dialog-titlebar{
-//     @extend %librefranklin;
-//     background: $primary-color-dark !important;
-//     color:$primary-color-bg;
-//     border-bottom: none !important;
-//     font-size: $font-size-large;
-
-//     .ui-dialog-titlebar-close{
-//       background-image: none;
-//       right: 0.5em;
-
-//       &:focus{
-//         &:after{
-//           outline: 2px dotted transparent;
-//           box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-//         }
-//       }
-
-//       &:hover{
-//         background-image: none;
-//         border: none;
-
-//         &:after{
-//           color: white;
-//         }
-//       }
-//       &:after{
-//         position: relative;
-//         float: left;
-//         content: "\f00d";
-//         width: 20px;
-//         display: inline-block;
-//         cursor: pointer;
-//         font-size: $font-size-large;
-//         color: $primary-color-bg-border;
-//         @extend %fontawesome;
-//         line-height: 18px;
-
-
-//       }
-
-//       span {
-//         font-size: 1.1em;
-//         font-weight: 200;
-//         border: 0;
-//       }
-//       .ui-dialog-title{
-//         max-width: none !important;
-//         @extend %librefranklin;
-//         font-weight: 700;
-//       }
-//     }
-//   }
-
-//   //---------------------------------------- Media library content
-
-//   .ui-dialog-content{
-//     padding: 1em !important;
-
-//     .js-media-library-add-form{
-//       border: none;
-//       outline: none;
-//       @extend %librefranklin;
-//       font-weight:400;
-//       color:  $primary-color-darkest;
-
-//       //----------------------- .item-list
-
-//       .item-list{
-//         border: none;
-//         &:focus{
-//           outline: 2px dotted transparent;
-//           box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-//         }
-//         ul{
-//           list-style: none;
-//           outline: none;
-//           li{
-//             margin: 0;
-//             outline: none;
-
-//             .form-item{
-//               margin-bottom: 0 !important;
-//             }
-
-//             .image-widget-data{
-//               label{
-//                 font-weight: 700;
-//               }
-//               input{
-//                 &.form-text{
-//                   position: relative;
-//                   float: left;
-//                   margin-bottom: 10px;
-//                   &:focus{
-//                     outline: 2px dotted transparent;
-//                     box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-//                   }
-//                 }
-//               }
-//             }
-//             .btn-primary{
-//               @extend %primary-button;
-//               margin-left: 0px;
-//               margin-top: 0px;
-//             }
-//           }
-//         }
-//       }
-//     }
-
-//     .media-library-wrapper{
-//       .media-library-content{
-
-//         &.js-media-library-item {
-//           padding-left: 15px;
-//           width: 100%;
-//         }
-
-//         //---------------------------------------- Messages
-
-//         .messages{
-//           position: relative;
-//           float: left;
-//           @extend %librefranklin;
-//           font-weight: 400;
-//           margin-left: 8px;
-//         }
-
-//         //---------------------------------------- Add button + info // Add window
-
-//         .js-media-library-add-form{
-//           position: relative;
-//           float: left;
-//           width: 100%;
-//           margin-bottom: 10px;
-
-
-//           //----------------------- Add button
-
-//           .form-wrapper{
-//             position: relative;
-//             float: left;
-//             .form-item{
-//               margin-top: 0;
-//               label{
-//                 margin-bottom: 0px;
-//               }
-//               &.form-item-upload{
-//                 position: relative;
-//                 float: left;
-//                 color: $primary-color-darkest;
-//                 @extend %librefranklin;
-
-//                 .form-managed-file{
-//                   height: 30px;
-//                   input{
-//                     position: relative;
-//                     float: left;
-//                     height: 30px;
-//                     margin: 10px 0px;
-
-//                      &:focus{
-//                       outline: 2px dotted transparent;
-//                       box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-//                     }
-//                   }
-//                 }
-
-//                 .description{
-//                   position: relative;
-//                   float: left;
-//                   width: 100%;
-//                   @extend %librefranklin;
-//                   font-weight: 500;
-//                   color:  $primary-color-darkest;
-//                 }
-//                 .form-control{
-//                   border: none;
-//                   margin-left: 0;
-//                   padding: 0;
-//                   color:  $primary-color-darkest;
-//                   @extend %librefranklin;
-//                 }
-//               }
-//             }
-//           }
-//         }
-
-//         //---------------------------------------- Elements container
-
-//         .views-element-container{
-
-//           //---------------------------------------- Buttons
-
-//           .view-header{
-//             position: relative;
-//             float: left;
-//             width: 100%;
-//             .views-display-link{
-//               display: inline-block;
-//               font-weight: 800;
-//               border: none;
-//               background: $primary-color-darker;
-//               border-radius: $border-radius-base;
-//               font-size: $font-size-base;
-//               color: white;
-//               padding: calc(0.75rem - 1px) calc(1rem - 1px);
-
-//               &.is-active{
-//                 background: $primary-color-dark;
-//                 outline: 2px dotted transparent;
-//                 box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-//               }
-
-//               &:focus{
-//                 outline: 2px dotted transparent;
-//                 box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-//               }
-
-//               &:hover{
-//                 background: $primary-color-medium;
-//                 text-decoration: none;
-//               }
-//             }
-//           }
-
-//           //---------------------------------------- filters
-
-//           .view-filters{
-//             .form--inline{
-//               color: $primary-color-darkest;
-//               @extend %librefranklin;
-
-//               input{
-//                 &:focus{
-//                   box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-//                 }
-//               }
-//               select{
-//                 &:focus{
-//                   box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-//                 }
-//               }
-
-//               .btn-primary{
-//                 display: inline-block;
-//                 @extend %primary-button;
-//                 margin: 47px 0.5rem 0.75rem 0.5rem;
-//                 padding: calc(0.60rem - 1px) calc(1rem - 1px);
-//                 &:focus{
-//                   outline: 2px dotted transparent;
-//                   box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-//                 }
-
-//                 &:hover{
-//                   background: $primary-color-medium;
-//                   text-decoration: none;
-//                 }
-//               }
-//             }
-//           }
-
-//           //---------------------------------------- content
-
-//           .view-content{
-//             .views-form{
-//               @extend %light-background;
-
-//               .js-media-library-views-form{
-//                 padding: 15px;
-//               }
-
-//               //---------------------------------------- Table format
-
-//               table{
-//                 @extend %librefranklin;
-//                 border:1px solid $primary-color-dark;
-//                 border-radius: $border-radius-base;
-//                 font-weight: 500;
-//                 margin: 1rem;
-//                 thead{
-//                   color: white;
-//                   background: $primary-color-dark;
-//                   font-weight: 700;
-//                 }
-
-//                 td{
-//                   a{
-//                     color: $primary-color-light;
-//                     text-decoration: underline;
-//                   }
-//                 }
-
-//                 input[type="checkbox"] {
-//                   @extend %checkbox;
-//                 }
-//               }
-
-//               //---------------------------------------- Grid format
-
-//               .media-library-item{
-//                 border: 2px solid $primary-color-bg-border;
-//                 background: white;
-//                 border-radius: $border-radius-base;
-//                 padding: 15px;
-//                 margin: 0px 15px 0px 0px;
-
-//                 &.checked{
-//                   border: 2px solid $primary-color-medium;
-//                 }
-
-//                 img{
-//                   position: relative;
-//                   float: left;
-//                   width: auto;
-//                   cursor: pointer;
-//                   max-width: 100%;
-//                   height: auto;
-//                 }
-//                 .media-library-item__name{
-//                   position: relative;
-//                   float: left;
-//                   @extend %librefranklin;
-//                   color:  $primary-color-darkest;
-//                   font-weight: 500;
-//                   margin: 5px 0px 0px 0px;
-//                   width: 100%;
-//                   font-size: 14px;
-//                   line-height: 18px;
-//                 }
-//               }
-
-//               .js-click-to-select-checkbox{
-//                 input[type="checkbox"] {
-//                   @extend %checkbox;
-//                 }
-//               }
-//             }
-//           }
-
-//           .form-type-checkbox{
-//             position: relative;
-//             float: left;
-//             width: 100%;
-//             margin-top: 0;
-//             margin-bottom: 0.5em;
-//           }
-//         }
-//       }
-//     }
-//   }
-
-//   //---------------------------------------- Button panel
-
-//   .ui-dialog-buttonpane{
-//     .ui-dialog-buttonset{
-//       button{
-//         @extend %primary-button;
-//         &:focus{
-//           outline: 2px dotted transparent;
-//           box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
-//         }
-
-//         &:hover{
-//           background: $primary-color-medium;
-//           text-decoration: none;
-//         }
-//       }
-//     }
-//     .media-library-selected-count{
-//       @extend %librefranklin;
-//       color: $primary-color-darkest;
-//     }
-//   }
-// }
-
 //------------------------------------------------------- UI DIALOG -- LATERAL MENU
 
 .lc-ui-dialog{
+
+  div#drupal-off-canvas *,
+  div#drupal-off-canvas *:not(div) {
+    background: $primary-color-darkest;
+  }
+
+
+  div#drupal-off-canvas *,
+  div#drupal-off-canvas details,
+  div#drupal-off-canvas div.details-wrapper,
+  div#drupal-off-canvas fieldset label,
+  div#drupal-off-canvas *:not(div) {
+    color: white;
+    @extend %librefranklin;
+    font-size: $font-size-base;
+    font-weight: 500;
+  }
 
   &.ui-dialog{
 
@@ -1368,9 +1062,39 @@ div.contextual {
         background: $primary-color-darkest;
         padding: 0px !important;
 
+        //-------------------------- CKEDITOR
+
+        .cke_top {
+          border-bottom: 1px solid #d1d1d1;
+          background: #f8f8f8 !important;
+          padding: 6px 8px 2px;
+          white-space: normal;
+        }
+
+        #drupal-off-canvas .cke_bottom {
+          padding: 6px 8px 2px;
+          position: relative;
+          border-top: 1px solid #d1d1d1;
+          background: #f8f8f8;
+        }
+
         .alert-error{}
 
+        .colorpicker {
+          z-index: 1000;
+        }
 
+        .info {
+          margin-right: 10px;
+        }
+
+        .element-hidden {
+          display: none;
+        }
+
+        .parallax-mirror {
+          z-index: 0 !important;
+        }
 
         //-------------------- General
 
@@ -1592,7 +1316,20 @@ div.contextual {
           }
         }
 
-
+        a{
+          &.tabledrag-handle{
+            background-color: transparent;
+            .handle {
+              width: auto;
+              height: auto;
+              margin: 0;
+              padding: 0;
+              background-color: transparent;
+              background-repeat: no-repeat;
+              background-position: center;
+            }
+          }
+        }
 
         button[data-drupal-selector*="submit"] {
           background-color: $primary-color-light;
@@ -2573,11 +2310,21 @@ div.contextual {
         }
 
         .customblock-menuitem-modal {
-          background-image: url(../../../misc/icons/bebebe/plus.svg) transparent 16px no-repeat ;
-          background-color: $primary-color-darker;
-
+          padding: 10px 20px !important;
           &:hover{
             background-color: $primary-color-dark;
+            &:before{
+              color: white;
+            }
+          }
+
+          &:before{
+            content: "\f067";
+            display: inline-block;
+            @extend %fontawesome;
+            color: $primary-color-bg-border;
+            margin-right: 10px;
+            left: -25px;
           }
 
         }
@@ -3011,8 +2758,394 @@ div.contextual {
       }
     }
   }
-
 }
+
+
+//------------------------------------------------------- EMERGENT WINDOWS
+
+//---------------------------------------- Media library window
+
+// .media-library-widget-modal{
+
+//   //---------------------------------------- Media library title
+
+//   .ui-dialog-titlebar{
+//     @extend %librefranklin;
+//     background: $primary-color-dark !important;
+//     color:$primary-color-bg;
+//     border-bottom: none !important;
+//     font-size: $font-size-large;
+
+//     .ui-dialog-titlebar-close{
+//       background-image: none;
+//       right: 0.5em;
+
+//       &:focus{
+//         &:after{
+//           outline: 2px dotted transparent;
+//           box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//         }
+//       }
+
+//       &:hover{
+//         background-image: none;
+//         border: none;
+
+//         &:after{
+//           color: white;
+//         }
+//       }
+//       &:after{
+//         position: relative;
+//         float: left;
+//         content: "\f00d";
+//         width: 20px;
+//         display: inline-block;
+//         cursor: pointer;
+//         font-size: $font-size-large;
+//         color: $primary-color-bg-border;
+//         @extend %fontawesome;
+//         line-height: 18px;
+
+
+//       }
+
+//       span {
+//         font-size: 1.1em;
+//         font-weight: 200;
+//         border: 0;
+//       }
+//       .ui-dialog-title{
+//         max-width: none !important;
+//         @extend %librefranklin;
+//         font-weight: 700;
+//       }
+//     }
+//   }
+
+//   //---------------------------------------- Media library content
+
+//   .ui-dialog-content{
+//     padding: 1em !important;
+
+//     .js-media-library-add-form{
+//       border: none;
+//       outline: none;
+//       @extend %librefranklin;
+//       font-weight:400;
+//       color:  $primary-color-darkest;
+
+//       //----------------------- .item-list
+
+//       .item-list{
+//         border: none;
+//         &:focus{
+//           outline: 2px dotted transparent;
+//           box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//         }
+//         ul{
+//           list-style: none;
+//           outline: none;
+//           li{
+//             margin: 0;
+//             outline: none;
+
+//             .form-item{
+//               margin-bottom: 0 !important;
+//             }
+
+//             .image-widget-data{
+//               label{
+//                 font-weight: 700;
+//               }
+//               input{
+//                 &.form-text{
+//                   position: relative;
+//                   float: left;
+//                   margin-bottom: 10px;
+//                   &:focus{
+//                     outline: 2px dotted transparent;
+//                     box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//                   }
+//                 }
+//               }
+//             }
+//             .btn-primary{
+//               @extend %primary-button;
+//               margin-left: 0px;
+//               margin-top: 0px;
+//             }
+//           }
+//         }
+//       }
+//     }
+
+//     .media-library-wrapper{
+//       .media-library-content{
+
+//         &.js-media-library-item {
+//           padding-left: 15px;
+//           width: 100%;
+//         }
+
+//         //---------------------------------------- Messages
+
+//         .messages{
+//           position: relative;
+//           float: left;
+//           @extend %librefranklin;
+//           font-weight: 400;
+//           margin-left: 8px;
+//         }
+
+//         //---------------------------------------- Add button + info // Add window
+
+//         .js-media-library-add-form{
+//           position: relative;
+//           float: left;
+//           width: 100%;
+//           margin-bottom: 10px;
+
+
+//           //----------------------- Add button
+
+//           .form-wrapper{
+//             position: relative;
+//             float: left;
+//             .form-item{
+//               margin-top: 0;
+//               label{
+//                 margin-bottom: 0px;
+//               }
+//               &.form-item-upload{
+//                 position: relative;
+//                 float: left;
+//                 color: $primary-color-darkest;
+//                 @extend %librefranklin;
+
+//                 .form-managed-file{
+//                   height: 30px;
+//                   input{
+//                     position: relative;
+//                     float: left;
+//                     height: 30px;
+//                     margin: 10px 0px;
+
+//                      &:focus{
+//                       outline: 2px dotted transparent;
+//                       box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//                     }
+//                   }
+//                 }
+
+//                 .description{
+//                   position: relative;
+//                   float: left;
+//                   width: 100%;
+//                   @extend %librefranklin;
+//                   font-weight: 500;
+//                   color:  $primary-color-darkest;
+//                 }
+//                 .form-control{
+//                   border: none;
+//                   margin-left: 0;
+//                   padding: 0;
+//                   color:  $primary-color-darkest;
+//                   @extend %librefranklin;
+//                 }
+//               }
+//             }
+//           }
+//         }
+
+//         //---------------------------------------- Elements container
+
+//         .views-element-container{
+
+//           //---------------------------------------- Buttons
+
+//           .view-header{
+//             position: relative;
+//             float: left;
+//             width: 100%;
+//             .views-display-link{
+//               display: inline-block;
+//               font-weight: 800;
+//               border: none;
+//               background: $primary-color-darker;
+//               border-radius: $border-radius-base;
+//               font-size: $font-size-base;
+//               color: white;
+//               padding: calc(0.75rem - 1px) calc(1rem - 1px);
+
+//               &.is-active{
+//                 background: $primary-color-dark;
+//                 outline: 2px dotted transparent;
+//                 box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//               }
+
+//               &:focus{
+//                 outline: 2px dotted transparent;
+//                 box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//               }
+
+//               &:hover{
+//                 background: $primary-color-medium;
+//                 text-decoration: none;
+//               }
+//             }
+//           }
+
+//           //---------------------------------------- filters
+
+//           .view-filters{
+//             .form--inline{
+//               color: $primary-color-darkest;
+//               @extend %librefranklin;
+
+//               input{
+//                 &:focus{
+//                   box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//                 }
+//               }
+//               select{
+//                 &:focus{
+//                   box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//                 }
+//               }
+
+//               .btn-primary{
+//                 display: inline-block;
+//                 @extend %primary-button;
+//                 margin: 47px 0.5rem 0.75rem 0.5rem;
+//                 padding: calc(0.60rem - 1px) calc(1rem - 1px);
+//                 &:focus{
+//                   outline: 2px dotted transparent;
+//                   box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//                 }
+
+//                 &:hover{
+//                   background: $primary-color-medium;
+//                   text-decoration: none;
+//                 }
+//               }
+//             }
+//           }
+
+//           //---------------------------------------- content
+
+//           .view-content{
+//             .views-form{
+//               @extend %light-background;
+
+//               .js-media-library-views-form{
+//                 padding: 15px;
+//               }
+
+//               //---------------------------------------- Table format
+
+//               table{
+//                 @extend %librefranklin;
+//                 border:1px solid $primary-color-dark;
+//                 border-radius: $border-radius-base;
+//                 font-weight: 500;
+//                 margin: 1rem;
+//                 thead{
+//                   color: white;
+//                   background: $primary-color-dark;
+//                   font-weight: 700;
+//                 }
+
+//                 td{
+//                   a{
+//                     color: $primary-color-light;
+//                     text-decoration: underline;
+//                   }
+//                 }
+
+//                 input[type="checkbox"] {
+//                   @extend %checkbox;
+//                 }
+//               }
+
+//               //---------------------------------------- Grid format
+
+//               .media-library-item{
+//                 border: 2px solid $primary-color-bg-border;
+//                 background: white;
+//                 border-radius: $border-radius-base;
+//                 padding: 15px;
+//                 margin: 0px 15px 0px 0px;
+
+//                 &.checked{
+//                   border: 2px solid $primary-color-medium;
+//                 }
+
+//                 img{
+//                   position: relative;
+//                   float: left;
+//                   width: auto;
+//                   cursor: pointer;
+//                   max-width: 100%;
+//                   height: auto;
+//                 }
+//                 .media-library-item__name{
+//                   position: relative;
+//                   float: left;
+//                   @extend %librefranklin;
+//                   color:  $primary-color-darkest;
+//                   font-weight: 500;
+//                   margin: 5px 0px 0px 0px;
+//                   width: 100%;
+//                   font-size: 14px;
+//                   line-height: 18px;
+//                 }
+//               }
+
+//               .js-click-to-select-checkbox{
+//                 input[type="checkbox"] {
+//                   @extend %checkbox;
+//                 }
+//               }
+//             }
+//           }
+
+//           .form-type-checkbox{
+//             position: relative;
+//             float: left;
+//             width: 100%;
+//             margin-top: 0;
+//             margin-bottom: 0.5em;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   //---------------------------------------- Button panel
+
+//   .ui-dialog-buttonpane{
+//     .ui-dialog-buttonset{
+//       button{
+//         @extend %primary-button;
+//         &:focus{
+//           outline: 2px dotted transparent;
+//           box-shadow: 0 0 0 2px #fff, 0 0 0 5px $primary-color-light;
+//         }
+
+//         &:hover{
+//           background: $primary-color-medium;
+//           text-decoration: none;
+//         }
+//       }
+//     }
+//     .media-library-selected-count{
+//       @extend %librefranklin;
+//       color: $primary-color-darkest;
+//     }
+//   }
+// }
+
 
 
 //--------------------------------------------------------------------- RESPONSIVE
@@ -3056,5 +3189,5 @@ div.contextual {
       flex-basis: 100%;
     }
   }
-
 }
+

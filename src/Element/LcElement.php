@@ -15,7 +15,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Extension\ThemeHandlerInterface;
 use Drupal\layoutcomponents\LcLayoutsManager;
 use Drupal\layoutcomponents\LcDisplayHelperTrait;
-use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
 
 /**
  * {@inheritdoc}
@@ -137,26 +136,21 @@ class LcElement extends LayoutBuilder {
    * {@inheritdoc}
    */
   public function prepareLayout(SectionStorageInterface $section_storage) {
-    if (!$section_storage instanceof DefaultsSectionStorage) {
-      // Content sections.
-      $sections = $this->getOrderedSections($section_storage);
+    // Content sections.
+    $sections = $this->getOrderedSections($section_storage);
 
-      // Set the rest of defaults.
-      foreach ($sections as $delta => $section) {
-        if (!isset($section)) {
-          continue;
-        }
-        if ($section->getLayoutId() == 'layout_builder_blank') {
-          continue;
-        }
-        $section_storage->appendSection($section);
+    // Set the rest of defaults.
+    foreach ($sections as $delta => $section) {
+      if (!isset($section)) {
+        continue;
       }
+      if ($section->getLayoutId() == 'layout_builder_blank') {
+        continue;
+      }
+      $section_storage->appendSection($section);
+    }
 
-      $this->layoutTempstoreRepository->set($section_storage);
-    }
-    else {
-      parent::prepareLayout($section_storage);
-    }
+    $this->layoutTempstoreRepository->set($section_storage);
   }
 
   /**

@@ -99,8 +99,8 @@ class LcUpdateBlockForm extends UpdateBlockForm {
       $component->setConfiguration($this->blockContentToInline($conf));
     }
 
-    // Ensure get the current language translation, removed from now until the solution does not provoque conflicts with the uuid.
-    //$this->setCurrentLanguageTranslation($component);
+    // Ensure get the current language translation.
+    $this->setCurrentLanguageTranslation($component);
 
     $build = parent::buildForm($form, $form_state, $section_storage, $delta, $region, $uuid);
 

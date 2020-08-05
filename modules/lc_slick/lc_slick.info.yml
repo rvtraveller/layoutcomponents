@@ -1,0 +1,9 @@
+name: Layoutcomponents - Slick integration
+type: module
+description: Layout Components integration with Slick
+package: LayoutComponents
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - layoutcomponents
+  - drupal:slick
+  - drupal:slick_ui

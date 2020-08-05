@@ -18,4 +18,5 @@ function _layoutcomponents_preprocess_layout(array &$variables) {
 
   // Set new variables.
   $variables['lc_data'] = $layout->render();
+  $variables['#attached']['drupalSettings']['lc'] = $layout->getJsSettings();
 }

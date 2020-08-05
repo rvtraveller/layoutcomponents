@@ -198,7 +198,7 @@ class LcChooseBlockController extends ChooseBlockController {
       }
       // Append lc dialog options.
       if (array_key_exists('links', $build['block_categories'][$name])) {
-        foreach ($build['block_categories'][$name]['links']['#links'] as $i => $link){
+        foreach ($build['block_categories'][$name]['links']['#links'] as $i => $link) {
           $build['block_categories'][$name]['links']['#links'][$i]['attributes']['data-dialog-options'] = $this->dialogOptions();
         }
       }
