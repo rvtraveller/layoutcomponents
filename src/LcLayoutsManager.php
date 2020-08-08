@@ -475,13 +475,24 @@ class LcLayoutsManager {
         if ($field->getType() == 'entity_reference_revisions') {
           $current_values = $block->get($field->getName())->getValue();
           foreach ($current_values as $i => $value) {
+            /** @var \Drupal\block_content\Entity\BlockContent $old */
             // Duplicate the items reference.
             $old = $this->entityTypeManager->getStorage('block_content')->loadRevision($value['target_revision_id']);
 
+            // Process the old values.
+            $old_values = $old->toArray();
+            unset($old_values['id']);
+            unset($old_values['uuid']);
+            unset($old_values['revision_id']);
+            unset($old_values['revision_created']);
+            unset($old_values['revision_user']);
+            unset($old_values['revision_log']);
+            $timestamp = time();
+            $date_format = date('mdYHis', $timestamp);
+            $old_values['info'] = $old->get('type')->getString() . '_clone_' . $date_format;
+
             // We have to create one new, if not the reference will be the same.
-            $new = $this->entityTypeManager->getStorage('block_content')->create([
-              'type' => $old->get('type')->getString(),
-            ]);
+            $new = $this->entityTypeManager->getStorage('block_content')->create($old_values);
             $new->enforceIsNew();
             $new->save();
 
@@ -490,23 +501,6 @@ class LcLayoutsManager {
               'target_id' => $new->get('id')->getString(),
               'target_revision_id' => $new->get('revision_id')->getString(),
             ];
-
-            foreach ($old->getFieldDefinitions() as $u => $item_field) {
-              if ($item_field instanceof FieldConfig) {
-                $item_value = $old->get($item_field->getName())->getValue();
-                $item_old = \Drupal::entityTypeManager()->getStorage('block_content')->loadRevision($item_value[0]['target_revision_id']);
-
-                $item_new = $item_old->createDuplicate();
-                $item_new->enforceIsNew();
-
-                $item_new->save();
-                $new->set($item_field->getName(), [
-                  'target_id' => $item_new->get('id')->getString(),
-                  'target_revision_id' => $item_new->get('revision_id')->getString(),
-                ]);
-                $new->save();
-              }
-            }
           }
           $block->set($field->getName(), $current_values);
         }
@@ -607,3 +601,4 @@ class LcLayoutsManager {
   }
 
 }
+
