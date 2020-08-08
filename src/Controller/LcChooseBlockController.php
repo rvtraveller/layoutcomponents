@@ -157,12 +157,12 @@ class LcChooseBlockController extends ChooseBlockController {
         // Get the old component.
         $component = $this->sectionStorage->getSection($data['delta'])->getComponent($data['uuid']);
         // Duplicate the block.
-        $this->layoutManager->duplicateBlock($this->sectionStorage, $delta, $region, $component);
+        $this->layoutManager->duplicateBlock($section_storage, $delta, $region, $component);
         // Store new.
-        $this->layoutTempstoreRepository->set($this->sectionStorage);
+        $this->layoutTempstoreRepository->set($section_storage);
         // Remove temp data.
         $store->delete('lc_element');
-        return $this->rebuildAndClose($this->sectionStorage);
+        return $this->rebuildAndClose($section_storage);
       }
     }
 
@@ -261,3 +261,4 @@ class LcChooseBlockController extends ChooseBlockController {
   }
 
 }
+
