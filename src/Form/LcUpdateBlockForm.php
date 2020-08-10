@@ -100,7 +100,7 @@ class LcUpdateBlockForm extends UpdateBlockForm {
     }
 
     // Ensure get the current language translation.
-    $this->setCurrentLanguageTranslation($component);
+    //$this->setCurrentLanguageTranslation($component);
 
     $build = parent::buildForm($form, $form_state, $section_storage, $delta, $region, $uuid);
 

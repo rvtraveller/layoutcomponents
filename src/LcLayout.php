@@ -523,7 +523,7 @@ class LcLayout {
     $column_styles = [];
 
     // Column default classes.
-    $column_classes->addClass('lc-inline_column_' . $name . '-edit');
+    $column_classes->addClass('lc-inline_column_' . $name . '-content-edit');
     $column_classes->addClass('layoutcomponent-column');
     $column_classes->addClass('col-sm-12');
 
