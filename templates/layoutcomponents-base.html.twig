@@ -32,27 +32,28 @@
 <div {{ section.container }}>
   {{ title_suffix.contextual_links }}
   <div {{ section.row }}>
-    {% for key, region in regions %}
-      {% if region['#theme'] != 'slick_wrapper' %}
-        {% set column_region_attributes_array = attribute(_context, 'region_attributes') %}
-        {% set column_region_attributes = attribute(column_region_attributes_array, key) %}
-        {% set column_region = key ~ '-region' %}
-        <div {{ region.styles.column_attr }}>
-          <div {{ region.styles.title_wrap_attr }}>
-            <{{ region.styles.title_wrapper }} {{ region.styles.title_attr }}>
-            {{ region.general.title }}
-          </{{ region.styles.title_wrapper }}>
-        </div>
-        {% if region.content %}
-          <div {{ column_region_attributes.addClass(region.attributes) }}>
-            {{ region.content }}
-          </div>
-        {% endif %}
-      </div>
-      {% endif %}
-    {% endfor %}
-    {% if section.general.structure.section_carousel == 1 %}
+    {% if section.general.structure.section_carousel == 1 and lc_admin == false %}
       {{ regions.slick }}
+    {% else %}
+    {% for key, region in regions %}
+    {% if region['#theme'] != 'slick_wrapper' %}
+    {% set column_region_attributes_array = attribute(_context, 'region_attributes') %}
+    {% set column_region_attributes = attribute(column_region_attributes_array, key) %}
+    {% set column_region = key ~ '-region' %}
+    <div {{ region.styles.column_attr }}>
+      <div {{ region.styles.title_wrap_attr }}>
+        <{{ region.styles.title_wrapper }} {{ region.styles.title_attr }}>
+        {{ region.general.title }}
+      </{{ region.styles.title_wrapper }}>
+    </div>
+    {% if region.content %}
+      <div {{ column_region_attributes.addClass(region.attributes) }}>
+        {{ region.content }}
+      </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% endfor %}
     {% endif %}
 </div>
 </div>

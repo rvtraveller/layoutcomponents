@@ -16,6 +16,9 @@ function _layoutcomponents_preprocess_layout(array &$variables) {
   // Custom render class.
   $layout = new LcLayout($layout_definition->id(), $variables['settings'], $variables['content'], $variables['attributes']);
 
+  $route = \Drupal::routeMatch()->getRouteObject();
+  $variables['lc_admin'] = array_key_exists('section_storage', $route->getOption('parameters'));
+
   // Set new variables.
   $variables['lc_data'] = $layout->render();
   $variables['#attached']['drupalSettings']['lc'] = $layout->getJsSettings();

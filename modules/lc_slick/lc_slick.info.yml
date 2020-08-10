@@ -7,3 +7,8 @@ dependencies:
   - layoutcomponents
   - drupal:slick
   - drupal:slick_ui
+
+# Information added by Drupal.org packaging script on 2020-08-08
+version: '8.x-1.6-beta2'
+project: 'layoutcomponents'
+datestamp: 1596888403

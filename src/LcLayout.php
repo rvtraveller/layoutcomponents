@@ -440,25 +440,21 @@ class LcLayout {
 
       $items = [];
       foreach ($this->getSetting('regions') as $name => $column) {
-        $path = 'regions.' . $name . '.content';
+        $path = 'regions.' . $name;
 
-        foreach ($this->getSetting($path) as $key => $content) {
-          if (!array_key_exists('#base_plugin_id', $content)) {
-            continue;
-          }
-
-          if ($content['#base_plugin_id'] == 'inline_block') {
-            $item = $this->getSetting($path . '.' . $key . '.content');
-            unset($item['layout_builder-configuration']);
-            $items[] = [
-              'slide' => $item,
-            ];
-          }
-        }
+        $item = $this->getSetting($path);
+        unset($item['layout_builder-configuration']);
+        $item['#title'] = $item['title'];
+        $items[] = [
+          'slide' => [
+            '#type' => 'container',
+            '#theme' => 'layoutcomponents_slick_region',
+            '#content' => $item
+          ],
+        ];
       }
 
       if (!empty($items)) {
-
         $skin = \Drupal::entityTypeManager()->getStorage('slick')->load($section_carousel_slick);
         if (!empty($skin)) {
           $class = 'lc-slick-section-' . $this->getDelta();
@@ -467,7 +463,7 @@ class LcLayout {
             'items' => $items,
             'options' => $skin->getSettings(),
             'attributes' => [
-              'class' => [$class],
+              'class' => [$class, 'w-100'],
             ],
           ];
 
@@ -486,7 +482,6 @@ class LcLayout {
             // Store JS options.
             $this->setSetting('js.responsive.' . $class, $responsive_options);
           }
-
           $element = $slick->build($build);
           $this->setSetting('regions.slick', $element);
         }

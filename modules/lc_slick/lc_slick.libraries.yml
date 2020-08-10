@@ -1,5 +1,3 @@
 lc_slick:
-  js:
-    js/lc_slick.js: {}
   dependencies:
     - slick/slick.theme

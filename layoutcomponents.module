@@ -21,6 +21,12 @@ function layoutcomponents_theme() {
     'layoutcomponents_block_content' => [
       'render element' => 'elements',
     ],
+    'layoutcomponents_slick_region' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+      'render element' => 'elements',
+    ],
   ];
 }
 

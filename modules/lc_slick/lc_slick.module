@@ -24,9 +24,7 @@ function lc_slick_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_
 
     /** @var \Drupal\layoutcomponents\Form\LcConfigureSection $obj */
     $obj = $form_state->getFormObject();
-    if (!$obj instanceof \Drupal\layoutcomponents\Form\LcConfigureSection) {
-      return;
-    }
+ 
 
     $configuration = $obj->getLayoutSettings()->getConfiguration();
 
