@@ -1,11 +1,11 @@
 (function ($, Drupal) {
-  Drupal.behaviors.video = {
+  Drupal.behaviors.VideoVeil = {
     attach: function (context, settings) {
-      $('.lc-video-bg', context).once('video').each(function () {
+      $('.block-inline-blocksimple-video', context).once('VideoVeil').each(function () {
         var vid = $(this).find('video').get(0);
         $(this).on('click', function () {
           // Remove overlay.
-          $(this).removeClass("lc-video-bg");
+          $(this).addClass("no-bg");
           // Check if is a HTML video or an iframe.
           if (typeof vid === "undefined") {
             // If is iframe.
@@ -28,4 +28,5 @@
       });
     }
   };
+
 })(jQuery, Drupal);
