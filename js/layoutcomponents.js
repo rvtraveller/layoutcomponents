@@ -8,7 +8,7 @@
   'use strict';
 
   var ajax = Drupal.ajax,
-      behaviors = Drupal.behaviors;
+    behaviors = Drupal.behaviors;
 
   behaviors.editBlockInline = {
     attach: function (context) {
@@ -134,8 +134,8 @@
             if (data.style === 'background') {
               // Alter background style.
               item.css({
-                'background-position':'50% 50%',
-                'background-size':'cover'
+                'background-position': '50% 50%',
+                'background-size': 'cover'
               })
             }
 
@@ -458,7 +458,7 @@
 
         if (!Drupal.isEmpty(type) && !Drupal.isEmpty(size)) {
           values = Drupal.builBorder(type, size, processedcolor);
-        } else if (!Drupal.isEmpty(background)){
+        } else if (!Drupal.isEmpty(background)) {
           background = Drupal.buildBackground(background, color.val(), value, item);
           values = {
             value: background,
@@ -618,9 +618,9 @@
     }
 
     if (style === 'margin-top' ||
-        style === 'margin-right' ||
-        style === 'margin-bottom' ||
-        style === 'margin-left'
+      style === 'margin-right' ||
+      style === 'margin-bottom' ||
+      style === 'margin-left'
     ) {
       value = value > 0 ? value + "px" : "0";
       data.push({
@@ -836,7 +836,7 @@
     // Get media url from Drupal.
     let data = $.ajax({
       url: '/layoutcomponents/media/' + media,
-      method :'GET',
+      method: 'GET',
       async: false
     }).responseText;
 
@@ -885,9 +885,9 @@
       return 'rgba(255,255,255,0)';
     }
     let c;
-    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
       c = hex.substring(1).split('');
-      if(c.length === 3){
+      if (c.length === 3) {
         c = [c[0], c[0], c[1], c[1], c[2], c[2]];
       }
       c = '0x' + c.join('');
@@ -897,12 +897,12 @@
   }
 
   Drupal.rgbToHex = function (rgb) {
-    function rgb2hex(rgb){
+    function rgb2hex(rgb) {
       rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
       return (rgb && rgb.length === 4) ? "#" +
-          ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-          ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-          ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
+        ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : '';
     }
   }
 
@@ -910,9 +910,41 @@
     attach: function (context) {
       $('.parallax-window').each(function () {
         let element = $(this);
-        $(element).parallax({imageSrc: element.attr('data-image-src')});
+        $(element).parallax({ imageSrc: element.attr('data-image-src') });
       });
     }
   };
+
+
+  Drupal.behaviors.VideoVeil = {
+    attach: function (context, settings) {
+      $('.block-inline-blocksimple-video', context).once('VideoVeil').each(function () {
+        var vid = $(this).find('video').get(0);
+        $(this).on('click', function () {
+          // Remove overlay.
+          $(this).addClass("no-bg");
+          // Check if is a HTML video or an iframe.
+          if (typeof vid === "undefined") {
+            // If is iframe.
+            vid = $(this).find('iframe');
+            var src = vid.prop('src');
+            // Remove the parameters.
+            src = src.replace('autoplay=0&start=0&rel=0', '');
+            // Add autoplay.
+            src += 'autoplay=1';
+            vid.prop('src', '');
+            // From chrome 83 is necessary apply this attribute.
+            vid.attr('allow', 'autoplay');
+            // Add new parameters.
+            vid.prop('src', src);
+          } else {
+            // If is a HTML video.
+            vid.play();
+          }
+        });
+      });
+    }
+  };
+
 
 })(jQuery, Drupal, drupalSettings);

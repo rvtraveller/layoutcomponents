@@ -243,6 +243,72 @@ $tertiary-dark:$orange-dark;
   }
 }
 
+//---------------------------------------- Video veil
+
+
+// Video
+
+// Overlay
+
+.block-inline-blocksimple-video {
+  position: relative;
+  cursor: pointer;
+  &:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:$primary-color-medium;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: block;
+    z-index:9000;
+  }
+  .block-inline-blocksimple-video{
+    &:before{
+
+      position: absolute;
+      content: "\f144";
+      background: white;
+      color: $primary-color-light;
+      border-radius: 40px;
+      display: block;
+      padding: 0;
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      font-size: 70px;
+      text-align: center;
+      left: calc(50% - 35px);
+      top: calc(50% - 35px);
+      @extend %fontawesome;
+      opacity: 1;
+    }
+  }
+}
+
+.no-bg{
+  &:before{
+    background: none !important;
+    z-index:0;
+  }
+  .block-inline-blocksimple-video:before{
+    background: none !important;
+  }
+
+  .block-inline-blocksimple-video{
+    z-index:0;
+    &:before{
+      z-index:0;
+      content: none;
+    }
+  }
+}
+
+
+
 //--------------------------------------------------------------------- GENERAL
 
 //---------------------------------------- Tooltip
@@ -982,23 +1048,6 @@ $tertiary-dark:$orange-dark;
 
 .lc-ui-dialog{
 
-  div#drupal-off-canvas *,
-  div#drupal-off-canvas *:not(div) {
-    background: $primary-color-darkest;
-  }
-
-
-  div#drupal-off-canvas *,
-  div#drupal-off-canvas details,
-  div#drupal-off-canvas div.details-wrapper,
-  div#drupal-off-canvas fieldset label,
-  div#drupal-off-canvas *:not(div) {
-    color: white;
-    @extend %librefranklin;
-    font-size: $font-size-base;
-    font-weight: 500;
-  }
-
   &.ui-dialog{
 
     @extend %librefranklin;
@@ -1011,6 +1060,7 @@ $tertiary-dark:$orange-dark;
     color:  $primary-color-darkest;
 
     &.ui-dialog-off-canvas{
+      background: $primary-color-darkest;
 
       //-------------------------- Lateral Menu Title
 
@@ -1020,6 +1070,15 @@ $tertiary-dark:$orange-dark;
         color:$primary-color-bg-border;
         border-bottom: none !important;
         font-size: $font-size-base;
+
+        span{
+          &.ui-dialog-title{
+            max-width: 90%;
+            padding-left: 30px;
+            @extend %librefranklin;
+          }
+        }
+        //-------------------------- Close icon
 
         .ui-dialog-titlebar-close{
           background-image: none;
@@ -1041,26 +1100,99 @@ $tertiary-dark:$orange-dark;
             display: inline-block;
             line-height: 22px;
           }
-
-          span {
-            font-size: 1.1em;
-            font-weight: 200;
-            border: 0;
-          }
-          .ui-dialog-title{
-            max-width: none !important;
-            @extend %librefranklin;
-            font-weight: 700;
-          }
         }
       }
 
       //-------------------------- Lateral Menu Content
 
-      #drupal-off-canvas{
-        overflow-x: visible !important;
+      #drupal-off-canvas,
+      #drupal-off-canvas details,
+      #drupal-off-canvas div.details-wrapper,
+      #drupal-off-canvas fieldset label{
+        padding: 0;
         background: $primary-color-darkest;
-        padding: 0px !important;
+      }
+
+      #drupal-off-canvas,
+      #drupal-off-canvas *,
+      #drupal-off-canvas details,
+      #drupal-off-canvas div.details-wrapper,
+      #drupal-off-canvas fieldset label,
+      #drupal-off-canvas *:not(div){
+        overflow-x: visible !important;
+        font-size: $font-size-base;
+        @extend %librefranklin;
+        background: inherit;
+
+
+        //---------------------------------------------------- GENERAL
+
+        //-------------------------- Link
+
+        .link {
+          display: inline;
+          transition: color 0.3s ease;
+          color: $primary-color-bg-border;
+          background: transparent;
+          font-size: $font-size-base;
+          margin: 10px 20px;
+          text-decoration: underline;
+          font-weight: 600;
+
+          &:focus{
+            text-decoration: underline;
+            color: white;
+          }
+          &:hover{
+            text-decoration: underline;
+            color: white;
+          }
+        }
+
+
+        //-------------------------- Section move
+
+        .layout-builder-section-move{
+          width: 100%;
+          float: left;
+
+          .layout-builder-sections-table{
+            .tabledrag-toggle-weight-wrapper{
+              .tabledrag-toggle-weight{
+
+              }
+            }
+          }
+
+          .table{
+            thead tr th, tbody tr td{
+              @extend %librefranklin;
+              color: white;
+              font-weight: 700;
+              font-size: $font-size-base;
+              padding: 20px;
+              line-height: 20px;
+              border-bottom: 1px solid $primary-color-dark;
+              border-top: 1px solid $primary-color-dark;
+
+            }
+            tbody tr td {
+              padding: 15px 20px;
+              margin: 0;
+              @extend %librefranklin;
+              font-weight: 500;
+              border-bottom: 1px solid $primary-color-dark;
+              border-top: 1px solid $primary-color-dark;
+              color: white;
+              background: $primary-color-darker;
+            }
+            tbody tr.drag-previous td, tr td:hover{
+              background-color: $primary-color-dark;
+            }
+          }
+        }
+
+
 
         //-------------------------- CKEDITOR
 
@@ -1071,12 +1203,19 @@ $tertiary-dark:$orange-dark;
           white-space: normal;
         }
 
-        #drupal-off-canvas .cke_bottom {
+        .cke_bottom {
           padding: 6px 8px 2px;
           position: relative;
           border-top: 1px solid #d1d1d1;
           background: #f8f8f8;
         }
+
+        .cke{
+          padding: auto;
+          background: inherit;
+        }
+
+
 
         .alert-error{}
 
@@ -1098,21 +1237,53 @@ $tertiary-dark:$orange-dark;
 
         //-------------------- General
 
-        select{
-          &:after {
+        .form-type-select{
+          &:after{
+            position: relative;
+            display: block;
+            @extend %fontawesome;
+            font-size: 14px;
+            right: 10px;
+            bottom: 0px;
             color: $primary-color-darkest;
-            content: "▼";
-            font-style: normal;
-            font-weight: 400;
-            line-height: 1;
-            margin-top: -0.5em;
-            padding-right: 0.5em;
-            pointer-events: none;
-            position: absolute;
-            right: 0px;
-            top: 50%;
-            z-index: 10;
+            content: "\f078";
+            line-height: 40px;
+            float: right;
+            top: -35px;
           }
+        }
+
+        label{
+          border: 0px;
+        }
+
+        .form-textarea-wrapper{
+          border-color: $primary-color-darkest;
+          border: 0px;
+
+        }
+
+        select{
+          option{
+            color: $primary-color-darkest;
+          }
+
+
+
+          // &:after {
+          //   color: $primary-color-darkest;
+          //   content: "▼";
+          //   font-style: normal;
+          //   font-weight: 400;
+          //   line-height: 1;
+          //   margin-top: -0.5em;
+          //   padding-right: 0.5em;
+          //   pointer-events: none;
+          //   position: absolute;
+          //   right: 0px;
+          //   top: 50%;
+          //   z-index: 10;
+          // }
         }
 
         p{
@@ -1242,28 +1413,6 @@ $tertiary-dark:$orange-dark;
 
           &:focus{
             outline-color: none;
-          }
-        }
-
-
-        button{
-          &.link {
-            display: inline;
-            transition: color 0.5s ease;
-            color: $primary-color-bg-border;
-            background: transparent;
-            font-size: $font-size-base;
-            margin: 10px 20px;
-            text-decoration: underline;
-            font-weight: 600;
-            &:hover{
-              text-decoration: underline;
-              color: white;
-            }
-            &:focus{
-              text-decoration: underline;
-              color: white;
-            }
           }
         }
 
@@ -2722,39 +2871,6 @@ $tertiary-dark:$orange-dark;
         .logo {
           margin: 0 0 20px 0;
         }
-
-        form{
-          width: 100%;
-          float: left;
-          &.layout-builder-section-move{
-            .table{
-              thead tr th, tbody tr td{
-                @extend %librefranklin;
-                color: white;
-                font-weight: 700;
-                font-size: $font-size-base;
-                padding: 20px;
-                line-height: 20px;
-                border-bottom: 1px solid $primary-color-dark;
-                border-top: 1px solid $primary-color-dark;
-
-              }
-              tbody tr td {
-                padding: 15px 20px;
-                margin: 0;
-                @extend %librefranklin;
-                font-weight: 500;
-                border-bottom: 1px solid $primary-color-dark;
-                border-top: 1px solid $primary-color-dark;
-                color: white;
-                background: $primary-color-darker;
-              }
-              tbody tr.drag-previous td, tr td:hover{
-                background-color: $primary-color-dark;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -3190,4 +3306,5 @@ $tertiary-dark:$orange-dark;
     }
   }
 }
+
 
