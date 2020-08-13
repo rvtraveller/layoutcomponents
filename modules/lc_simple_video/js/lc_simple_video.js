@@ -1,7 +1,7 @@
 (function ($, Drupal) {
   Drupal.behaviors.VideoVeil = {
     attach: function (context, settings) {
-      $('.block-inline-blocksimple-video', context).once('VideoVeil').each(function () {
+      $('.lc-video-bg', context).once('VideoVeil').each(function () {
         var vid = $(this).find('video').get(0);
         $(this).on('click', function () {
           // Remove overlay.
