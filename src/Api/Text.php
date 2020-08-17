@@ -14,7 +14,7 @@ class Text {
   use General;
 
   /**
-   * Provide the processed element.
+   * Provide the processed element text.
    *
    * @param array $data
    *   The default values.
@@ -31,6 +31,23 @@ class Text {
         '#type' => 'textfield',
       ];
     }
+    return $this->getElement($data, $element);
+  }
+
+  /**
+   * Provide the processed element textarea.
+   *
+   * @param array $data
+   *   The default values.
+   * @param string $type
+   *   The new type.
+   */
+  public function plainTextArea(array $data) {
+    $element = [
+      '#type' => 'textarea',
+      '#rows' => $data['rows'],
+      '#cols' => $data['cols'],
+    ];
     return $this->getElement($data, $element);
   }
 

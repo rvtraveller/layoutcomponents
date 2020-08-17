@@ -187,6 +187,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
       'title' => [
         'general' => [
           'title' => $lc->get('title_text'),
+          'description' => $lc->get('description_text'),
         ],
         'styles' => [
           'design' => [
@@ -817,6 +818,23 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
           'class' => 'title',
         ]
       ),
+      'description' => $this->lcApiText->plainTextArea(
+        [
+          'id' => 'description',
+          'title' => $this->t('Description'),
+          'description' => $this->t('Set the description of this section'),
+          'default_value' => $general['description'],
+          'rows' => 10,
+          'cols' => 10,
+          'attributes' => [
+            'placeholder' => $this->t('My Description'),
+            'lc' => [
+              'type' => 'text',
+            ],
+          ],
+          'class' => 'description',
+        ],
+      ),
     ];
 
     $container['styles'] = [
@@ -1013,6 +1031,43 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
               ],
             ],
             'class' => 'margin-bottom',
+          ]
+        ),
+      ],
+      'misc' => [
+        '#type' => 'details',
+        '#title' => $this->t('Misc'),
+        '#group' => 'title',
+        'title_extra_class' => $this->lcApiText->plainText(
+          [
+            'id' => 'description',
+            'title' => $this->t('Title - Additional classes'),
+            'description' => $this->t('Set extra classes for title, ilegal character will be removed automatically'),
+            'default_value' => $styles['misc']['title_extra_class'],
+            'attributes' => [
+              'placeholder' => $this->t('Ej. myclass1 myclass2'),
+              'lc' => [
+                'type' => 'class',
+                'style' => 'extra_class',
+              ],
+            ],
+            'class' => 'extra_class',
+          ]
+        ),
+        'description_extra_class' => $this->lcApiText->plainText(
+          [
+            'id' => 'description',
+            'title' => $this->t('Description - Additional classes'),
+            'description' => $this->t('Set extra classes for description, ilegal character will be removed automatically'),
+            'default_value' => $styles['misc']['description_extra_class'],
+            'attributes' => [
+              'placeholder' => $this->t('Ej. myclass1 myclass2'),
+              'lc' => [
+                'type' => 'class',
+                'style' => 'extra_class',
+              ],
+            ],
+            'class' => 'extra_class',
           ]
         ),
       ],

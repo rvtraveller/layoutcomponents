@@ -82,6 +82,14 @@ class LcSectionSettings extends ConfigFormBase {
           '#default_value' => $config->get('title_text') ?: '',
           '#description' => $this->t('Set the default text for the titles of the sections'),
         ],
+        'description_text' => [
+          '#type' => 'textarea',
+          '#title' => $this->t('Description'),
+          '#default_value' => $config->get('description_text') ?: '',
+          '#description' => $this->t('Set the default description for the sections'),
+          '#rows' => 10,
+          '#cols' => 10,
+        ],
       ],
       'title_styles' => [
         '#type' => 'details',
@@ -289,6 +297,7 @@ class LcSectionSettings extends ConfigFormBase {
     $misc = $form_state->getValues()['general']['misc'];
 
     $title_text = $title['title_text'];
+    $description_text = $title['description_text'];
     $title_color = $title_styles['title_color'];
     $title_type = $title_styles['title_type'];
     $title_align = $title_styles['title_align'];
@@ -312,6 +321,7 @@ class LcSectionSettings extends ConfigFormBase {
 
     $this->config('layoutcomponents.section')
       ->set('title_text', $title_text)
+      ->set('description_text', $description_text)
       ->set('title_color', $title_color)
       ->set('title_type', $title_type)
       ->set('title_align', $title_align)

@@ -62,7 +62,7 @@
         {% endfor %}
       </ul>
         <div class="tab-content">
-            {% for key, item in content.field_sta_item_title if key|first != '#' %}
+            {% for key, item in content.field_st_item if key|first != '#' %}
                 {% set anchor = item['#block_content'].get('field_st_item_anchor').value %}
                 {% if loop.index == '1' %}
                     {% set active = 'show active' %}

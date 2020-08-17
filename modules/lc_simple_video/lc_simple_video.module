@@ -225,7 +225,7 @@ function _lc_simple_video_form_alter(array &$form, $block_id) {
     $url
   );
 
-  $form['field_sv_video']['#states'] = [
+  $form['field_sv_video']['widget'][0]['value']['#states'] = [
     'visible' => [
       ':input[name="settings[block_form][field_sv_video_type]"]' => ['value' => 'video_url'],
     ],
@@ -233,6 +233,7 @@ function _lc_simple_video_form_alter(array &$form, $block_id) {
       ':input[name="settings[block_form][field_sv_video_type]"]' => ['!value' => 'video_url'],
     ],
   ];
+
 
   // LC inline video upload.
   $upload = $form['field_sv_upload_video']['widget'];
@@ -243,8 +244,9 @@ function _lc_simple_video_form_alter(array &$form, $block_id) {
     ],
     $upload
   );
+  
 
-  $form['field_sv_upload_video']['#states'] = [
+  $form['field_sv_upload_video']['widget']['#states'] = [
     'visible' => [
       ':input[name="settings[block_form][field_sv_video_type]"]' => ['value' => 'video_upload'],
     ],
@@ -294,3 +296,4 @@ function _lc_simple_video_form_alter(array &$form, $block_id) {
   );
 
 }
+

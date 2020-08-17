@@ -680,6 +680,7 @@ class LcLayout {
   public function setSectionTitle() {
     // Data.
     $title = $this->getSetting('title.general.title', '');
+    $description = $this->getSetting('title.general.description', '');
     $title_color = $this->getSetting('title.styles.design.title_color.settings.color', []);
     $title_opacity = $this->getSetting('title.styles.design.title_color.settings.opacity', []);
     $title_size = $this->getSetting('title.styles.sizing.title_size', []);
@@ -688,6 +689,8 @@ class LcLayout {
     $title_border_color = $this->getSetting('title.styles.border.title_border_color.settings.color');
     $title_margin_top = ($this->getSetting('title.styles.spacing.title_margin_top') == 0) ? '' : $this->getSetting('title.styles.spacing.title_margin_top') . 'px';
     $title_margin_bottom = ($this->getSetting('title.styles.spacing.title_margin_bottom') == 0) ? '' : $this->getSetting('title.styles.spacing.title_margin_bottom') . 'px';
+    $title_extra_class = $this->getSetting('title.styles.misc.title_extra_class', '');
+    $description_extra_class = $this->getSetting('title.styles.misc.description_extra_class', '');
 
     // Title container classes.
     $container_classes = new Attribute();
@@ -719,7 +722,30 @@ class LcLayout {
     $title_classes->addClass('lc-inline_title-edit');
     $title_classes->addClass('border-type' . $title_border);
     $title_classes->addClass($this->getSetting('title.styles.design.title_align'));
+
+    // Title extra class.
+    if (!empty($title_extra_class)) {
+      foreach (explode(',', $title_extra_class) as $class) {
+        $class = str_replace(' ', '', $class);
+        $title_classes->addClass(preg_replace('/[^A-Za-z0-9\-]/', '', $class));
+      }
+    }
+
     $this->setSetting('title.styles.attr_class.title', $title_classes);
+
+    // Description classes.
+    $description_classes = new Attribute();
+    $description_classes->addClass('lc-inline_description-edit');
+
+    // Description extra class.
+    if (!empty($description_extra_class)) {
+      foreach (explode(',', $description_extra_class) as $class) {
+        $class = str_replace(' ', '', $class);
+        $description_classes->addClass(preg_replace('/[^A-Za-z0-9\-]/', '', $class));
+      }
+    }
+
+    $this->setSetting('title.styles.attr_class.description', $description_classes);
 
     // Title styles.
     $title_styles = [];

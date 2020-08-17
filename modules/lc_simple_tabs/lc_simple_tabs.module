@@ -97,6 +97,12 @@ function lc_simple_tabs_inline_entity_form_entity_form_alter(&$entity_form, &$fo
         $anchor
       );
     }
+    /** @var \Drupal\block_content\Entity\BlockContent $block */
+    $block = $entity_form['#default_value'];
+    if (isset($block)) {
+      $block->isDefaultRevision(TRUE);
+      $block->save();
+    }
   }
 }
 
