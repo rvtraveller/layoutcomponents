@@ -1,0 +1,8 @@
+name: Layout Components - Commands
+type: module
+description: Layout Components commands.
+core_version_requirement: ^9
+dependencies:
+  - drupal:layoutcomponents
+  - hal
+  - serialization

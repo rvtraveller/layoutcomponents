@@ -37,6 +37,18 @@ class LcSettings extends ConfigFormBase {
     $form['general'] = [
       '#type' => 'vertical_tabs',
       '#title' => $this->t('Provide the general configuration'),
+      'config' => [
+        '#type' => 'details',
+        '#title' => $this->t('Block config'),
+        '#group' => 'general',
+        'folder' => [
+          '#type' => 'textfield',
+          '#title' => $this->t('Folder'),
+          '#default_value' => $config->get('folder') ?? '',
+          '#placeholder' => '/config/block_content',
+          '#description' => $this->t('Set the folder where must be stored the blocks, the path will start with @root, the last slash will be added automatically', ['@root' => DRUPAL_ROOT]),
+        ],
+      ],
       'menu' => [
         '#type' => 'details',
         '#title' => $this->t('Lateral menu'),
@@ -61,8 +73,10 @@ class LcSettings extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $width = $form_state->getValue('width') ?: 200;
+    $folder = $form_state->getValue('folder') ?: '';
 
     $this->config('layoutcomponents.general')
+      ->set('folder', $folder)
       ->set('width', $width)
       ->save();
 
