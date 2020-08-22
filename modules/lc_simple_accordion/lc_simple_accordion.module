@@ -41,8 +41,13 @@ function lc_simple_accordion_preprocess_block(&$variables) {
     return;
   }
 
+  if (!array_key_exists('#block_content',$variables['content'])) {
+    return;
+  }
+
   /** @var \Drupal\block_content\Entity\BlockContent $block */
   $block = $variables['content']['#block_content'];
+
   $block_id = str_replace(' ', '_', $block->uuid());
 
   $extra_class = $block->get('field_sa_extra_class')->getString();

@@ -1,6 +1,6 @@
-name: Layoutcomponents - Simple Title
+name: Layout Components - Simple Title
 type: module
-description: Simple title block
+description: Simple title block type
 package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:

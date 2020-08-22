@@ -1,6 +1,6 @@
-name: Layoutcomponents - Simple Video
+name: Layout Components - Simple Video
 type: module
-description: Simple video block
+description: Simple video block type
 package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:

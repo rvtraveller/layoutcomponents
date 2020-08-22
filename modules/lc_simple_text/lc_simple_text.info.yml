@@ -1,6 +1,6 @@
-name: Layoutcomponents - Simple Text
+name: Layout Components - Simple Text
 type: module
-description: Simple text block
+description: Simple text block type
 package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:
