@@ -296,6 +296,12 @@ class LcLayout {
     $component_container_title_attributes = new Attribute();
     $component_container_title_attributes->addClass('lc-inline_container-title-edit');
 
+    // Hidde the container if the title is empty.
+    $title = $this->getSetting('title.general.title', '');
+    if (empty($title)) {
+      $component_container_title_attributes->addClass('hidden');
+    }
+
     // Set wrapper full width.
     $full_width = $this->getSetting('section.styles.sizing.full_width', '');
     if (!empty($full_width) && $full_width == TRUE) {

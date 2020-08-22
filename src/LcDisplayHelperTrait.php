@@ -44,43 +44,25 @@ trait LcDisplayHelperTrait {
     foreach ($sections as $delta => $section) {
       $settings = $section->getLayoutSettings();
       $section_label = $settings['section']['general']['basic']['section_label'];
-      $section_overwrite = $settings['section']['general']['basic']['section_overwrite'];
-      if (boolval(!$section_overwrite)) {
-        if ($this->checkDefaultExists($defaults, $section_label)) {
-          // Remplace if the section is a defualt.
-          $default = $this->getDefault($defaults, $section_label);
-          if (isset($default)) {
-            $d_delta = $default->getLayoutSettings()['section']['general']['basic']['section_delta'];
-            $d_overwrite = $default->getLayoutSettings()['section']['general']['basic']['section_overwrite'];
-            if (boolval($d_overwrite)) {
-              $this->arrayInsert($n_sections, $d_delta, $default);
-            }
-            else {
-              $n_sections[] = $sections[$delta];
-            }
-          }
-        }
-        else {
-          $n_sections[] = $sections[$delta];
-        }
-        unset($sections[$delta]);
-      }
-    }
-
-    foreach ($sections as $delta => $section) {
-      $settings = $section->getLayoutSettings();
-      $section_label = $settings['section']['general']['basic']['section_label'];
-      $section_overwrite = $settings['section']['general']['basic']['section_overwrite'];
-      if (boolval($section_overwrite)) {
-        if ($this->checkDefaultExists($defaults, $section_label)) {
-          // Remplace if the section is a defualt.
-          $default = $this->getDefault($defaults, $section_label);
-          if (isset($default)) {
-            $d_delta = $default->getLayoutSettings()['section']['general']['basic']['section_delta'];
+      if ($this->checkDefaultExists($defaults, $section_label)) {
+        // Remplace if the section is a defualt.
+        $default = $this->getDefault($defaults, $section_label);
+        if (isset($default)) {
+          $d_delta = $default->getLayoutSettings()['section']['general']['basic']['section_delta'];
+          if ($this->isOverWriten($default)) {
             $this->arrayInsert($n_sections, $d_delta, $default);
           }
+          else {
+            $this->updateOverWriten($sections[$delta], FALSE);
+            $this->arrayInsert($n_sections, $delta, $sections[$delta]);
+          }
+          unset($sections[$delta]);
+          continue;
         }
       }
+
+      $this->arrayInsert($n_sections, $delta, $sections[$delta]);
+      unset($sections[$delta]);
     }
 
     // Store the rest of defaults.
@@ -91,7 +73,6 @@ trait LcDisplayHelperTrait {
       }
       $d_delta = $defaults[$delta]->getLayoutSettings()['section']['general']['basic']['section_delta'];
       $this->arrayInsert($n_sections, $d_delta, $defaults[$delta]);
-
     }
 
     ksort($n_sections);
@@ -144,23 +125,62 @@ trait LcDisplayHelperTrait {
   }
 
   /**
-   * Insert element in array by position.
+   * Get if the section is setted as overwriten.
    *
-   * @param array $array
-   *   The array.
-   * @param int $position
-   *   The delta of the section.
    * @param \Drupal\layout_builder\Section $new
    *   The new element.
+   * @return bool
+   *   TRUE or FALSE.
    */
-  public function arrayInsert(array &$array, $position, Section $new) {
-    $first = array_slice($array, 0, $position, TRUE);
-    $second = array_slice($array, $position);
-    $first[$position] = $new;
-    foreach ($second as $item) {
-      $first[] = $item;
+  public function isOverWriten(Section $default) {
+    return boolval($default->getLayoutSettings()['section']['general']['basic']['section_overwrite']) ?: FALSE;
+  }
+
+  /**
+   * Get if the section is setted as overwriten.
+   *
+   * @param \Drupal\layout_builder\Section $default
+   *   The new element.
+   * @param bool $status
+   *   The new status.
+   * @return \Drupal\layout_builder\Section
+   *   The section.
+   */
+  public function updateOverWriten(Section &$default, bool $status) {
+    $settings = $default->getLayoutSettings();
+    $settings['section']['general']['basic']['section_overwrite'] = $status;
+    $default->setLayoutSettings($settings);
+    return $default;
+  }
+
+  /**
+   * Insert element in array by position.
+   *
+   * @param array $arr
+   *   The array of sections.
+   * @param int $index
+   *   The new position.
+   * @param \Drupal\layout_builder\Section $value
+   *   The new section.
+   */
+  function arrayInsert(&$arr, $index, $value){
+    $lengh = count($arr);
+
+    if (!$this->isOverWriten($value)) {
+      for($i=0; $i<($lengh+1); $i++){
+        if (!array_key_exists($i, $arr)) {
+          $arr[$i] = $value;
+          break;
+        }
+      }
+      return;
     }
-    $array = $first;
+
+    for($i=$lengh; $i>$index; $i--){
+      $arr[$i] = $arr[$i-1];
+    }
+
+    $arr[$index] = $value;
   }
 
 }

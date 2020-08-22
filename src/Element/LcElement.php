@@ -136,21 +136,27 @@ class LcElement extends LayoutBuilder {
    * {@inheritdoc}
    */
   public function prepareLayout(SectionStorageInterface $section_storage) {
-    // Content sections.
-    $sections = $this->getOrderedSections($section_storage);
 
-    // Set the rest of defaults.
-    foreach ($sections as $delta => $section) {
-      if (!isset($section)) {
-        continue;
-      }
-      if ($section->getLayoutId() == 'layout_builder_blank') {
-        continue;
-      }
-      $section_storage->appendSection($section);
+    if ($section_storage instanceof \Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage) {
+      parent::prepareLayout($section_storage);
     }
+    else {
+      // Content sections.
+      $sections = $this->getOrderedSections($section_storage);
 
-    $this->layoutTempstoreRepository->set($section_storage);
+      // Set the rest of defaults.
+      foreach ($sections as $delta => $section) {
+        if (!isset($section)) {
+          continue;
+        }
+        if ($section->getLayoutId() == 'layout_builder_blank') {
+          continue;
+        }
+        $section_storage->appendSection($section);
+      }
+
+      $this->layoutTempstoreRepository->set($section_storage);
+    }
   }
 
   /**
