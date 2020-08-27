@@ -1,6 +1,7 @@
 name: Layout Components - Commands
 type: module
 description: Include commands to export and import the blocks.
+package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:
   - drupal:layoutcomponents
