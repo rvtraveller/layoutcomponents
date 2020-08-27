@@ -188,7 +188,7 @@ class LcElement extends LayoutBuilder {
     // Check if a section is ready to copy.
     $store = $this->tempStoreFactory->get('lc');
     $data = $store->get('lc_element');
-    $options['attributes']['class']['lc-copy'] = ($data['type'] == 'section') ? 'lc-copy' : '';
+    $options['attributes']['class']['lc-copy'] = ( (isset($data)) && ($data['type'] == 'section')) ? 'lc-copy' : '';
 
     // Save new options.
     $url->setOptions($options);
