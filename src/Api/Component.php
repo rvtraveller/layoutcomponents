@@ -96,8 +96,8 @@ class Component implements ContainerInjectionInterface {
     if (isset($lc['no_lc']) && $lc['no_lc'] == TRUE) {
       $element['#title'] = $this->lcApiColor->getLcTitle(
         [
-          'title' => $element['#title'],
-          'description' => $element['#description'],
+          'title' => (isset($element['#title'])) ? $element['#title'] : '',
+          'description' => (isset($element['#description'])) ? $element['#description'] : '',
         ]
       );
       unset($element['#description']);
@@ -105,7 +105,7 @@ class Component implements ContainerInjectionInterface {
       return array_merge($element, $new_element);
     }
 
-    $data['title'] = $element['#title'];
+    $data['title'] = (isset($element['#title'])) ? $element['#title'] : '';
     $data['description'] = (isset($element['#description'])) ? $element['#description'] : '';
     $data['default_value'] = (isset($element['#default_value'])) ? $element['#default_value'] : '';
     $data['class'] = (isset($lc['class'])) ? $lc['class'] : '';

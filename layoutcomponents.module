@@ -189,7 +189,7 @@ function _layoutcomponents_form_alter(array &$form, BlockContent $element) {
     if ($definition instanceof FieldConfig) {
       if (array_key_exists($definition->getName(), $form)) {
         $item = [];
-        if ($form[$definition->getName()]['widget'][0]) {
+        if (array_key_exists('0', $form[$definition->getName()]['widget'])) {
           if (!empty($form[$definition->getName()]['widget'][0]['value'])) {
             $item = $form[$definition->getName()]['widget'][0]['value'];
             $form[$definition->getName()]['widget'][0]['value'] = $lcApi->getComponentElement(
