@@ -373,11 +373,8 @@ class Slider extends FormElement {
     }
 
     if (!empty($element['#display_values'])) {
-      foreach ($element['#values'] as $key => $value) {
-        $values[$key] = str_replace('%{value}%', $value, $element['#display_values_format']);
-      }
       $element['slider']['values_text'] = [
-        '#markup' => '<div class="sliderwidget-display-values-field">' . htmlentities(implode(' - ', $values)) . '</div>',
+        '#markup' => '<div class="sliderwidget-display-values-field">' . htmlentities($element['#value']) . '</div>',
       ];
     }
 
@@ -415,8 +412,8 @@ class Slider extends FormElement {
         'drupalSettings' => [
           'sliderwidget_' . $element['#id'] => [
             'animate' => $element['#animate'],
-            'adjust_field_min_css_selector' => $element['#adjust_field_min'],
-            'adjust_field_max_css_selector' => $element['#adjust_field_max'],
+            'adjust_field_min_css_selector' => (isset($element['#adjust_field_min'])) ? $element['#adjust_field_min'] : '',
+            'adjust_field_max_css_selector' => (isset($element['#adjust_field_max'])) ? $element['#adjust_field_max'] : '',
             'disabled' => $element['#disabled'],
             'max' => $element['#max'] * 1,
             'min' => $element['#min'] * 1,
@@ -428,8 +425,8 @@ class Slider extends FormElement {
             'display_bubble' => $element['#display_bubble'],
             'display_bubble_format' => $element['#display_bubble_format'],
             'display_values' => $element['#display_values'],
-            'multi_value' => $element['#multi_value'],
-            'values' => $element['#values'],
+            'multi_value' => (isset($element['#multi_value'])) ? $element['#multi_value'] : '',
+            'values' => (isset($element['#values'])) ? $element['#values'] : '',
             'group' => $element['#group'],
             'group_type' => $element['#group_type'],
             'group_master' => $element['#group_master'],
