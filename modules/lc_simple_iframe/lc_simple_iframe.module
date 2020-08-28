@@ -175,7 +175,7 @@ function _lc_simple_iframe_form_alter(array &$form, $block_id) {
   $lcApi = Drupal::service('layoutcomponents.apiComponent');
 
   // LC url.
-  $form['field_sif_url']['widget'][0]['uri']['#description'] = $form['field_sif_url']['widget'][0]['#description'];
+  $form['field_sif_url']['widget'][0]['uri']['#description'] = t('Set the url of this iframe');
   $url = $form['field_sif_url']['widget'][0]['uri'];
   $form['field_sif_url']['widget'][0]['uri'] = $lcApi->getComponentElement(
     [
