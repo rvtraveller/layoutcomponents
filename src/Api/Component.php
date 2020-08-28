@@ -93,7 +93,7 @@ class Component implements ContainerInjectionInterface {
     }
 
     // Return a clean element.
-    if ($lc['no_lc'] == TRUE) {
+    if (isset($lc['no_lc']) && $lc['no_lc'] == TRUE) {
       $element['#title'] = $this->lcApiColor->getLcTitle(
         [
           'title' => $element['#title'],
@@ -106,11 +106,11 @@ class Component implements ContainerInjectionInterface {
     }
 
     $data['title'] = $element['#title'];
-    $data['description'] = $element['#description'];
-    $data['default_value'] = $element['#default_value'];
-    $data['class'] = $lc['class'];
+    $data['description'] = (isset($element['#description'])) ? $element['#description'] : '';
+    $data['default_value'] = (isset($element['#default_value'])) ? $element['#default_value'] : '';
+    $data['class'] = (isset($lc['class'])) ? $lc['class'] : '';
 
-    $data['attributes'] = $element['#attributes'];
+    $data['attributes'] = (isset($element['#attributes'])) ? $element['#attributes'] : [];
     $data['attributes']['lc'] = $lc;
     $data['attributes']['edit'] = 'layout-builder-configure-block';
     unset($element['#description']);
