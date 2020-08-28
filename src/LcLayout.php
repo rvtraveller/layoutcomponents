@@ -523,9 +523,9 @@ class LcLayout {
     $border_radius_bottom_right = $this->getSetting($path . '.styles.border.radius_bottom_right');
     $background_color = $this->getSetting($path . '.styles.background.color.settings.color');
     $background_opacity = $this->getSetting($path . '.styles.background.color.settings.opacity');
-    $remove_paddings = $this->getSetting($path . '.styles.spacing.remove_paddings');
-    $remove_padding_left = $this->getSetting($path . '.styles.spacing.remove_padding_left');
-    $remove_padding_right = $this->getSetting($path . '.styles.spacing.remove_padding_right');
+    $remove_paddings = $this->getSetting($path . '.styles.spacing.paddings');
+    $remove_padding_left = $this->getSetting($path . '.styles.spacing.paddings_left');
+    $remove_padding_right = $this->getSetting($path . '.styles.spacing.paddings_right');
     $extra_classes = $this->getSetting($path . '.styles.misc.extra_class');
 
     $column_classes = new Attribute();

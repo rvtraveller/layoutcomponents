@@ -31,7 +31,7 @@ trait General {
     }
 
     // Serialize the LC attributes.
-    $data['attributes']['input'] = $data['attributes']['lc']['input'];
+    $data['attributes']['input'] = (isset($data['attributes']['lc']['input'])) ? $data['attributes']['lc']['input'] : '';
     $data['attributes']['lc']['id'] = 'lc-inline_' . $data['id'];
     $data['attributes']['lc']['class'] = $class;
     $data['attributes']['lc'] = Json::encode($data['attributes']['lc']);
@@ -42,8 +42,11 @@ trait General {
       '#default_value' => $data['default_value'],
       '#title' => $this->getLcTitle($data),
       '#attributes' => $data['attributes'],
-      '#access' => $data['#access'],
     ];
+
+    if (array_key_exists('#access', $data)) {
+      $new_element['#access'] = $data['#access'];
+    }
 
     // Merge with old element.
     $element = array_merge($new_element, $element);

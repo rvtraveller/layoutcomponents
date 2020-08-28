@@ -217,6 +217,10 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'title_margin_top' => $lc->get('title_margin_top'),
             'title_margin_bottom' => $lc->get('title_margin_bottom'),
           ],
+          'misc' => [
+            'title_extra_class' => '',
+            'description_extra_class' => '',
+          ],
         ],
       ],
       'section' => [
@@ -350,30 +354,35 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
    *   The region.
    */
   public function setAdminsitrativeRegion(array &$form, FormStateInterface $form_state, $region) {
+    $general = $styles = NULL;
     $config = $this->getConfiguration()['regions'][$region];
-    $general = $config['general'];
+    if (array_key_exists('general', $config)) {
+      $general = $config['general'];
+    }
     $styles = $config['styles'];
     $container = &$form['container']['regions'][$region];
 
-    $container['general'] = [
-      '#type' => 'details',
-      '#title' => $this->t('General'),
-      '#group' => 'regions',
-      'title' => $this->lcApiText->plainText(
-        [
-          'id' => 'column_' . $region . '-title',
-          'title' => $this->t('Title'),
-          'description' => $this->t('Set the title of this section'),
-          'default_value' => $general['title'],
-          'attributes' => [
-            'placeholder' => $this->t('Title'),
-            'lc' => [
-              'type' => 'text',
+    if (isset($general)) {
+      $container['general'] = [
+        '#type' => 'details',
+        '#title' => $this->t('General'),
+        '#group' => 'regions',
+        'title' => $this->lcApiText->plainText(
+          [
+            'id' => 'column_' . $region . '-title',
+            'title' => $this->t('Title'),
+            'description' => $this->t('Set the title of this section'),
+            'default_value' => $general['title'],
+            'attributes' => [
+              'placeholder' => $this->t('Title'),
+              'lc' => [
+                'type' => 'text',
+              ],
             ],
-          ],
-        ]
-      ),
-    ];
+          ]
+        ),
+      ];
+    }
 
     $container['styles'] = [
       '#type' => 'details',
@@ -708,12 +717,12 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         '#type' => 'details',
         '#title' => $this->t('Spacing'),
         '#group' => 'regions',
-        'remove_paddings' => $this->lcApiCheckbox->normal(
+        'paddings' => $this->lcApiCheckbox->normal(
           [
             'id' => 'column_' . $region,
             'title' => $this->t('No paddings'),
             'description' => $this->t('Remove the spaces betwen columns'),
-            'default_value' => $styles['spacing']['remove_paddings'],
+            'default_value' => $styles['spacing']['paddings'],
             'attributes' => [
               'lc' => [
                 'type' => 'class',
@@ -722,15 +731,15 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 'class_checkbox_disable' => '',
               ],
             ],
-            'class' => "$region-remove-paddings",
+            'class' => "$region-paddings",
           ]
         ),
-        'remove_padding_left' => $this->lcApiCheckbox->normal(
+        'paddings_left' => $this->lcApiCheckbox->normal(
           [
             'id' => 'column_' . $region,
             'title' => $this->t('No left padding'),
             'description' => $this->t('Remove left padding'),
-            'default_value' => $styles['spacing']['remove_padding_left'],
+            'default_value' => $styles['spacing']['paddings_left'],
             'attributes' => [
               'lc' => [
                 'type' => 'class',
@@ -739,15 +748,15 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 'class_checkbox_disable' => '',
               ],
             ],
-            'class' => "$region-remove-left_paddings",
+            'class' => "$region-paddings_left",
           ]
         ),
-        'remove_padding_right' => $this->lcApiCheckbox->normal(
+        'paddings_right' => $this->lcApiCheckbox->normal(
           [
             'id' => 'column_' . $region,
             'title' => $this->t('No right padding'),
             'description' => $this->t('Remove right padding'),
-            'default_value' => $styles['spacing']['remove_padding_right'],
+            'default_value' => $styles['spacing']['paddings_right'],
             'attributes' => [
               'lc' => [
                 'type' => 'class',
@@ -756,7 +765,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 'class_checkbox_disable' => '',
               ],
             ],
-            'class' => "$region-remove-right_paddings",
+            'class' => "$region-paddings_right",
           ]
         ),
       ],

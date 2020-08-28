@@ -72,13 +72,18 @@ class LcConfigureSection extends ConfigureSectionForm {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, SectionStorageInterface $section_storage = NULL, $delta = NULL, $plugin_id = NULL) {
+    $this->isDefault = 0;
+
     // Check section type.
-    try {
-      $section_overwrite = $section_storage->getSection($delta)->getLayoutSettings()['section']['general']['basic']['section_overwrite'];
-      $this->isDefault = (boolval($section_overwrite) && !$section_storage instanceof DefaultsSectionStorage) ? TRUE : FALSE;
-    }
-    catch (\Exception $e) {
-      $this->isDefault = 0;
+    $layout_settings = $section_storage->getSection($delta)->getLayoutSettings();
+    if (array_key_exists('section', $layout_settings)) {
+      try {
+        $section_overwrite = $layout_settings['section']['general']['basic']['section_overwrite'];
+        $this->isDefault = (boolval($section_overwrite) && !$section_storage instanceof DefaultsSectionStorage) ? TRUE : FALSE;
+      }
+      catch (\Exception $e) {
+        $this->isDefault = 0;
+      }
     }
 
     // Get custom params.
