@@ -4,7 +4,7 @@ layoutcomponents.settings_general:
     _form: '\Drupal\layoutcomponents\Form\LcSettings'
     _title: 'Layout Components - General'
   requirements:
-    _permission: 'administer layoutcomponents'
+    _permission: 'default lc general settings'
 
 layoutcomponents.interface_settings:
   path: '/admin/config/layoutcomponents/settings/interface'
@@ -12,7 +12,7 @@ layoutcomponents.interface_settings:
     _form: '\Drupal\layoutcomponents\Form\LcInterfaceSettings'
     _title: 'Layout Components - Interface'
   requirements:
-    _permission: 'administer layoutcomponents'
+    _permission: 'default lc interface settings'
 
 layoutcomponents.colors_settings:
   path: '/admin/config/layoutcomponents/settings/colors'
@@ -20,7 +20,7 @@ layoutcomponents.colors_settings:
     _form: '\Drupal\layoutcomponents\Form\LcColorsSettings'
     _title: 'Layout Components - Colors'
   requirements:
-    _permission: 'administer layoutcomponents'
+    _permission: 'default lc colors settings'
 
 layoutcomponents.section_settings:
   path: '/admin/config/layoutcomponents/settings/section'
@@ -28,7 +28,7 @@ layoutcomponents.section_settings:
     _form: '\Drupal\layoutcomponents\Form\LcSectionSettings'
     _title: 'Layout Components - Section'
   requirements:
-    _permission: 'administer layoutcomponents'
+    _permission: 'default lc section settings'
 
 layoutcomponents.column_settings:
   path: '/admin/config/layoutcomponents/settings/column'
@@ -36,7 +36,7 @@ layoutcomponents.column_settings:
     _form: '\Drupal\layoutcomponents\Form\LcColumnSettings'
     _title: 'Layout Components - Column'
   requirements:
-    _permission: 'administer layoutcomponents'
+    _permission: 'default lc column settings'
 
 layoutcomponents.update_column:
   path: '/layout_builder/configure/column/{section_storage_type}/{section_storage}/{delta}/{region}'

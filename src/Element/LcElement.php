@@ -10,11 +10,13 @@ use Drupal\layout_builder\LayoutTempstoreRepositoryInterface;
 use Drupal\layout_builder\SectionStorageInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Render\Element;
+use Drupal\layoutcomponents\Access\LcAccessHelperTrait;
 use Drupal\layoutcomponents\LcDialogHelperTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Extension\ThemeHandlerInterface;
 use Drupal\layoutcomponents\LcLayoutsManager;
 use Drupal\layoutcomponents\LcDisplayHelperTrait;
+use Drupal\Core\Session\AccountProxy;
 
 /**
  * {@inheritdoc}
@@ -23,6 +25,7 @@ class LcElement extends LayoutBuilder {
 
   use LcDisplayHelperTrait;
   use LcDialogHelperTrait;
+  use LcAccessHelperTrait;
 
   /**
    * The theme handler.
@@ -53,14 +56,30 @@ class LcElement extends LayoutBuilder {
   protected $lcLayoutManager;
 
   /**
+   * Drupal\Core\Session\AccountProxy definition.
+   *
+   * @var \Drupal\Core\Session\AccountProxy
+   */
+  protected $currentUser;
+
+  /**
+   * Current Entity.
+   *
+   * @var \stdClass
+   */
+  protected $entity;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, LayoutTempstoreRepositoryInterface $layout_tempstore_repository, MessengerInterface $messenger, ThemeHandlerInterface $theme_handler, ConfigFactory $config_factory, PrivateTempStoreFactory $temp_store, LcLayoutsManager $layout_manager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, LayoutTempstoreRepositoryInterface $layout_tempstore_repository, MessengerInterface $messenger, ThemeHandlerInterface $theme_handler, ConfigFactory $config_factory, PrivateTempStoreFactory $temp_store, LcLayoutsManager $layout_manager, AccountProxy $current_user) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $layout_tempstore_repository, $messenger);
     $this->themeHandler = $theme_handler;
     $this->configFactory = $config_factory;
     $this->tempStoreFactory = $temp_store;
     $this->lcLayoutManager = $layout_manager;
+    $this->currentUser = $current_user;
+    $this->entity = $this->getCurrentEntity();
   }
 
   /**
@@ -76,7 +95,8 @@ class LcElement extends LayoutBuilder {
       $container->get('theme_handler'),
       $container->get('config.factory'),
       $container->get('tempstore.private'),
-      $container->get('plugin.manager.layoutcomponents_layouts')
+      $container->get('plugin.manager.layoutcomponents_layouts'),
+      $container->get('current_user')
     );
   }
 
@@ -192,6 +212,10 @@ class LcElement extends LayoutBuilder {
 
     // Save new options.
     $url->setOptions($options);
+
+    if (!$this->getAccess($this->currentUser, 'create ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
+      unset($build['link']['#url']);
+    }
 
     return $build;
   }
@@ -312,6 +336,27 @@ class LcElement extends LayoutBuilder {
         ),
       ],
     ];
+
+    // Section access control.
+    if (!$this->getAccess($this->currentUser, 'configure all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
+      unset($configure['configure']);
+    }
+
+    if (!$this->getAccess($this->currentUser, 'remove all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
+      unset($remove['remove']);
+    }
+
+    if (!$this->getAccess($this->currentUser, 'move all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
+      unset($update['move_layout']);
+    }
+
+    if (!$this->getAccess($this->currentUser, 'change all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' layout sections')) {
+      unset($update['update_layout']);
+    }
+
+    if (!$this->getAccess($this->currentUser, 'copy all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
+      unset($update['copy']);
+    }
 
     // Reorder section links.
     $new_config = $remove + $configure + $update;
@@ -434,6 +479,19 @@ class LcElement extends LayoutBuilder {
             ]
           ),
         ];
+      }
+
+      // Column access control.
+      if (!$this->getAccess($this->currentUser, 'add ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
+        unset($build['layout-builder__section'][$region]['layout_builder_add_block']);
+      }
+
+      if (!$this->getAccess($this->currentUser, 'configure all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' columns')) {
+        unset($configureSection['configure']);
+      }
+
+      if (!$this->getAccess($this->currentUser, 'copy all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' columns')) {
+        unset($configureSection['copy']);
       }
 
       // Reorder block links.
@@ -575,6 +633,23 @@ class LcElement extends LayoutBuilder {
         ]
       ),
     ];
+
+    // Block access control.
+    if (!$this->getAccess($this->currentUser, 'move ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
+      unset($configureBlock['move']);
+    }
+
+    if (!$this->getAccess($this->currentUser, 'remove ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
+      unset($configureBlock['remove']);
+    }
+
+    if (!$this->getAccess($this->currentUser, 'configure ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
+      unset($configureBlock['configure']);
+    }
+
+    if (!$this->getAccess($this->currentUser, 'copy ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
+      unset($configureBlock['copy']);
+    }
 
     return $configureBlock;
   }
