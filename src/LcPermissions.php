@@ -52,6 +52,11 @@ class LcPermissions implements ContainerInjectionInterface {
     );
   }
 
+  /**
+   * The LC permissions for entities.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeBundleInfoInterface
+   */
   public function getPermissions() {
     $permissions = [];
 
