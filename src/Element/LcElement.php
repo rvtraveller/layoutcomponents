@@ -213,7 +213,7 @@ class LcElement extends LayoutBuilder {
     // Save new options.
     $url->setOptions($options);
 
-    if (!$this->getAccess($this->currentUser, 'create ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
+    if (isset($this->entity) && !$this->getAccess($this->currentUser, 'create ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
       unset($build['link']['#url']);
     }
 
@@ -338,24 +338,26 @@ class LcElement extends LayoutBuilder {
     ];
 
     // Section access control.
-    if (!$this->getAccess($this->currentUser, 'configure all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
-      unset($configure['configure']);
-    }
+    if (isset($this->entity)) {
+      if (!$this->getAccess($this->currentUser, 'configure all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
+        unset($configure['configure']);
+      }
 
-    if (!$this->getAccess($this->currentUser, 'remove all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
-      unset($remove['remove']);
-    }
+      if (!$this->getAccess($this->currentUser, 'remove all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
+        unset($remove['remove']);
+      }
 
-    if (!$this->getAccess($this->currentUser, 'move all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
-      unset($update['move_layout']);
-    }
+      if (!$this->getAccess($this->currentUser, 'move all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
+        unset($update['move_layout']);
+      }
 
-    if (!$this->getAccess($this->currentUser, 'change all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' layout sections')) {
-      unset($update['update_layout']);
-    }
+      if (!$this->getAccess($this->currentUser, 'change all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' layout sections')) {
+        unset($update['update_layout']);
+      }
 
-    if (!$this->getAccess($this->currentUser, 'copy all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
-      unset($update['copy']);
+      if (!$this->getAccess($this->currentUser, 'copy all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' sections')) {
+        unset($update['copy']);
+      }
     }
 
     // Reorder section links.
@@ -482,16 +484,18 @@ class LcElement extends LayoutBuilder {
       }
 
       // Column access control.
-      if (!$this->getAccess($this->currentUser, 'add ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
-        unset($build['layout-builder__section'][$region]['layout_builder_add_block']);
-      }
+      if (isset($this->entity)) {
+        if (!$this->getAccess($this->currentUser, 'add ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
+          unset($build['layout-builder__section'][$region]['layout_builder_add_block']);
+        }
 
-      if (!$this->getAccess($this->currentUser, 'configure all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' columns')) {
-        unset($configureSection['configure']);
-      }
+        if (!$this->getAccess($this->currentUser, 'configure all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' columns')) {
+          unset($configureSection['configure']);
+        }
 
-      if (!$this->getAccess($this->currentUser, 'copy all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' columns')) {
-        unset($configureSection['copy']);
+        if (!$this->getAccess($this->currentUser, 'copy all ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' columns')) {
+          unset($configureSection['copy']);
+        }
       }
 
       // Reorder block links.
@@ -635,20 +639,22 @@ class LcElement extends LayoutBuilder {
     ];
 
     // Block access control.
-    if (!$this->getAccess($this->currentUser, 'move ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
-      unset($configureBlock['move']);
-    }
+    if (isset($this->entity)) {
+      if (!$this->getAccess($this->currentUser, 'move ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
+        unset($configureBlock['move']);
+      }
 
-    if (!$this->getAccess($this->currentUser, 'remove ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
-      unset($configureBlock['remove']);
-    }
+      if (!$this->getAccess($this->currentUser, 'remove ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
+        unset($configureBlock['remove']);
+      }
 
-    if (!$this->getAccess($this->currentUser, 'configure ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
-      unset($configureBlock['configure']);
-    }
+      if (!$this->getAccess($this->currentUser, 'configure ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
+        unset($configureBlock['configure']);
+      }
 
-    if (!$this->getAccess($this->currentUser, 'copy ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
-      unset($configureBlock['copy']);
+      if (!$this->getAccess($this->currentUser, 'copy ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
+        unset($configureBlock['copy']);
+      }
     }
 
     return $configureBlock;
