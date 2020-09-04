@@ -4,13 +4,11 @@ namespace Drupal\lc_commands\Commands;
 
 use Drush\Commands\DrushCommands;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Symfony\Component\Yaml\Dumper;
-use Symfony\Component\Yaml\Yaml as SymfonyYaml;
-use Symfony\Component\Yaml\Parser;
 use Drupal\block_content\Entity\BlockContent;
 use Symfony\Component\Serializer\SerializerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\layout_builder\Plugin\Block\InlineBlock;
+use Drupal\layout_builder\Section;
+use Drupal\layout_builder\SectionComponent;
 
 /**
  * LC commands.
@@ -85,13 +83,23 @@ class LcCommands extends DrushCommands {
       return FALSE;
     }
 
+    // Clear the directory.
     $this->clearDirectory();
 
     /** @var \Drupal\block_content\Entity\BlockContent $block */
     foreach ($blocks as $block) {
+      // Ensure that is the last revision.
       $revision = $storage->getLatestRevisionId($block->id());
       $block_revision = $storage->loadRevision($revision);
       $item = $this->prepareFile($block_revision);
+
+      // Normalize the Layout builder field.
+      if (array_key_exists('layout_builder__layout', $block_revision->toArray())) {
+        $new = $this->serializer->decode($item, 'hal_json');
+        $new['layout_builder__layout'] = $this->prepareSections($block_revision->toArray()['layout_builder__layout']);
+        $item = $this->serializer->serialize($new, 'hal_json', ['json_encode_options' => 128]);
+      }
+
       $this->output->writeln('Exporting: ' . $block_revision->uuid());
       if (!$this->writeFile($this->folder . $block_revision->uuid() . '.json', $item)) {
         return FALSE;
@@ -128,21 +136,31 @@ class LcCommands extends DrushCommands {
 
       $uuid = $n_block['uuid'][0];
 
+      // Normalize Layout builder field if exists.
+      $this->normalizeSections($n_block);
+
       /** @var \Drupal\block_content\Entity\BlockContent $d_block */
       $d_block = $this->getBlock($uuid);
 
+      // Check for references.
       $references = $n_block['_embedded'];
       if (isset($references)) {
         foreach ($references as $link => $reference) {
-          /** @var \Drupal\block_content\Entity\BlockContent $ref */
-          $ref = $this->getDependencie($n_block, $link);
-          if (!empty($ref)) {
-            $n_block[$this->getEmbedded($link)][0]['target_id'] = $ref->id();
-            $n_block[$this->getEmbedded($link)][0]['target_revision_id'] = $ref->getRevisionId();
+          // Get the dependencies already createds.
+          $dependencies = $this->getDependencie($n_block, $link);
+
+          // TODO Register the dependencies, the dependencies as media won't be exported.
+          /** @var \Drupal\block_content\Entity\BlockContent $dependencie */
+          if (!empty($dependencies)) {
+            foreach ($dependencies as $i => $dependencie) {
+              $n_block[$this->getEmbedded($link)][$i]['target_id'] = $dependencie->id();
+              $n_block[$this->getEmbedded($link)][$i]['target_revision_id'] = $dependencie->getRevisionId();
+            }
           }
         }
       }
 
+      // Create or update the block.
       if (!empty($d_block)) {
         $this->updateBlock($d_block, $n_block);
       }
@@ -163,33 +181,42 @@ class LcCommands extends DrushCommands {
    *   The block.
    * @param string $reference
    *   The new reference.
-   * @return \Drupal\block_content\Entity\BlockContent
-   *   The new block.
+   * @return array
+   *   The array of dependencies.
    */
   public function getDependencie(&$n_block, $reference) {
+    $dependencies = [];
     // Get the embed reference.
     $embed = $this->getEmbedded($reference);
     if (!empty($embed) && strpos($embed, 'field') !== FALSE) {
-      $n_uuid = $n_block['_embedded'][$reference][0]['uuid'][0]['value'];
-      // Check if the file xists.
-      if (!file_exists($this->folder . $n_uuid . '.json')) {
-        return null;
-      }
-      // Get the reference block.
-      $new_block = $this->readFile($n_uuid . '.json');
-      $uuid = $new_block['uuid'][0];
-      // Get the current block.
-      $block = $this->getBlock($uuid);
-      if (empty($block)) {
-        // Create if not exists.
-        BlockContent::create($new_block)->save();
-        return $this->getBlock($uuid);
-      }
-      else {
-        // Update the block with the new data.
-        return $this->updateDependencie($block, $n_uuid);
+      foreach ($n_block['_embedded'][$reference] as $i => $dependencie) {
+        $n_uuid = $n_block['_embedded'][$reference][$i]['uuid'][0]['value'];
+        // Check if the file xists.
+        if (!file_exists($this->folder . $n_uuid . '.json')) {
+          return null;
+        }
+        // Get the reference block.
+        $new_block = $this->readFile($n_uuid . '.json');
+        $uuid = $new_block['uuid'][0];
+
+        // Get the current block.
+        $block = $this->getBlock($uuid);
+
+        if (empty($block)) {
+          // Normalize Layout builder field if exists.
+          $this->normalizeSections($new_block);
+
+          // Create if not exists.
+          BlockContent::create($new_block)->save();
+          $dependencies[$i] = $this->getBlock($uuid);
+        }
+        else {
+          // Update the block with the new data.
+          $dependencies[$i] = $this->updateDependencie($block, $n_uuid);
+        }
       }
     }
+    return $dependencies;
   }
 
   /**
@@ -259,8 +286,11 @@ class LcCommands extends DrushCommands {
    */
   public function updateBlock($block, $n_block) {
     foreach ($block->getFields() as $name => $field) {
-      $block->set($name, $n_block[$name]);
+      $layout_builder = [];
+      $value = $n_block[$name];
+      $block->set($name, $value);
     }
+
     $block->save();
     return $block;
   }
@@ -293,6 +323,45 @@ class LcCommands extends DrushCommands {
    */
   public function prepareFile($item) {
     return $this->serializer->serialize($item, 'hal_json', ['json_encode_options' => 128]);
+  }
+
+  /**
+   * Prepare the sections to import them.
+   *
+   * @param array $sections
+   *   The array of sections.
+   * @return array
+   *   The array converted.
+   */
+  public function prepareSections(array $sections) {
+    $json_sections = [];
+    foreach ($sections as $key => $section) {
+      $json_sections[$key]['section'] = $this->prepareFile($section['section']->toArray());
+    }
+    return $json_sections;
+  }
+
+  /**
+   * Normalize the sections.
+   *
+   * @param array $block
+   *   The block as array.
+   */
+  public function normalizeSections(&$block) {
+    if (array_key_exists('layout_builder__layout', $block)) {
+      // Normalize Layout builder value.
+      foreach ($block['layout_builder__layout'] as $key => $section) {
+        $data = $this->serializer->decode($section['section'], 'hal_json');
+        $components = [];
+        // Register the components.
+        foreach ($data['components'] as $uuid => $component) {
+          $components[$uuid] = new SectionComponent($component['uuid'], $component['region'], $component['configuration'], $component['additional']);
+        }
+        // Generate the section.
+        $layout_builder[$key] = new Section($data['layout_id'], $data['layout_settings'], $components, []);
+      }
+      $block['layout_builder__layout'] = $layout_builder;
+    }
   }
 
   /**
