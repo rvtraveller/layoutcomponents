@@ -362,27 +362,25 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
     $styles = $config['styles'];
     $container = &$form['container']['regions'][$region];
 
-    if (isset($general)) {
-      $container['general'] = [
-        '#type' => 'details',
-        '#title' => $this->t('General'),
-        '#group' => 'regions',
-        'title' => $this->lcApiText->plainText(
-          [
-            'id' => 'column_' . $region . '-title',
-            'title' => $this->t('Title'),
-            'description' => $this->t('Set the title of this section'),
-            'default_value' => $general['title'],
-            'attributes' => [
-              'placeholder' => $this->t('Title'),
-              'lc' => [
-                'type' => 'text',
-              ],
+    $container['general'] = [
+      '#type' => 'details',
+      '#title' => $this->t('General'),
+      '#group' => 'regions',
+      'title' => $this->lcApiText->plainText(
+        [
+          'id' => 'column_' . $region . '-title',
+          'title' => $this->t('Title'),
+          'description' => $this->t('Set the title of this section'),
+          'default_value' => $general['title'],
+          'attributes' => [
+            'placeholder' => $this->t('Title'),
+            'lc' => [
+              'type' => 'text',
             ],
-          ]
-        ),
-      ];
-    }
+          ],
+        ]
+      ),
+    ];
 
     $container['styles'] = [
       '#type' => 'details',
@@ -791,6 +789,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         ),
       ],
     ];
+    ksm($container);
   }
 
   /**
