@@ -789,7 +789,6 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         ),
       ],
     ];
-    ksm($container);
   }
 
   /**
