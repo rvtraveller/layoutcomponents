@@ -17,7 +17,6 @@ class LcElementManager extends ElementInfoManager {
     parent::alterDefinitions($definitions);
     // Replace LayoutBuilder element class.
     if (isset($definitions['layout_builder'])) {
-      if ()
       $definitions['layout_builder']['class'] = LcElement::class;
       $definitions['layout_builder']['provider'] = 'layoutcomponents';
     }
