@@ -31,13 +31,6 @@ function layoutcomponents_theme() {
 }
 
 /**
- * Implements hook_element_plugin_alter().
- */
-function layoutcomponents_element_plugin_alter(array &$definitions) {
-  $definitions['layout_builder']['class'] = '\Drupal\layoutcomponents\Element\LcElement';
-}
-
-/**
  * Implements hook_ENTITY_TYPE_view_alter() for block_content.
  */
 function layoutcomponents_block_content_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {

@@ -16,3 +16,7 @@ services:
   layoutcomponents.apiComponent:
     class: Drupal\layoutcomponents\Api\Component
     arguments: ['@config.factory']
+
+  plugin.manager.element_info:
+    class: Drupal\layoutcomponents\LcElementManager
+    arguments: ['@container.namespaces', '@cache.discovery', '@cache_tags.invalidator', '@module_handler', '@theme.manager']
