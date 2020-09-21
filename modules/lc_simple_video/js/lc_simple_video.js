@@ -14,7 +14,7 @@
             // Remove the parameters.
             src = src.replace('autoplay=0&start=0&rel=0', '');
             // Add autoplay.
-            src += 'autoplay=1&enablejsapi=1'
+            src += '&autoplay=1&enablejsapi=1'
             vid.prop('src', '');
             // From chrome 83 is necessary apply this attribute.
             vid.attr('allow', 'autoplay');
