@@ -459,7 +459,7 @@ class LcLayoutsManager {
 
     // Generate the duplicate of parent block.
     $block = $block->createDuplicate();
-    $block->setReusable();
+    $block->setNonReusable();
     $block->enforceIsNew();
     $block->save();
     $component = $component->toArray();
