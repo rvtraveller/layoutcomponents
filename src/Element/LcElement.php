@@ -107,7 +107,9 @@ class LcElement extends LayoutBuilder {
     $output = parent::layout($section_storage);
     $output['#attached']['library'][] = 'layoutcomponents/layoutcomponents.editform';
 
-    if (!array_key_exists('bootstrap4', $this->themeHandler->listInfo())) {
+    // Add bootstrap barrio theme.
+    $themes = $this->themeHandler->listInfo();
+    if (!array_key_exists('bootstrap4', $themes) && !array_key_exists('bootstrap_barrio', $themes) ) {
       $this->messenger->addError($this->t('To use LayoutComponents is completely necessary Bootstrap4 theme.'));
       $output = [];
     }
