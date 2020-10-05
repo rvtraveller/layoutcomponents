@@ -71,8 +71,14 @@ trait LcDisplayHelperTrait {
       if ($default->getLayoutId() == 'layout_builder_blank') {
         continue;
       }
-      $d_delta = $defaults[$delta]->getLayoutSettings()['section']['general']['basic']['section_delta'];
-      $this->arrayInsert($n_sections, $d_delta, $defaults[$delta]);
+      $settings = $defaults[$delta]->getLayoutSettings();
+      if (!empty($settings)) {
+        $section_delta = isset($settings['section']['general']['basic']['section_delta']) ? $settings['section']['general']['basic']['section_delta'] : NULL;
+        if (!empty($section_delta)) {
+          $d_delta = $section_delta;
+          $this->arrayInsert($n_sections, $d_delta, $defaults[$delta]);
+        }
+      }
     }
 
     ksort($n_sections);
@@ -94,8 +100,14 @@ trait LcDisplayHelperTrait {
   public function checkDefaultExists(array $defaults, $label) {
     /** @var \Drupal\layout_builder\Section $default */
     foreach ($defaults as $delta => $default) {
-      if ($default->getLayoutSettings()['section']['general']['basic']['section_label'] == $label) {
-        return TRUE;
+      $settings = $default->getLayoutSettings();
+      if (!empty($settings)) {
+        $section_label = isset($settings['section']['general']['basic']['section_label']) ? $settings['section']['general']['basic']['section_label'] : NULL;
+        if (!empty($section_label)) {
+          if ($section_label == $label) {
+            return TRUE;
+          }
+        }
       }
     }
     return FALSE;

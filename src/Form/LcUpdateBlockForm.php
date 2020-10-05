@@ -139,9 +139,7 @@ class LcUpdateBlockForm extends UpdateBlockForm {
     }
 
     // Hidde block config.
-    $build['settings']['label']['#access'] = FALSE;
     $build['settings']['admin_label']['#access'] = FALSE;
-    $build['settings']['label_display']['#access'] = FALSE;
 
     return $build;
   }
