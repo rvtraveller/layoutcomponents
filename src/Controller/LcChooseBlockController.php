@@ -178,7 +178,6 @@ class LcChooseBlockController extends ChooseBlockController {
     // Categories.
     $un_categories = [
       'Chaos Tools',
-      'System',
       'User fields',
     ];
 
@@ -197,9 +196,11 @@ class LcChooseBlockController extends ChooseBlockController {
         $build['block_categories'][$name]['#open'] = FALSE;
       }
       // Append lc dialog options.
-      if (array_key_exists('links', $build['block_categories'][$name])) {
-        foreach ($build['block_categories'][$name]['links']['#links'] as $i => $link) {
-          $build['block_categories'][$name]['links']['#links'][$i]['attributes']['data-dialog-options'] = $this->dialogOptions();
+      if (is_array($build['block_categories'][$name])) {
+        if (array_key_exists('links', $build['block_categories'][$name])) {
+          foreach ($build['block_categories'][$name]['links']['#links'] as $i => $link) {
+            $build['block_categories'][$name]['links']['#links'][$i]['attributes']['data-dialog-options'] = $this->dialogOptions();
+          }
         }
       }
     }
@@ -236,7 +237,9 @@ class LcChooseBlockController extends ChooseBlockController {
     foreach ($build['links']['#links'] as $key => $link) {
       $blockId = [];
       foreach ($blocks_type['Inline blocks'] as $name => $type) {
-        if ($type['admin_label'] == $link['title']) {
+        $admin_label = isset($type['admin_label']) ? $type['admin_label'] : NULL;
+        $link_title = isset($link['title']) ? $link['title'] : NULL;
+        if ($admin_label == $link_title) {
           $blockId = explode(':', $name);
           $build['links']['#links'][$key]['attributes']['class'][] = $blockId[1];
           $build['links']['#links'][$key]['attributes']['data-dialog-options'] = $this->dialogOptions();
