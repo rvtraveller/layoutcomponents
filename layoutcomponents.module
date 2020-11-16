@@ -142,6 +142,11 @@ function layoutcomponents_preprocess_block(array &$variables) {
       }
     }
   }
+
+  // Provide default class for system_main_block.
+  if ($variables['plugin_id'] == 'system_main_block') {
+    $variables['attributes']['class'][] = 'lc-main-content';
+  }
 }
 
 /**
