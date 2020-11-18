@@ -44,11 +44,19 @@ class LcCommands extends DrushCommands {
    */
   protected $configFactory;
 
+  /**
+   * The Inline block usage.
+   *
+   * @var \Drupal\layout_builder\InlineBlockUsage
+   */
+  protected $inlineBlockUsage;
+
   public function __construct(EntityTypeManagerInterface $entity_type_manager, SerializerInterface $serializer, ConfigFactoryInterface $config_factory) {
     $this->entityTypeManager = $entity_type_manager;
     $this->serializer = $serializer;
     $this->configFactory = $config_factory;
     $this->folder .= $this->configFactory->getEditable('layoutcomponents.general')->get('folder') . '/';
+    $this->inlineBlockUsage = \Drupal::service('inline_block.usage');
   }
 
   /**
@@ -59,14 +67,20 @@ class LcCommands extends DrushCommands {
    * @aliases lcd
    */
   public function delete() {
-    $blocks = \Drupal::entityTypeManager()->getStorage('block_content')->loadMultiple();
+    $blocks = $this->entityTypeManager->getStorage('block_content')->loadMultiple();
+
     /** @var \Drupal\block_content\Entity\BlockContent $block */
     foreach ($blocks as $block) {
+      // Filter by block that they are using by layout.
+      $is_used = $this->inlineBlockUsage->getUsage($block->id());
+      if (boolval($is_used) && !$is_used) {
+        continue;
+      }
       $this->output->writeln('Removing: ' . $block->uuid());
       $block->delete();
     }
 
-    $this->output->writeln( count($blocks) . ' blocks deleted');
+    $this->output->writeln( count($blocks) . ' blocks have been deleted');
   }
 
   /**
@@ -88,6 +102,12 @@ class LcCommands extends DrushCommands {
 
     /** @var \Drupal\block_content\Entity\BlockContent $block */
     foreach ($blocks as $block) {
+      // Filter by block that they are using by layout.
+      $is_used = $this->inlineBlockUsage->getUsage($block->id());
+      if (boolval($is_used) && !$is_used) {
+        continue;
+      }
+
       // Ensure that is the last revision.
       $revision = $storage->getLatestRevisionId($block->id());
       $block_revision = $storage->loadRevision($revision);
@@ -106,7 +126,7 @@ class LcCommands extends DrushCommands {
       }
     }
 
-    $this->output->writeln( count($blocks) . ' blocks exported');
+    $this->output->writeln( count($blocks) . ' blocks have been exported');
 
     return TRUE;
   }
@@ -165,13 +185,56 @@ class LcCommands extends DrushCommands {
         $this->updateBlock($d_block, $n_block);
       }
       else {
-        BlockContent::create($n_block)->save();
+        $this->createBlock($n_block);
       }
     }
 
-    $this->output->writeln( count($files) . ' blocks imported');
+    $this->output->writeln( count($files) . ' blocks have been imported');
 
     return TRUE;
+  }
+
+  /**
+   * Create the block and store the rest of translates.
+   *
+   * @param array $n_block
+   *   array block.
+   */
+  public function createBlock(array $n_block) {
+    // Get the langcodes.
+    $langcodes = $n_block['langcode'];
+    // Store the default block.
+    BlockContent::create($n_block)->save();
+    // Get the new block.
+    $block = $this->getBlock($n_block['uuid'][0]['value']);
+    // If the block contains more than 1 language.
+    if (count($langcodes) > 1) {
+      // Store each language.
+      foreach ($langcodes as $langcode) {
+        // Filter by non-default language.
+        if ($block->language()->getId() !== $langcode['lang']) {
+          $block_translate = [];
+          // Find the fields.
+          foreach ($block->getFieldDefinitions() as $definition) {
+            if ($definition instanceof \Drupal\Core\Field\FieldConfigBase) {
+              $field_name  = $definition->get('field_name');
+              // Find the value by language.
+              $field_translate = $n_block[$field_name];
+              if (empty($field_translate)) {
+                continue;
+              }
+              foreach ($field_translate as $i => $value) {
+                if ($value['lang'] == $langcode['lang']) {
+                  $block_translate[$field_name] = $n_block[$field_name][$i];
+                }
+              }
+            }
+          }
+          // Store the new translation.
+          $block->addTranslation($langcode['lang'], $block_translate)->save();
+        }
+      }
+    }
   }
 
   /**
