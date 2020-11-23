@@ -1,0 +1,21 @@
+uuid: 6b6ca79f-e263-4c5c-996b-d0cebde8e4ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_view_carousel
+    - field.storage.block_content.field_vc_display
+  module:
+    - options
+id: block_content.simple_view_carousel.field_vc_display
+field_name: field_vc_display
+entity_type: block_content
+bundle: simple_view_carousel
+label: 'View Display'
+description: 'Select the view display'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
