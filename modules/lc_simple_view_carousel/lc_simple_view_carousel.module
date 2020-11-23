@@ -27,8 +27,12 @@ function lc_simple_view_carousel_block_type_form_alter(array &$form, FormStateIn
       'event' => 'change',
     ];
 
+    $view_id = $form['field_vc']['widget']['#default_value'][0];
+
     // Display alter.
-    $form['field_vc_display']['widget']['#options'] = _lc_simple_view_carousel_view_displays($form['field_vc']['widget']['#default_value'][0]);
+    if (!empty($view_id)) {
+      $form['field_vc_display']['widget']['#options'] = _lc_simple_view_carousel_view_displays($view_id);
+    }
     $form['field_vc_display']['#prefix'] = '<span id="field_vc_display">';
     $form['field_vc_display']['#suffix'] = '</span>';
 
@@ -119,32 +123,34 @@ function lc_simple_view_carousel_preprocess_block(&$variables) {
   // The view id home_carousel-slider.
   $id = $block->get('field_vc')->getString();
 
-  /** @var \Drupal\views\ViewExecutable $view */
-  $view = Views::getView($id);
-  $display = $block->get('field_vc_display')->getString();
+  if (!empty($id)) {
+    /** @var \Drupal\views\ViewExecutable $view */
+    $view = Views::getView($id);
+    $display = $block->get('field_vc_display')->getString();
 
-  // Render the view.
-  $variables['content']['field_vc'][0] = $view->render($display);
+    // Render the view.
+    $variables['content']['field_vc'][0] = $view->render($display);
 
-  // The items of the carousel.
-  $items = $variables['content']['field_vc'][0]['#rows']['#build']['items'];
-  $js_settings = [];
+    // The items of the carousel.
+    $items = $variables['content']['field_vc'][0]['#rows']['#build']['items'];
+    $js_settings = [];
 
-  // Find the values for the dots.
-  foreach ($items as $i => $item) {
-    /** @var \Drupal\node\Entity\Node $node */
-    $node = $item['slide']['#node'];
-    if ($node->hasField('field_tab_pagination_text')) {
-      $js_settings[] = [
-        'title' => $node->get('field_tab_pagination_text')->getString(),
-      ];
+    // Find the values for the dots.
+    foreach ($items as $i => $item) {
+      /** @var \Drupal\node\Entity\Node $node */
+      $node = $item['slide']['#node'];
+      if ($node->hasField('field_tab_pagination_text')) {
+        $js_settings[] = [
+          'title' => $node->get('field_tab_pagination_text')->getString(),
+        ];
+      }
     }
-  }
 
-  // Add custom libraries.
-  $variables['#attached']['library'][] = 'lc_simple_view_carousel/lc_simple_view_carousel';
-  $variables['#attached']['drupalSettings']['homeCarousel']['id'] = $variables['attributes']['data-quickedit-entity-id'];
-  $variables['#attached']['drupalSettings']['homeCarousel']['items'] = $js_settings;
+    // Add custom libraries.
+    $variables['#attached']['library'][] = 'lc_simple_view_carousel/lc_simple_view_carousel';
+    $variables['#attached']['drupalSettings']['homeCarousel']['id'] = 'block_content/' . $block->id();
+    $variables['#attached']['drupalSettings']['homeCarousel']['items'] = $js_settings;
+  }
 }
 
 /**
