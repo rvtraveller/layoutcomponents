@@ -70,10 +70,10 @@ class LcCommands extends DrushCommands {
     $blocks = $this->entityTypeManager->getStorage('block_content')->loadMultiple();
 
     /** @var \Drupal\block_content\Entity\BlockContent $block */
-    foreach ($blocks as $block) {
+    foreach ($blocks as $i => $block) {
       // Filter by block that they are using by layout.
-      $is_used = $this->inlineBlockUsage->getUsage($block->id());
-      if (boolval($is_used) && !$is_used) {
+      if (!$this->isLcBlock($block)) {
+        unset($blocks[$i]);
         continue;
       }
       $this->output->writeln('Removing: ' . $block->uuid());
@@ -101,10 +101,10 @@ class LcCommands extends DrushCommands {
     $this->clearDirectory();
 
     /** @var \Drupal\block_content\Entity\BlockContent $block */
-    foreach ($blocks as $block) {
+    foreach ($blocks as $i => $block) {
       // Filter by block that they are using by layout.
-      $is_used = $this->inlineBlockUsage->getUsage($block->id());
-      if (boolval($is_used) && !$is_used) {
+      if (!$this->isLcBlock($block)) {
+        unset($blocks[$i]);
         continue;
       }
 
@@ -235,6 +235,22 @@ class LcCommands extends DrushCommands {
         }
       }
     }
+  }
+
+  /**
+   * Check if the block is a LC block.
+   *
+   * @param \Drupal\block_content\Entity\BlockContent $block
+   *   The block.
+   * @return bool
+   *   If is a LC block.
+   */
+  public function isLcBlock(BlockContent $block) {
+    $is_used = $this->inlineBlockUsage->getUsage($block->id());
+    if ((is_bool($is_used) && !$is_used) && strpos($block->bundle(),'simple_') !== 0) {
+      return FALSE;
+    }
+    return TRUE;
   }
 
   /**
