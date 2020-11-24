@@ -12,6 +12,14 @@ use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\Routing\RouteMatchInterface;
 
+
+/**
+ * Implements hook_page_attachments().
+ */
+function lc_simple_view_carousel_page_attachments(&$page) {
+  $page['#attached']['library'][] = 'lc_simple_view_carousel/lc_simple_view_carousel';
+}
+
 /**
  * Implements hook_block_type_form_alter().
  */
