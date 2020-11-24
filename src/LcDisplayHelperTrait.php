@@ -43,6 +43,9 @@ trait LcDisplayHelperTrait {
 
     foreach ($sections as $delta => $section) {
       $settings = $section->getLayoutSettings();
+      if (!array_key_exists('section', $settings)) {
+        continue;
+      }
       $section_label = $settings['section']['general']['basic']['section_label'];
       if ($this->checkDefaultExists($defaults, $section_label)) {
         // Remplace if the section is a defualt.

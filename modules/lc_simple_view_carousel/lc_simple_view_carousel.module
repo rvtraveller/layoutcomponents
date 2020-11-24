@@ -35,7 +35,11 @@ function lc_simple_view_carousel_block_type_form_alter(array &$form, FormStateIn
       'event' => 'change',
     ];
 
-    $view_id = $form['field_vc']['widget']['#default_value'][0];
+    $view_id = '';
+
+    if (isset($form['field_vc']['widget']['#default_value'][0])) {
+      $view_id = $form['field_vc']['widget']['#default_value'][0];
+    }
 
     // Display alter.
     if (!empty($view_id)) {
