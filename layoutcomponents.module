@@ -229,10 +229,17 @@ function layoutcomponents_page_attachments_alter(array &$attachments) {
   /** @var \Drupal\Core\Config\Config $config */
   $config = \Drupal::configFactory()->getEditable('layoutcomponents.interface');
   $theme = (!empty($config->get('theme_type'))) ? $config->get('theme_type') : 'color-dark';
+
+  // Process url.
+  $absolute = Url::fromRoute('<current>', [], ['absolute' => 'true'])->toString();
+  $alias = \Drupal::service('path.alias_manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
+  $absolute = str_replace($alias, "", $absolute);
+
+  // Include the css.
   $attachments['#attached']['html_head_link'][] = [
     0 => [
       'rel' => 'stylesheet',
-      'href' => '/' . $module_handler->getModule('layoutcomponents')->getPath() . '/css/lc-' . $theme . '.css',
+      'href' => $absolute . '/' . $module_handler->getModule('layoutcomponents')->getPath() . '/css/lc-' . $theme . '.css',
       'media' => 'all',
     ],
     1 => TRUE,
