@@ -9,6 +9,9 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\layout_builder\Section;
 use Drupal\layout_builder\SectionComponent;
+use Drupal\layoutcomponents\Entity\LcEntityViewDisplay;
+use Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplayStorage;
+use Drupal\Core\Field\FieldConfigBase;
 
 /**
  * LC commands.
@@ -51,6 +54,16 @@ class LcCommands extends DrushCommands {
    */
   protected $inlineBlockUsage;
 
+  /**
+   * LcCommands constructor.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity manager interface object.
+   * @param \Symfony\Component\Serializer\SerializerInterface $serializer
+   *   The serializer interface object.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory interface object.
+   */
   public function __construct(EntityTypeManagerInterface $entity_type_manager, SerializerInterface $serializer, ConfigFactoryInterface $config_factory) {
     $this->entityTypeManager = $entity_type_manager;
     $this->serializer = $serializer;
@@ -67,15 +80,21 @@ class LcCommands extends DrushCommands {
    * @aliases lcd
    */
   public function delete() {
-    $blocks = $this->entityTypeManager->getStorage('block_content')->loadMultiple();
+    $block_storage = $this->entityTypeManager->getStorage('block_content');
+    $blocks = $block_storage->loadMultiple();
 
     /** @var \Drupal\block_content\Entity\BlockContent $block */
     foreach ($blocks as $i => $block) {
+      // Provide the las version of block.
+      $revision = $block_storage->getLatestRevisionId($block->id());
+      $block_revision = $block_storage->loadRevision($revision);
+
       // Filter by block that they are using by layout.
-      if (!$this->isLcBlock($block)) {
+      if (!$this->isLcBlock($block_revision)) {
         unset($blocks[$i]);
         continue;
       }
+
       $this->output->writeln('Removing: ' . $block->uuid());
       $block->delete();
     }
@@ -90,8 +109,8 @@ class LcCommands extends DrushCommands {
    * @aliases lce
    */
   public function export() {
-    $storage = $this->entityTypeManager->getStorage('block_content');
-    $blocks = $storage->loadMultiple();
+    $block_storage = $this->entityTypeManager->getStorage('block_content');
+    $blocks = $block_storage->loadMultiple();
 
     if (!$this->prepareFolder()) {
       return FALSE;
@@ -109,8 +128,8 @@ class LcCommands extends DrushCommands {
       }
 
       // Ensure that is the last revision.
-      $revision = $storage->getLatestRevisionId($block->id());
-      $block_revision = $storage->loadRevision($revision);
+      $revision = $block_storage->getLatestRevisionId($block->id());
+      $block_revision = $block_storage->loadRevision($revision);
       $item = $this->prepareFile($block_revision);
 
       // Normalize the Layout builder field.
@@ -216,7 +235,7 @@ class LcCommands extends DrushCommands {
           $block_translate = [];
           // Find the fields.
           foreach ($block->getFieldDefinitions() as $definition) {
-            if ($definition instanceof \Drupal\Core\Field\FieldConfigBase) {
+            if ($definition instanceof FieldConfigBase) {
               $field_name  = $definition->get('field_name');
               // Find the value by language.
               $field_translate = $n_block[$field_name];
@@ -238,7 +257,7 @@ class LcCommands extends DrushCommands {
   }
 
   /**
-   * Check if the block is a LC block.
+   * Check if the block is a LC block and is used from a display.
    *
    * @param \Drupal\block_content\Entity\BlockContent $block
    *   The block.
@@ -246,11 +265,31 @@ class LcCommands extends DrushCommands {
    *   If is a LC block.
    */
   public function isLcBlock(BlockContent $block) {
-    $is_used = $this->inlineBlockUsage->getUsage($block->id());
-    if ((is_bool($is_used) && !$is_used) && strpos($block->bundle(),'simple_') !== 0) {
-      return FALSE;
+    /** @var LayoutBuilderEntityViewDisplayStorage $storage */
+    $storage = $this->entityTypeManager->getStorage('entity_view_display');
+    $displays = $storage->loadMultiple();
+
+    foreach ($displays as $name => $display) {
+      // Filter by LcEntityViewDisplay entity.
+      if ($display instanceof LcEntityViewDisplay) {
+        foreach ($display->getSections() as $section) {
+          $components = $section->getComponents();
+          if (!empty($components)) {
+            foreach ($components as $name => $component) {
+              $configuration = $component->get('configuration');
+              // Compare the label and block revision id.
+              if (!empty($configuration['label'])) {
+                if ($configuration['label'] == $block->get('info')->getString() && $configuration['block_revision_id'] == $block->getRevisionId()) {
+                  return TRUE;
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    return TRUE;
+    // Block not found in any display.
+    return FALSE;
   }
 
   /**
