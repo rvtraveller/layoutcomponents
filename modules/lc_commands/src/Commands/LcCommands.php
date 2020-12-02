@@ -109,8 +109,8 @@ class LcCommands extends DrushCommands {
    * @aliases lce
    */
   public function export() {
-    $block_storage = $this->entityTypeManager->getStorage('block_content');
-    $blocks = $block_storage->loadMultiple();
+    $storage = $this->entityTypeManager->getStorage('block_content');
+    $blocks = $storage->loadMultiple();
 
     if (!$this->prepareFolder()) {
       return FALSE;
@@ -121,16 +121,17 @@ class LcCommands extends DrushCommands {
 
     /** @var \Drupal\block_content\Entity\BlockContent $block */
     foreach ($blocks as $i => $block) {
+      // Ensure that is the last revision.
+      $revision = $storage->getLatestRevisionId($block->id());
+      $block_revision = $storage->loadRevision($revision);
+
       // Filter by block that they are using by layout.
-      if (!$this->isLcBlock($block)) {
+      if (!$this->isLcBlock($block_revision)) {
         unset($blocks[$i]);
         continue;
       }
 
-      // Ensure that is the last revision.
-      $revision = $block_storage->getLatestRevisionId($block->id());
-      $block_revision = $block_storage->loadRevision($revision);
-      $item = $this->prepareFile($block_revision);
+      $item = $this->prepareFile($block_revision->toArray());
 
       // Normalize the Layout builder field.
       if (array_key_exists('layout_builder__layout', $block_revision->toArray())) {
@@ -149,6 +150,7 @@ class LcCommands extends DrushCommands {
 
     return TRUE;
   }
+
 
   /**
    * Import the content_blocks.
