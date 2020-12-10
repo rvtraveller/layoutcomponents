@@ -144,6 +144,10 @@ function lc_simple_view_carousel_preprocess_block(&$variables) {
     $variables['content']['field_vc'][0] = $view->render($display);
 
     // The items of the carousel.
+    if (!array_key_exists('#build', $variables['content']['field_vc'][0]['#rows'])) {
+      return;
+    }
+    
     $items = $variables['content']['field_vc'][0]['#rows']['#build']['items'];
     $js_settings = [];
 
