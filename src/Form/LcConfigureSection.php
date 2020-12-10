@@ -108,7 +108,7 @@ class LcConfigureSection extends ConfigureSectionForm {
       // Register new section in SectionStorage $section_storage.
       $section_storage->insertSection($delta, $newSection);
       // Remove plugin id to parent form detect new section as old section.
-      unset($plugin_id);
+      $plugin_id = NULL;
     }
 
     $build = parent::buildForm($form, $form_state, $section_storage, $delta, $plugin_id);
