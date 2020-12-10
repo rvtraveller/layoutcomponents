@@ -1172,7 +1172,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
           [
             'id' => 'row',
             'title' => $this->t('Type'),
-            'description' => $this->t('Set the size of each column'),
+            'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
             'default_value' => $general['structure']['section_structure'],
             'options' => $this->manager->getColumnOptions(count($this->getPluginDefinition()->getRegionNames())),
             'attributes' => [
