@@ -370,7 +370,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         [
           'id' => 'column_' . $region . '-title',
           'title' => $this->t('Title'),
-          'description' => $this->t('Set the title of this section'),
+          'description' => $this->t('Set the title of this column'),
           'default_value' => (isset($general['title'])) ? $general['title'] : '',
           'attributes' => [
             'placeholder' => $this->t('Title'),

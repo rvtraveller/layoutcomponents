@@ -630,7 +630,7 @@ class LcLayout {
    */
   public function setColumnTitle($name) {
     $path = 'regions.' . $name;
-    $title_type = $this->getSetting($path . '.styles.title.type', 'h3');
+    $title_type = $this->getSetting($path . '.styles.title.type', 'h2');
     $title_size = $this->getSetting($path . '.styles.title.size');
     $title_color = $this->getSetting($path . '.styles.title.color.settings.color');
     $title_opacity = $this->getSetting($path . '.styles.title.color.settings.opacity');
