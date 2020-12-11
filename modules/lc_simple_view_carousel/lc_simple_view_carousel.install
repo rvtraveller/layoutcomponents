@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Install, uninstall and update hooks for Simple View Carousel component.
+ */
+
+/**
+ * Add the default configuration.
+ */
+function layoutcomponents_update_8001() {
+  $configsNames = [
+    'field.storage.block_content.field_vc_preprocess_tabs',
+    'field.field.block_content.simple_view_carousel.field_vc_preprocess_tabs',
+    'core.entity_view_display.block_content.simple_view_carousel.default',
+    'core.entity_form_display.block_content.simple_view_carousel.default',
+  ];
+
+  _layoutcomponents_update_config($configsNames, 'lc_simple_view_carousel');
+  return 'Install the new field VC Preprocess Tabs';
+}
