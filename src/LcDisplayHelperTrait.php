@@ -31,8 +31,10 @@ trait LcDisplayHelperTrait {
 
     if ($section_storage instanceof DefaultsSectionStorage) {
       foreach ($sections as $delta => $section) {
-        $d_delta = $section->getLayoutSettings()['section']['general']['basic']['section_delta'];
-        $this->arrayInsert($n_sections, $d_delta, $section);
+        if (array_key_exists('section', $section->getLayoutSettings())) {
+          $d_delta = $section->getLayoutSettings()['section']['general']['basic']['section_delta'];
+          $this->arrayInsert($n_sections, $d_delta, $section);
+        }
       }
       ksort($n_sections);
       return $n_sections;
