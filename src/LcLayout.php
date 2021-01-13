@@ -630,6 +630,7 @@ class LcLayout {
    */
   public function setColumnTitle($name) {
     $path = 'regions.' . $name;
+    $title = $this->getSetting($path . '.general.title', '');
     $title_type = $this->getSetting($path . '.styles.title.type', 'h2');
     $title_size = $this->getSetting($path . '.styles.title.size');
     $title_color = $this->getSetting($path . '.styles.title.color.settings.color');
@@ -659,6 +660,11 @@ class LcLayout {
     // Title.
     $title_classes = new Attribute();
     $title_styles = [];
+
+    // Hide the title if empty.
+    if (empty($title)) {
+      $title_styles[] = 'display: none;';
+    }
 
     // Title inline.
     $title_classes->addClass('lc-inline_column_' . $name . '-title-edit');
