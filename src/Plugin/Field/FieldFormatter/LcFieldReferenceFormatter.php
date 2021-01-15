@@ -45,7 +45,7 @@ class LcFieldReferenceFormatter extends FormatterBase {
         if (!empty($entity_id_context)) {
           $path = parse_url(\Drupal::requestStack()->getCurrentRequest()->getRequestUri(), PHP_URL_PATH);
           if (!empty($path)) {
-            $source_uri = \Drupal::service('path.alias_manager')->getPathByAlias($path);
+            $source_uri = \Drupal::service('path_alias.manager')->getPathByAlias($path);
             if (!empty($source_uri)) {
               $params = Url::fromUri("internal:" . $source_uri)->getRouteParameters();
               if (!empty($params)) {

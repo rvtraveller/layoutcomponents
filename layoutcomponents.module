@@ -233,7 +233,7 @@ function layoutcomponents_page_attachments_alter(array &$attachments) {
 
   // Process url.
   $absolute = Url::fromRoute('<current>', [], ['absolute' => 'true'])->toString();
-  $alias = \Drupal::service('path.alias_manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
+  $alias = \Drupal::service('path_alias.manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
   $absolute = str_replace($alias, "", $absolute);
 
   // Include the css.
