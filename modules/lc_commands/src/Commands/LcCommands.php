@@ -90,9 +90,11 @@ class LcCommands extends DrushCommands {
       $block_revision = $block_storage->loadRevision($revision);
 
       // Filter by block that they are using by layout.
-      if (!$this->isLcBlock($block_revision)) {
-        unset($blocks[$i]);
-        continue;
+      if ($block_revision instanceof \Drupal\block_content\Entity\BlockContent) {
+        if (!$this->isLcBlock($block_revision, 'delete')) {
+          unset($blocks[$i]);
+          continue;
+        }
       }
 
       $this->output->writeln('Removing: ' . $block->uuid());
@@ -109,8 +111,7 @@ class LcCommands extends DrushCommands {
    * @aliases lce
    */
   public function export() {
-    $storage = $this->entityTypeManager->getStorage('block_content');
-    $blocks = $storage->loadMultiple();
+    $blocks = $this->entityTypeManager->getStorage('block_content')->loadMultiple();
 
     if (!$this->prepareFolder()) {
       return FALSE;
@@ -122,31 +123,15 @@ class LcCommands extends DrushCommands {
     /** @var \Drupal\block_content\Entity\BlockContent $block */
     foreach ($blocks as $i => $block) {
       // Ensure that is the last revision.
-      $revision = $storage->getLatestRevisionId($block->id());
-      $block_revision = $storage->loadRevision($revision);
+      $block_revision = $this->getLastRevisionBlock($block->id());
 
       // Filter by block that they are using by layout.
       if (!$this->isLcBlock($block_revision)) {
         unset($blocks[$i]);
         continue;
       }
-
-      $item = $this->prepareFile($block_revision->toArray());
-
-      // Normalize the Layout builder field.
-      if (array_key_exists('layout_builder__layout', $block_revision->toArray())) {
-        $new = $this->serializer->decode($item, 'hal_json');
-        $new['layout_builder__layout'] = $this->prepareSections($block_revision->toArray()['layout_builder__layout']);
-        $item = $this->serializer->serialize($new, 'hal_json', ['json_encode_options' => 128]);
-      }
-
-      $this->output->writeln('Exporting: ' . $block_revision->uuid());
-      if (!$this->writeFile($this->folder . $block_revision->uuid() . '.json', $item)) {
-        return FALSE;
-      }
+      $this->exportBlock($block_revision);
     }
-
-    $this->output->writeln( count($blocks) . ' blocks have been exported');
 
     return TRUE;
   }
@@ -203,16 +188,66 @@ class LcCommands extends DrushCommands {
 
       // Create or update the block.
       if (!empty($d_block)) {
-        $this->updateBlock($d_block, $n_block);
+        $d_block->delete();
       }
-      else {
-        $this->createBlock($n_block);
-      }
+      $this->createBlock($n_block);
     }
 
-    $this->output->writeln( count($files) . ' blocks have been imported');
-
     return TRUE;
+  }
+
+  /**
+   * Export a block.
+   *
+   * @param \Drupal\block_content\Entity\BlockContent $block
+   *   The block.
+   * @return bool
+   *   If the block has been expoterd.
+   */
+  public function exportBlock(BlockContent $block) {
+    $item = $this->prepareFile($block->toArray());
+    if (!$this->writeFile($this->folder . $block->uuid() . '.json', $item)) {
+      return FALSE;
+    }
+    $this->output->writeln('Exporting: ' . $block->uuid());
+    return true;
+  }
+
+  /**
+   * Export the sub-blocks of a block.
+   *
+   * @param \Drupal\block_content\Entity\BlockContent $block
+   *   The block.
+   */
+  public function exportSubBlocks(BlockContent $block) {
+    if ($block->hasField('layout_builder__layout')) {
+      $layout = $block->get('layout_builder__layout')->getValue();
+      if (!empty($layout)) {
+        foreach ($layout as $item) {
+          /** @var \Drupal\layout_builder\Section $section */
+          $section = $item['section'];
+          $components = $section->getComponents();
+          if (!empty($components)) {
+            /** @var \Drupal\layout_builder\SectionComponent $component */
+            foreach ($components as $component) {
+              /** @var \Drupal\block_content\Entity\BlockContent $sub_block */
+              $sub_block = $this->getLastRevisionBlock($component->toArray()['configuration']['block_revision_id']);
+              if ($sub_block instanceof \Drupal\block_content\Entity\BlockContent) {
+                $this->exportBlock($sub_block);
+              }
+            }
+          }
+        }
+      }
+    }
+    else {
+      // Find the sub field blocks and import them.
+      foreach ($block->getFieldDefinitions() as $field_name => $definition) {
+        if ($definition instanceof \Drupal\field\Entity\FieldConfig && $definition->getType() == 'entity_reference_revisions') {
+          $this->exportBlock($this->getLastRevisionBlock($block->get($field_name)->getValue()[0]['target_id']));
+        }
+      }
+    }
   }
 
   /**
@@ -266,7 +301,7 @@ class LcCommands extends DrushCommands {
    * @return bool
    *   If is a LC block.
    */
-  public function isLcBlock(BlockContent $block) {
+  public function isLcBlock(BlockContent $block, $action = 'export') {
     /** @var LayoutBuilderEntityViewDisplayStorage $storage */
     $storage = $this->entityTypeManager->getStorage('entity_view_display');
     $displays = $storage->loadMultiple();
@@ -282,6 +317,34 @@ class LcCommands extends DrushCommands {
               // Compare the label and block revision id.
               if (!empty($configuration['label'])) {
                 if ($configuration['label'] == $block->get('info')->getString() && $configuration['block_revision_id'] == $block->getRevisionId()) {
+                  // Entity reference revisions validation.
+                  // Find the entity_reference_revisions fields.
+                  $definitions = $block->getFieldDefinitions();
+                  foreach ($definitions as $definition) {
+                    if ($definition->getType() == 'entity_reference_revisions') {
+                      /** @var \Drupal\entity_reference_revisions\EntityReferenceRevisionsFieldItemList $list */
+                      $list = $block->get($definition->getName());
+                      for ($i = 0; $i < $list->count(); $i++) {
+                        /** @var \Drupal\block_content\Entity\BlockContent $tab_item */
+                        $tab_item = $this->getLastRevisionBlock($list->get($i)->getValue()['target_id']);
+                        if (!isset($tab_item)) {
+                          continue;
+                        }
+
+                        if ($action == 'delete') {
+                          $tab_item->delete();
+                          $this->writeln('Deleting: ' . $tab_item->uuid());
+                        }
+                        else {
+                          // Export the entity_reference_revisions block.
+                          $this->exportBlock($tab_item);
+
+                          // Export the sub entity_reference_revisions blocks.
+                          $this->exportSubBlocks($tab_item);
+                        }
+                      }
+                    }
+                  }
                   return TRUE;
                 }
               }
@@ -371,6 +434,21 @@ class LcCommands extends DrushCommands {
   }
 
   /**
+   * Get the block by last revision.
+   *
+   * @param string $id
+   *   The block id.
+   * @return \Drupal\block_content\Entity\BlockContent
+   *   The full block.
+   */
+  public function getLastRevisionBlock($id) {
+    /** @var \Drupal\Core\Entity\Sql\SqlContentEntityStorage $storage */
+    $storage = $this->entityTypeManager->getStorage('block_content');
+    $revision = $storage->getLatestRevisionId($id);
+    return $storage->loadRevision($revision);
+  }
+
+  /**
    * Update the dependencie of the block.
    *
    * @param \Drupal\block_content\Entity\BlockContent $block
@@ -406,7 +484,6 @@ class LcCommands extends DrushCommands {
    */
   public function updateBlock($block, $n_block) {
     foreach ($block->getFields() as $name => $field) {
-      $layout_builder = [];
       $value = $n_block[$name];
       $block->set($name, $value);
     }
@@ -442,6 +519,12 @@ class LcCommands extends DrushCommands {
    *   The file content serialized.
    */
   public function prepareFile($item) {
+    // Normalize the Layout builder field.
+    if (array_key_exists('layout_builder__layout', $item)) {
+      $new = $item;
+      $new['layout_builder__layout'] = $this->prepareSections($item['layout_builder__layout']);
+      $item = $new;
+    }
     return $this->serializer->serialize($item, 'hal_json', ['json_encode_options' => 128]);
   }
 
@@ -462,7 +545,7 @@ class LcCommands extends DrushCommands {
   }
 
   /**
-   * Normalize the sections.
+   * Normalize the sections for layout builder fields.
    *
    * @param array $block
    *   The block as array.
