@@ -69,6 +69,10 @@ function lc_simple_accordion_preprocess_block(&$variables) {
   /** @var \Drupal\entity_reference_revisions\EntityReferenceRevisionsFieldItemList $cards */
   $cards = $items['field_sa_accordion_item']['#items'];
 
+  if (!isset($cards)) {
+    return;
+  }
+
   for ($i = 0; $i < $cards->count(); $i++) {
     /** @var \Drupal\block_content\Entity\BlockContent $block_item */
     $block_item = $items['field_sa_accordion_item'][$i]['#block_content'];
