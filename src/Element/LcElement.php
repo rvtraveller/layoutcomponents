@@ -17,6 +17,7 @@ use Drupal\Core\Extension\ThemeHandlerInterface;
 use Drupal\layoutcomponents\LcLayoutsManager;
 use Drupal\layoutcomponents\LcDisplayHelperTrait;
 use Drupal\Core\Session\AccountProxy;
+use Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage;
 
 /**
  * {@inheritdoc}
@@ -49,6 +50,13 @@ class LcElement extends LayoutBuilder {
   protected $tempStoreFactory;
 
   /**
+   * The Layout Tempstore.
+   *
+   * @var \Drupal\layout_builder\LayoutTempstoreRepositoryInterface
+   */
+  protected $layoutTempstore;
+
+  /**
    * The LC manager.
    *
    * @var \Drupal\layoutcomponents\LcLayoutsManager
@@ -77,6 +85,7 @@ class LcElement extends LayoutBuilder {
     $this->themeHandler = $theme_handler;
     $this->configFactory = $config_factory;
     $this->tempStoreFactory = $temp_store;
+    $this->layoutTempstore = $layout_tempstore_repository;
     $this->lcLayoutManager = $layout_manager;
     $this->currentUser = $current_user;
     $this->entity = $this->getCurrentEntity();
@@ -158,11 +167,7 @@ class LcElement extends LayoutBuilder {
    * {@inheritdoc}
    */
   public function prepareLayout(SectionStorageInterface $section_storage) {
-
-    if ($section_storage instanceof \Drupal\layout_builder\Plugin\SectionStorage\DefaultsSectionStorage) {
-      parent::prepareLayout($section_storage);
-    }
-    else {
+    if (!$section_storage instanceof DefaultsSectionStorage) {
       // Content sections.
       $sections = $this->getOrderedSections($section_storage);
 
@@ -176,9 +181,13 @@ class LcElement extends LayoutBuilder {
         }
         $section_storage->appendSection($section);
       }
-
-      $this->layoutTempstoreRepository->set($section_storage);
     }
+    // TODO: Is neccesary register the changes in the temp store repository instead of save object,
+    // TODO: if not the option "Discard changes" won't works correctly.
+    $this->layoutTempstore->set($section_storage);
+
+    // Send the new structure to the default event.
+    parent::prepareLayout($section_storage);
   }
 
   /**
