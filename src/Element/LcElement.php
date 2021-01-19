@@ -181,10 +181,11 @@ class LcElement extends LayoutBuilder {
         }
         $section_storage->appendSection($section);
       }
+
+      // TODO: Is neccesary register the changes in the temp store repository instead of save object,
+      // TODO: if not the option "Discard changes" won't works correctly.
+      $this->layoutTempstore->set($section_storage);
     }
-    // TODO: Is neccesary register the changes in the temp store repository instead of save object,
-    // TODO: if not the option "Discard changes" won't works correctly.
-    $this->layoutTempstore->set($section_storage);
 
     // Send the new structure to the default event.
     parent::prepareLayout($section_storage);
