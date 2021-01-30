@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: CcOcZ1s57_Fcjv-OzeZyD5d7V7qdNv6n2fmfu63RBpAt
+  default_config_hash: kALQCTWYW1OP2VP8PHbYDMXmWhRR_9euVtn8QZvDNjc
 id: simple_card_item_node_reference
 label: 'Card item node reference'
 revision: 1

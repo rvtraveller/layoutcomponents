@@ -67,7 +67,7 @@ third_party_settings:
         required_fields: true
       label: Misc
 _core:
-  default_config_hash: 1vGrFVc0ND2JbVIzuD8zRmfZS3HC62rOzBnltniikSI
+  default_config_hash: E-TW8CqMYpcbWxpaPjxQQH_lXJomVZyDlmJNUlGBDfw
 id: block_content.simple_card.default
 targetEntityType: block_content
 bundle: simple_card
@@ -82,28 +82,21 @@ content:
     type: string_textfield
     region: content
   field_sca_item:
-    weight: 2
+    weight: 26
     settings:
+      match_operator: CONTAINS
       form_mode: default
-      revision: true
+      revision: false
+      override_labels: false
       label_singular: ''
       label_plural: ''
-      allow_new: true
-      match_operator: CONTAINS
-      override_labels: false
       collapsible: false
       collapsed: false
+      allow_new: true
       allow_existing: false
       allow_duplicate: false
     third_party_settings: {  }
     type: inline_entity_form_complex
     region: content
-  langcode:
-    type: language_select
-    weight: 1
-    region: content
-    settings:
-      include_locked: true
-    third_party_settings: {  }
 hidden:
   info: true

@@ -1,4 +1,4 @@
-uuid: 476bd848-3ff5-4cb9-8134-19b069df29c6
+uuid: 9e31fe57-04ca-44a5-b2c2-02c74bb1c562
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ field_name: field_sca_node_reference
 entity_type: block_content
 bundle: simple_card_item_node_reference
 label: 'Node reference'
-description: 'Select the node that you want to use here'
+description: ''
 required: false
 translatable: false
 default_value: {  }
@@ -23,6 +23,7 @@ settings:
       page: page
     sort:
       field: _none
+      direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: page
 field_type: entity_reference

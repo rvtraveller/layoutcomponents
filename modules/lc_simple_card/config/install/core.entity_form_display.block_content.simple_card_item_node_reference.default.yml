@@ -5,13 +5,15 @@ dependencies:
   config:
     - block_content.type.simple_card_item_node_reference
     - field.field.block_content.simple_card_item_node_reference.field_sca_node_reference
+_core:
+  default_config_hash: I29xumIqIiu-xiiY5gOob2jQXCORxN9bDspwfnwHJks
 id: block_content.simple_card_item_node_reference.default
 targetEntityType: block_content
 bundle: simple_card_item_node_reference
 mode: default
 content:
   field_sca_node_reference:
-    weight: 1
+    weight: 26
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -27,12 +29,5 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  langcode:
-    type: language_select
-    weight: 2
-    region: content
-    settings:
-      include_locked: true
     third_party_settings: {  }
 hidden: {  }
