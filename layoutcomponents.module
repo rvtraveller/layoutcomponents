@@ -232,9 +232,8 @@ function layoutcomponents_page_attachments_alter(array &$attachments) {
   $theme = (!empty($config->get('theme_type'))) ? $config->get('theme_type') : 'color-dark';
 
   // Process url.
-  $absolute = Url::fromRoute('<current>', [], ['absolute' => 'true'])->toString();
+  $absolute = \Drupal::request()->getSchemeAndHttpHost();
   $alias = \Drupal::service('path_alias.manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
-  $absolute = str_replace($alias, "", $absolute);
 
   // Include the css.
   $attachments['#attached']['html_head_link'][] = [
