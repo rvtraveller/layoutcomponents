@@ -20,3 +20,8 @@ services:
   plugin.manager.element_info:
     class: Drupal\layoutcomponents\LcElementManager
     arguments: ['@container.namespaces', '@cache.discovery', '@cache_tags.invalidator', '@module_handler', '@theme.manager']
+
+  layoutcomponents.update:
+    class: \Drupal\layoutcomponents\LcUpdateManager
+    arguments: [ '@config.storage', '@config.factory', '@uuid' ]
+

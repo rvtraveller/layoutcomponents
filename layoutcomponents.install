@@ -5,7 +5,6 @@
  * Install, uninstall and update hooks for Layoutcomponents module.
  */
 
-use Drupal\Core\Config\FileStorage;
 use Drupal\layoutcomponents\Entity\LcEntityViewDisplay;
 
 /**
@@ -20,7 +19,7 @@ function layoutcomponents_update_8001() {
     'layoutcomponents.column',
   ];
 
-  _layoutcomponents_update_config($configsNames);
+  \Drupal::service('layoutcomponents.update')->updateConfig($configsNames, 'layoutcomponents');
   return 'Default configuration';
 }
 
@@ -49,24 +48,5 @@ function layoutcomponents_update_8002() {
         }
       }
     }
-  }
-}
-
-/**
- * Update the current configuration.
- *
- * @param array $config_names
- *   An array with the configuration names.
- */
-function _layoutcomponents_update_config(array $config_names) {
-  $config_path    = drupal_get_path('module', 'layoutcomponents') . '/config/install';
-  $source         = new FileStorage($config_path);
-  $config_storage = \Drupal::service('config.storage');
-  $config_factory = \Drupal::configFactory();
-  $uuid_service   = \Drupal::service('uuid');
-
-  foreach ($config_names as $name) {
-    $config_storage->write($name, $source->read($name));
-    $config_factory->getEditable($name)->set('uuid', $uuid_service->generate())->save();
   }
 }

@@ -72,10 +72,14 @@ class LcConfigureSection extends ConfigureSectionForm {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, SectionStorageInterface $section_storage = NULL, $delta = NULL, $plugin_id = NULL) {
+    $this->isDefault = 0;
     // Check section type.
     try {
-      $section_overwrite = $section_storage->getSection($delta)->getLayoutSettings()['section']['general']['basic']['section_overwrite'];
-      $this->isDefault = (boolval($section_overwrite) && !$section_storage instanceof DefaultsSectionStorage) ? TRUE : FALSE;
+      $section = $section_storage->getSection($delta)->getLayoutSettings();
+      if (array_key_exists('section', $section)) {
+        $section_overwrite = $section_storage->getSection($delta)->getLayoutSettings()['section']['general']['basic']['section_overwrite'];
+        $this->isDefault = (boolval($section_overwrite) && !$section_storage instanceof DefaultsSectionStorage) ? TRUE : FALSE;
+      }
     }
     catch (\Exception $e) {
       $this->isDefault = 0;
@@ -104,7 +108,7 @@ class LcConfigureSection extends ConfigureSectionForm {
       // Register new section in SectionStorage $section_storage.
       $section_storage->insertSection($delta, $newSection);
       // Remove plugin id to parent form detect new section as old section.
-      unset($plugin_id);
+      $plugin_id = NULL;
     }
 
     $build = parent::buildForm($form, $form_state, $section_storage, $delta, $plugin_id);

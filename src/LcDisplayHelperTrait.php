@@ -31,8 +31,10 @@ trait LcDisplayHelperTrait {
 
     if ($section_storage instanceof DefaultsSectionStorage) {
       foreach ($sections as $delta => $section) {
-        $d_delta = $section->getLayoutSettings()['section']['general']['basic']['section_delta'];
-        $this->arrayInsert($n_sections, $d_delta, $section);
+        if (array_key_exists('section', $section->getLayoutSettings())) {
+          $d_delta = $section->getLayoutSettings()['section']['general']['basic']['section_delta'];
+          $this->arrayInsert($n_sections, $d_delta, $section);
+        }
       }
       ksort($n_sections);
       return $n_sections;
@@ -43,6 +45,9 @@ trait LcDisplayHelperTrait {
 
     foreach ($sections as $delta => $section) {
       $settings = $section->getLayoutSettings();
+      if (!array_key_exists('section', $settings)) {
+        continue;
+      }
       $section_label = $settings['section']['general']['basic']['section_label'];
       if ($this->checkDefaultExists($defaults, $section_label)) {
         // Remplace if the section is a defualt.
@@ -74,7 +79,11 @@ trait LcDisplayHelperTrait {
       $settings = $defaults[$delta]->getLayoutSettings();
       if (!empty($settings)) {
         $section_delta = isset($settings['section']['general']['basic']['section_delta']) ? $settings['section']['general']['basic']['section_delta'] : NULL;
-        if (!empty($section_delta)) {
+        if ($section_delta == 0) {
+          if (count($n_sections) == 0) {
+            $n_sections[$section_delta] = $defaults[$delta];
+            continue;
+          }
           $d_delta = $section_delta;
           $this->arrayInsert($n_sections, $d_delta, $defaults[$delta]);
         }

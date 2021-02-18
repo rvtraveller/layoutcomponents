@@ -105,7 +105,8 @@ class LcUpdateBlockForm extends UpdateBlockForm {
     $build = parent::buildForm($form, $form_state, $section_storage, $delta, $region, $uuid);
 
     /** @var \Drupal\block_content\Entity\BlockContent $block */
-    $block = $build['settings']['block_form']['#block'];
+    $block = !empty($build['settings']['block_form']['#block'])
+      ? $build['settings']['block_form']['#block'] : NULL;
     if (!isset($block)) {
       // Format non blocks.
       foreach ($build['settings'] as $name => $element) {

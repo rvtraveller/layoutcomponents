@@ -12,6 +12,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\layoutcomponents\Entity\LcEntityViewDisplay;
 use Drupal\field\Entity\FieldConfig;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_theme().
@@ -142,6 +143,11 @@ function layoutcomponents_preprocess_block(array &$variables) {
       }
     }
   }
+
+  // Provide default class for system_main_block.
+  if ($variables['plugin_id'] == 'system_main_block') {
+    $variables['attributes']['class'][] = 'lc-main-content';
+  }
 }
 
 /**
@@ -224,10 +230,16 @@ function layoutcomponents_page_attachments_alter(array &$attachments) {
   /** @var \Drupal\Core\Config\Config $config */
   $config = \Drupal::configFactory()->getEditable('layoutcomponents.interface');
   $theme = (!empty($config->get('theme_type'))) ? $config->get('theme_type') : 'color-dark';
+
+  // Process url.
+  $absolute = \Drupal::request()->getSchemeAndHttpHost();
+  $alias = \Drupal::service('path_alias.manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
+
+  // Include the css.
   $attachments['#attached']['html_head_link'][] = [
     0 => [
       'rel' => 'stylesheet',
-      'href' => '/' . $module_handler->getModule('layoutcomponents')->getPath() . '/css/lc-' . $theme . '.css',
+      'href' => $absolute . '/' . $module_handler->getModule('layoutcomponents')->getPath() . '/css/lc-' . $theme . '.css',
       'media' => 'all',
     ],
     1 => TRUE,
