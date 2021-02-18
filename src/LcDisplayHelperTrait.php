@@ -79,11 +79,7 @@ trait LcDisplayHelperTrait {
       $settings = $defaults[$delta]->getLayoutSettings();
       if (!empty($settings)) {
         $section_delta = isset($settings['section']['general']['basic']['section_delta']) ? $settings['section']['general']['basic']['section_delta'] : NULL;
-        if ($section_delta == 0) {
-          if (count($n_sections) == 0) {
-            $n_sections[$section_delta] = $defaults[$delta];
-            continue;
-          }
+        if (!empty($section_delta)) {
           $d_delta = $section_delta;
           $this->arrayInsert($n_sections, $d_delta, $defaults[$delta]);
         }
