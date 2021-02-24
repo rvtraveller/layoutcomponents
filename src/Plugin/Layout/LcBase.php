@@ -232,7 +232,9 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'section_delta' => (int) 0,
           ],
           'structure' => [
-            'section_structure' => 12,
+            'section_structure_sm' => 12,
+            'section_structure' => 6,
+            'section_structure_lg' => 6,
             'section_carousel' => boolval(0),
             'section_carousel_slick' => 'none',
           ],
@@ -1105,6 +1107,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
     $general = $config['general'];
     $styles = $config['styles'];
     $container = &$form['container']['section']['container'];
+    $column_structures = $this->manager->getColumnOptions(count($this->getPluginDefinition()->getRegionNames()));
 
     $container['general'] = [
       '#type' => 'details',
@@ -1168,17 +1171,51 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         '#type' => 'details',
         '#title' => $this->t('Structure'),
         '#group' => 'section',
+        'section_structure_sm' => $this->lcApiSelect->normal(
+          [
+            'id' => 'row',
+            'title' => $this->t('SM Columns Structure'),
+            'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
+            'default_value' => $general['structure']['section_structure_sm'],
+            'options' => $column_structures,
+            'attributes' => [
+              'lc' => [
+                'type' => 'class',
+                'class_remove' => 'col-sm-*',
+                'style' => 'column_size',
+              ],
+            ],
+            'class' => 'column-size',
+          ]
+        ),
         'section_structure' => $this->lcApiSelect->normal(
           [
             'id' => 'row',
             'title' => $this->t('Type'),
             'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
             'default_value' => $general['structure']['section_structure'],
-            'options' => $this->manager->getColumnOptions(count($this->getPluginDefinition()->getRegionNames())),
+            'options' => $column_structures,
             'attributes' => [
               'lc' => [
                 'type' => 'class',
                 'class_remove' => 'col-md-*',
+                'style' => 'column_size',
+              ],
+            ],
+            'class' => 'column-size',
+          ]
+        ),
+        'section_structure_lg' => $this->lcApiSelect->normal(
+          [
+            'id' => 'row',
+            'title' => $this->t('LG Columns Structure'),
+            'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
+            'default_value' => $general['structure']['section_structure_lg'],
+            'options' => $column_structures,
+            'attributes' => [
+              'lc' => [
+                'type' => 'class',
+                'class_remove' => 'col-lg-*',
                 'style' => 'column_size',
               ],
             ],

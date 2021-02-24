@@ -513,7 +513,9 @@ class LcLayout {
    */
   public function setColumn($name, $delta) {
     $path = 'regions.' . $name;
+    $column_size_sm = explode('/', $this->getSetting('section.general.structure.section_structure_sm', 1));
     $column_size = explode('/', $this->getSetting('section.general.structure.section_structure', 1));
+    $column_size_lg = explode('/', $this->getSetting('section.general.structure.section_structure_lg', 1));
     $border = ($this->getSetting($path . '.styles.border.border', '') == 'all') ? '' : '-' . $this->getSetting($path . '.styles.border.border', '');
     $border_size = $this->getSetting($path . '.styles.border.size');
     $border_color = $this->getSetting($path . '.styles.border.color.settings.color');
@@ -534,12 +536,17 @@ class LcLayout {
     // Column default classes.
     $column_classes->addClass('lc-inline_column_' . $name . '-edit');
     $column_classes->addClass('layoutcomponent-column');
-    $column_classes->addClass('col-sm-12');
 
     // Column size.
     if (is_numeric($delta)) {
+      if (isset($column_size_sm[$delta]) && !empty($column_size_sm[$delta])) {
+        $column_classes->addClass('col-sm-' . $column_size_sm[$delta]);
+      }
       if (isset($column_size[$delta]) && !empty($column_size[$delta])) {
         $column_classes->addClass('col-md-' . $column_size[$delta]);
+      }
+      if (isset($column_size_lg[$delta]) && !empty($column_size_lg[$delta])) {
+        $column_classes->addClass('col-lg-' . $column_size_lg[$delta]);
       }
     }
 
