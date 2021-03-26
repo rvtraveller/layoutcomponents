@@ -233,8 +233,8 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
           ],
           'structure' => [
             'section_structure_sm' => 12,
-            'section_structure' => 6,
-            'section_structure_lg' => 6,
+            'section_structure' => 12,
+            'section_structure_lg' => 12,
             'section_carousel' => boolval(0),
             'section_carousel_slick' => 'none',
           ],
