@@ -86,6 +86,20 @@ class LcPage implements ContainerInjectionInterface {
   }
 
   /**
+   * Implements hook_library_info_alter() for LC pages.
+   *
+   * @see \hook_library_info_alter()
+   */
+  public function libraryInfoAlter(&$libraries, $extension) {
+    $_entity_form = $this->request->attributes->get('_entity_form');
+    if ($_entity_form == 'node.layout_builder') {
+      if (array_key_exists('drupal.dialog.off_canvas', $libraries)) {
+        unset($libraries['drupal.dialog.off_canvas']['css']['base']['misc/dialog/off-canvas.reset.css']);
+      }
+    }
+  }
+
+  /**
    * Implements hook_page_attachments_alter() for LC pages.
    *
    * @see \hook_page_attachments_alter()
