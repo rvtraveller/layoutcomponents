@@ -60,7 +60,9 @@ class LcEntity implements ContainerInjectionInterface{
     if (!array_key_exists('#default_value', $entity_form) || !isset($entity_form['#default_value'])) {
       return;
     }
-    $this->layoutcomponentsFormAlter($entity_form, $entity_form['#default_value']);
+    if ($entity_form['#default_value'] instanceof BlockContent) {
+      $this->layoutcomponentsFormAlter($entity_form, $entity_form['#default_value']);
+    }
   }
 
   /**

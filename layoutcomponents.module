@@ -68,15 +68,6 @@ function layoutcomponents_page_attachments(&$page) {
 }
 
 /**
- * Implements hook_page_attachments_alter().
- */
-function layoutcomponents_page_attachments_alter(array &$attachments) {
-  return \Drupal::service('class_resolver')
-    ->getInstanceFromDefinition(LcPage::class)
-    ->pageAttachmentsAlter($attachments);
-}
-
-/**
  * Implements hook_library_info_alter().
  */
 function layoutcomponents_library_info_alter(&$libraries, $extension) {

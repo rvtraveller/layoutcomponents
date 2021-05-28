@@ -4,6 +4,9 @@ layoutcomponents:
     https://kit.fontawesome.com/42fec296be.js: { external: true }
     js/layoutcomponents.js: {}
     js/parallax.min.js: {}
+  css:
+    component:
+      css/lc-color-dark.css: {}
 
 layoutcomponents.editform:
   js:

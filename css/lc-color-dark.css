@@ -1426,6 +1426,10 @@
   background: #02202B;
 }
 
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .horizontal-tabs div[data-drupal-selector="edit-layout-settings-container"] {
+  padding: 0;
+}
+
 /* line 1122, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *,
@@ -1436,6 +1440,7 @@
   overflow-x: visible !important;
   font-size: 14px;
   background: inherit;
+  padding: 0;
 }
 
 /* line 1138, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
@@ -2278,7 +2283,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper .js-media-library-add-form .item-list ul li .form-item label,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label .js-media-library-add-form .item-list ul li .form-item label,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) .js-media-library-add-form .item-list ul li .form-item label {
-  font-size: 700 !important;
+  font-size: 700px !important;
 }
 
 /* line 1599, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
@@ -3236,8 +3241,10 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details fieldset,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper fieldset,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label fieldset,
-.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) fieldset {
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) fieldset,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.js-form-type-checkbox {
   width: 100%;
+  padding: 0 20px 0 20px;
 }
 
 /* line 2084, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
@@ -4474,6 +4481,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper details[open] > summary,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label details[open] > summary,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) details[open] > summary {
+  display: none;
   background: #013D55;
   color: white;
 }
@@ -4678,6 +4686,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) .logo {
   margin: 0 0 20px 0;
 }
+
 
 @media screen and (max-width: 991px) {
   /* line 3290, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */

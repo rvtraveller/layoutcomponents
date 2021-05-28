@@ -39,12 +39,13 @@
               if (!Drupal.isEmpty(drupalSettings.homeCarousel.items[e].items)) {
                 $dots.each(function (i) {
                   var $text = '<div class="slick-dot-number">' + (i + 1) + ' </div>';
-                  $text += '<div class="slick-dot-text">' + drupalSettings.homeCarousel.items[e].items[i].title + '</div>';
+                  var title = (!Drupal.isEmpty(drupalSettings.homeCarousel.items[e].items[i])) ? drupalSettings.homeCarousel.items[e].items[i].title : '';
+                  $text += '<div class="slick-dot-text">' + title + '</div>';
                   $($dots[i]).find('button').html($text);
                 });
                 $slick.find('ul').once('added').append($li);
               } else {
-                var $ul = $('<ul class="slick-dots slick-dots-tabs" role="tablist"/>');
+                var $ul = $('<ul class="slick-dots slick-dots-tabs slick-button-controls" role="tablist"/>');
                 $slick.once('added').append($ul.append($li));
               }
             }

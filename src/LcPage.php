@@ -99,29 +99,4 @@ class LcPage implements ContainerInjectionInterface {
     }
   }
 
-  /**
-   * Implements hook_page_attachments_alter() for LC pages.
-   *
-   * @see \hook_page_attachments_alter()
-   */
-  public function pageAttachmentsAlter(array &$attachments) {
-    /** @var \Drupal\Core\Config\Config $config */
-    $config = $this->configFactory->getEditable('layoutcomponents.interface');
-    $theme = (!empty($config->get('theme_type'))) ? $config->get('theme_type') : 'color-dark';
-
-    // Process url.
-    $absolute = $this->request->getSchemeAndHttpHost();
-    $alias = $this->aliasManager->getAliasByPath($this->currentPathStack->getPath());
-
-    // Include the css.
-    $attachments['#attached']['html_head_link'][] = [
-      0 => [
-        'rel' => 'stylesheet',
-        'href' => $absolute . '/' . $this->moduleHandler->getModule('layoutcomponents')->getPath() . '/css/lc-' . $theme . '.css',
-        'media' => 'all',
-      ],
-      1 => TRUE,
-    ];
-  }
-
 }
