@@ -74,7 +74,6 @@ class LcTheme implements ContainerInjectionInterface{
     $suggestions[] = 'layout__layoutcomponents_block_content__' . $block_content->bundle();
     $suggestions[] = 'layout__layoutcomponents_block_content__' . $block_content->id();
 
-    ksm($suggestions);
     return $suggestions;
   }
 
