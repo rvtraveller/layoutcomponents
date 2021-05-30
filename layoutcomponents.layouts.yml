@@ -2,7 +2,7 @@ layoutcomponents_one_column:
   label: Layout Components - One Column
   category: Layout Components
   class: '\Drupal\layoutcomponents\Plugin\Layout\LcBase'
-  template: templates/layoutcomponents-base
+  template: templates/layout--layoutcomponents-base
   regions:
     first:
       label: 'First'
@@ -15,7 +15,7 @@ layoutcomponents_two_column:
   label: Layout Components - Two Column
   category: Layout Components
   class: '\Drupal\layoutcomponents\Plugin\Layout\LcBase'
-  template: templates/layoutcomponents-base
+  template: templates/layout--layoutcomponents-base
   default_region: first
   regions:
     first:
@@ -33,7 +33,7 @@ layoutcomponents_three_column:
   label: Layout Components - Three Column
   category: Layout Components
   class: '\Drupal\layoutcomponents\Plugin\Layout\LcBase'
-  template: templates/layoutcomponents-base
+  template: templates/layout--layoutcomponents-base
   default_region: first
   regions:
     first:
@@ -55,7 +55,7 @@ layoutcomponents_four_column:
   label: Layout Components - Four Column
   category: Layout Components
   class: '\Drupal\layoutcomponents\Plugin\Layout\LcBase'
-  template: templates/layoutcomponents-base
+  template: templates/layout--layoutcomponents-base
   default_region: first
   regions:
     first:
@@ -81,7 +81,7 @@ layoutcomponents_five_column:
   label: Layout Components - Five Column
   category: Layout Components
   class: '\Drupal\layoutcomponents\Plugin\Layout\LcBase'
-  template: templates/layoutcomponents-base
+  template: templates/layout--layoutcomponents-base
   default_region: first
   regions:
     first:
@@ -111,7 +111,7 @@ layoutcomponents_six_column:
   label: Layout Components - Six Column
   category: Layout Components
   class: '\Drupal\layoutcomponents\Plugin\Layout\LcBase'
-  template: templates/layoutcomponents-base
+  template: templates/layout--layoutcomponents-base
   default_region: first
   regions:
     first:

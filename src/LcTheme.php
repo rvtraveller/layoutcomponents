@@ -20,10 +20,18 @@ class LcTheme implements ContainerInjectionInterface{
   protected $layoutPluginManager;
 
   /**
+   * The Request object.
+   *
+   * @var \Drupal\Core\Routing\RouteMatchInterface
+   */
+  protected $routeMatch;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(LayoutPluginManager $layout_plugin_manager) {
+  public function __construct(LayoutPluginManager $layout_plugin_manager, RouteMatchInterface $route_match) {
     $this->layoutPluginManager = $layout_plugin_manager;
+    $this->routeMatch = $route_match;
   }
 
   /**
@@ -31,7 +39,8 @@ class LcTheme implements ContainerInjectionInterface{
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('plugin.manager.core.layout')
+      $container->get('plugin.manager.core.layout'),
+      $container->get('current_route_match')
     );
   }
 
@@ -42,10 +51,10 @@ class LcTheme implements ContainerInjectionInterface{
    */
   public function theme() {
     return [
-      'layoutcomponents_block_content' => [
+      'layout__layoutcomponents_block_content' => [
         'render element' => 'elements',
       ],
-      'layoutcomponents_slick_region' => [
+      'layout__layoutcomponents_slick_region' => [
         'variables' => [
           'content' => NULL,
         ],
@@ -55,15 +64,38 @@ class LcTheme implements ContainerInjectionInterface{
   }
 
   /**
-   * Implements hook_theme_suggestions_HOOK() for LC pages.
+   * Implements hook_theme_suggestions_HOOK() for LC blocks.
    *
    * @see \hook_theme_suggestions_HOOK()
    */
   public function themeSuggestionsLayoutcomponentsBlockContent(array $variables) {
     $suggestions = [];
     $block_content = $variables['elements']['#block_content'];
-    $suggestions[] = 'layoutcomponents_block_content__' . $block_content->bundle();
-    $suggestions[] = 'layoutcomponents_block_content__' . $block_content->id();
+    $suggestions[] = 'layout__layoutcomponents_block_content__' . $block_content->bundle();
+    $suggestions[] = 'layout__layoutcomponents_block_content__' . $block_content->id();
+
+    ksm($suggestions);
+    return $suggestions;
+  }
+
+  /**
+   * Implements hook_theme_suggestions_HOOK() for LC sections.
+   *
+   * @see \hook_theme_suggestions_HOOK()
+   */
+  public function themeSuggestionsLayoutLayoutcomponentsBase(array $variables) {
+    $suggestions = [];
+
+    /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
+    $layout = $variables['content']['#layout'];
+
+    $suggestions[] = 'layout__layoutcomponents_base__' . $layout->id();
+
+    $node = $this->routeMatch->getParameter('node');
+    if (isset($node)) {
+      $suggestions[] = 'layout__layoutcomponents_base__' . $layout->id() . '__' . $node->getType();
+      $suggestions[] = 'layout__layoutcomponents_base__' . $layout->id() . '__' . $node->id() . '__' . $node->getType();
+    }
 
     return $suggestions;
   }
@@ -107,6 +139,7 @@ class LcTheme implements ContainerInjectionInterface{
         $theme_registry[$theme_hook]['includes'][] = drupal_get_path('module', 'layoutcomponents') . '/layoutcomponents.theme.inc';
         // Set new preprocess function.
         $theme_registry[$theme_hook]['preprocess functions'][] = '_layoutcomponents_preprocess_layout';
+        $theme_registry[$theme_hook]['base hook'] = 'layout__layoutcomponents_base';
       }
     }
   }
