@@ -1,4 +1,4 @@
-{#
+﻿{#
 /**
  * @file
  * Layout Components - base template.
@@ -22,41 +22,25 @@
 {% set section = lc_data.output.section %}
 {% set title = lc_data.output.title %}
 {% set regions = lc_data.output.regions %}
-
 <{{ section.general.basic.section_type }}{{ section.attributes }}>
-<div {{ section.title_container_attr }}>
-  <div {{ title.styles.attr_class.container }} {{ title.styles.attr_styles.container }}>
-    <{{ title.styles.design.title_type }} {{ title.styles.attr_class.title }} {{ title.styles.attr_styles.title }}>{{ title.general.title }}</{{ title.styles.design.title_type }}>
-    <p {{ title.styles.attr_class.description }}>{{ title.general.description }}</p>
-  </div>
-</div>
-<div {{ section.container }}>
-  {{ title_suffix.contextual_links }}
-  <div {{ section.row }}>
-    {% if section.general.structure.section_carousel == 1 and lc_admin == false %}
-      {{ regions.slick }}
-    {% else %}
-    {% for key, region in regions %}
-    {% if region['#theme'] != 'slick_wrapper' %}
-    {% set column_region_attributes_array = attribute(_context, 'region_attributes') %}
-    {% set column_region_attributes = attribute(column_region_attributes_array, key) %}
-    {% set column_region = key ~ '-region' %}
-    <div {{ region.styles.column_attr }}>
-      <div {{ region.styles.title_wrap_attr }}>
-        <{{ region.styles.title_wrapper }} {{ region.styles.title_attr }}>
-        {{ region.general.title }}
-      </{{ region.styles.title_wrapper }}>
+  {% if title.general.title %}
+  <div {{ section.title_container_attr }}>
+    <div {{ title.styles.attr_class.container }} {{ title.styles.attr_styles.container }}>
+      <{{ title.styles.design.title_type }} {{ title.styles.attr_class.title }} {{ title.styles.attr_styles.title }}>{{ title.general.title }}</{{ title.styles.design.title_type }}>
+      <p {{ title.styles.attr_class.description }}>{{ title.general.description }}</p>
     </div>
-    {% if region.content %}
-      <div {{ column_region_attributes.addClass(region.attributes) }}>
-        {{ region.content }}
-      </div>
-    {% endif %}
   </div>
   {% endif %}
-  {% endfor %}
-    {% endif %}
-</div>
-</div>
+  <div {{ section.container }}>
+    {{ title_suffix.contextual_links }}
+    <div {{ section.row }}>
+      {% if section.general.structure.section_carousel == 1 and lc_admin == false %}
+        {{ regions.slick }}
+      {% else %}
+        {% for key, region in regions %}
+            {{ region }}
+        {% endfor %}
+      {% endif %}
+  </div>
+  </div>
 </{{ section.general.basic.section_type }}>
-

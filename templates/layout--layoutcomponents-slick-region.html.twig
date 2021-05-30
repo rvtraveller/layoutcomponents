@@ -1,15 +1,12 @@
-{% set column_region_attributes_array = attribute(_context, 'region_attributes') %}
-{% set column_region_attributes = attribute(column_region_attributes_array, key) %}
-{% set column_region = key ~ '-region' %}
 <div {{ content.styles.column_attr.addClass('col-md-12') }}>
   <div {{ content.styles.title_wrap_attr.addClass('quemeaspen') }}>
     <{{ content.styles.title_wrapper }} {{ content.styles.title_attr }}>
       {{ content.general.title }}
     </{{ content.styles.title_wrapper }}>
   </div>
-{% if content.content %}
+  {% if content.content %}
   <div class="lc-inline_column-content">
     {{ content.content }}
   </div>
-{% endif %}
+  {% endif %}
 </div>

@@ -454,7 +454,7 @@ class LcLayout {
         $items[] = [
           'slide' => [
             '#type' => 'container',
-            '#theme' => 'layoutcomponents_slick_region',
+            '#theme' => 'layout__layoutcomponents_slick_region',
             '#content' => $item,
             '#attributes' => [
               'class' => ['lc-slick-column-wrapper'],
@@ -626,7 +626,14 @@ class LcLayout {
     $this->setSetting('regions.' . $name . '.content', $this->getRegionContent($name));
     $this->setSetting('regions.' . $name . '.attributes', "lc-inline_column_$name-content-edit");
 
-    $output[$name] = $this->getSetting('regions.' . $name . '.content');
+    // Store the region inside container width custom theme.
+    $new_region = [
+      '#theme' => 'layout__layoutcomponents_region',
+      '#region' => $this->getSetting('regions.' . $name),
+      '#key' => $name,
+    ];
+
+    $this->setSetting('regions.' . $name, $new_region);
   }
 
   /**

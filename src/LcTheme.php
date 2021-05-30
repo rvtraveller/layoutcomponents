@@ -60,7 +60,63 @@ class LcTheme implements ContainerInjectionInterface{
         ],
         'render element' => 'elements',
       ],
+      'layout__layoutcomponents_region' => [
+        'variables' => [
+          'region' => NULL,
+          'key' => NULL,
+        ],
+      ],
     ];
+  }
+
+  /**
+   * Implements hook_theme_suggestions_HOOK() for LC sections.
+   *
+   * @see \hook_theme_suggestions_HOOK()
+   */
+  public function themeSuggestionsLayoutLayoutcomponentsBase(array $variables) {
+    $classes = $variables['content']['#settings']['section']['styles']['misc']['extra_class'];
+    $class = explode(',', $classes);
+    if (is_array($class)) {
+      $class = $class[0];
+    }
+
+    $suggestions = [];
+
+    /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
+    $layout = $variables['content']['#layout'];
+
+    $suggestions[] = 'layout__layoutcomponents_base__' . $layout->id();
+
+    $node = $this->routeMatch->getParameter('node');
+    if (isset($node)) {
+      $suggestions[] = 'layout__layoutcomponents_base__' . (isset($class) ? ($class . '_') : '') . $layout->id() . '_' . $node->getType();
+      $suggestions[] = 'layout__layoutcomponents_base__' . (isset($class) ? ($class . '_') : '') . $layout->id() . '_' . $node->id() . '_' . $node->getType();
+    }
+
+    return $suggestions;
+  }
+
+  /**
+   * Implements hook_theme_suggestions_HOOK() for LC sections.
+   *
+   * @see \hook_theme_suggestions_HOOK()
+   */
+  public function themeSuggestionsLayoutLayoutcomponentsRegion(array $variables) {
+    $classes = $variables['region']['styles']['misc']['extra_class'];
+    $class = explode(',', $classes);
+    if (is_array($class)) {
+      $class = $class[0];
+    }
+    $suggestions = [];
+    $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? ($class . '_') : '') . $variables['key'];
+    $node = $this->routeMatch->getParameter('node');
+    if (isset($node)) {
+      $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? ($class . '_') : '') . $variables['key'] . '_' . $node->getType();
+      $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? ($class . '_') : '') . $variables['key'] . '_' . $node->id() . '__' . $node->getType();
+    }
+
+    return $suggestions;
   }
 
   /**
@@ -73,28 +129,6 @@ class LcTheme implements ContainerInjectionInterface{
     $block_content = $variables['elements']['#block_content'];
     $suggestions[] = 'layout__layoutcomponents_block_content__' . $block_content->bundle();
     $suggestions[] = 'layout__layoutcomponents_block_content__' . $block_content->id();
-
-    return $suggestions;
-  }
-
-  /**
-   * Implements hook_theme_suggestions_HOOK() for LC sections.
-   *
-   * @see \hook_theme_suggestions_HOOK()
-   */
-  public function themeSuggestionsLayoutLayoutcomponentsBase(array $variables) {
-    $suggestions = [];
-
-    /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
-    $layout = $variables['content']['#layout'];
-
-    $suggestions[] = 'layout__layoutcomponents_base__' . $layout->id();
-
-    $node = $this->routeMatch->getParameter('node');
-    if (isset($node)) {
-      $suggestions[] = 'layout__layoutcomponents_base__' . $layout->id() . '__' . $node->getType();
-      $suggestions[] = 'layout__layoutcomponents_base__' . $layout->id() . '__' . $node->id() . '__' . $node->getType();
-    }
 
     return $suggestions;
   }

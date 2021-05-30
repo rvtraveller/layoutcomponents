@@ -1,0 +1,14 @@
+<div {{ region.styles.column_attr }}>
+  {% if region.general.title %}
+    <div {{ region.styles.title_wrap_attr }}>
+      <{{ region.styles.title_wrapper }} {{ region.styles.title_attr }}>
+      {{ region.general.title }}
+    </{{ region.styles.title_wrapper }}>
+  {% endif %}
+
+  {% if region.content %}
+    <div class="lc-inline_column-content">
+      {{ region.content }}
+    </div>
+  {% endif %}
+</div>
