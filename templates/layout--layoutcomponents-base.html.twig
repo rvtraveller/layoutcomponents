@@ -1,4 +1,4 @@
-﻿{#
+{#
 /**
  * @file
  * Layout Components - base template.
@@ -18,10 +18,10 @@
  * - content: The content to go inside the wrapper for this region.
  */
 #}
-
 {% set section = lc_data.output.section %}
 {% set title = lc_data.output.title %}
 {% set regions = lc_data.output.regions %}
+
 <{{ section.general.basic.section_type }}{{ section.attributes }}>
   {% if title.general.title %}
   <div {{ section.title_container_attr }}>
