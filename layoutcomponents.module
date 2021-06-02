@@ -43,7 +43,7 @@ function layoutcomponents_theme_suggestions_layout__layoutcomponents_region(arra
 /**
  * Implements hook_theme_suggestions_HOOK().
  */
-function layoutcomponents_theme_suggestions_layout__layoutcomponents_block_content(array $variables) {
+function layoutcomponents_theme_suggestions_layoutcomponents_block_content(array $variables) {
   return \Drupal::service('class_resolver')
     ->getInstanceFromDefinition(LcTheme::class)
     ->themeSuggestionsLayoutcomponentsBlockContent($variables);

@@ -3241,8 +3241,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details fieldset,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper fieldset,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label fieldset,
-.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) fieldset,
-.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.js-form-type-checkbox {
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) fieldset {
   width: 100%;
   padding: 0 20px 0 20px;
 }
@@ -4475,6 +4474,7 @@
 }
 
 /* line 2764, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
+/*
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details[open] > summary,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * details[open] > summary,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details details[open] > summary,
@@ -4482,6 +4482,17 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label details[open] > summary,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) details[open] > summary {
   display: none;
+  background: #013D55;
+  color: white;
+}*/
+
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.horizontal-tabs-panes > details[open] > summary {
+  display: none;
+  background: #013D55;
+  color: white;
+}
+
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details.js-layout-builder-category[open] > summary {
   background: #013D55;
   color: white;
 }

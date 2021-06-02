@@ -51,7 +51,7 @@ class LcTheme implements ContainerInjectionInterface{
    */
   public function theme() {
     return [
-      'layout__layoutcomponents_block_content' => [
+      'layoutcomponents_block_content' => [
         'render element' => 'elements',
       ],
       'layout__layoutcomponents_slick_region' => [
@@ -127,8 +127,8 @@ class LcTheme implements ContainerInjectionInterface{
   public function themeSuggestionsLayoutcomponentsBlockContent(array $variables) {
     $suggestions = [];
     $block_content = $variables['elements']['#block_content'];
-    $suggestions[] = 'layout__layoutcomponents_block_content__' . $block_content->bundle();
-    $suggestions[] = 'layout__layoutcomponents_block_content__' . $block_content->id();
+    $suggestions[] = 'layoutcomponents_block_content__' . $block_content->bundle();
+    $suggestions[] = 'layoutcomponents_block_content__' . $block_content->id();
 
     return $suggestions;
   }
