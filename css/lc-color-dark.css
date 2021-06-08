@@ -4401,12 +4401,15 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label .inline-block-list__item.use-ajax.js-layout-builder-block-link.inline-block-list__item,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) .inline-block-list__item.use-ajax.js-layout-builder-block-link.inline-block-list__item {
   width: 100%;
+  min-height: 100%;
   display: inline-grid;
+  align-content: space-between;
   text-align: center;
   margin: 0;
   padding: 15px 25px 15px 25px;
   text-decoration: none;
   opacity: 0.8;
+  line-height: normal;
 }
 
 /* line 2734, Z:/lc/html/web/modules/custom/layoutcomponents/scss/lc-color-dark.scss */
