@@ -622,8 +622,40 @@ class LcLayout {
 
     $this->setSetting('section.row', $container_attributes);
 
+    $content = $this->getRegionContent($name);
+    $subregions = $this->getSetting('regions.' . $name . '.subcolumn');
+    if (!empty($subregions['groups'])) {
+      foreach ($subregions['data'] as $group => $uuids) {
+        if (empty($group)) {
+          continue;
+        }
+        $subregion_content = [];
+        foreach ($uuids as $uuid) {
+          if (isset($content[$uuid])) {
+            $subregion_content[] = $content[$uuid];
+            unset($content[$uuid]);
+          }
+        }
+
+        // Subregion attributes.
+        $subregion_attributes = new Attribute();
+        $subregion_attributes->addClass('lc-inline_subcolumn_type_' . $group . '-edit');
+        $subregion_attributes->addClass('js-layout-builder-column');
+        $subregion_attributes->addClass($subregions['classes'][$group]);
+        $content[] = [
+          '#theme' => 'layout__layoutcomponents_subregion',
+          '#subregion' => [
+            'type' => $subregions['types'][$group],
+            'attributes' => $subregion_attributes,
+          ],
+          '#content' => $subregion_content,
+          '#group' => $group,
+        ];
+      }
+    }
+
     // Column content.
-    $this->setSetting('regions.' . $name . '.content', $this->getRegionContent($name));
+    $this->setSetting('regions.' . $name . '.content', $content);
     $this->setSetting('regions.' . $name . '.attributes', "lc-inline_column_$name-content-edit");
 
     // Store the region inside container width custom theme.

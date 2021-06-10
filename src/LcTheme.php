@@ -66,6 +66,12 @@ class LcTheme implements ContainerInjectionInterface{
           'key' => NULL,
         ],
       ],
+      'layout__layoutcomponents_subregion' => [
+        'variables' => [
+          'subregion' => NULL,
+          'content' => NULL,
+        ],
+      ],
     ];
   }
 

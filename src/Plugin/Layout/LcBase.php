@@ -346,6 +346,34 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
   }
 
   /**
+   * Provides list of region components.
+   *
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   FormState object.
+   * @param string $region
+   *   Current region.
+   *
+   * @return array|\Drupal\layout_builder\SectionComponent[]
+   *   List of region component.
+   */
+  private function getComponents(FormStateInterface $form_state, string $region) {
+    /** @var \Drupal\Core\Form\FormState $complete_form_state */
+    $complete_form_state = $form_state instanceof SubformStateInterface ? $form_state->getCompleteFormState() : $form_state;
+    /** @var \Drupal\layoutcomponents\Form\LcUpdateColumn $callback_object */
+    $callback_object = $complete_form_state->getBuildInfo()['callback_object'];
+    $section_storage = $callback_object->getSectionStorage();
+    $build_info = $complete_form_state->getBuildInfo();
+    $delta = $build_info['args'][1];
+    $sections = $section_storage->getSections();
+    if (!isset($sections[$delta])) {
+      return [];
+    }
+
+    $section_data = $sections[$delta];
+    return $section_data->getComponentsByRegion($region);
+  }
+
+  /**
    * Provide the region configuration.
    *
    * @param array $form
@@ -356,11 +384,17 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
    *   The region.
    */
   public function setAdminsitrativeRegion(array &$form, FormStateInterface $form_state, $region) {
-    $general = $styles = NULL;
+    $general = $styles = $groups = $types = $classes = NULL;
     $config = $this->getConfiguration()['regions'][$region];
     if (array_key_exists('general', $config)) {
       $general = $config['general'];
     }
+    if (array_key_exists('subcolumn', $config)) {
+      $groups = $config['subcolumn']['groups'];
+      $types = $config['subcolumn']['types'];
+      $classes = $config['subcolumn']['classes'];
+    }
+
     $styles = $config['styles'];
     $container = &$form['container']['regions'][$region];
 
@@ -383,6 +417,96 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         ]
       ),
     ];
+
+    if ($components = $this->getComponents($form_state, $region)) {
+      $group_options = [];
+      $components = array_values($components);
+      $key = 1;
+      foreach ($components as $component) {
+        $group_options['group_' . $key] = $this->t('Group @group', ['@group' => $key]);
+        $key++;
+      }
+      $container['subcolumn'] = [
+        '#type' => 'details',
+        '#title' => $this->t('Subcolumns'),
+        '#group' => 'regions',
+        'groups' => [
+          '#type' => 'details',
+          '#title' => $this->t('Groups'),
+          '#group' => 'regions',
+        ],
+        'types' => [
+          '#type' => 'details',
+          '#title' => $this->t('Types'),
+          '#group' => 'regions',
+        ],
+        'classes' => [
+          '#type' => 'details',
+          '#title' => $this->t('Classes'),
+          '#group' => 'regions',
+        ],
+      ];
+
+      foreach ($components as $component) {
+        $cdata = $component->toArray();
+        $uuid = $component->getUuid();
+        $container['subcolumn']['groups'][$uuid] = $this->lcApiSelect->normal(
+          [
+            'id' => $uuid,
+            'title' => $this->t('Block: @id', ['@id' => $cdata['configuration']['id']]),
+            'description' => $this->t('Assign the block to subcolumn group'),
+            'options' => $group_options,
+            'default_value' => isset($groups[$uuid]) ? $groups[$uuid] : '',
+            'attributes' => [
+              'lc' => [
+                'type' => 'element',
+                'group' => 'subcolumn',
+              ],
+            ],
+            'class' => 'type lc_subcolumn-group',
+          ]
+        );
+      }
+
+      $k = 1;
+      foreach ($group_options as $key => $group) {
+        $container['subcolumn']['types'][$key] = $this->lcApiSelect->normal(
+          [
+            'id' => 'subcolumn_type_' . $key,
+            'title' => $this->t('Group @group', ['@group' => $k]),
+            'description' => $this->t('Set the element type for the column group'),
+            'options' => [
+              'div' => 'Div',
+              'span' => 'Span',
+              'figure' => 'Figure',
+            ],
+            'default_value' => isset($types[$key]) ? $types[$key] : '',
+            'attributes' => [
+              'lc' => [
+                'type' => 'element',
+              ],
+            ],
+          ]
+        );
+        $container['subcolumn']['classes'][$key] = $this->lcApiText->plainText(
+          [
+            'id' => 'subcolumn_type_' . $key,
+            'title' => $this->t('Group @group', ['@group' => $k]),
+            'description' => $this->t('Set the classes list for the column group separated by comma'),
+            'default_value' => isset($classes[$key]) ? $classes[$key] : '',
+            'attributes' => [
+              'placeholder' => $this->t('group_class_1, group_class_1'),
+              'lc' => [
+                'type' => 'class',
+                'style' => 'extra_class',
+              ],
+            ],
+          ]
+        );
+        $k++;
+      }
+
+    } // End if components.
 
     $container['styles'] = [
       '#type' => 'details',
@@ -1484,6 +1608,20 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     $values = $form_state->getValue('container');
+
+    foreach ($values['regions'] as $name => $region) {
+      $data = [];
+      if (!isset($region['subcolumn']['groups'])) {
+        continue;
+      }
+      foreach ($region['subcolumn']['groups'] as $uuid => $group) {
+        $data[$group][] = $uuid;
+      }
+      if (!empty($data)) {
+        $values['regions'][$name]['subcolumn']['data'] = $data;
+      }
+    }
+
     $this->configuration['title'] = $values['title']['container'];
     $this->configuration['section'] = $values['section']['container'];
     $this->configuration['regions'] = $values['regions'];
