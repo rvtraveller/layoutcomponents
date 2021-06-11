@@ -384,16 +384,15 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
    *   The region.
    */
   public function setAdminsitrativeRegion(array &$form, FormStateInterface $form_state, $region) {
-    $general = $styles = $groups = $types = $classes = NULL;
+    $general = NULL;
     $config = $this->getConfiguration()['regions'][$region];
     if (array_key_exists('general', $config)) {
       $general = $config['general'];
     }
-    if (array_key_exists('subcolumn', $config)) {
-      $groups = $config['subcolumn']['groups'];
-      $types = $config['subcolumn']['types'];
-      $classes = $config['subcolumn']['classes'];
-    }
+    $groups = isset($config['subcolumn']['groups']) ? $config['subcolumn']['groups'] : [];
+    $types = isset($config['subcolumn']['types']) ? $config['subcolumn']['types'] : [];
+    $classes = isset($config['subcolumn']['classes']) ? $config['subcolumn']['classes'] : [];
+    $structures = isset($config['subcolumn']['structures']) ? $config['subcolumn']['structures'] : [];
 
     $styles = $config['styles'];
     $container = &$form['container']['regions'][$region];
@@ -418,6 +417,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
       ),
     ];
 
+    $column_structures = $this->manager->getColumnOptions(count($this->getPluginDefinition()->getRegionNames()));
     if ($components = $this->getComponents($form_state, $region)) {
       $group_options = [];
       $components = array_values($components);
@@ -426,6 +426,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         $group_options['group_' . $key] = $this->t('Group @group', ['@group' => $key]);
         $key++;
       }
+
       $container['subcolumn'] = [
         '#type' => 'details',
         '#title' => $this->t('Subcolumns'),
@@ -437,13 +438,18 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         ],
         'types' => [
           '#type' => 'details',
-          '#title' => $this->t('Types'),
+          '#title' => $this->t('Group Types'),
           '#group' => 'regions',
         ],
         'classes' => [
           '#type' => 'details',
-          '#title' => $this->t('Classes'),
+          '#title' => $this->t('Group Classes'),
           '#group' => 'regions',
+        ],
+        'structures' => [
+          '#type' => 'details',
+          '#title' => $this->t('Block Classes'),
+          '#group' => 'section',
         ],
       ];
 
@@ -464,6 +470,21 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
               ],
             ],
             'class' => 'type lc_subcolumn-group',
+          ]
+        );
+        $container['subcolumn']['structures'][$uuid] = $this->lcApiText->plainText(
+          [
+            'id' => 'block_' . md5($uuid),
+            'title' => $this->t('Block: @id', ['@id' => $cdata['configuration']['id']]),
+            'description' => $this->t('Set the wrapper classes for the column blocks separated by commas'),
+            'default_value' => isset($structures[$uuid]) ? $structures[$uuid] : '',
+            'attributes' => [
+              'placeholder' => $this->t('block_class_1, block_class_2'),
+              'lc' => [
+                'type' => 'class',
+                'style' => 'extra_class',
+              ],
+            ],
           ]
         );
       }
@@ -492,10 +513,10 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
           [
             'id' => 'subcolumn_type_' . $key,
             'title' => $this->t('Group @group', ['@group' => $k]),
-            'description' => $this->t('Set the classes list for the column group separated by comma'),
+            'description' => $this->t('Set the classes for the column group'),
             'default_value' => isset($classes[$key]) ? $classes[$key] : '',
             'attributes' => [
-              'placeholder' => $this->t('group_class_1, group_class_1'),
+              'placeholder' => $this->t('group_class_1, group_class_2'),
               'lc' => [
                 'type' => 'class',
                 'style' => 'extra_class',

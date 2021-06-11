@@ -614,7 +614,7 @@ class LcLayout {
     $container_attributes->addClass('lc-container-cols');
     $container_attributes->addClass('lc-inline_row-edit');
 
-    // Add container alignement.
+    // Add container alignment.
     $align = $this->getSetting('section.general.basic.section_content_align', []);
     if (isset($align)) {
       $container_attributes->addClass($align);
@@ -631,17 +631,46 @@ class LcLayout {
         }
         $subregion_content = [];
         foreach ($uuids as $uuid) {
-          if (isset($content[$uuid])) {
-            $subregion_content[] = $content[$uuid];
-            unset($content[$uuid]);
+          if (!isset($content[$uuid])) {
+            continue;
           }
+          $classes = [];
+          // Block attributes.
+          if ($block_classes = explode(',', $subregions['structures'][$uuid])) {
+            foreach ($block_classes as $block_class) {
+              if (!empty($block_class)) {
+                $classes[] = $block_class;
+              }
+            }
+          }
+          $classes[] = 'lc-inline_block_' . md5($uuid) . '-edit';
+          $classes = array_unique($classes);
+          if (!isset($content[$uuid]['#attributes'])) {
+            $content[$uuid]['#attributes'] = new Attribute();
+            $content[$uuid]['#attributes']->addClass($classes);
+          }
+          else {
+            $content[$uuid]['#attributes']['class'] = array_merge($content[$uuid]['#attributes']['class'], $classes);
+          }
+          $subregion_content[] = $content[$uuid];
+          unset($content[$uuid]);
         }
 
         // Subregion attributes.
+        $subregion_classes = [
+          'lc-inline_subcolumn_type_' . $group . '-edit',
+          'js-layout-builder-column',
+        ];
+        if ($subregion_user_classes = explode(',', $subregions['classes'][$group])) {
+          foreach ($subregion_user_classes as $subregion_class) {
+            if (!empty($subregion_class)) {
+              $subregion_classes[] = $subregion_class;
+            }
+          }
+        }
+        $subregion_classes = array_unique($subregion_classes);
         $subregion_attributes = new Attribute();
-        $subregion_attributes->addClass('lc-inline_subcolumn_type_' . $group . '-edit');
-        $subregion_attributes->addClass('js-layout-builder-column');
-        $subregion_attributes->addClass($subregions['classes'][$group]);
+        $subregion_attributes->addClass($subregion_classes);
         $content[] = [
           '#theme' => 'layout__layoutcomponents_subregion',
           '#subregion' => [
