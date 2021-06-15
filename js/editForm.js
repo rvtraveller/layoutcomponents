@@ -4,7 +4,7 @@
  */
 
 (function ($, Drupal, drupalSettings) {
-
+ 
   'use strict';
 
   var ajax = Drupal.ajax,
