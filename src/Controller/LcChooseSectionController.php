@@ -140,6 +140,9 @@ class LcChooseSectionController extends ChooseSectionController {
     // Get update layout param.
     $updateLayout = $this->request->getCurrentRequest()->query->get('update_layout');
 
+    // Get sub section param.
+    $subSection = $this->request->getCurrentRequest()->query->get('sub_section');
+
     $build = parent::build($section_storage, $delta);
 
     if ($updateLayout) {
@@ -184,6 +187,7 @@ class LcChooseSectionController extends ChooseSectionController {
           'plugin_id' => $url->getRouteParameters()['plugin_id'],
           'update_layout' => $updateLayout,
           'autosave' => 1,
+          'sub_section' => $subSection,
         ]);
       $item['#attributes']['data-dialog-options'] = $this->dialogOptions();;
 
@@ -201,6 +205,7 @@ class LcChooseSectionController extends ChooseSectionController {
     // $output['layouts']['#items'] = array_merge($layoutcomponents, $others);.
     // Only layoutcomponents layouts.
     $build['layouts']['#items'] = $layoutcomponents;
+
 
     return $build;
   }

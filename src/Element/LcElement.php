@@ -12,6 +12,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Render\Element;
 use Drupal\layoutcomponents\Access\LcAccessHelperTrait;
 use Drupal\layoutcomponents\LcDialogHelperTrait;
+use Drupal\layoutcomponents\LcSectionManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Extension\ThemeHandlerInterface;
 use Drupal\layoutcomponents\LcLayoutsManager;
@@ -71,6 +72,13 @@ class LcElement extends LayoutBuilder {
   protected $currentUser;
 
   /**
+   * Drupal\layoutcomponents\LcSectionManager definition.
+   *
+   * @var \Drupal\layoutcomponents\LcSectionManager
+   */
+  protected $lcSectionManager;
+
+  /**
    * Current Entity.
    *
    * @var \stdClass
@@ -80,7 +88,7 @@ class LcElement extends LayoutBuilder {
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, LayoutTempstoreRepositoryInterface $layout_tempstore_repository, MessengerInterface $messenger, ThemeHandlerInterface $theme_handler, ConfigFactory $config_factory, PrivateTempStoreFactory $temp_store, LcLayoutsManager $layout_manager, AccountProxy $current_user) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, LayoutTempstoreRepositoryInterface $layout_tempstore_repository, MessengerInterface $messenger, ThemeHandlerInterface $theme_handler, ConfigFactory $config_factory, PrivateTempStoreFactory $temp_store, LcLayoutsManager $layout_manager, AccountProxy $current_user, LcSectionManager $lc_section_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $layout_tempstore_repository, $messenger);
     $this->themeHandler = $theme_handler;
     $this->configFactory = $config_factory;
@@ -88,6 +96,7 @@ class LcElement extends LayoutBuilder {
     $this->layoutTempstore = $layout_tempstore_repository;
     $this->lcLayoutManager = $layout_manager;
     $this->currentUser = $current_user;
+    $this->lcSectionManager = $lc_section_manager;
     $this->entity = $this->getCurrentEntity();
   }
 
@@ -105,7 +114,8 @@ class LcElement extends LayoutBuilder {
       $container->get('config.factory'),
       $container->get('tempstore.private'),
       $container->get('plugin.manager.layoutcomponents_layouts'),
-      $container->get('current_user')
+      $container->get('current_user'),
+      $container->get('layoutcomponents.section')
     );
   }
 
@@ -160,6 +170,21 @@ class LcElement extends LayoutBuilder {
       '#weight' => -1,
     ];
 
+    // Hide sub sections.
+    foreach ($output as $delta => $section) {
+      if (!is_numeric($delta)) {
+        continue;
+      }
+
+      if (!array_key_exists('layout-builder__section', $section)) {
+        continue;
+      }
+
+      if (array_key_exists('sub_section', $section['layout-builder__section']['#settings'])) {
+        unset($output[$delta]);
+      }
+    }
+
     return $output;
   }
 
@@ -194,7 +219,7 @@ class LcElement extends LayoutBuilder {
   /**
    * {@inheritdoc}
    */
-  public function buildAddSectionLink(SectionStorageInterface $section_storage, $delta) {
+  public function buildAddSectionLink(SectionStorageInterface $section_storage, $delta, $sub_section = []) {
     $build = parent::buildAddSectionLink($section_storage, $delta);
     $build['link']['#title'] = '';
 
@@ -204,6 +229,10 @@ class LcElement extends LayoutBuilder {
 
     // Set update_layout if is "Add section".
     $url->setRouteParameter('update_layout', 0);
+
+    // Set this section as sub section.
+    $url->setRouteParameter('sub_section', $sub_section);
+
 
     // Remove link--add class.
     $options = $url->getOptions();
@@ -244,6 +273,8 @@ class LcElement extends LayoutBuilder {
     $section = $section_storage->getSection($delta);
     $layout = $section->getLayout();
     $layout_definition = $layout->getPluginDefinition();
+    $is_sub_section = $this->lcSectionManager->isSubSection($section_storage, $delta);
+
 
     // Alter configure button.
     $configure['configure'] = $build['configure'];
@@ -278,6 +309,7 @@ class LcElement extends LayoutBuilder {
           [
             'section_storage_type' => $storage_type,
             'section_storage' => $storage_id,
+            'sub_section' => ($is_sub_section) ? ['delta' => $delta] : '',
           ],
           [
             'attributes' => [
@@ -424,6 +456,13 @@ class LcElement extends LayoutBuilder {
 
       $url->setOptions($options);
 
+      // Include new Add section in columns.
+      $build['layout-builder__section'][$region]['layout_builder_add_section']['link'] = $this->buildAddSectionLink($section_storage, $delta, [
+        'parent_section' => $delta,
+        'parent_region' => $region,
+      ]);
+      $build['layout-builder__section'][$region]['layout_builder_add_section']['#weight'] = 1000;
+
       // Column.
       $configureSection = [
         '#type' => 'container',
@@ -512,6 +551,30 @@ class LcElement extends LayoutBuilder {
 
       // Reorder block links.
       $build['layout-builder__section'][$region][] = $configureSection;
+
+      // Include sub sections.
+      $current_layout_settings = $section_storage->getSection($delta)->getLayoutSettings();
+
+      /** @var \Drupal\layout_builder\Section $dd_section */
+      foreach ($section_storage->getSections() as $dd => $dd_section) {
+        $dd_settings = $dd_section->getLayoutSettings();
+        if (empty($dd_settings['sub_section'])) {
+          continue;
+        }
+
+        if (!array_key_exists('lc_id', $dd_settings['sub_section'])) {
+          continue;
+        }
+
+        if (!array_key_exists('lc_id', $current_layout_settings)) {
+          $current_layout_settings['lc_id'] = \Drupal::service('uuid')->generate();
+          $section_storage->getSection($delta)->setLayoutSettings($current_layout_settings);
+        }
+
+        if ($dd_settings['sub_section']['lc_id'] == $current_layout_settings['lc_id'] && $dd_settings['sub_section']['parent_region'] == $region) {
+          $build['layout-builder__section'][$region]['sub_section'][] = $this->buildAdministrativeSection($section_storage, $dd);
+        }
+      }
     }
 
     return $build;

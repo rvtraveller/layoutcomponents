@@ -69,6 +69,31 @@ class LcEntityViewDisplay extends LayoutBuilderEntityViewDisplay {
       }
     }
 
+    // Include sub sections in array.
+    foreach ($build as $delta => $section) {
+      // Include each sub section in their parent section.
+      if (array_key_exists('lc_id', $section['#settings'])) {
+        $current_lc_id = $section['#settings']['lc_id'];
+        foreach ($build as $dd => $dd_section) {
+          if (array_key_exists('sub_section', $dd_section['#settings'])) {
+            $sub_section = $dd_section['#settings']['sub_section'];
+            if ($sub_section['lc_id'] == $current_lc_id) {
+              $build[$delta][$sub_section['parent_region']][] = $dd_section;
+              unset($build[$dd]);
+            }
+          }
+        }
+      }
+    }
+
+    // Remove unused sub sections.
+    foreach ($build as $delta => $section) {
+      if (array_key_exists('sub_section', $section['#settings'])) {
+        // If current is a sub section, hidde it.
+        unset($build[$delta]);
+      }
+    }
+
     $cacheability->applyTo($build);
     return $build;
   }

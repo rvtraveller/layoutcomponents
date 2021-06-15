@@ -8,7 +8,7 @@ use Drupal\layoutcomponents\Element\LcElement;
 /**
  * LcElementManager extended to alter LayoutBuilder Element.
  */
-class LcElementManager extends ElementInfoManager {
+class LcElementInfoManager extends ElementInfoManager {
 
   /**
    * {@inheritdoc}
