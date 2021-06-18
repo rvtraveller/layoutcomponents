@@ -1336,7 +1336,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         'section_structure' => $this->lcApiSelect->normal(
           [
             'id' => 'row',
-            'title' => $this->t('SM Columns Structure'),
+            'title' => $this->t('MD Columns Structure'),
             'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
             'default_value' => $general['structure']['section_structure'],
             'options' => $column_structures,

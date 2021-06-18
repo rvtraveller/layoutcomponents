@@ -88,8 +88,6 @@ class LcTheme implements ContainerInjectionInterface{
         $class = $class[0];
       }
 
-      $suggestions = [];
-
       /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
       $layout = $variables['content']['#layout'];
 
