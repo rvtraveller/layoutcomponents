@@ -197,7 +197,7 @@ class LcConfigureSection extends ConfigureSectionForm {
       $parent_section = $form_state->getValue('sub_section_parent_section');
       $parent_region = $form_state->getValue('sub_section_parent_region');
 
-      if (!empty($parent_section) && !empty($parent_region)) {
+      if (is_numeric($parent_section) && !empty($parent_region)) {
         $dd_settings = $this->lcSectionManager->getLayoutSettings($this->sectionStorage, $this->delta);
         $new_uuid = \Drupal::service('uuid')->generate();
         if (!array_key_exists('lc_id', $dd_settings)) {
@@ -216,6 +216,7 @@ class LcConfigureSection extends ConfigureSectionForm {
           'parent_section' => $parent_section,
           'parent_region' => $parent_region,
         ];
+
       }
 
       // Register the sub section.

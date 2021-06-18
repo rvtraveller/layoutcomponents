@@ -264,7 +264,7 @@ class LcElement extends LayoutBuilder {
   /**
    * {@inheritdoc}
    */
-  public function buildAdministrativeSection(SectionStorageInterface $section_storage, $delta) {
+  public function buildAdministrativeSection(SectionStorageInterface $section_storage, $delta, $region = 'first') {
     $build = parent::buildAdministrativeSection($section_storage, $delta);
 
     // Storage settings.
@@ -354,7 +354,7 @@ class LcElement extends LayoutBuilder {
           ]
         ),
       ],
-      'copy' => [
+      /*'copy' => [
         '#type' => 'link',
         '#title' => '',
         '#url' => Url::fromRoute('layoutcomponents.copy_section',
@@ -378,7 +378,7 @@ class LcElement extends LayoutBuilder {
             ],
           ]
         ),
-      ],
+      ],*/
     ];
 
     // Section access control.
@@ -506,7 +506,7 @@ class LcElement extends LayoutBuilder {
       ];
 
       if ($copy !== 'lc-copy') {
-        $configureSection['copy'] = [
+        /*$configureSection['copy'] = [
           '#type' => 'link',
           '#title' => '',
           '#url' => Url::fromRoute('layoutcomponents.copy_column',
@@ -531,7 +531,7 @@ class LcElement extends LayoutBuilder {
               ],
             ]
           ),
-        ];
+        ];*/
       }
 
       // Column access control.
@@ -572,7 +572,7 @@ class LcElement extends LayoutBuilder {
         }
 
         if ($dd_settings['sub_section']['lc_id'] == $current_layout_settings['lc_id'] && $dd_settings['sub_section']['parent_region'] == $region) {
-          $build['layout-builder__section'][$region]['sub_section'][] = $this->buildAdministrativeSection($section_storage, $dd);
+          $build['layout-builder__section'][$region]['sub_section'][] = $this->buildAdministrativeSection($section_storage, $dd, $region);
         }
       }
     }
@@ -684,7 +684,7 @@ class LcElement extends LayoutBuilder {
       ),
     ];
 
-    $configureBlock['copy'] = [
+    /*$configureBlock['copy'] = [
       '#type' => 'link',
       '#title' => '',
       '#url' => Url::fromRoute('layoutcomponents.copy_block',
@@ -711,7 +711,7 @@ class LcElement extends LayoutBuilder {
           ],
         ]
       ),
-    ];
+    ];*/
 
     // Block access control.
     if (isset($this->entity)) {

@@ -80,27 +80,27 @@ class LcTheme implements ContainerInjectionInterface{
    *
    * @see \hook_theme_suggestions_HOOK()
    */
-  public function themeSuggestionsLayoutLayoutcomponentsBase(array $variables) {
-    $classes = $variables['content']['#settings']['section']['styles']['misc']['extra_class'];
-    $class = explode(',', $classes);
-    if (is_array($class)) {
-      $class = $class[0];
+  public function themeSuggestionsLayoutLayoutcomponentsBase(array &$suggestions, array $variables, $hook) {
+    if ($hook == 'layout__layoutcomponents_base') {
+      $classes = $variables['content']['#settings']['section']['styles']['misc']['extra_class'];
+      $class = explode(',', $classes);
+      if (is_array($class)) {
+        $class = $class[0];
+      }
+
+      $suggestions = [];
+
+      /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
+      $layout = $variables['content']['#layout'];
+
+      $suggestions[] = 'layout__layoutcomponents_base__' . $layout->id();
+
+      $node = $this->routeMatch->getParameter('node');
+      if (isset($node)) {
+        $suggestions[] = 'layout__layoutcomponents_base__' . (isset($class) ? ($class . '_') : '') . $layout->id() . '_' . $node->getType();
+        $suggestions[] = 'layout__layoutcomponents_base__' . (isset($class) ? ($class . '_') : '') . $layout->id() . '_' . $node->id() . '_' . $node->getType();
+      }
     }
-
-    $suggestions = [];
-
-    /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
-    $layout = $variables['content']['#layout'];
-
-    $suggestions[] = 'layout__layoutcomponents_base__' . $layout->id();
-
-    $node = $this->routeMatch->getParameter('node');
-    if (isset($node)) {
-      $suggestions[] = 'layout__layoutcomponents_base__' . (isset($class) ? ($class . '_') : '') . $layout->id() . '_' . $node->getType();
-      $suggestions[] = 'layout__layoutcomponents_base__' . (isset($class) ? ($class . '_') : '') . $layout->id() . '_' . $node->id() . '_' . $node->getType();
-    }
-
-    return $suggestions;
   }
 
   /**
@@ -173,7 +173,9 @@ class LcTheme implements ContainerInjectionInterface{
     }
 
     foreach ($theme_registry as $theme_hook => $info) {
-      if (in_array($theme_hook, $layout_theme_hooks) || (!empty($info['base hook']) && in_array($info['base hook'], $layout_theme_hooks))) {
+      if ((in_array($theme_hook, $layout_theme_hooks) || (!empty($info['base hook']) && in_array($info['base hook'], $layout_theme_hooks))) ||
+        str_contains($theme_registry[$theme_hook]['template'], 'layout--layoutcomponents-base--')
+      ) {
         // Include file.
         $theme_registry[$theme_hook]['includes'][] = drupal_get_path('module', 'layoutcomponents') . '/layoutcomponents.theme.inc';
         // Set new preprocess function.
