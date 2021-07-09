@@ -106,21 +106,21 @@ class LcTheme implements ContainerInjectionInterface{
    *
    * @see \hook_theme_suggestions_HOOK()
    */
-  public function themeSuggestionsLayoutLayoutcomponentsRegion(array $variables) {
-    $classes = $variables['region']['styles']['misc']['extra_class'];
-    $class = explode(',', $classes);
-    if (is_array($class)) {
-      $class = $class[0];
+  public function themeSuggestionsLayoutLayoutcomponentsRegion(array &$suggestions, array $variables, $hook)
+  {
+    if ($hook == 'layout__layoutcomponents_region') {
+      $classes = $variables['region']['styles']['misc']['extra_class'];
+      $class = explode(',', $classes);
+      if (is_array($class)) {
+        $class = $class[0];
+      }
+      $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'];
+      $node = $this->routeMatch->getParameter('node');
+      if (isset($node)) {
+        $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . (str_replace('-', '_', $node->getType()));
+        $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . $node->id() . '__' . (str_replace('-', '_', $node->getType()));
+      }
     }
-    $suggestions = [];
-    $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? ($class . '_') : '') . $variables['key'];
-    $node = $this->routeMatch->getParameter('node');
-    if (isset($node)) {
-      $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? ($class . '_') : '') . $variables['key'] . '_' . $node->getType();
-      $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? ($class . '_') : '') . $variables['key'] . '_' . $node->id() . '__' . $node->getType();
-    }
-
-    return $suggestions;
   }
 
   /**
