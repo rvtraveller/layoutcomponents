@@ -98,6 +98,7 @@ class LcElement extends LayoutBuilder {
     $this->currentUser = $current_user;
     $this->lcSectionManager = $lc_section_manager;
     $this->entity = $this->getCurrentEntity();
+    $this->messenger = $messenger;
   }
 
   /**
@@ -126,12 +127,8 @@ class LcElement extends LayoutBuilder {
     $output = parent::layout($section_storage);
     $output['#attached']['library'][] = 'layoutcomponents/layoutcomponents.editform';
 
-    // Add bootstrap barrio theme.
-    $themes = $this->themeHandler->listInfo();
-    if (!array_key_exists('bootstrap4', $themes) && !array_key_exists('bootstrap_barrio', $themes) ) {
-      $this->messenger->addError($this->t('To use LayoutComponents is completely necessary Bootstrap4 theme.'));
-      $output = [];
-    }
+    // Info.
+    $this->messenger->addWarning($this->t('To use LayoutComponents is completely necessary a Bootstrap4-5 theme.'));
 
     // Storage settings.
     $storage_type = $section_storage->getStorageType();
