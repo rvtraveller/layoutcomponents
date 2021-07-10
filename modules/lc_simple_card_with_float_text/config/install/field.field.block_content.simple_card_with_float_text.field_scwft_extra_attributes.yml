@@ -1,0 +1,19 @@
+uuid: baf9c97d-e385-4916-8896-272a295be260
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_card_with_float_text
+    - field.storage.block_content.field_scwft_extra_attributes
+id: block_content.simple_card_with_float_text.field_scwft_extra_attributes
+field_name: field_scwft_extra_attributes
+entity_type: block_content
+bundle: simple_card_with_float_text
+label: 'Extra attributes'
+description: 'Set the extra attributes of this card'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

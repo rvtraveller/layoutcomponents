@@ -1,0 +1,31 @@
+uuid: bea8b822-fdde-463c-b3ec-31c7423094d9
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_card_with_float_text
+    - field.storage.block_content.field_scwft_media
+    - media.type.image
+    - media.type.video
+id: block_content.simple_card_with_float_text.field_scwft_media
+field_name: field_scwft_media
+entity_type: block_content
+bundle: simple_card_with_float_text
+label: Media
+description: 'Set the media of this card'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      video: video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

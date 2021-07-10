@@ -1,0 +1,22 @@
+uuid: 52499bfc-09eb-40a1-a609-255dfca5e337
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_card_with_float_text
+    - field.storage.block_content.field_scwft_title_color
+  module:
+    - color_field
+id: block_content.simple_card_with_float_text.field_scwft_title_color
+field_name: field_scwft_title_color
+entity_type: block_content
+bundle: simple_card_with_float_text
+label: 'Title Color'
+description: 'Set the title color of this card'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type
