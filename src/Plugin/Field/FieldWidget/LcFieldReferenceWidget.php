@@ -2,6 +2,8 @@
 
 namespace Drupal\layoutcomponents\Plugin\Field\FieldWidget;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\WidgetBase;
@@ -9,6 +11,10 @@ use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Entity\ContentEntityType;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Entity\EntityTypeBundleInfo;
+use Drupal\Core\Entity\EntityFieldManager;
 
 /**
  * Plugin of Layoutcomponents Field type.
@@ -23,7 +29,54 @@ use Drupal\Core\Entity\ContentEntityType;
  *   }
  * )
  */
-class LcFieldReferenceWidget extends WidgetBase {
+class LcFieldReferenceWidget extends WidgetBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * The entity bundle info manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeBundleInfo
+   */
+  protected $entityBundleInfo;
+
+  /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * The entity field manager.
+   *
+   * @var \Drupal\Core\Entity\EntityFieldManager
+   */
+  protected $entityFieldManager;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityTypeManagerInterface $entity_type_manager, EntityTypeBundleInfo $entity_bundle_info, EntityFieldManager $entity_field_manager) {
+    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
+    $this->entityTypeManager = $entity_type_manager;
+    $this->entityBundleInfo = $entity_bundle_info;
+    $this->entityFieldManager = $entity_field_manager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $plugin_id,
+      $plugin_definition,
+      $configuration['field_definition'],
+      $configuration['settings'],
+      $configuration['third_party_settings'],
+      $container->get('entity_type.manager'),
+      $container->get('entity_type.bundle.info'),
+      $container->get('entity_field.manager')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -102,7 +155,7 @@ class LcFieldReferenceWidget extends WidgetBase {
       '#title' => $this->t('Select field'),
       '#options' => $field_options,
       '#default_value' => isset($items[$delta]->entity_field) ? $items[$delta]->entity_field : 'none',
-      '#description' => t('Select the field of current entity to render'),
+      '#description' => $this->t('Select the field of current entity to render'),
       '#prefix' => '<span id="entity_field">',
       '#suffix' => '</span>',
       '#validated' => TRUE,
@@ -130,7 +183,7 @@ class LcFieldReferenceWidget extends WidgetBase {
    */
   public function getEntityTypes() {
     $inital_array = ['none' => 'None'];
-    $types = \Drupal::entityTypeManager()->getDefinitions();
+    $types = $this->entityTypeManager->getDefinitions();
     foreach ($types as $name => $type) {
       if ($type instanceof ContentEntityType) {
         $res[$type->id()] = $type->getLabel()->render();
@@ -151,7 +204,7 @@ class LcFieldReferenceWidget extends WidgetBase {
     $inital_array = ['none' => 'None'];
     if (!empty($type) && $type !== 'none') {
       // All content of current type.
-      $content = \Drupal::entityTypeManager()->getStorage($type)->loadMultiple();
+      $content = $this->entityTypeManager->getStorage($type)->loadMultiple();
       if (!empty($content)) {
         foreach ($content as $key => $item) {
           $res[$item->id() . '-' . $item->get('type')->getString()] = $item->label();
@@ -172,11 +225,11 @@ class LcFieldReferenceWidget extends WidgetBase {
   public function getEntityFieldsByEntityType($entity_type) {
     $inital_array = ['none' => 'None'];
     if (!empty($entity_type)) {
-      $bundles = \Drupal::service('entity_type.bundle.info')->getBundleInfo($entity_type);
+      $bundles = $this->entityBundleInfo->getBundleInfo($entity_type);
       if (!empty($bundles)) {
         $bundles = array_keys($bundles);
         foreach ($bundles as $key => $bundle) {
-          $entity_fields = \Drupal::service('entity_field.manager')->getFieldDefinitions($entity_type, $bundle);
+          $entity_fields = $this->entityFieldManager->getFieldDefinitions($entity_type, $bundle);
           if (!empty($entity_fields)) {
             foreach ($entity_fields as $key => $field) {
               $res[$key] = $key;
@@ -205,7 +258,7 @@ class LcFieldReferenceWidget extends WidgetBase {
       if (count($bundle) > 1) {
         $bundle = isset($bundle[1]) ? $bundle[1] : NULL;
         if (!empty($bundle)) {
-          $entity_fields = \Drupal::service('entity_field.manager')->getFieldDefinitions($entity_type, $bundle);
+          $entity_fields = $this->entityFieldManager->getFieldDefinitions($entity_type, $bundle);
           if (!empty($entity_fields)) {
             foreach ($entity_fields as $key => $field) {
               $res[$key] = $key;

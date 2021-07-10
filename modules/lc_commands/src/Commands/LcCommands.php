@@ -12,6 +12,7 @@ use Drupal\layout_builder\SectionComponent;
 use Drupal\layoutcomponents\Entity\LcEntityViewDisplay;
 use Drupal\Core\Field\FieldConfigBase;
 use Drupal\field\Entity\FieldConfig;
+use Drupal\layout_builder\InlineBlockUsage;
 
 /**
  * LC commands.
@@ -62,13 +63,15 @@ class LcCommands extends DrushCommands {
    *   The serializer interface object.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The config factory interface object.
+   * @param \Drupal\layout_builder\InlineBlockUsage $inline_block_usage
+   *   The inline block usage manager.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, SerializerInterface $serializer, ConfigFactoryInterface $config_factory) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, SerializerInterface $serializer, ConfigFactoryInterface $config_factory, InlineBlockUsage $inline_block_usage) {
     $this->entityTypeManager = $entity_type_manager;
     $this->serializer = $serializer;
     $this->configFactory = $config_factory;
     $this->folder .= $this->configFactory->getEditable('layoutcomponents.general')->get('folder') . '/';
-    $this->inlineBlockUsage = \Drupal::service('inline_block.usage');
+    $this->inlineBlockUsage = $inline_block_usage;
   }
 
   /**

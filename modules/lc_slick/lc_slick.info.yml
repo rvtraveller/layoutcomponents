@@ -4,6 +4,6 @@ description: Layout Components integration with Slick
 package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:
-  - layoutcomponents
+  - drupal:layoutcomponents
   - drupal:slick
   - drupal:slick_ui

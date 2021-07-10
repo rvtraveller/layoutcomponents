@@ -60,7 +60,6 @@ function lc_simple_countdown_preprocess_block(&$variables) {
     return;
   }
 
-  /** @var  \Drupal\layoutcomponents\LcLayoutsManager $helper */
   $helper = \Drupal::service("plugin.manager.layoutcomponents_layouts");
 
   /** @var \Drupal\block_content\Entity\BlockContent $block */

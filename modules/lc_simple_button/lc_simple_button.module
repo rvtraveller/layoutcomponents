@@ -53,7 +53,7 @@ function lc_simple_button_page_attachments(&$page) {
  */
 function lc_simple_button_preprocess_field(&$variables) {
   if ($variables['field_name'] == "field_sb_url") {
-    /** @var  \Drupal\layoutcomponents\LcLayoutsManager $helper */
+
     $helper = \Drupal::service("plugin.manager.layoutcomponents_layouts");
 
     /** @var \Drupal\block_content\Entity\BlockContent $block */

@@ -4,8 +4,8 @@ description: Simple video block type
 package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:
-  - layoutcomponents
-  - image
-  - file
-  - media
-  - video_embed_field
+  - drupal:layoutcomponents
+  - drupal:image
+  - drupal:file
+  - drupal:media
+  - drupal:video_embed_field

@@ -27,16 +27,6 @@ class LcEntityViewDisplay extends LayoutBuilderEntityViewDisplay {
   }
 
   /**
-   * Gets the LC layout manager.
-   *
-   * @return \Drupal\layoutcomponents\LcLayoutsManager
-   *   The LC layout manager.
-   */
-  private function lcLayoutManager() {
-    return \Drupal::service('plugin.manager.layoutcomponents_layouts');
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function buildSections(FieldableEntityInterface $entity) {

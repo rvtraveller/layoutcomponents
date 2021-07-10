@@ -4,7 +4,7 @@ description: Layout Components view carousel
 package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:
-  - layoutcomponents
+  - drupal:layoutcomponents
   - drupal:slick
   - drupal:slick_ui
-  - lc_slick
+  - lc_slick:lc_slick

@@ -20,7 +20,7 @@ function lc_slick_page_attachments(&$page) {
 /**
  * Implements hook_help().
  */
-function lc_simple_slick_help($route_name, RouteMatchInterface $route_match) {
+function lc_slick_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
     // Create help page.
     case 'help.page.lc_simple_slick':

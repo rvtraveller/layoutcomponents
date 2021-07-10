@@ -4,5 +4,5 @@ description: Simple card block type
 package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:
-  - image
-  - layoutcomponents
+  - drupal:image
+  - drupal:layoutcomponents

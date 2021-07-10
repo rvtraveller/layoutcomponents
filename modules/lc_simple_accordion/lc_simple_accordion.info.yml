@@ -4,6 +4,6 @@ description: Simple accordion block type
 package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:
-  - layoutcomponents
-  - lc_simple_text
-  - lc_simple_title
+  - drupal:layoutcomponents
+  - lc_simple_text:lc_simple_text
+  - lc_simple_title:lc_simple_title

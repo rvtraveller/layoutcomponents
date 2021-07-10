@@ -5,5 +5,5 @@ package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:
   - drupal:layoutcomponents
-  - hal
-  - serialization
+  - drupal:hal
+  - drupal:serialization

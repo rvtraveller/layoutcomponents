@@ -8,11 +8,6 @@ services:
     class: \Drupal\layoutcomponents\LcLayoutsManager
     arguments: ['@plugin.manager.core.layout', '@entity_type.manager', '@entity_display.repository', '@current_user', '@uuid', '@tempstore.private']
 
-  layoutcomponents.LayoutComponentsTwigExtension:
-    class: Drupal\layoutcomponents\LayoutComponentsTwigExtension
-    tags:
-      - { name: twig.extension }
-
   layoutcomponents.apiComponent:
     class: Drupal\layoutcomponents\Api\Component
     arguments: ['@config.factory']

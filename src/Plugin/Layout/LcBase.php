@@ -527,7 +527,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         $k++;
       }
 
-    } // End if components.
+    }
 
     $container['styles'] = [
       '#type' => 'details',
