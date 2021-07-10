@@ -60,8 +60,6 @@ function lc_simple_card_preprocess_block(&$variables) {
     return;
   }
 
-  $helper = \Drupal::service("plugin.manager.layoutcomponents_layouts");
-
   /** @var \Drupal\block_content\Entity\BlockContent $block */
   $block = $variables['content']['#block_content'];
   $block_id = str_replace(' ', '_', $block->uuid());
