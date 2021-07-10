@@ -1,0 +1,22 @@
+uuid: 20bfb67e-d1b7-4d9f-bc8f-35301ad30ca7
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_card_with_float_text
+    - field.storage.block_content.field_scwft_long_description_bac
+  module:
+    - color_field
+id: block_content.simple_card_with_float_text.field_scwft_long_description_bac
+field_name: field_scwft_long_description_bac
+entity_type: block_content
+bundle: simple_card_with_float_text
+label: 'Long Description Background'
+description: 'Set the long description background color of this card'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

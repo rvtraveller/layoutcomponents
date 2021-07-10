@@ -1,0 +1,19 @@
+uuid: bbbbd9f4-bfc1-414f-840a-027b41b0ae42
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_card_with_float_text
+    - field.storage.block_content.field_scwft_title
+id: block_content.simple_card_with_float_text.field_scwft_title
+field_name: field_scwft_title
+entity_type: block_content
+bundle: simple_card_with_float_text
+label: Title
+description: 'Set the title of this card'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

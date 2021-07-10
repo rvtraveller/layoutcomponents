@@ -1,0 +1,4 @@
+lc_simple_card_with_float_text:
+  css:
+    layout:
+      css/lscwft.css: {}
