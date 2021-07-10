@@ -572,7 +572,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 ],
               ],
             ],
-              'class' => 'color',
+            'class' => 'color',
           ]
         ),
         'size' => $this->lcApiSlider->sliderWidget(
@@ -679,7 +679,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 ],
               ],
             ],
-              'class' => 'border-color',
+            'class' => 'border-color',
           ]
         ),
       ],
@@ -757,7 +757,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 ],
               ],
             ],
-              'class' => 'border-color',
+            'class' => 'border-color',
           ]
         ),
         'radius_top_left' => $this->lcApiSlider->sliderWidget(
@@ -854,7 +854,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 ],
               ],
             ],
-              'class' => 'background-color',
+            'class' => 'background-color',
           ]
         ),
       ],
@@ -1015,7 +1015,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
 
               ],
             ],
-              'class' => 'color',
+            'class' => 'color',
           ]
         ),
         'title_type' => $this->lcApiSelect->normal(
@@ -1145,7 +1145,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 ],
               ],
             ],
-              'class' => 'border-color',
+            'class' => 'border-color',
           ]
         ),
       ],
@@ -1420,7 +1420,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 ],
               ],
             ],
-              'class' => 'background-color',
+            'class' => 'background-color',
           ]
         ),
       ],
@@ -1503,7 +1503,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 ],
               ],
             ],
-              'class' => 'height',
+            'class' => 'height',
           ]
         ),
         'height_size' => $this->lcApiSlider->sliderWidget(

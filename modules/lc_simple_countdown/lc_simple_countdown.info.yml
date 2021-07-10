@@ -5,4 +5,4 @@ package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:
   - drupal:layoutcomponents
-  - lc_simple_title
+  - drupal:lc_simple_title
