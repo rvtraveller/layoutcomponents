@@ -1,0 +1,4 @@
+lc_simple_text_with_hover_image:
+  css:
+    layout:
+      css/lstwhi.css: {}

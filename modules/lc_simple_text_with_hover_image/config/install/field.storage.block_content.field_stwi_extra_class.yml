@@ -1,0 +1,23 @@
+uuid: b1cebfa9-72a9-41ef-a2ce-374f1a3301cd
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+_core:
+  default_config_hash: R_ZhwLKJtNJ5I2del3XibFrry9kW8naJKhQ3iqxvXe0
+id: block_content.field_stwi_extra_class
+field_name: field_stwi_extra_class
+entity_type: block_content
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

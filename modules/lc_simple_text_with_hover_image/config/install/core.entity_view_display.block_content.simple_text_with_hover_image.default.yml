@@ -1,0 +1,78 @@
+uuid: 1df6aec4-e5c2-4575-b9f2-94a46337d541
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_text_with_hover_image
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_background_color
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_extra_attributes
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_extra_class
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_image
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_link
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_text
+  module:
+    - color_field
+    - link
+_core:
+  default_config_hash: 5w-sjHTdz3i06sR4oA5Pfdqp4yFUJ9IDiCzOfhmoack
+id: block_content.simple_text_with_hover_image.default
+targetEntityType: block_content
+bundle: simple_text_with_hover_image
+mode: default
+content:
+  field_stwi_background_color:
+    weight: 1
+    label: hidden
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    type: color_field_formatter_text
+    region: content
+  field_stwi_extra_attributes:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_stwi_extra_class:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_stwi_image:
+    type: entity_reference_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_stwi_link:
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_stwi_text:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true

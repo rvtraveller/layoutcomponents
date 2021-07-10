@@ -1,0 +1,21 @@
+uuid: 8d7c935b-bd0d-4cf8-a514-a10cdaedbe3b
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_text_with_hover_image
+    - field.storage.block_content.field_stwi_extra_attributes
+_core:
+  default_config_hash: FlejYu1nC6bpvEo25sMS3NGu-iRxWW-lfMFuIlID4Ig
+id: block_content.simple_text_with_hover_image.field_stwi_extra_attributes
+field_name: field_stwi_extra_attributes
+entity_type: block_content
+bundle: simple_text_with_hover_image
+label: 'Extra attributes'
+description: 'Set the extra attributes of this card'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

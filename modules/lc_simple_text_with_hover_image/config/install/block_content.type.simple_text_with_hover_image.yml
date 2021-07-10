@@ -1,0 +1,10 @@
+uuid: 45a9eea0-7466-4168-a590-945662235303
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: iU9EWP-yWhPtp0o4e15k-oTdp8kgUlHecZGe33FOm5k
+id: simple_text_with_hover_image
+label: 'Text with hover image'
+revision: 1
+description: ''

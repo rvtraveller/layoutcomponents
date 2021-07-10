@@ -1,0 +1,21 @@
+uuid: a0ac2928-e3f8-44a6-85f2-cf3b1d0d4616
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_text_with_hover_image
+    - field.storage.block_content.field_stwi_extra_class
+_core:
+  default_config_hash: voEaFCHbEPbI5GV9eTYc34c9ev5s9K-wxb1R2g98Zk0
+id: block_content.simple_text_with_hover_image.field_stwi_extra_class
+field_name: field_stwi_extra_class
+entity_type: block_content
+bundle: simple_text_with_hover_image
+label: 'Extra classes'
+description: 'Set the extra classes: ej. class1 class2'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,22 @@
+uuid: 5e66eb84-2099-4564-ab75-f3bbb468df59
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+    - media
+_core:
+  default_config_hash: Cjs1b6_ZZTO16UpeG4Cs0De9vt6X_GDcyu5w5gR5Iy0
+id: block_content.field_stwi_image
+field_name: field_stwi_image
+entity_type: block_content
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

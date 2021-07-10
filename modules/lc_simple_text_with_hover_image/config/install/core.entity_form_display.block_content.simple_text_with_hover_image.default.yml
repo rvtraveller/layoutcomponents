@@ -1,0 +1,155 @@
+uuid: e6498fa7-9bc8-42d1-8a95-0a65e01836a2
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_text_with_hover_image
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_background_color
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_extra_attributes
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_extra_class
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_image
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_link
+    - field.field.block_content.simple_text_with_hover_image.field_stwi_text
+  module:
+    - color_field
+    - field_group
+    - link
+    - media_library
+third_party_settings:
+  field_group:
+    group_info:
+      children:
+        - group_general
+        - group_styles
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: Info
+    group_general:
+      children:
+        - field_stwi_text
+        - field_stwi_image
+        - field_stwi_link
+      parent_name: group_info
+      weight: 6
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: open
+        required_fields: true
+      label: General
+    group_styles:
+      children:
+        - group_background
+        - group_misc
+      parent_name: group_info
+      weight: 7
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Styles
+    group_background:
+      children:
+        - field_stwi_background_color
+      parent_name: group_styles
+      weight: 20
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Background
+    group_misc:
+      children:
+        - field_stwi_extra_class
+        - field_stwi_extra_attributes
+      parent_name: group_styles
+      weight: 21
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Misc
+_core:
+  default_config_hash: knfs3r8LsrhH-rb4gEJdzS_6M3vU5Cf1uXU3Rv_shRA
+id: block_content.simple_text_with_hover_image.default
+targetEntityType: block_content
+bundle: simple_text_with_hover_image
+mode: default
+content:
+  field_stwi_background_color:
+    weight: 21
+    settings:
+      default_colors: '#ac725e,#d06b64,#f83a22,#fa573c,#ff7537,#ffad46,#42d692,#16a765,#7bd148,#b3dc6c,#fbe983,#92e1c0,#9fe1e7,#9fc6e7,#4986e7,#9a9cff,#b99aff,#c2c2c2,#cabdbf,#cca6ac,#f691b2,#cd74e6,#a47ae2'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_stwi_extra_attributes:
+    weight: 24
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_stwi_extra_class:
+    weight: 23
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_stwi_image:
+    type: media_library_widget
+    weight: 4
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_stwi_link:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_stwi_text:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true

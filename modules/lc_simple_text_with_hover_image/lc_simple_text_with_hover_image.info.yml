@@ -1,0 +1,7 @@
+name: Layout Components - Simple Text With Hover Image
+type: module
+description: Simple text with hover image
+package: LayoutComponents
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - layoutcomponents

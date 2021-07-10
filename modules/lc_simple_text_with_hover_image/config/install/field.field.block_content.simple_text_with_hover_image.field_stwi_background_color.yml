@@ -1,0 +1,24 @@
+uuid: a2feccf8-009e-4bc2-acc0-b28ac22171dd
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_text_with_hover_image
+    - field.storage.block_content.field_stwi_background_color
+  module:
+    - color_field
+_core:
+  default_config_hash: EX3WNBUeZaSKRy1ry_zENsmTcSLlV2ULeik6k983gJ8
+id: block_content.simple_text_with_hover_image.field_stwi_background_color
+field_name: field_stwi_background_color
+entity_type: block_content
+bundle: simple_text_with_hover_image
+label: 'Background Color'
+description: 'Set the background color of this card'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type
