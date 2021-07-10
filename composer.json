@@ -35,7 +35,6 @@
     ],
     "require": {
         "cweagans/composer-patches": "^1.6",
-        "drupal/bootstrap4": "^2.0",
         "drupal/linked_field": "*",
         "drupal/block_form_alter": "*",
         "drupal/color_field": "*",
