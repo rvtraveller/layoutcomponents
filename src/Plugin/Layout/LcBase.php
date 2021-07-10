@@ -571,8 +571,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                   ],
                 ],
               ],
-            ],
-            'class' => 'color',
+            ], 'class' => 'color',
           ]
         ),
         'size' => $this->lcApiSlider->sliderWidget(
@@ -678,8 +677,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                   ],
                 ],
               ],
-            ],
-            'class' => 'border-color',
+            ], 'class' => 'border-color',
           ]
         ),
       ],
@@ -756,8 +754,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                   ],
                 ],
               ],
-            ],
-            'class' => 'border-color',
+            ], 'class' => 'border-color',
           ]
         ),
         'radius_top_left' => $this->lcApiSlider->sliderWidget(
@@ -853,8 +850,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                   ],
                 ],
               ],
-            ],
-            'class' => 'background-color',
+            ], 'class' => 'background-color',
           ]
         ),
       ],
@@ -1014,8 +1010,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 'style' => 'color',
 
               ],
-            ],
-            'class' => 'color',
+            ], 'class' => 'color',
           ]
         ),
         'title_type' => $this->lcApiSelect->normal(
@@ -1144,8 +1139,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                   ],
                 ],
               ],
-            ],
-            'class' => 'border-color',
+            ], 'class' => 'border-color',
           ]
         ),
       ],
@@ -1441,8 +1435,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                 'class_checkbox_active' => 'container-fluid',
                 'class_checkbox_disable' => 'container',
               ],
-            ],
-            'class' => 'section-full_width',
+            ], 'class' => 'section-full_width',
           ]
         ),
         'full_width_container' => $this->lcApiCheckbox->normal(
@@ -1522,8 +1515,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
                   'type' => 'lc-inline_section-height',
                 ],
               ],
-            ],
-            'class' => 'height-size',
+            ], 'class' => 'height-size',
           ]
         ),
       ],
