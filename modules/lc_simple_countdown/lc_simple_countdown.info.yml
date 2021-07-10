@@ -4,5 +4,5 @@ description: Simple countdown block type
 package: LayoutComponents
 core_version_requirement: ^8.8 || ^9
 dependencies:
-  - layoutcomponents
+  - drupal:layoutcomponents
   - lc_simple_title
