@@ -1,0 +1,31 @@
+uuid: 84382595-3e2b-4b8e-bdd6-3c9371056d5f
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_with_hover_text
+    - field.storage.block_content.field_siwht_image
+    - media.type.image
+_core:
+  default_config_hash: KDFNqnk_qC6ZUXimCdi6_DTbsYMaiFKQowiywANgUho
+id: block_content.simple_image_with_hover_text.field_siwht_image
+field_name: field_siwht_image
+entity_type: block_content
+bundle: simple_image_with_hover_text
+label: Image
+description: 'Set the image of this card'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

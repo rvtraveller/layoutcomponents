@@ -1,0 +1,21 @@
+uuid: cde3204a-107e-402b-8023-9bcf355d3e4d
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_with_hover_text
+    - field.storage.block_content.field_siwht_text
+_core:
+  default_config_hash: 5K2QaD0yAbtV3pU4rJCLbdawYF-7fKqBVBKeWSGLrus
+id: block_content.simple_image_with_hover_text.field_siwht_text
+field_name: field_siwht_text
+entity_type: block_content
+bundle: simple_image_with_hover_text
+label: Text
+description: 'Set the text of this card'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

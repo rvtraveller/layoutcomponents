@@ -1,0 +1,23 @@
+uuid: ab15f6e2-148d-4ae7-85cd-4e386947f2ff
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+_core:
+  default_config_hash: PGbEvjSA5a3zJrhhBxyNPYuQA3IhiDJ8-zDE6nr6-wo
+id: block_content.field_siwht_extra_attributes
+field_name: field_siwht_extra_attributes
+entity_type: block_content
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

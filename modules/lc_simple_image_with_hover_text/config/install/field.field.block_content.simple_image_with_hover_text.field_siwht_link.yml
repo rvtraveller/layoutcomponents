@@ -1,0 +1,23 @@
+uuid: 32b8bf7f-ebbd-443f-9719-40ee31c0bf76
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_with_hover_text
+    - field.storage.block_content.field_siwht_link
+  module:
+    - link
+id: block_content.simple_image_with_hover_text.field_siwht_link
+field_name: field_siwht_link
+entity_type: block_content
+bundle: simple_image_with_hover_text
+label: Link
+description: 'Set the link of this card'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

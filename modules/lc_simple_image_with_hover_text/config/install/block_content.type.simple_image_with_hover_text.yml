@@ -1,0 +1,8 @@
+uuid: 97e1e351-74c2-435b-a559-170f089fa708
+langcode: es
+status: true
+dependencies: {  }
+id: simple_image_with_hover_text
+label: 'Image with hover text'
+revision: 1
+description: ''

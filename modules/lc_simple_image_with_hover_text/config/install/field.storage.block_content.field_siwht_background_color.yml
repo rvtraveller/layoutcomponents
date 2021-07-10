@@ -1,0 +1,22 @@
+uuid: 22b4f38c-42d6-406e-a579-c20dcf393d58
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+    - color_field
+_core:
+  default_config_hash: x75T4IaQWUg1NlJtMEPA6s___qGHbYrDEzcVdSKHc-8
+id: block_content.field_siwht_background_color
+field_name: field_siwht_background_color
+entity_type: block_content
+type: color_field_type
+settings:
+  format: '#HEXHEX'
+module: color_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

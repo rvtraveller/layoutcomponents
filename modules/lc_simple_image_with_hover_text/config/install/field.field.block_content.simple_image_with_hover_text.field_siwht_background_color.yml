@@ -1,0 +1,24 @@
+uuid: f0e3af6c-3e11-42dd-b5aa-1159c9304148
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_with_hover_text
+    - field.storage.block_content.field_siwht_background_color
+  module:
+    - color_field
+_core:
+  default_config_hash: GSkvsIGuYqVmFc2Fh6DSv-D1wVnBIl95xw_H5PH7k2U
+id: block_content.simple_image_with_hover_text.field_siwht_background_color
+field_name: field_siwht_background_color
+entity_type: block_content
+bundle: simple_image_with_hover_text
+label: Color
+description: 'Set the background color of this card'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type
