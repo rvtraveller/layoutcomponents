@@ -1,9 +1,10 @@
 uuid: 011918b0-f873-4c99-85d2-e6bb0a3311d6
-langcode: en
+langcode: es
 status: true
 dependencies:
   config:
     - block_content.type.simple_video
+    - field.field.block_content.simple_video.field_sv_image
     - field.field.block_content.simple_video.field_sv_upload_video
     - field.field.block_content.simple_video.field_sv_video
     - field.field.block_content.simple_video.field_sv_video_extra_attributes
@@ -78,6 +79,7 @@ third_party_settings:
     group_misc:
       children:
         - field_sv_video_veil
+        - field_sv_image
         - field_sv_video_extra_class
         - field_sv_video_extra_attributes
       parent_name: group_styles
@@ -92,7 +94,7 @@ third_party_settings:
         required_fields: true
       label: Misc
 _core:
-  default_config_hash: cmE_dC4Lf3n1AmUD6nUharjCd7McYLPepw5U3tM8gxo
+  default_config_hash: qo8zLNuIcWxyqV8Pk6Pn4YT5UOFMPVPK6TPeccaACIc
 id: block_content.simple_video.default
 targetEntityType: block_content
 bundle: simple_video
@@ -106,6 +108,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_sv_image:
+    type: media_library_widget
+    weight: 28
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
   field_sv_upload_video:
     weight: 4
     settings:
@@ -120,7 +129,7 @@ content:
     type: video_embed_field_textfield
     region: content
   field_sv_video_extra_attributes:
-    weight: 29
+    weight: 30
     settings:
       size: 60
       placeholder: ''
@@ -128,7 +137,7 @@ content:
     type: string_textfield
     region: content
   field_sv_video_extra_class:
-    weight: 28
+    weight: 29
     settings:
       size: 60
       placeholder: ''
@@ -161,6 +170,13 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
     third_party_settings: {  }
 hidden:
   created: true

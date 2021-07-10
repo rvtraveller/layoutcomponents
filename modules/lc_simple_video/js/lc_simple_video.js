@@ -1,9 +1,12 @@
 (function ($, Drupal) {
   Drupal.behaviors.VideoVeil = {
     attach: function (context, settings) {
-      $('.lc-video-bg', context).once('VideoVeil').each(function () {
+      $('.block-inline-blocksimple-video', context).once('VideoVeil').each(function () {
         var vid = $(this).find('video').get(0);
-        $(this).on('click', function () {
+        var image = $(this).find('.field--name-field-sv-image').get(0);
+        var veil = $(this).find('.lc-video-bg').get(0);
+        $(veil).on('click', function () {
+          $(image).addClass('hidden');
           // Remove overlay.
           $(this).addClass("no-bg");
           // Check if is a HTML video or an iframe.

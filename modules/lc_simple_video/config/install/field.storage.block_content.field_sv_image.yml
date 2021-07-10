@@ -1,0 +1,20 @@
+uuid: 524f3729-4889-4482-a71f-8f3949bb637b
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+    - media
+id: block_content.field_sv_image
+field_name: field_sv_image
+entity_type: block_content
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

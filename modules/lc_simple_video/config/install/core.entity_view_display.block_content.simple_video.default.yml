@@ -1,9 +1,10 @@
 uuid: 56f39d91-b5d1-438f-8573-1712349c2f13
-langcode: en
+langcode: es
 status: true
 dependencies:
   config:
     - block_content.type.simple_video
+    - field.field.block_content.simple_video.field_sv_image
     - field.field.block_content.simple_video.field_sv_upload_video
     - field.field.block_content.simple_video.field_sv_video
     - field.field.block_content.simple_video.field_sv_video_extra_attributes
@@ -15,12 +16,21 @@ dependencies:
     - options
     - video_embed_field
 _core:
-  default_config_hash: Pria55T06MgOkQd-cjGjcNi7aKrZTsH3b_2C6b36q5s
+  default_config_hash: 5-ujL9RzHJFKG5vNVevaST6LEiWVorpNnmwljZEswh8
 id: block_content.simple_video.default
 targetEntityType: block_content
 bundle: simple_video
 mode: default
 content:
+  field_sv_image:
+    type: entity_reference_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
   field_sv_upload_video:
     type: entity_reference_entity_view
     weight: 1
@@ -53,3 +63,4 @@ hidden:
   field_sv_video_extra_class: true
   field_sv_video_ratio: true
   field_sv_video_veil: true
+  langcode: true

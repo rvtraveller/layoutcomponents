@@ -1,0 +1,29 @@
+uuid: 7bb52d29-b2ee-4eae-b1f4-7b93ce9393db
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_video
+    - field.storage.block_content.field_sv_image
+    - media.type.image
+id: block_content.simple_video.field_sv_image
+field_name: field_sv_image
+entity_type: block_content
+bundle: simple_video
+label: Image
+description: 'This image will be added if "Veil" options is checked'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
