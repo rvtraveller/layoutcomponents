@@ -1,14 +1,18 @@
-[DESCRIPTION]
+[INTRODUCTION]
 ---------------------
-Allows you to create a component with several tabs.
+Through this component, the editor will add tabs to the page.
 
+[REQUIREMENTS]
+---------------------
+- [LayoutComponents](https://www.drupal.org/project/layoutcomponents)
 
 [INSTALLATION]
 ---------------------
-1: Active the module 'lc_simple_tabs'.
+Install as you would normally install a contributed Drupal module. Visit:
+https://www.drupal.org/documentation/install/modules-themes/modules-8
+for further information.
 
-
-[MAIN COMPONENTS]
+[CONFIGURATION]
 ---------------------
 1:	Simple tabs
   - Tabs item: Gives you the possibility to add tabs item.

@@ -1,30 +1,39 @@
-# LAYOUT COMPONENTS
+[INTRODUCTION]
+---------------------
+This module has been based on "Layout Builder" and provides
+a complete package of components integrated with that system,
+functionality that is available on Drupal 8 and is already fully
+supported by Drupal 9.
 
+With this module we want to extend the user experience by creating
+an improved interface, much more customizable and with aspects that
+are essential for us, such as the live preview of the changes while
+editing the content.
 
-This module has been based on "Layout Builder" and provides a complete package of components integrated with that system,
-functionality that is available on Drupal 8 and is already fully supported by Drupal 9.
+Layout components provides the editor with a series of components
+already created and available to be used out of the box.
 
-With this module we want to extend the user experience by creating an improved interface, much more customizable and with
-aspects that are essential for us, such as the live preview of the changes while editing the content.
+For the experts, the module provides an API where you can add your
+own fields and get the benefits from all the customization that the
+module adds to the platform.
 
-Layout components provides the editor with a series of components already created and available to be used out of the box.
-
-For the experts, the module provides an API where you can add your own fields and get the benefits from all the
-customization that the module adds to the platform.
-
-### PRE-INSTALATION
-
+[REQUIREMENTS]
+---------------------
 - Required patches:
-  - Since the module is based on the Layout builder and there are some known bugs that still needs to be fixed you need
-  to install the composer patches and enabled them on the project. ``composer require cweagans/composer-patches`` after
-  adding this sentence you will need to add under the extras section of your composer json file the next line
-  ``"enable-patching": true``
+  - Since the module is based on the Layout builder and there are some
+    known bugs that still needs to be fixed you need to install the
+    composer patches and enabled them on the project.
+    ``composer require cweagans/composer-patches`` after adding this
+    sentence you will need to add under the extras section of your
+    composer json file the next line ``"enable-patching": true``
 
-  Note: If you have installed the module before enabling the patch installation you should run a composer update in
-  order to apply the necessary patches.
+  Note: If you have installed the module before enabling the patch
+  installation you should run a composer update in order to apply the
+  necessary patches.
 
-- This version works with **Bootstrapt 4** and it is mandatory to have the custom themes of the project based on this
-theme. You can enable the theme under "Appearance" and set it as default.
+- This version works with **Bootstrapt 4/5** and it is mandatory to
+  have the custom themes of the project based on this theme.
+  You can enable the theme under "Appearance" and set it as default.
 
 - Configure Bootstrap 4 settings: (Optional)
   - Website container type: fluid
@@ -45,20 +54,23 @@ theme. You can enable the theme under "Appearance" and set it as default.
   - jquery_ui_slider
   - jquery_ui
   - jquery_ui_tooltip
-  - sliderwidget - This module is not Drupal 9 ready and it has been temporaly moved to have this functionality for the
+  - sliderwidget - This module is not Drupal 9 ready and it has been
+    temporaly moved to have this functionality for the
    release of this module.
 
-Module Installation
-===================
 
-The layout components manages its dependencies via composer. To install the module on your project:
+[INSTALLATION]
+---------------------
+The layout components manages its dependencies via composer. To install
+the module on your project:
 
 ```
 cd $DRUPAL
 composer require drupal/layoutcomponents
 ```
 
-1. Enable the module 'layoutcomponents' in /admin/modules or through the drush console with ``drush en layoutcomponents``
+1. Enable the module 'layoutcomponents' in /admin/modules or through the
+   drush console with ``drush en layoutcomponents``
 
 2. Enable the modules/components of layoutcomponents that you want to use in
   /admin/modules. Each component will create a block type after enabling.
@@ -67,10 +79,11 @@ composer require drupal/layoutcomponents
 
 4. Configure the layout builder to add a section with a new "custom block".
 
-### FEATURES
-
-This module provides 6 types of templates based on bootstrap 4, this templates have the possibility of use from 1 to 6
-columns with different distributions that can be easily changed.
+[FEATURES]
+---------------------
+This module provides 6 types of templates based on bootstrap 4, this templates
+have the possibility of use from 1 to 6 columns with different distributions
+that can be easily changed.
 
 
 With layoutcomponents you can perform a lot of things like:
@@ -86,10 +99,11 @@ With layoutcomponents you can perform a lot of things like:
 - Editors can set the sections as full width of the screen.
 - and much more...
 
-There are a lot of options that allow editors to create a page as they want to be, the limit is on their side.
+There are a lot of options that allow editors to create a page as they want to
+be, the limit is on their side.
 
-### COMPONENTS
-
+[COMPONENTS]
+---------------------
 List of components included:
 
 1. Accordion
@@ -104,31 +118,23 @@ List of components included:
 
 NOTE: More information about them in the README.md of each component.
 
-### DEMO - VIDEOTUTORIAL
 
-In progress
-
-### INLINE API
-
-In progress
-
-
-
-Initial configuration
+[CONFIGURATION]
 ---------------------
-
 Current configuration available right now:
 
 Settings url: /admin/layoutcomponents/settings
 
 - Width: Width of the "Layout components" panel
-- Colors: List of the colors that the editor will have available while using the color type.
+- Colors: List of the colors that the editor will have available while
+  using the color type.
 - Theme: Light, Dark, Grey Light, Grey Dark.
 
-Layout components features
-==========================
-
-Currently we continue to develop the module with a lot of passion and we are proud to present all the functionalities that we already have available for its launch.
+[FEATURES]
+---------------------
+Currently we continue to develop the module with a lot of passion and we
+are proud to present all the functionalities that we already have available
+for its launch.
 
 - Section settings:
   - Title
@@ -196,13 +202,16 @@ Currently we continue to develop the module with a lot of passion and we are pro
     - Misc
       - Extra class
 - Components settings
-  - Accordion: Component that provides the accordion functionality toggling the visibility of content.
+  - Accordion: Component that provides the accordion functionality toggling
+    the visibility of content.
   - Button: Component that provides a simple customizable button.
-  - Countdown: Component that provides a simple countdown with specific end date.
+  - Countdown: Component that provides a simple countdown with specific end
+    date.
   - Iframe: Component that provides the use of Iframes on the page.
   - Image: Component that provides the use of an Image
-  - Tabs: Complex component that gives the ability of using tabs. Each tab will have its own page with the
-  Layout components builder
+  - Tabs: Complex component that gives the ability of using tabs. Each tab
+    will have its own page with the Layout components builder
   - Text: Simple component that gives a Simple text with CKEditor.
   - Title: Component that gives a simple text component plus more fields.
-  - Video: Component that provides the ability to include videos through the Media upload system or external video URL.
+  - Video: Component that provides the ability to include videos through the
+    Media upload system or external video URL.

@@ -39,8 +39,6 @@ class Text {
    *
    * @param array $data
    *   The default values.
-   * @param string $type
-   *   The new type.
    */
   public function plainTextArea(array $data) {
     $element = [

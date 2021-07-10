@@ -33,8 +33,8 @@ class LcChooseBlockController extends ChooseBlockController {
    *
    * @var \Drupal\layoutcomponents\LcLayoutsManager
    */
-
   protected $layoutManager;
+
   /**
    * The UUID generator.
    *
@@ -264,4 +264,3 @@ class LcChooseBlockController extends ChooseBlockController {
   }
 
 }
-

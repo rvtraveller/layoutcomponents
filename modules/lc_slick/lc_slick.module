@@ -1,7 +1,14 @@
 <?php
 
+/**
+ * @file
+ * LC Simple Slick module file.
+ */
+
 use Drupal\layoutcomponents\Api\Select;
 use Drupal\layoutcomponents\Api\Checkbox;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_page_attachments().
@@ -11,9 +18,31 @@ function lc_slick_page_attachments(&$page) {
 }
 
 /**
+ * Implements hook_help().
+ */
+function lc_simple_slick_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Create help page.
+    case 'help.page.lc_simple_slick':
+      $module_handler = \Drupal::service('module_handler');
+      $module_path = $module_handler->getModule('lc_simple_slick')->getPath();
+      $file = $module_path . '/README.md';
+      if (!file_exists($file)) {
+        return '';
+      }
+
+      // Get content from file.
+      $reader = file_get_contents($file);
+
+      // Return "clean" content.
+      return preg_replace("/\r\n|\n|\r/", "<br>", $reader);
+  }
+}
+
+/**
  * Implements hook_form_alter().
  */
-function lc_slick_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function lc_slick_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'layout_builder_configure_section') {
     // Add the items if the form is not empty.
     if (!array_key_exists('actions', $form)) {
@@ -24,7 +53,6 @@ function lc_slick_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_
 
     /** @var \Drupal\layoutcomponents\Form\LcConfigureSection $obj */
     $obj = $form_state->getFormObject();
- 
 
     $configuration = $obj->getLayoutSettings()->getConfiguration();
 
@@ -63,4 +91,3 @@ function lc_slick_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_
     );
   }
 }
-

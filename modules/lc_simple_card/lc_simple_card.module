@@ -5,8 +5,8 @@
  * LC Simple cards module file.
  */
 
-use Drupal\Core\Template\Attribute;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_theme().
@@ -17,6 +17,28 @@ function lc_simple_card_theme($existing, $type, $theme, $path) {
       'base hook' => 'block',
     ],
   ];
+}
+
+/**
+ * Implements hook_help().
+ */
+function lc_simple_card_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Create help page.
+    case 'help.page.lc_simple_card':
+      $module_handler = \Drupal::service('module_handler');
+      $module_path = $module_handler->getModule('lc_simple_card')->getPath();
+      $file = $module_path . '/README.md';
+      if (!file_exists($file)) {
+        return '';
+      }
+
+      // Get content from file.
+      $reader = file_get_contents($file);
+
+      // Return "clean" content.
+      return preg_replace("/\r\n|\n|\r/", "<br>", $reader);
+  }
 }
 
 /**

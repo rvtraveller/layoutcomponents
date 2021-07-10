@@ -11,7 +11,7 @@ use Drupal\file\Entity\File;
 use Drupal\Core\Url;
 
 /**
- * Class LcLayout.
+ * General class for LC layouts.
  */
 class LcLayout {
 

@@ -85,8 +85,10 @@ class LcMoveSections extends MoveSectionsForm {
         // If is a sub section, hidde the rest of normal sections.
         $sub_id = $this->lcSectionManager->getLcId($section_storage, $sub_delta['delta']);
 
-        if ($this->lcSectionManager->getLcId($section_storage, $delta) != $sub_id || $sub_settings['sub_section']['parent_region'] !== $current_settings['sub_section']['parent_region']) {
-          // We can only hidde the elements, if we remove them, LB will remove the rest of sections.
+        if ($this->lcSectionManager->getLcId($section_storage, $delta) != $sub_id ||
+          $sub_settings['sub_section']['parent_region'] !== $current_settings['sub_section']['parent_region']) {
+          // We can only hidde the elements, if we remove them,.
+          // LB will remove the rest of sections.
           $build['sections_wrapper']['sections'][$delta]['#attributes']['class'][0] = 'hidden';
         }
         $build['sections_wrapper']['warning']['#markup'] = '<div class="layout_builder__add-section-confirm"> ' . $this->t('* Your are editing the position of sub sections included in a region, so they will only appear available to move the sub sections included in the parent section.') . ' </div>';

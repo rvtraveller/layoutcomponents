@@ -40,7 +40,10 @@ class LcAddBlockForm extends AddBlockForm {
     if (!empty($admin_label)) {
       $build['settings']['admin_label']['#access'] = FALSE;
     }
-    $build['settings']['label']['#title'] = '<span class="lc-lateral-title">' . $this->t("Title") . '</span>' . '<span class="lc-lateral-info" title="' . $this->t("Set an identifier of this block") . '"/>';
+
+    $build['settings']['label']['#title'] = $this->t('<span class="lc-lateral-title">@title</span> <span class="lc-lateral-info" title="@content"/>',
+      ['@title' => 'Title', '@content' => 'Set an identifier of this block']);
+
     unset($build['settings']['label']['#description']);
 
     // Label display config.

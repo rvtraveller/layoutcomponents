@@ -99,9 +99,6 @@ class LcUpdateBlockForm extends UpdateBlockForm {
       $component->setConfiguration($this->blockContentToInline($conf));
     }
 
-    // Ensure get the current language translation.
-    //$this->setCurrentLanguageTranslation($component);
-
     $build = parent::buildForm($form, $form_state, $section_storage, $delta, $region, $uuid);
 
     /** @var \Drupal\block_content\Entity\BlockContent $block */
@@ -179,7 +176,7 @@ class LcUpdateBlockForm extends UpdateBlockForm {
    *   The layout builder component.
    */
   public function setCurrentLanguageTranslation(SectionComponent &$component) {
-    $configuration = $component->get('configuration');;
+    $configuration = $component->get('configuration');
     try {
       /** @var \Drupal\block_content\Entity\BlockContent $block_content */
       $block_content = $component->getPlugin()->build();

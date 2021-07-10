@@ -1,15 +1,18 @@
-[DESCRIPTION]
+[INTRODUCTION]
 ---------------------
-The simple reference field component allows you to insert reference fields for
-other contents.
+Through this component, the editor will add a reference field to the page.
 
+[REQUIREMENTS]
+---------------------
+- [LayoutComponents](https://www.drupal.org/project/layoutcomponents)
 
 [INSTALLATION]
 ---------------------
-1: Active the module 'lc_simple_reference_field'.
+Install as you would normally install a contributed Drupal module. Visit:
+https://www.drupal.org/documentation/install/modules-themes/modules-8
+for further information.
 
-
-[MAIN COMPONENTS]
+[CONFIGURATION]
 ---------------------
 1.1: Simple reference field
   - Entity: Select the entity of the referenced field.

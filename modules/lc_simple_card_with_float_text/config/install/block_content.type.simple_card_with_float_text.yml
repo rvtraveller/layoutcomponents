@@ -1,8 +1,0 @@
-uuid: b5ef935d-6376-4fd0-80d8-9f4a120692c9
-langcode: es
-status: true
-dependencies: {  }
-id: simple_card_with_float_text
-label: 'Card with float text'
-revision: 1
-description: ''

@@ -28,7 +28,7 @@ class LcClipboardController extends ControllerBase implements ContainerInjection
    * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store
    *   The PrivateTempStoreFactory object.
    */
-  public  function __construct(PrivateTempStoreFactory $temp_store) {
+  public function __construct(PrivateTempStoreFactory $temp_store) {
     $this->tempStoreFactory = $temp_store;
   }
 

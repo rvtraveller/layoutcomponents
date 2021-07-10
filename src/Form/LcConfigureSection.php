@@ -178,7 +178,9 @@ class LcConfigureSection extends ConfigureSectionForm {
    * Custom submit form to include sub section configuration.
    *
    * @param array $form
-   * @param FormStateInterface $form_state
+   *   The complete form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The Form state object.
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Call the plugin submit handler.
@@ -187,7 +189,6 @@ class LcConfigureSection extends ConfigureSectionForm {
 
     $plugin_id = $this->layout->getPluginId();
     $configuration = $this->layout->getConfiguration();
-
 
     if ($this->isUpdate) {
       $this->sectionStorage->getSection($this->delta)->setLayoutSettings($configuration);

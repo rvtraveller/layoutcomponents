@@ -1,7 +1,0 @@
-name: Layout Components - Simple Card With Float Text
-type: module
-description: Simple card with float text
-package: LayoutComponents
-core_version_requirement: ^8.8 || ^9
-dependencies:
-  - layoutcomponents

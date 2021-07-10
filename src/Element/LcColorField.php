@@ -74,7 +74,10 @@ class LcColorField extends FormElement {
       '#suffix' => "<div class='color-field-widget-box-form' id='" . $element['#uid'] . "'></div>" . t('<p><a class="lc-url-settings" href=":url">Color Settings</a></p>', [':url' => Url::fromRoute('layoutcomponents.colors_settings')->toString()]),
     ];
     $element['settings']['opacity'] = [
-      '#title' => '<span class="lc-lateral-title">' . t('Opacity') . '</span>' . '<span class="lc-lateral-info" title="' . t('Set the opacity') . '"/>',
+      '#title' => t('<span class="lc-lateral-title">@opacity</span><span class="lc-lateral-info" title="@content"/>', [
+        '@opacity' => "Opacity",
+        '@content' => "Set the opacity",
+      ]),
       '#type' => 'number',
       '#min' => 0,
       '#max' => 1,

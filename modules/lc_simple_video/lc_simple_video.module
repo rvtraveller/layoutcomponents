@@ -69,7 +69,9 @@ function lc_simple_video_preprocess_field(&$variables) {
 
       // Default styles.
       $styles = [];
-      $classes = ['lc-inline_block_' . $block_id . '-video-edit', 'embed-responsive-item'];
+      $classes = [
+        'lc-inline_block_' . $block_id . '-video-edit', 'embed-responsive-item',
+      ];
       $container_classes = [
         'lc-inline_block_' . $block_id . '-video-container-edit',
         'pl-0',
@@ -234,7 +236,6 @@ function _lc_simple_video_form_alter(array &$form, $block_id) {
     ],
   ];
 
-
   // LC inline video upload.
   $upload = $form['field_sv_upload_video']['widget'];
   $form['field_sv_upload_video']['widget'] = $lcApi->getComponentElement(
@@ -244,7 +245,6 @@ function _lc_simple_video_form_alter(array &$form, $block_id) {
     ],
     $upload
   );
-  
 
   $form['field_sv_upload_video']['widget']['#states'] = [
     'visible' => [
@@ -296,4 +296,3 @@ function _lc_simple_video_form_alter(array &$form, $block_id) {
   );
 
 }
-

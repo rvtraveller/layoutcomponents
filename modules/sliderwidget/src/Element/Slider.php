@@ -265,7 +265,10 @@ class Slider extends FormElement {
       ],
     ];
     if (isset($element['#attributes']) && is_array($element['#attributes'])) {
-      $_attributes_new = NestedArray::mergeDeepArray([$_attributes_new, $element['#attributes']], TRUE);
+      $_attributes_new = NestedArray::mergeDeepArray([
+        $_attributes_new,
+        $element['#attributes'],
+      ], TRUE);
     }
 
     // Generate input for slider.

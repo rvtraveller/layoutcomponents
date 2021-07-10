@@ -81,7 +81,7 @@ class LcElement extends LayoutBuilder {
   /**
    * Current Entity.
    *
-   * @var \stdClass
+   * @var \Drupal\node\Entity\Node
    */
   protected $entity;
 
@@ -204,8 +204,9 @@ class LcElement extends LayoutBuilder {
         $section_storage->appendSection($section);
       }
 
-      // TODO: Is neccesary register the changes in the temp store repository instead of save object,
-      // TODO: if not the option "Discard changes" won't works correctly.
+      // Is neccesary register the changes in the temp store repository.
+      // instead of save object, if not the option "Discard changes" won't.
+      // works correctly.
       $this->layoutTempstore->set($section_storage);
     }
 
@@ -229,7 +230,6 @@ class LcElement extends LayoutBuilder {
 
     // Set this section as sub section.
     $url->setRouteParameter('sub_section', $sub_section);
-
 
     // Remove link--add class.
     $options = $url->getOptions();
@@ -271,7 +271,6 @@ class LcElement extends LayoutBuilder {
     $layout = $section->getLayout();
     $layout_definition = $layout->getPluginDefinition();
     $is_sub_section = $this->lcSectionManager->isSubSection($section_storage, $delta);
-
 
     // Alter configure button.
     $configure['configure'] = $build['configure'];
@@ -502,35 +501,6 @@ class LcElement extends LayoutBuilder {
         ),
       ];
 
-      if ($copy !== 'lc-copy') {
-        /*$configureSection['copy'] = [
-          '#type' => 'link',
-          '#title' => '',
-          '#url' => Url::fromRoute('layoutcomponents.copy_column',
-            [
-              'section_storage_type' => $storage_type,
-              'section_storage' => $storage_id,
-              'delta' => $delta,
-              'region' => $region,
-            ],
-            [
-              'attributes' => [
-                'class' => [
-                  'use-ajax',
-                  'lc_editor-link',
-                  'layout-builder__column_link',
-                  'layout-builder__column_link-copy',
-                ],
-                'data-dialog-type' => 'dialog',
-                'data-dialog-renderer' => 'off_canvas',
-                'data-dialog-options' => $this->dialogOptions(),
-                'title' => $this->t('Copy to clipboard'),
-              ],
-            ]
-          ),
-        ];*/
-      }
-
       // Column access control.
       if (isset($this->entity)) {
         if (!$this->getAccess($this->currentUser, 'add ' . $this->entity->bundle() . ' ' . $this->entity->getEntityTypeId() . ' blocks')) {
@@ -680,35 +650,6 @@ class LcElement extends LayoutBuilder {
         ]
       ),
     ];
-
-    /*$configureBlock['copy'] = [
-      '#type' => 'link',
-      '#title' => '',
-      '#url' => Url::fromRoute('layoutcomponents.copy_block',
-        [
-          'section_storage_type' => $storage_type,
-          'section_storage' => $storage_id,
-          'delta' => $delta,
-          'region' => $region,
-          'uuid' => $uuid,
-        ],
-        [
-          'attributes' => [
-            'class' => [
-              'use-ajax',
-              'lc_editor-link',
-              'layout-builder__block_link',
-              'layout-builder__block_link-copy',
-            ],
-            'data-dialog-type' => 'dialog',
-            'data-dialog-renderer' => 'off_canvas',
-            'data-dialog-options' => $this->dialogOptions(),
-            'title' => $this->t('Copy to clipboard'),
-            'resizable' => TRUE,
-          ],
-        ]
-      ),
-    ];*/
 
     // Block access control.
     if (isset($this->entity)) {

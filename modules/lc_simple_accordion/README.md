@@ -1,10 +1,10 @@
 [INTRODUCTION]
 ---------------------
-Through this component, the editor will add a image to the page.
+Through this component, the editor will add accordion to the page.
 
 [REQUIREMENTS]
 ---------------------
-- [LayoutComponents](https://www.drupal.org/project/layoutcomponents)
+  - [LayoutComponents](https://www.drupal.org/project/layoutcomponents)
 
 [INSTALLATION]
 ---------------------
@@ -14,5 +14,5 @@ for further information.
 
 [CONFIGURATION]
 ---------------------
-1:	Simple image
-  - Image: Allows you to add an image.
+When this component is added to LC column, the system will provide a
+serie of fields.

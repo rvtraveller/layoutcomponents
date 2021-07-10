@@ -10,13 +10,12 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\layout_builder\Section;
 use Drupal\layout_builder\SectionComponent;
 use Drupal\layoutcomponents\Entity\LcEntityViewDisplay;
-use Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplayStorage;
 use Drupal\Core\Field\FieldConfigBase;
+use Drupal\field\Entity\FieldConfig;
 
 /**
  * LC commands.
  */
-
 class LcCommands extends DrushCommands {
 
   /**
@@ -75,7 +74,6 @@ class LcCommands extends DrushCommands {
   /**
    * Delete all content_blocks.
    *
-   *
    * @command lc:delete
    * @aliases lcd
    */
@@ -90,7 +88,7 @@ class LcCommands extends DrushCommands {
       $block_revision = $block_storage->loadRevision($revision);
 
       // Filter by block that they are using by layout.
-      if ($block_revision instanceof \Drupal\block_content\Entity\BlockContent) {
+      if ($block_revision instanceof BlockContent) {
         if (!$this->isLcBlock($block_revision, 'delete')) {
           unset($blocks[$i]);
           continue;
@@ -101,7 +99,7 @@ class LcCommands extends DrushCommands {
       $block->delete();
     }
 
-    $this->output->writeln( count($blocks) . ' blocks have been deleted');
+    $this->output->writeln(count($blocks) . ' blocks have been deleted');
   }
 
   /**
@@ -135,7 +133,6 @@ class LcCommands extends DrushCommands {
 
     return TRUE;
   }
-
 
   /**
    * Import the content_blocks.
@@ -175,7 +172,8 @@ class LcCommands extends DrushCommands {
           // Get the dependencies already createds.
           $dependencies = $this->getDependencie($n_block, $link);
 
-          // TODO Register the dependencies, the dependencies as media won't be exported.
+          // Register the dependencies, the dependencies as media won't
+          // be exported.
           /** @var \Drupal\block_content\Entity\BlockContent $dependencie */
           if (!empty($dependencies)) {
             foreach ($dependencies as $i => $dependencie) {
@@ -201,6 +199,7 @@ class LcCommands extends DrushCommands {
    *
    * @param \Drupal\block_content\Entity\BlockContent $block
    *   The block.
+   *
    * @return bool
    *   If the block has been expoterd.
    */
@@ -210,7 +209,7 @@ class LcCommands extends DrushCommands {
       return FALSE;
     }
     $this->output->writeln('Exporting: ' . $block->uuid());
-    return true;
+    return TRUE;
   }
 
   /**
@@ -232,7 +231,7 @@ class LcCommands extends DrushCommands {
             foreach ($components as $component) {
               /** @var \Drupal\block_content\Entity\BlockContent $sub_block */
               $sub_block = $this->getLastRevisionBlock($component->toArray()['configuration']['block_revision_id']);
-              if ($sub_block instanceof \Drupal\block_content\Entity\BlockContent) {
+              if ($sub_block instanceof BlockContent) {
                 $this->exportBlock($sub_block);
               }
             }
@@ -243,7 +242,7 @@ class LcCommands extends DrushCommands {
     else {
       // Find the sub field blocks and import them.
       foreach ($block->getFieldDefinitions() as $field_name => $definition) {
-        if ($definition instanceof \Drupal\field\Entity\FieldConfig && $definition->getType() == 'entity_reference_revisions') {
+        if ($definition instanceof FieldConfig && $definition->getType() == 'entity_reference_revisions') {
           $this->exportBlock($this->getLastRevisionBlock($block->get($field_name)->getValue()[0]['target_id']));
         }
       }
@@ -254,7 +253,7 @@ class LcCommands extends DrushCommands {
    * Create the block and store the rest of translates.
    *
    * @param array $n_block
-   *   array block.
+   *   Array block.
    */
   public function createBlock(array $n_block) {
     // Get the langcodes.
@@ -273,7 +272,7 @@ class LcCommands extends DrushCommands {
           // Find the fields.
           foreach ($block->getFieldDefinitions() as $definition) {
             if ($definition instanceof FieldConfigBase) {
-              $field_name  = $definition->get('field_name');
+              $field_name = $definition->get('field_name');
               // Find the value by language.
               $field_translate = $n_block[$field_name];
               if (empty($field_translate)) {
@@ -298,11 +297,14 @@ class LcCommands extends DrushCommands {
    *
    * @param \Drupal\block_content\Entity\BlockContent $block
    *   The block.
+   * @param string $action
+   *   The type of action.
+   *
    * @return bool
    *   If is a LC block.
    */
   public function isLcBlock(BlockContent $block, $action = 'export') {
-    /** @var LayoutBuilderEntityViewDisplayStorage $storage */
+    /** @var \Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplayStorage $storage */
     $storage = $this->entityTypeManager->getStorage('entity_view_display');
     $displays = $storage->loadMultiple();
 
@@ -364,10 +366,11 @@ class LcCommands extends DrushCommands {
    *   The block.
    * @param string $reference
    *   The new reference.
+   *
    * @return array
    *   The array of dependencies.
    */
-  public function getDependencie(&$n_block, $reference) {
+  public function getDependencie(BlockContent &$n_block, string $reference) {
     $dependencies = [];
     // Get the embed reference.
     $embed = $this->getEmbedded($reference);
@@ -376,7 +379,7 @@ class LcCommands extends DrushCommands {
         $n_uuid = $n_block['_embedded'][$reference][$i]['uuid'][0]['value'];
         // Check if the file xists.
         if (!file_exists($this->folder . $n_uuid . '.json')) {
-          return null;
+          return NULL;
         }
         // Get the reference block.
         $new_block = $this->readFile($n_uuid . '.json');
@@ -407,6 +410,7 @@ class LcCommands extends DrushCommands {
    *
    * @param string $file
    *   The file.
+   *
    * @return string
    *   The content.
    */
@@ -419,6 +423,7 @@ class LcCommands extends DrushCommands {
    *
    * @param string $uuid
    *   The uuid.
+   *
    * @return \Drupal\block_content\Entity\BlockContent
    *   The new block.
    */
@@ -438,6 +443,7 @@ class LcCommands extends DrushCommands {
    *
    * @param string $id
    *   The block id.
+   *
    * @return \Drupal\block_content\Entity\BlockContent
    *   The full block.
    */
@@ -455,10 +461,11 @@ class LcCommands extends DrushCommands {
    *   The block.
    * @param string $uuid
    *   The uuid.
+   *
    * @return \Drupal\block_content\Entity\BlockContent
    *   The new block.
    */
-  public function updateDependencie($block, $uuid) {
+  public function updateDependencie(BlockContent $block, string $uuid) {
     $new_block = $this->readFile($uuid . '.json');
     return $this->updateBlock($block, $new_block);
   }
@@ -466,8 +473,9 @@ class LcCommands extends DrushCommands {
   /**
    * Get the uuid of the file.
    *
-   * @param  string $link
+   * @param string $link
    *   The uuid file.
+   *
    * @return string
    *   The string.
    */
@@ -533,6 +541,7 @@ class LcCommands extends DrushCommands {
    *
    * @param array $sections
    *   The array of sections.
+   *
    * @return array
    *   The array converted.
    */
@@ -550,7 +559,7 @@ class LcCommands extends DrushCommands {
    * @param array $block
    *   The block as array.
    */
-  public function normalizeSections(&$block) {
+  public function normalizeSections(array &$block) {
     if (array_key_exists('layout_builder__layout', $block)) {
       // Normalize Layout builder value.
       foreach ($block['layout_builder__layout'] as $key => $section) {
@@ -598,7 +607,7 @@ class LcCommands extends DrushCommands {
    *   The array with the files.
    */
   public function readDirectory() {
-    return array_diff(scandir($this->folder), array('..', '.'));
+    return array_diff(scandir($this->folder), ['..', '.']);
   }
 
   /**

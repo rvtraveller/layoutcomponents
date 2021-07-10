@@ -148,8 +148,9 @@ trait LcDisplayHelperTrait {
   /**
    * Get if the section is setted as overwriten.
    *
-   * @param \Drupal\layout_builder\Section $new
+   * @param \Drupal\layout_builder\Section $default
    *   The new element.
+   *
    * @return bool
    *   TRUE or FALSE.
    */
@@ -164,6 +165,7 @@ trait LcDisplayHelperTrait {
    *   The new element.
    * @param bool $status
    *   The new status.
+   *
    * @return \Drupal\layout_builder\Section
    *   The section.
    */
@@ -184,11 +186,11 @@ trait LcDisplayHelperTrait {
    * @param \Drupal\layout_builder\Section $value
    *   The new section.
    */
-  function arrayInsert(&$arr, $index, $value){
+  public function arrayInsert(array &$arr, int $index, Section $value) {
     $lengh = count($arr);
 
     if (!$this->isOverWriten($value)) {
-      for($i=0; $i<($lengh+1); $i++){
+      for ($i = 0; $i < ($lengh + 1); $i++) {
         if (!array_key_exists($i, $arr)) {
           $arr[$i] = $value;
           break;
@@ -197,8 +199,8 @@ trait LcDisplayHelperTrait {
       return;
     }
 
-    for($i=$lengh; $i>$index; $i--){
-      $arr[$i] = $arr[$i-1];
+    for ($i = $lengh; $i > $index; $i--) {
+      $arr[$i] = $arr[$i - 1];
     }
 
     $arr[$index] = $value;

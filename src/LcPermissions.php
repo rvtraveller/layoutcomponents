@@ -141,4 +141,5 @@ class LcPermissions implements ContainerInjectionInterface {
     }
     return $permissions;
   }
+
 }

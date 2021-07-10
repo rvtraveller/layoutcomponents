@@ -24,7 +24,6 @@ function layoutcomponents_theme() {
 
 /**
  * Implements hook_theme_suggestions_alter().
- * For base theme suggestions_HOOK not work, we have to use the default.
  */
 function layoutcomponents_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
   \Drupal::service('class_resolver')

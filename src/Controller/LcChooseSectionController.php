@@ -189,7 +189,7 @@ class LcChooseSectionController extends ChooseSectionController {
           'autosave' => 1,
           'sub_section' => $subSection,
         ]);
-      $item['#attributes']['data-dialog-options'] = $this->dialogOptions();;
+      $item['#attributes']['data-dialog-options'] = $this->dialogOptions();
 
       $plugin_id = $url->getRouteParameters()['plugin_id'];
       if (array_key_exists('plugin_id', $url->getRouteParameters())) {
@@ -205,7 +205,6 @@ class LcChooseSectionController extends ChooseSectionController {
     // $output['layouts']['#items'] = array_merge($layoutcomponents, $others);.
     // Only layoutcomponents layouts.
     $build['layouts']['#items'] = $layoutcomponents;
-
 
     return $build;
   }

@@ -15,21 +15,21 @@ class LcUpdateManager {
   /**
    * Section options.
    *
-   * @var \Drupal\Core\Config\CachedStorage $configStorage
+   * @var \Drupal\Core\Config\CachedStorage
    */
   protected $configStorage;
 
   /**
    * Section options.
    *
-   * @var \Drupal\Core\Config\ConfigFactory $configFactory
+   * @var \Drupal\Core\Config\ConfigFactory
    */
   protected $configFactory;
 
   /**
    * Section options.
    *
-   * @var \Drupal\Component\Uuid\Pecl $uuid
+   * @var \Drupal\Component\Uuid\Pecl
    */
   protected $uuid;
 
@@ -58,8 +58,8 @@ class LcUpdateManager {
    *   The name of module.
    */
   public function updateConfig(array $config_names, $module) {
-    $config_path    = drupal_get_path('module', $module) . '/config/install';
-    $source         = new FileStorage($config_path);
+    $config_path = drupal_get_path('module', $module) . '/config/install';
+    $source = new FileStorage($config_path);
 
     foreach ($config_names as $name) {
       $this->configStorage->write($name, $source->read($name));

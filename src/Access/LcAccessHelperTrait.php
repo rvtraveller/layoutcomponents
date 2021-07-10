@@ -7,13 +7,12 @@ use Drupal\Core\Session\AccountProxy;
 /**
  * Methods to help with sthe access control of LC elements.
  */
-
 trait LcAccessHelperTrait {
 
   /**
    * Get the current entity.
    *
-   * @return \stdClass
+   * @return \Drupal\node\Entity\Node
    *   The entity.
    */
   protected function getCurrentEntity() {
@@ -27,7 +26,7 @@ trait LcAccessHelperTrait {
    *
    * @param \Drupal\Core\Session\AccountProxy $account
    *   The section storage object.
-   * @param  string $permission
+   * @param string $permission
    *   The permission.
    *
    * @return bool
@@ -39,4 +38,5 @@ trait LcAccessHelperTrait {
     }
     return FALSE;
   }
+
 }

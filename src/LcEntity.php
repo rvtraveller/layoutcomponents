@@ -15,7 +15,7 @@ use Drupal\layoutcomponents\Api\Component;
 /**
  * General class for Entity hooks.
  */
-class LcEntity implements ContainerInjectionInterface{
+class LcEntity implements ContainerInjectionInterface {
 
   /**
    * The LcApi object.
@@ -82,6 +82,8 @@ class LcEntity implements ContainerInjectionInterface{
    *
    * @param array $form
    *   The array with the form.
+   * @param \Drupal\block_content\Entity\BlockContent $element
+   *   The blockcontent.
    */
   public function layoutcomponentsFormAlter(array &$form, BlockContent $element) {
     /** @var \Drupal\block_content\Entity\BlockContent $block */

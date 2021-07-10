@@ -10,7 +10,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 /**
  * General class for Theme hooks.
  */
-class LcTheme implements ContainerInjectionInterface{
+class LcTheme implements ContainerInjectionInterface {
 
   /**
    * The Layout Plugin Manager object.
@@ -106,8 +106,7 @@ class LcTheme implements ContainerInjectionInterface{
    *
    * @see \hook_theme_suggestions_HOOK()
    */
-  public function themeSuggestionsLayoutLayoutcomponentsRegion(array &$suggestions, array $variables, $hook)
-  {
+  public function themeSuggestionsLayoutLayoutcomponentsRegion(array &$suggestions, array $variables, $hook) {
     if ($hook == 'layout__layoutcomponents_region') {
       $classes = $variables['region']['styles']['misc']['extra_class'];
       $class = explode(',', $classes);

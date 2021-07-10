@@ -1,8 +1,18 @@
 <?php
 
+/**
+ * @file
+ * Contains layoutcomponents.theme.inc.
+ */
+
 use Drupal\layoutcomponents\LcLayout;
 
-
+/**
+ * Preprocess lc theme.
+ *
+ * @param array $variables
+ *   The array with variables.
+ */
 function _layoutcomponents_preprocess_layout(array &$variables) {
   /** @var \Drupal\Core\Layout\LayoutDefinition $layout_definition */
   $layout_definition = $variables['layout'];

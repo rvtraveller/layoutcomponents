@@ -1,12 +1,19 @@
-[DESCRIPTION]
+[INTRODUCTION]
 ---------------------
-The simple social link provides the integration between LC and Social Media Links,
-allowing the possibility to insert a block to show the different social links.
+Through this component, the editor will add a social media link block
+to the page.
 
 [REQUIREMENTS]
 ---------------------
-- Social Media links field.
+- [LayoutComponents](https://www.drupal.org/project/layoutcomponents)
 
 [INSTALLATION]
 ---------------------
-1: Active the module 'lc_simple_social_links'.
+Install as you would normally install a contributed Drupal module. Visit:
+https://www.drupal.org/documentation/install/modules-themes/modules-8
+for further information.
+
+[CONFIGURATION]
+---------------------
+When this component is added to LC column, the system will provide a
+serie of fields.
