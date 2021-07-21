@@ -161,15 +161,23 @@ class LcConfigureSection extends ConfigureSectionForm {
     $build['layout_settings']['container']['regions']['#access'] = FALSE;
     $build['layout_settings']['container']['section']['#open'] = TRUE;
 
-    $build['layout_settings']['container']['section']['sub_section'] = $sub_section;
-    $build['sub_section_parent_section'] = [
-      '#type' => 'hidden',
-      '#default_value' => $sub_section['parent_section'],
-    ];
-    $build['sub_section_parent_region'] = [
-      '#type' => 'hidden',
-      '#default_value' => $sub_section['parent_region'],
-    ];
+    if (isset($sub_section) && !empty($sub_section)) {
+      //$build['layout_settings']['container']['section']['sub_section'] = $sub_section;
+
+      if (isset($sub_section['parent_section'])) {
+        $build['sub_section_parent_section'] = [
+          '#type' => 'hidden',
+          '#default_value' => $sub_section['parent_section'],
+        ];
+      }
+
+      if (isset($sub_section['parent_region'])) {
+        $build['sub_section_parent_region'] = [
+          '#type' => 'hidden',
+          '#default_value' => $sub_section['parent_region'],
+        ];
+      }
+    }
 
     return $build;
   }
@@ -217,7 +225,6 @@ class LcConfigureSection extends ConfigureSectionForm {
           'parent_section' => $parent_section,
           'parent_region' => $parent_region,
         ];
-
       }
 
       // Register the sub section.

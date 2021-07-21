@@ -30,7 +30,7 @@ class Slider {
 
     // Default values.
     $element = [
-      '#type' => 'slider',
+      '#type' => 'number',
       '#input_title' => '',
       '#orientation' => 'horizontal',
       '#min' => $data['min'],
