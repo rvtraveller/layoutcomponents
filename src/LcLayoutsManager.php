@@ -451,6 +451,46 @@ class LcLayoutsManager {
   }
 
   /**
+   * Get the column options.
+   *
+   * @param numeric $type
+   *   The number of columns.
+   *
+   * @return string
+   *   The column options.
+   */
+  public function getDefaultColumnOption($type) {
+    $option = "12";
+    switch ($type) {
+      case 1:
+        $option = "12";
+        break;
+
+      case 2:
+        $option = "6/6";
+        break;
+
+      case 3:
+        $option = "4/4/4";
+        break;
+
+      case 4:
+        $option = "3/3/3/3";
+        break;
+
+      case 5:
+        $option = "3/2/2/2/3";
+        break;
+
+      case 6:
+        $option = "2/2/2/2/2/2";
+        break;
+    }
+
+    return $option;
+  }
+
+  /**
    * Get the number of columns.
    *
    * @return array

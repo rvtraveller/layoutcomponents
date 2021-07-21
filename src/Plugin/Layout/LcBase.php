@@ -1252,7 +1252,8 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
     $general = $config['general'];
     $styles = $config['styles'];
     $container = &$form['container']['section']['container'];
-    $column_structures = $this->manager->getColumnOptions(count($this->getPluginDefinition()->getRegionNames()));
+    $n_columns = count($this->getPluginDefinition()->getRegionNames());
+    $column_structures = $this->manager->getColumnOptions($n_columns);
 
     $container['general'] = [
       '#type' => 'details',
@@ -1321,7 +1322,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'id' => 'row',
             'title' => $this->t('SM Columns Structure'),
             'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
-            'default_value' => $general['structure']['section_structure_sm'],
+            'default_value' => ($general['structure']['section_structure_sm'] == 12 && $n_columns > 1) ? $this->manager->getDefaultColumnOption($n_columns) : $general['structure']['section_structure_sm'],
             'options' => $column_structures,
             'attributes' => [
               'lc' => [
@@ -1338,7 +1339,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'id' => 'row',
             'title' => $this->t('MD Columns Structure'),
             'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
-            'default_value' => $general['structure']['section_structure'],
+            'default_value' => ($general['structure']['section_structure'] == 12 && $n_columns > 1) ? $this->manager->getDefaultColumnOption($n_columns) : $general['structure']['section_structure'],
             'options' => $column_structures,
             'attributes' => [
               'lc' => [
@@ -1355,7 +1356,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'id' => 'row',
             'title' => $this->t('LG Columns Structure'),
             'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
-            'default_value' => $general['structure']['section_structure_lg'],
+            'default_value' => ($general['structure']['section_structure_lg'] == 12 && $n_columns > 1) ? $this->manager->getDefaultColumnOption($n_columns) : $general['structure']['section_structure_lg'],
             'options' => $column_structures,
             'attributes' => [
               'lc' => [
