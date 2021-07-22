@@ -232,9 +232,11 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'section_delta' => (int) 0,
           ],
           'structure' => [
-            'section_structure_sm' => 12,
-            'section_structure' => 12,
-            'section_structure_lg' => 12,
+            'section_structure_xs' => 'none',
+            'section_structure_sm' => 'none',
+            'section_structure' => 'none',
+            'section_structure_lg' => 'none',
+            'section_structure_xl' => 'none',
             'section_carousel' => boolval(0),
             'section_carousel_slick' => 'none',
           ],
@@ -1317,12 +1319,29 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         '#type' => 'details',
         '#title' => $this->t('Structure'),
         '#group' => 'section',
+        'section_structure_xs' => $this->lcApiSelect->normal(
+          [
+            'id' => 'row',
+            'title' => $this->t('XS Columns Structure'),
+            'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
+            'default_value' => $general['structure']['section_structure_xs'],
+            'options' => $column_structures,
+            'attributes' => [
+              'lc' => [
+                'type' => 'class',
+                'class_remove' => 'col-xs-*',
+                'style' => 'column_size',
+              ],
+            ],
+            'class' => 'column-size',
+          ]
+        ),
         'section_structure_sm' => $this->lcApiSelect->normal(
           [
             'id' => 'row',
             'title' => $this->t('SM Columns Structure'),
             'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
-            'default_value' => ($general['structure']['section_structure_sm'] == 12 && $n_columns > 1) ? $this->manager->getDefaultColumnOption($n_columns) : $general['structure']['section_structure_sm'],
+            'default_value' => $general['structure']['section_structure_sm'],
             'options' => $column_structures,
             'attributes' => [
               'lc' => [
@@ -1339,7 +1358,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'id' => 'row',
             'title' => $this->t('MD Columns Structure'),
             'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
-            'default_value' => ($general['structure']['section_structure'] == 12 && $n_columns > 1) ? $this->manager->getDefaultColumnOption($n_columns) : $general['structure']['section_structure'],
+            'default_value' => $general['structure']['section_structure'],
             'options' => $column_structures,
             'attributes' => [
               'lc' => [
@@ -1356,12 +1375,29 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'id' => 'row',
             'title' => $this->t('LG Columns Structure'),
             'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
-            'default_value' => ($general['structure']['section_structure_lg'] == 12 && $n_columns > 1) ? $this->manager->getDefaultColumnOption($n_columns) : $general['structure']['section_structure_lg'],
+            'default_value' => $general['structure']['section_structure_lg'],
             'options' => $column_structures,
             'attributes' => [
               'lc' => [
                 'type' => 'class',
                 'class_remove' => 'col-lg-*',
+                'style' => 'column_size',
+              ],
+            ],
+            'class' => 'column-size',
+          ],
+        ),
+        'section_structure_xl' => $this->lcApiSelect->normal(
+          [
+            'id' => 'row',
+            'title' => $this->t('XL Columns Structure'),
+            'description' => $this->t('The sizes that appear in this selector are based on the set of combinations that can be created in Bootstrap'),
+            'default_value' => $general['structure']['section_structure_xl'],
+            'options' => $column_structures,
+            'attributes' => [
+              'lc' => [
+                'type' => 'class',
+                'class_remove' => 'col-xl-*',
                 'style' => 'column_size',
               ],
             ],

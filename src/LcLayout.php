@@ -513,9 +513,11 @@ class LcLayout {
    */
   public function setColumn($name, $delta) {
     $path = 'regions.' . $name;
+    $column_size_xs = explode('/', $this->getSetting('section.general.structure.section_structure_xs', 1));
     $column_size_sm = explode('/', $this->getSetting('section.general.structure.section_structure_sm', 1));
     $column_size = explode('/', $this->getSetting('section.general.structure.section_structure', 1));
     $column_size_lg = explode('/', $this->getSetting('section.general.structure.section_structure_lg', 1));
+    $column_size_xl = explode('/', $this->getSetting('section.general.structure.section_structure_xl', 1));
     $border = ($this->getSetting($path . '.styles.border.border', '') == 'all') ? '' : '-' . $this->getSetting($path . '.styles.border.border', '');
     $border_size = $this->getSetting($path . '.styles.border.size');
     $border_color = $this->getSetting($path . '.styles.border.color.settings.color');
@@ -539,14 +541,20 @@ class LcLayout {
 
     // Column size.
     if (is_numeric($delta)) {
-      if (isset($column_size_sm[$delta]) && !empty($column_size_sm[$delta])) {
+      if (isset($column_size_xs[$delta]) && !empty($column_size_xs[$delta]) && $column_size_xs[$delta] !== 'none') {
+        $column_classes->addClass('col-xs-' . $column_size_xs[$delta]);
+      }
+      if (isset($column_size_sm[$delta]) && !empty($column_size_sm[$delta]) && $column_size_sm[$delta] !== 'none') {
         $column_classes->addClass('col-sm-' . $column_size_sm[$delta]);
       }
-      if (isset($column_size[$delta]) && !empty($column_size[$delta])) {
+      if (isset($column_size[$delta]) && !empty($column_size[$delta]) && $column_size[$delta] !== 'none') {
         $column_classes->addClass('col-md-' . $column_size[$delta]);
       }
-      if (isset($column_size_lg[$delta]) && !empty($column_size_lg[$delta])) {
+      if (isset($column_size_lg[$delta]) && !empty($column_size_lg[$delta]) && $column_size_lg[$delta] !== 'none') {
         $column_classes->addClass('col-lg-' . $column_size_lg[$delta]);
+      }
+      if (isset($column_size_xl[$delta]) && !empty($column_size_xl[$delta]) && $column_size_xl[$delta] !== 'none') {
+        $column_classes->addClass('col-xl-' . $column_size_xl[$delta]);
       }
     }
 
