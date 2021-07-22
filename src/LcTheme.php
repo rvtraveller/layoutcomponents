@@ -3,6 +3,7 @@
 namespace Drupal\layoutcomponents;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\node\Entity\Node;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Layout\LayoutPluginManager;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -93,7 +94,12 @@ class LcTheme implements ContainerInjectionInterface {
 
       $suggestions[] = 'layout__layoutcomponents_base__' . $layout->id();
 
-      $node = $this->routeMatch->getParameter('node');
+      $node = $this->getNodeFromSectionContent($variables);
+
+      if (!isset($node)) {
+        $node = $this->routeMatch->getParameter('node');
+      }
+
       if (isset($node)) {
         $suggestions[] = 'layout__layoutcomponents_base__' . (isset($class) ? ($class . '_') : '') . $layout->id() . '_' . $node->getType();
         $suggestions[] = 'layout__layoutcomponents_base__' . (isset($class) ? ($class . '_') : '') . $layout->id() . '_' . $node->id() . '_' . $node->getType();
@@ -114,7 +120,12 @@ class LcTheme implements ContainerInjectionInterface {
         $class = $class[0];
       }
       $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'];
-      $node = $this->routeMatch->getParameter('node');
+      $node = $this->getNodeFromRegionContent($variables);
+
+      if (!isset($node)) {
+        $node = $this->routeMatch->getParameter('node');
+      }
+
       if (isset($node)) {
         $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . (str_replace('-', '_', $node->getType()));
         $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . $node->id() . '__' . (str_replace('-', '_', $node->getType()));
@@ -134,6 +145,63 @@ class LcTheme implements ContainerInjectionInterface {
     $suggestions[] = 'layoutcomponents_block_content__' . $block_content->id();
 
     return $suggestions;
+  }
+
+  /**
+   * Method to determine the current node type of section.
+   *
+   * @param array $variables
+   *   The complete array.
+   *
+   * @return string|NULL
+   *   The type of node.
+   */
+  public function getNodeFromSectionContent(array $variables) {
+    /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
+    $layout = $variables['content']['#layout'];
+
+    $node = NULL;
+    foreach ($layout->getRegionNames() as $delta => $region_name) {
+      foreach ($variables['content'][$region_name] as $block) {
+        if (!array_key_exists('#base_plugin_id', $block) || $block['#base_plugin_id'] !== 'field_block') {
+          continue;
+        }
+        if ($block['content']['#object'] instanceof Node) {
+          $node = $block['content']['#object'];
+        }
+      }
+    }
+
+    return $node;
+  }
+
+  /**
+   * Method to determine the current node type of region.
+   *
+   * @param array $variables
+   *   The complete array.
+   *
+   * @return string|NULL
+   *   The type of node.
+   */
+  public function getNodeFromRegionContent(array $variables) {
+    $node = NULL;
+    foreach ($variables['region']['content'] as $block) {
+      if (is_array($block)) {
+        if (array_key_exists('#group', $block)) {
+          foreach ($block['#content'] as $delta => $block_content) {
+            if (!array_key_exists('#base_plugin_id', $block_content) || $block_content['#base_plugin_id'] !== 'field_block') {
+              continue;
+            }
+            if ($block_content['content']['#object'] instanceof Node) {
+              $node = $block_content['content']['#object'];
+            }
+          }
+        }
+      }
+    }
+
+    return $node;
   }
 
   /**
