@@ -925,7 +925,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'description' => $this->t('Set extra classes in this column, ej. myClass1,myClass2'),
             'default_value' => $styles['misc']['extra_class'],
             'attributes' => [
-              'placeholder' => $this->t('Ej. myclass1 myclass2'),
+              'placeholder' => $this->t('Ej. myClass1,myClass2'),
               'lc' => [
                 'type' => 'class',
                 'style' => 'extra_class',
@@ -1199,7 +1199,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'description' => $this->t('Set extra classes for title, ilegal character will be removed automatically'),
             'default_value' => $styles['misc']['title_extra_class'],
             'attributes' => [
-              'placeholder' => $this->t('Ej. myclass1 myclass2'),
+              'placeholder' => $this->t('Ej. myClass1,myClass2'),
               'lc' => [
                 'type' => 'class',
                 'style' => 'extra_class',
@@ -1584,7 +1584,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'description' => $this->t('Set extra classes, ilegal character will be removed automatically'),
             'default_value' => $styles['misc']['extra_class'],
             'attributes' => [
-              'placeholder' => $this->t('Ej. myclass1 myclass2'),
+              'placeholder' => $this->t('Ej. myClass1,myClass2'),
               'lc' => [
                 'type' => 'class',
                 'style' => 'extra_class',
