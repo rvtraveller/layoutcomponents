@@ -236,7 +236,7 @@ class LcChooseBlockController extends ChooseBlockController {
     $blocks_type = $this->blockManager->getGroupedDefinitions($definitions);
     foreach ($build['links']['#links'] as $key => $link) {
       $blockId = [];
-      foreach ($blocks_type['Inline blocks'] as $name => $type) {
+      foreach ($blocks_type[$this->t('Inline blocks')->render()] as $name => $type) {
         $admin_label = isset($type['admin_label']) ? $type['admin_label'] : NULL;
         $link_title = isset($link['title']) ? $link['title'] : NULL;
         if ($admin_label == $link_title) {
