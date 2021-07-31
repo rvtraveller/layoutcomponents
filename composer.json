@@ -44,7 +44,6 @@
         "drupal/panelbutton": "*",
         "drupal/video_embed_field": "*",
         "drupal/viewsreference": "*",
-        "drupal/webform": "^6.0",
         "drupal/ctools": "*",
         "drupal/media_library_form_element": "^1.0",
         "drupal/inline_entity_form": "*",
