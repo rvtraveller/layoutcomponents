@@ -4,7 +4,7 @@ namespace Drupal\layoutcomponents;
 
 use Drupal\Core\Config\CachedStorage;
 use Drupal\Core\Config\ConfigFactory;
-use Drupal\Component\Uuid\Pecl;
+use Drupal\Component\Uuid\UuidInterface;
 use Drupal\Core\Config\FileStorage;
 
 /**
@@ -29,7 +29,7 @@ class LcUpdateManager {
   /**
    * Section options.
    *
-   * @var \Drupal\Component\Uuid\Pecl
+   * @var \Drupal\Component\Uuid\UuidInterface
    */
   protected $uuid;
 
@@ -40,10 +40,10 @@ class LcUpdateManager {
    *   The Cached Storage service.
    * @param \Drupal\Core\Config\ConfigFactory $config_factory
    *   The Config factory service.
-   * @param \Drupal\Component\Uuid\Pecl $uuid
+   * @param \Drupal\Component\Uuid\UuidInterface $uuid
    *   The uuid service.
    */
-  public function __construct(CachedStorage $config_storage, ConfigFactory $config_factory, Pecl $uuid) {
+  public function __construct(CachedStorage $config_storage, ConfigFactory $config_factory, UuidInterface $uuid) {
     $this->configStorage = $config_storage;
     $this->configFactory = $config_factory;
     $this->uuid = $uuid;
