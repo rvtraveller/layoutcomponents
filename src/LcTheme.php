@@ -101,8 +101,8 @@ class LcTheme implements ContainerInjectionInterface {
       }
 
       if (isset($node)) {
-        $suggestions[] = 'layout__layoutcomponents_base__' . (isset($class) ? ($class . '_') : '') . $layout->id() . '_' . $node->getType();
-        $suggestions[] = 'layout__layoutcomponents_base__' . (isset($class) ? ($class . '_') : '') . $layout->id() . '_' . $node->id() . '_' . $node->getType();
+        $suggestions[] = 'layout__layoutcomponents_base__' . ((!empty($class)) ? ($class . '_') : '') . $layout->id() . '_' . $node->getType();
+        $suggestions[] = 'layout__layoutcomponents_base__' . ((!empty($class)) ? ($class . '_') : '') . $layout->id() . '_' . $node->id() . '_' . $node->getType();
       }
     }
   }
@@ -119,7 +119,7 @@ class LcTheme implements ContainerInjectionInterface {
       if (is_array($class)) {
         $class = $class[0];
       }
-      $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'];
+      $suggestions[] = 'layout__layoutcomponents_region__' . (!empty($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'];
       $node = $this->getNodeFromRegionContent($variables);
 
       if (!isset($node)) {
@@ -127,8 +127,8 @@ class LcTheme implements ContainerInjectionInterface {
       }
 
       if (isset($node)) {
-        $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . (str_replace('-', '_', $node->getType()));
-        $suggestions[] = 'layout__layoutcomponents_region__' . (isset($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . $node->id() . '__' . (str_replace('-', '_', $node->getType()));
+        $suggestions[] = 'layout__layoutcomponents_region__' . (!empty($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . (str_replace('-', '_', $node->getType()));
+        $suggestions[] = 'layout__layoutcomponents_region__' . (!empty($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . $node->id() . '__' . (str_replace('-', '_', $node->getType()));
       }
     }
   }
