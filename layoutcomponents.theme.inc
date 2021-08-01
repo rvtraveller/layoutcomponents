@@ -6,6 +6,7 @@
  */
 
 use Drupal\layoutcomponents\LcLayout;
+use Drupal\layoutcomponents\Event\LcPreprocessLayoutEvent;
 
 /**
  * Preprocess lc theme.
@@ -25,6 +26,11 @@ function _layoutcomponents_preprocess_layout(array &$variables) {
 
   // Custom render class.
   $layout = new LcLayout($layout_definition->id(), $variables['settings'], $variables['content'], $variables['attributes']);
+
+  // Dispatch the event.
+  $event = new LcPreprocessLayoutEvent($layout);
+  $event_dispatcher = \Drupal::service('event_dispatcher');
+  $event_dispatcher->dispatch(LcPreprocessLayoutEvent::LC_LAYOUT, $event);
 
   $variables['lc_admin'] = FALSE;
   $route = \Drupal::routeMatch()->getRouteObject();

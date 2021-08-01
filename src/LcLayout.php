@@ -81,6 +81,16 @@ class LcLayout {
   }
 
   /**
+   * Sets the layout identifier.
+   *
+   * @param string $id
+   *   The layout identifier.
+   */
+  public function setId($id) {
+    $this->data['id'] = $id;
+  }
+
+  /**
    * Retrieves the delta.
    *
    * @return int
@@ -132,6 +142,26 @@ class LcLayout {
   }
 
   /**
+   * Retrieves the content array.
+   *
+   * @return array
+   *   An associative array of region settings.
+   */
+  public function getContent() {
+    return $this->data['content'];
+  }
+
+  /**
+   * Set the content array.
+   *
+   * @param array $content
+   *   The array with region content.
+   */
+  public function setContent(array $content) {
+    $this->data['content'] = $content;
+  }
+
+  /**
    * Retrieves the region content.
    *
    * @param string $region
@@ -148,17 +178,32 @@ class LcLayout {
   }
 
   /**
-   * Sets the layout identifier.
+   * Set the region content.
    *
-   * @param string $id
-   *   The layout identifier.
-   *
-   * @return string|null
-   *   Return the object.
+   * @param $region
+   *   The region.
+   * @param array $content
+   *   The array with region content.
    */
-  public function setId($id) {
-    $this->data['id'] = $id;
-    return $this;
+  public function setRegionContent($region, array $content) {
+    if (isset($this->data['content'][$region])) {
+      $this->data['content'][$region] = $content;
+    }
+  }
+
+  /**
+   * Removes a layout region.
+   *
+   * @param string $name
+   *   The layout region to remove.
+   *
+   * @return mixed
+   *   The region that was removed.
+   */
+  public function unsetRegion($name) {
+    $old = isset($this->data['regions'][$name]) ? $this->data['regions'][$name] : NULL;
+    unset($this->data['regions'][$name]);
+    return $old;
   }
 
   /**
@@ -172,22 +217,6 @@ class LcLayout {
    */
   public function setPath($path) {
     $this->data['path'] = $path;
-    return $this;
-  }
-
-  /**
-   * Sets a specific layout region.
-   *
-   * @param string $name
-   *   The layout region name.
-   * @param mixed $value
-   *   The layout region value.
-   *
-   * @return \Drupal\layoutcomponents\LcLayout
-   *   The current BootstrapLayout instance.
-   */
-  public function setRegion($name, $value = NULL) {
-    $this->data['regions'][$name] = $value;
     return $this;
   }
 
@@ -215,21 +244,6 @@ class LcLayout {
   }
 
   /**
-   * Removes a layout region.
-   *
-   * @param string $name
-   *   The layout region to remove.
-   *
-   * @return mixed
-   *   The region that was removed.
-   */
-  public function unsetRegion($name) {
-    $old = isset($this->data['regions'][$name]) ? $this->data['regions'][$name] : NULL;
-    unset($this->data['regions'][$name]);
-    return $old;
-  }
-
-  /**
    * Removes a layout setting.
    *
    * @param string $name
@@ -242,6 +256,16 @@ class LcLayout {
     $old = isset($this->data['settings'][$name]) ? $this->data['settings'][$name] : NULL;
     unset($this->data['settings'][$name]);
     return $old;
+  }
+
+  /**
+   * Get the original content.
+   *
+   * @return array
+   *   An associative array of region settings.
+   */
+  public function getOriginalContent() {
+    return $this->data['original'];
   }
 
   /**
