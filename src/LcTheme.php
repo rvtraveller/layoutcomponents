@@ -248,6 +248,15 @@ class LcTheme implements ContainerInjectionInterface {
         $theme_registry[$theme_hook]['base hook'] = 'layout__layoutcomponents_base';
       }
     }
+
+    // Remove each default template_preprocess_layout.
+    // Regions does not contain 'content' array.
+    // If not, layout discovery return an error.
+    foreach ($theme_registry['layout__layoutcomponents_region']['preprocess functions'] as $key => $value){
+      if ($value == 'template_preprocess_layout') {
+        unset($theme_registry['layout__layoutcomponents_region']['preprocess functions'][$key]);
+      }
+    }
   }
 
   /**
