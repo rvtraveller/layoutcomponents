@@ -19,7 +19,7 @@
 .block-inline-blocksimple-text-with-hover-image .field--name-field-media-image img {
   width: 100%;
   height: 300px;
-  object-fit: fill;
+  object-fit: cover;
 }
 .block-inline-blocksimple-text-with-hover-image:hover .field--name-field-media-image {
   visibility: visible;
