@@ -29,7 +29,10 @@
  * @ingroup themeable
  */
 #}
-<div{{attributes}}>
+
+{% set color = content['#block_content'].field_stwi_background_color.color  %}
+
+<div{{attributes}} style="background: {{ color }}">
   {{ title_prefix }}
   {% if label %}
     <h2{{title_attributes}}>{{ label }}</h2>
@@ -37,7 +40,6 @@
   {{ title_suffix }}
   {% block content %}
     {{ content.field_stwi_text }}
-    {{ content.field_stwi_background_color }}
     {{ content.field_stwi_image }}
   {% endblock %}
 </div>
