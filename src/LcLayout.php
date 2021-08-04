@@ -478,7 +478,7 @@ class LcLayout {
         $items[] = [
           'slide' => [
             '#type' => 'container',
-            '#theme' => 'layout__layoutcomponents_slick_region',
+            '#theme' => 'layoutcomponents__slick_region',
             '#content' => $item,
             '#attributes' => [
               'class' => ['lc-slick-column-wrapper'],
@@ -689,10 +689,7 @@ class LcLayout {
         }
 
         // Subregion attributes.
-        $subregion_classes = [
-          'lc-inline_subcolumn_type_' . $group . '-edit',
-          'js-layout-builder-column',
-        ];
+        $subregion_classes = [];
         if ($subregion_user_classes = explode(',', $subregions['classes'][$group])) {
           foreach ($subregion_user_classes as $subregion_class) {
             if (!empty($subregion_class)) {
@@ -700,11 +697,15 @@ class LcLayout {
             }
           }
         }
+
+        $subregion_classes[] = 'lc-inline_subcolumn_type_' . $group . '-edit';
+        $subregion_classes[] = 'js-layout-builder-column';
+
         $subregion_classes = array_unique($subregion_classes);
         $subregion_attributes = new Attribute();
         $subregion_attributes->addClass($subregion_classes);
         $content[] = [
-          '#theme' => 'layout__layoutcomponents_subregion',
+          '#theme' => 'layoutcomponents__subregion',
           '#subregion' => [
             'type' => $subregions['types'][$group],
             'attributes' => $subregion_attributes,
@@ -721,7 +722,7 @@ class LcLayout {
 
     // Store the region inside container width custom theme.
     $new_region = [
-      '#theme' => 'layout__layoutcomponents_region',
+      '#theme' => 'layoutcomponents__region',
       '#region' => $this->getSetting('regions.' . $name),
       '#key' => $name,
     ];

@@ -28,16 +28,7 @@ function layoutcomponents_theme() {
 function layoutcomponents_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
   \Drupal::service('class_resolver')
     ->getInstanceFromDefinition(LcTheme::class)
-    ->themeSuggestionsLayoutLayoutcomponentsBase($suggestions, $variables, $hook);
-}
-
-/**
- * Implements hook_theme_suggestions_HOOK().
- */
-function layoutcomponents_theme_suggestions_layout__layoutcomponents_region_alter(array &$suggestions, array $variables, $hook) {
-  return \Drupal::service('class_resolver')
-    ->getInstanceFromDefinition(LcTheme::class)
-    ->themeSuggestionsLayoutLayoutcomponentsRegion($suggestions, $variables, $hook);
+    ->themeSuggestionsLayoutLayoutcomponents($suggestions, $variables, $hook);
 }
 
 /**

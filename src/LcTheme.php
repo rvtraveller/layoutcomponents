@@ -55,19 +55,19 @@ class LcTheme implements ContainerInjectionInterface {
       'layoutcomponents_block_content' => [
         'render element' => 'elements',
       ],
-      'layout__layoutcomponents_slick_region' => [
+      'layoutcomponents__slick_region' => [
         'variables' => [
           'content' => NULL,
         ],
         'render element' => 'elements',
       ],
-      'layout__layoutcomponents_region' => [
+      'layoutcomponents__region' => [
         'variables' => [
           'region' => NULL,
           'key' => NULL,
         ],
       ],
-      'layout__layoutcomponents_subregion' => [
+      'layoutcomponents__subregion' => [
         'variables' => [
           'subregion' => NULL,
           'content' => NULL,
@@ -81,7 +81,7 @@ class LcTheme implements ContainerInjectionInterface {
    *
    * @see \hook_theme_suggestions_HOOK()
    */
-  public function themeSuggestionsLayoutLayoutcomponentsBase(array &$suggestions, array $variables, $hook) {
+  public function themeSuggestionsLayoutLayoutcomponents(array &$suggestions, array $variables, $hook) {
     if ($hook == 'layout__layoutcomponents_base') {
       $classes = $variables['content']['#settings']['section']['styles']['misc']['extra_class'];
       $class = explode(',', $classes);
@@ -105,21 +105,14 @@ class LcTheme implements ContainerInjectionInterface {
         $suggestions[] = 'layout__layoutcomponents_base__' . ((!empty($class)) ? ($class . '_') : '') . $layout->id() . '_' . $node->id() . '_' . $node->getType();
       }
     }
-  }
 
-  /**
-   * Implements hook_theme_suggestions_HOOK() for LC sections.
-   *
-   * @see \hook_theme_suggestions_HOOK()
-   */
-  public function themeSuggestionsLayoutLayoutcomponentsRegion(array &$suggestions, array $variables, $hook) {
-    if ($hook == 'layout__layoutcomponents_region') {
+    if ($hook == 'layoutcomponents__region') {
       $classes = $variables['region']['styles']['misc']['extra_class'];
       $class = explode(',', $classes);
       if (is_array($class)) {
         $class = $class[0];
       }
-      $suggestions[] = 'layout__layoutcomponents_region__' . (!empty($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'];
+      $suggestions[] = 'layoutcomponents__region__' . (!empty($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'];
       $node = $this->getNodeFromRegionContent($variables);
 
       if (!isset($node)) {
@@ -127,8 +120,34 @@ class LcTheme implements ContainerInjectionInterface {
       }
 
       if (isset($node)) {
-        $suggestions[] = 'layout__layoutcomponents_region__' . (!empty($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . (str_replace('-', '_', $node->getType()));
-        $suggestions[] = 'layout__layoutcomponents_region__' . (!empty($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . $node->id() . '__' . (str_replace('-', '_', $node->getType()));
+        $suggestions[] = 'layoutcomponents__region__' . (!empty($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . (str_replace('-', '_', $node->getType()));
+        $suggestions[] = 'layoutcomponents__region__' . (!empty($class) ? (str_replace('-', '_', $class) . '_') : '') . $variables['key'] . '_' . $node->id() . '_' . (str_replace('-', '_', $node->getType()));
+      }
+    }
+
+    if ($hook == 'layoutcomponents__subregion') {
+      /** @var \Drupal\Core\Template\Attribute $attributes */
+      $attributes = $variables['subregion']['attributes'];
+      $attributes_classes  =$attributes->getClass()->value();
+
+      $node = $this->getNodeFromRegionContent($variables, TRUE);
+      if (!isset($node)) {
+        $node = $this->routeMatch->getParameter('node');
+      }
+
+      $class = '';
+      if (count($attributes_classes) > 2) {
+        $class = $attributes_classes[0];
+      }
+
+      $suggestions[] = 'layoutcomponents__subregion__' . $node->getType();
+      $suggestions[] = 'layoutcomponents__subregion__' . $node->id();
+
+      if (!empty($class)) {
+        $suggestions[] = 'layoutcomponents__subregion__' . $class;
+        $suggestions[] = 'layoutcomponents__subregion__' . $class . '-' .$node->getType();
+        $suggestions[] = 'layoutcomponents__subregion__' . $class . '-' .$node->id();
+        $suggestions[] = 'layoutcomponents__subregion__' . $class . '-' .$node->getType() . '-' . $node->id();
       }
     }
   }
@@ -184,9 +203,15 @@ class LcTheme implements ContainerInjectionInterface {
    * @return string|NULL
    *   The type of node.
    */
-  public function getNodeFromRegionContent(array $variables) {
+  public function getNodeFromRegionContent(array $variables, $isSubregion = FALSE) {
     $node = NULL;
-    foreach ($variables['region']['content'] as $block) {
+    if ($isSubregion) {
+      $content = $variables['content'];
+    }
+    else {
+      $content = $variables['region']['content'];
+    }
+    foreach ($content as $block) {
       if (is_array($block)) {
         if (array_key_exists('#group', $block)) {
           foreach ($block['#content'] as $delta => $block_content) {
@@ -252,11 +277,14 @@ class LcTheme implements ContainerInjectionInterface {
     // Remove each default template_preprocess_layout.
     // Regions does not contain 'content' array.
     // If not, layout discovery return an error.
-    foreach ($theme_registry['layout__layoutcomponents_region']['preprocess functions'] as $key => $value){
+    foreach ($theme_registry['layoutcomponents__region']['preprocess functions'] as $key => $value){
       if ($value == 'template_preprocess_layout') {
-        unset($theme_registry['layout__layoutcomponents_region']['preprocess functions'][$key]);
+        unset($theme_registry['layoutcomponents__region']['preprocess functions'][$key]);
       }
     }
+
+    $theme_registry['layoutcomponents__region']['base hook'] = 'layoutcomponents__region';
+    $theme_registry['layoutcomponents__subregion']['base hook'] = 'layoutcomponents__subregion';
   }
 
   /**
