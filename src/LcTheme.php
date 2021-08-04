@@ -140,14 +140,13 @@ class LcTheme implements ContainerInjectionInterface {
         $class = $attributes_classes[0];
       }
 
-      $suggestions[] = 'layoutcomponents__subregion__' . $node->getType();
-      $suggestions[] = 'layoutcomponents__subregion__' . $node->id();
+      if (isset($node)) {
+        $suggestions[] = 'layoutcomponents__subregion__' . $node->getType();
+        $suggestions[] = 'layoutcomponents__subregion__' . $node->id();
+      }
 
       if (!empty($class)) {
         $suggestions[] = 'layoutcomponents__subregion__' . $class;
-        $suggestions[] = 'layoutcomponents__subregion__' . $class . '-' .$node->getType();
-        $suggestions[] = 'layoutcomponents__subregion__' . $class . '-' .$node->id();
-        $suggestions[] = 'layoutcomponents__subregion__' . $class . '-' .$node->getType() . '-' . $node->id();
       }
     }
   }
