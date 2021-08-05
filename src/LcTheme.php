@@ -184,7 +184,7 @@ class LcTheme implements ContainerInjectionInterface {
         if (!array_key_exists('#base_plugin_id', $block) || $block['#base_plugin_id'] !== 'field_block') {
           continue;
         }
-        if ($block['content']['#object'] instanceof Node) {
+        if (array_key_exists('#object', $block['content']) && $block['content']['#object'] instanceof Node) {
           $node = $block['content']['#object'];
         }
       }
