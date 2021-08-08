@@ -11,7 +11,7 @@ id: block_content.simple_card_with_float_text.field_scwft_long_description_bac
 field_name: field_scwft_long_description_bac
 entity_type: block_content
 bundle: simple_card_with_float_text
-label: 'Long Description Background'
+label: 'Background Color'
 description: 'Set the long description background color of this card'
 required: false
 translatable: false

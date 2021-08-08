@@ -4,24 +4,34 @@ status: true
 dependencies:
   config:
     - block_content.type.simple_card_with_float_text
+    - field.field.block_content.simple_card_with_float_text.field_lft_position
     - field.field.block_content.simple_card_with_float_text.field_scwft_description
     - field.field.block_content.simple_card_with_float_text.field_scwft_extra_attributes
     - field.field.block_content.simple_card_with_float_text.field_scwft_extra_classes
     - field.field.block_content.simple_card_with_float_text.field_scwft_long_description
     - field.field.block_content.simple_card_with_float_text.field_scwft_long_description_bac
     - field.field.block_content.simple_card_with_float_text.field_scwft_media
+    - field.field.block_content.simple_card_with_float_text.field_scwft_sft_position
     - field.field.block_content.simple_card_with_float_text.field_scwft_short_description
     - field.field.block_content.simple_card_with_float_text.field_scwft_short_description_ba
-    - field.field.block_content.simple_card_with_float_text.field_scwft_short_description_po
+    - field.field.block_content.simple_card_with_float_text.field_scwft_subtitle
     - field.field.block_content.simple_card_with_float_text.field_scwft_title
     - field.field.block_content.simple_card_with_float_text.field_scwft_title_color
   module:
     - color_field
+    - options
 id: block_content.simple_card_with_float_text.default
 targetEntityType: block_content
 bundle: simple_card_with_float_text
 mode: default
 content:
+  field_lft_position:
+    weight: 15
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_scwft_description:
     weight: 1
     label: hidden
@@ -70,6 +80,13 @@ content:
       link: false
     third_party_settings: {  }
     region: content
+  field_scwft_sft_position:
+    weight: 14
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_scwft_short_description:
     weight: 6
     label: hidden
@@ -87,15 +104,13 @@ content:
     third_party_settings: {  }
     type: color_field_formatter_text
     region: content
-  field_scwft_short_description_po:
-    weight: 8
+  field_scwft_subtitle:
+    weight: 13
     label: hidden
     settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
+      link_to_entity: false
     third_party_settings: {  }
-    type: boolean
+    type: string
     region: content
   field_scwft_title:
     weight: 0
@@ -116,3 +131,4 @@ content:
     region: content
 hidden:
   langcode: true
+  search_api_excerpt: true

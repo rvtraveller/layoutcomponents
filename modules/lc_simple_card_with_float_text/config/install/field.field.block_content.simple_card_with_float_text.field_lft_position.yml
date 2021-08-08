@@ -1,0 +1,21 @@
+uuid: 603034c4-a7c8-4046-9cc4-d6a8ada028c5
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_card_with_float_text
+    - field.storage.block_content.field_lft_position
+  module:
+    - options
+id: block_content.simple_card_with_float_text.field_lft_position
+field_name: field_lft_position
+entity_type: block_content
+bundle: simple_card_with_float_text
+label: Position
+description: 'Set the position of long float text'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -9,8 +9,8 @@ id: block_content.simple_card_with_float_text.field_scwft_short_description
 field_name: field_scwft_short_description
 entity_type: block_content
 bundle: simple_card_with_float_text
-label: 'Short Description'
-description: 'Set the shorst description of this card'
+label: 'Short Float Text'
+description: 'Set the short float text of this card'
 required: false
 translatable: false
 default_value: {  }

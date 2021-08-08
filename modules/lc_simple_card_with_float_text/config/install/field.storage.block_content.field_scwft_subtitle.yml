@@ -1,14 +1,17 @@
-uuid: be315af1-4168-4c02-981d-6b4a940f9a9e
+uuid: 3908f52d-a82e-44f6-88ea-adfc8f3cd713
 langcode: es
 status: true
 dependencies:
   module:
     - block_content
-id: block_content.field_scwft_short_description_po
-field_name: field_scwft_short_description_po
+id: block_content.field_scwft_subtitle
+field_name: field_scwft_subtitle
 entity_type: block_content
-type: boolean
-settings: {  }
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
 module: core
 locked: false
 cardinality: 1

@@ -1,0 +1,21 @@
+uuid: dc8e5c6c-0226-4fa3-9df9-b8eda1b7d90d
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_card_with_float_text
+    - field.storage.block_content.field_scwft_sft_position
+  module:
+    - options
+id: block_content.simple_card_with_float_text.field_scwft_sft_position
+field_name: field_scwft_sft_position
+entity_type: block_content
+bundle: simple_card_with_float_text
+label: Position
+description: 'Set the position of short float text'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

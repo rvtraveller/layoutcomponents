@@ -11,7 +11,7 @@ id: block_content.simple_card_with_float_text.field_scwft_title_color
 field_name: field_scwft_title_color
 entity_type: block_content
 bundle: simple_card_with_float_text
-label: 'Title Color'
+label: Color
 description: 'Set the title color of this card'
 required: false
 translatable: false

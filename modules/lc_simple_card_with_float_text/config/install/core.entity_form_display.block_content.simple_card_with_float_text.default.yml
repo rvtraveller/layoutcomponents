@@ -4,15 +4,17 @@ status: true
 dependencies:
   config:
     - block_content.type.simple_card_with_float_text
+    - field.field.block_content.simple_card_with_float_text.field_lft_position
     - field.field.block_content.simple_card_with_float_text.field_scwft_description
     - field.field.block_content.simple_card_with_float_text.field_scwft_extra_attributes
     - field.field.block_content.simple_card_with_float_text.field_scwft_extra_classes
     - field.field.block_content.simple_card_with_float_text.field_scwft_long_description
     - field.field.block_content.simple_card_with_float_text.field_scwft_long_description_bac
     - field.field.block_content.simple_card_with_float_text.field_scwft_media
+    - field.field.block_content.simple_card_with_float_text.field_scwft_sft_position
     - field.field.block_content.simple_card_with_float_text.field_scwft_short_description
     - field.field.block_content.simple_card_with_float_text.field_scwft_short_description_ba
-    - field.field.block_content.simple_card_with_float_text.field_scwft_short_description_po
+    - field.field.block_content.simple_card_with_float_text.field_scwft_subtitle
     - field.field.block_content.simple_card_with_float_text.field_scwft_title
     - field.field.block_content.simple_card_with_float_text.field_scwft_title_color
   module:
@@ -37,6 +39,7 @@ third_party_settings:
     group_general:
       children:
         - field_scwft_title
+        - field_scwft_subtitle
         - field_scwft_description
         - field_scwft_media
         - field_scwft_long_description
@@ -55,6 +58,8 @@ third_party_settings:
     group_styles:
       children:
         - group_background_color
+        - group_short_float_text
+        - group_long_float_text
         - group_misc
       parent_name: group_info
       weight: 13
@@ -70,26 +75,23 @@ third_party_settings:
     group_background_color:
       children:
         - field_scwft_title_color
-        - field_scwft_long_description_bac
-        - field_scwft_short_description_ba
       parent_name: group_styles
-      weight: 20
+      weight: 22
       format_type: details
       region: content
       format_settings:
+        description: ''
+        required_fields: true
         id: ''
         classes: ''
-        description: ''
         open: false
-        required_fields: true
-      label: 'Background Color'
+      label: Title
     group_misc:
       children:
-        - field_scwft_short_description_po
         - field_scwft_extra_classes
         - field_scwft_extra_attributes
       parent_name: group_styles
-      weight: 21
+      weight: 25
       format_type: details
       region: content
       format_settings:
@@ -99,13 +101,49 @@ third_party_settings:
         open: false
         required_fields: true
       label: Misc
+    group_short_float_text:
+      children:
+        - field_scwft_short_description_ba
+        - field_scwft_sft_position
+      parent_name: group_styles
+      weight: 23
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: 'Short Float text'
+    group_long_float_text:
+      children:
+        - field_scwft_long_description_bac
+        - field_lft_position
+      parent_name: group_styles
+      weight: 24
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Long Float Text'
 id: block_content.simple_card_with_float_text.default
 targetEntityType: block_content
 bundle: simple_card_with_float_text
 mode: default
 content:
+  field_lft_position:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_scwft_description:
-    weight: 4
+    weight: 5
     settings:
       rows: 5
       placeholder: ''
@@ -129,7 +167,7 @@ content:
     type: string_textfield
     region: content
   field_scwft_long_description:
-    weight: 6
+    weight: 7
     settings:
       rows: 5
       placeholder: ''
@@ -139,19 +177,25 @@ content:
   field_scwft_long_description_bac:
     weight: 7
     settings:
-      default_colors: '#ac725e,#d06b64,#f83a22,#fa573c,#ff7537,#ffad46,#42d692,#16a765,#7bd148,#b3dc6c,#fbe983,#92e1c0,#9fe1e7,#9fc6e7,#4986e7,#9a9cff,#b99aff,#c2c2c2,#cabdbf,#cca6ac,#f691b2,#cd74e6,#a47ae2'
+      default_colors: '#a49c82,#658e69,#2a6677,#f2f2ec,#981e32,#000000,#ffffff'
     third_party_settings: {  }
     type: color_field_widget_box
     region: content
   field_scwft_media:
     type: media_library_widget
-    weight: 5
+    weight: 6
     settings:
       media_types: {  }
     third_party_settings: {  }
     region: content
+  field_scwft_sft_position:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_scwft_short_description:
-    weight: 7
+    weight: 8
     settings:
       size: 60
       placeholder: ''
@@ -161,16 +205,17 @@ content:
   field_scwft_short_description_ba:
     weight: 8
     settings:
-      default_colors: '#ac725e,#d06b64,#f83a22,#fa573c,#ff7537,#ffad46,#42d692,#16a765,#7bd148,#b3dc6c,#fbe983,#92e1c0,#9fe1e7,#9fc6e7,#4986e7,#9a9cff,#b99aff,#c2c2c2,#cabdbf,#cca6ac,#f691b2,#cd74e6,#a47ae2'
+      default_colors: '#a49c82,#658e69,#2a6677,#f2f2ec,#981e32,#000000,#ffffff'
     third_party_settings: {  }
     type: color_field_widget_box
     region: content
-  field_scwft_short_description_po:
-    weight: 22
+  field_scwft_subtitle:
+    weight: 4
     settings:
-      display_label: true
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: boolean_checkbox
+    type: string_textfield
     region: content
   field_scwft_title:
     weight: 3
@@ -183,7 +228,7 @@ content:
   field_scwft_title_color:
     weight: 6
     settings:
-      default_colors: '#ac725e,#d06b64,#f83a22,#fa573c,#ff7537,#ffad46,#42d692,#16a765,#7bd148,#b3dc6c,#fbe983,#92e1c0,#9fe1e7,#9fc6e7,#4986e7,#9a9cff,#b99aff,#c2c2c2,#cabdbf,#cca6ac,#f691b2,#cd74e6,#a47ae2'
+      default_colors: '#a49c82,#658e69,#2a6677,#f2f2ec,#981e32,#000000,#ffffff'
     third_party_settings: {  }
     type: color_field_widget_box
     region: content

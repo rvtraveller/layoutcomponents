@@ -9,8 +9,8 @@ id: block_content.simple_card_with_float_text.field_scwft_long_description
 field_name: field_scwft_long_description
 entity_type: block_content
 bundle: simple_card_with_float_text
-label: 'Long Description'
-description: 'Set the long description of this card'
+label: 'Long Float Text'
+description: 'Set the Long Float Text of this card'
 required: false
 translatable: false
 default_value: {  }
