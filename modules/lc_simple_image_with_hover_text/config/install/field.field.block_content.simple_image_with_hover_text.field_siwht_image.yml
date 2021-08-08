@@ -14,7 +14,7 @@ entity_type: block_content
 bundle: simple_image_with_hover_text
 label: Image
 description: 'Set the image of this card'
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
