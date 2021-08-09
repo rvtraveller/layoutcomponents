@@ -1,0 +1,19 @@
+uuid: 5697d330-11e9-4bb7-9821-2d0db91cdec4
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_with_top_float_text
+    - field.storage.block_content.field_iwtft_extra_class
+id: block_content.simple_image_with_top_float_text.field_iwtft_extra_class
+field_name: field_iwtft_extra_class
+entity_type: block_content
+bundle: simple_image_with_top_float_text
+label: 'Extra Classes'
+description: 'Set the extra classes: ej. class1 class2'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

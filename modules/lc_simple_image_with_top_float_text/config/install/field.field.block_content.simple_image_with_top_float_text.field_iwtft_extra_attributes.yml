@@ -1,0 +1,19 @@
+uuid: d4817a65-e50b-4722-8a7c-afaf4940f0ed
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_with_top_float_text
+    - field.storage.block_content.field_iwtft_extra_attributes
+id: block_content.simple_image_with_top_float_text.field_iwtft_extra_attributes
+field_name: field_iwtft_extra_attributes
+entity_type: block_content
+bundle: simple_image_with_top_float_text
+label: 'Extra attributes'
+description: 'Set the extra attributes of this timeline, ej. attr1|value'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

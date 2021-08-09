@@ -1,0 +1,4 @@
+lc_simple_image_with_top_float_text:
+  css:
+    layout:
+      css/lc_simple_image_with_top_float_text.css: {}

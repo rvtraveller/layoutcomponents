@@ -1,0 +1,19 @@
+uuid: 8593360e-f16c-4631-ab99-b8d520b26f16
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_with_top_float_text
+    - field.storage.block_content.field_iwtft_text
+id: block_content.simple_image_with_top_float_text.field_iwtft_text
+field_name: field_iwtft_text
+entity_type: block_content
+bundle: simple_image_with_top_float_text
+label: Text
+description: 'Set the text of this card'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

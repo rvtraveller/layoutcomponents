@@ -1,0 +1,7 @@
+name: Layout Components - Simple Image With Top Float Text
+type: module
+description: Simple Image with top float text
+package: LayoutComponents
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - drupal:layoutcomponents
