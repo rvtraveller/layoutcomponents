@@ -4,16 +4,16 @@ status: true
 dependencies:
   config:
     - block_content.type.simple_card_with_float_text
-    - field.field.block_content.simple_card_with_float_text.field_lft_position
     - field.field.block_content.simple_card_with_float_text.field_scwft_description
     - field.field.block_content.simple_card_with_float_text.field_scwft_extra_attributes
     - field.field.block_content.simple_card_with_float_text.field_scwft_extra_classes
     - field.field.block_content.simple_card_with_float_text.field_scwft_long_description
     - field.field.block_content.simple_card_with_float_text.field_scwft_long_description_bac
     - field.field.block_content.simple_card_with_float_text.field_scwft_media
-    - field.field.block_content.simple_card_with_float_text.field_scwft_sft_position
+    - field.field.block_content.simple_card_with_float_text.field_scwft_sft_color
     - field.field.block_content.simple_card_with_float_text.field_scwft_short_description
     - field.field.block_content.simple_card_with_float_text.field_scwft_short_description_ba
+    - field.field.block_content.simple_card_with_float_text.field_scwft_short_position
     - field.field.block_content.simple_card_with_float_text.field_scwft_subtitle
     - field.field.block_content.simple_card_with_float_text.field_scwft_title
     - field.field.block_content.simple_card_with_float_text.field_scwft_title_color
@@ -103,8 +103,9 @@ third_party_settings:
       label: Misc
     group_short_float_text:
       children:
+        - field_scwft_sft_color
         - field_scwft_short_description_ba
-        - field_scwft_sft_position
+        - field_scwft_short_position
       parent_name: group_styles
       weight: 23
       format_type: details
@@ -119,7 +120,6 @@ third_party_settings:
     group_long_float_text:
       children:
         - field_scwft_long_description_bac
-        - field_lft_position
       parent_name: group_styles
       weight: 24
       format_type: details
@@ -136,12 +136,6 @@ targetEntityType: block_content
 bundle: simple_card_with_float_text
 mode: default
 content:
-  field_lft_position:
-    weight: 8
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   field_scwft_description:
     weight: 5
     settings:
@@ -188,11 +182,12 @@ content:
       media_types: {  }
     third_party_settings: {  }
     region: content
-  field_scwft_sft_position:
-    weight: 9
-    settings: {  }
+  field_scwft_sft_color:
+    weight: 26
+    settings:
+      default_colors: '#a49c82,#658e69,#2a6677,#f2f2ec,#981e32,#000000,#ffffff'
     third_party_settings: {  }
-    type: options_select
+    type: color_field_widget_box
     region: content
   field_scwft_short_description:
     weight: 8
@@ -203,11 +198,18 @@ content:
     type: string_textfield
     region: content
   field_scwft_short_description_ba:
-    weight: 8
+    weight: 27
     settings:
       default_colors: '#a49c82,#658e69,#2a6677,#f2f2ec,#981e32,#000000,#ffffff'
     third_party_settings: {  }
     type: color_field_widget_box
+    region: content
+  field_scwft_short_position:
+    weight: 28
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_scwft_subtitle:
     weight: 4
