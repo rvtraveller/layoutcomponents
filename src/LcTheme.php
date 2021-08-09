@@ -180,12 +180,14 @@ class LcTheme implements ContainerInjectionInterface {
 
     $node = NULL;
     foreach ($layout->getRegionNames() as $delta => $region_name) {
-      foreach ($variables['content'][$region_name] as $block) {
-        if (!array_key_exists('#base_plugin_id', $block) || $block['#base_plugin_id'] !== 'field_block') {
-          continue;
-        }
-        if (array_key_exists('#object', $block['content']) && $block['content']['#object'] instanceof Node) {
-          $node = $block['content']['#object'];
+      if (array_key_exists($region_name, $variables['content'])) {
+        foreach ($variables['content'][$region_name] as $block) {
+          if (!array_key_exists('#base_plugin_id', $block) || $block['#base_plugin_id'] !== 'field_block') {
+            continue;
+          }
+          if (array_key_exists('#object', $block['content']) && $block['content']['#object'] instanceof Node) {
+            $node = $block['content']['#object'];
+          }
         }
       }
     }
