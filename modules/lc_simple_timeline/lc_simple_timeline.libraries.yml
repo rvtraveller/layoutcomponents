@@ -1,0 +1,6 @@
+lc_simple_timeline:
+  css:
+    layout:
+      css/lc_simple_timeline.css: {}
+  js:
+    js/lc_simple_timeline.js: {}

@@ -1,0 +1,63 @@
+uuid: 6017c567-6ce1-4765-a2ef-017798dcef27
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_timeline
+    - field.field.block_content.simple_timeline.field_stim_description
+    - field.field.block_content.simple_timeline.field_stim_extra_attributes
+    - field.field.block_content.simple_timeline.field_stim_extra_class
+    - field.field.block_content.simple_timeline.field_stim_item
+    - field.field.block_content.simple_timeline.field_stim_title
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: YrxoE-3Sy5ZA6PXL8DKdXDUeH-bsumwsQpioTPA6A34
+id: block_content.simple_timeline.default
+targetEntityType: block_content
+bundle: simple_timeline
+mode: default
+content:
+  field_stim_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_stim_extra_attributes:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_stim_extra_class:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_stim_item:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_stim_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

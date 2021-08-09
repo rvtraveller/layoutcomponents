@@ -1,0 +1,142 @@
+uuid: 81da8d2d-cdca-4966-82a3-e837adaa973b
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_timeline
+    - field.field.block_content.simple_timeline.field_stim_description
+    - field.field.block_content.simple_timeline.field_stim_extra_attributes
+    - field.field.block_content.simple_timeline.field_stim_extra_class
+    - field.field.block_content.simple_timeline.field_stim_item
+    - field.field.block_content.simple_timeline.field_stim_title
+  module:
+    - field_group
+    - inline_entity_form
+third_party_settings:
+  field_group:
+    group_info:
+      children:
+        - group_general
+        - group_items
+        - group_styles
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: Info
+    group_general:
+      children:
+        - field_stim_title
+        - field_stim_description
+      parent_name: group_info
+      weight: 6
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: open
+        required_fields: true
+      label: General
+    group_styles:
+      children:
+        - field_stim_extra_attributes
+        - field_stim_extra_class
+      parent_name: group_info
+      weight: 8
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Styles
+    group_items:
+      children:
+        - field_stim_item
+      parent_name: group_info
+      weight: 7
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Items
+_core:
+  default_config_hash: Tc5wtzvguMwJXd7NOfy2Pb4lRsk2h2njQ5ofoUkrYsw
+id: block_content.simple_timeline.default
+targetEntityType: block_content
+bundle: simple_timeline
+mode: default
+content:
+  field_stim_description:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_stim_extra_attributes:
+    weight: 27
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_stim_extra_class:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_stim_item:
+    weight: 5
+    settings:
+      form_mode: default
+      label_singular: ''
+      label_plural: ''
+      collapsible: true
+      revision: false
+      override_labels: false
+      collapsed: false
+    third_party_settings: {  }
+    type: inline_entity_form_simple
+    region: content
+  field_stim_title:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

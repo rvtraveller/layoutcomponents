@@ -1,0 +1,10 @@
+uuid: 074ea788-ee5a-439e-8383-7f62ed4ee84b
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: bm-rs4NUGAZpBi-df3w9mJgBcyLEEzfhAVvXsnH27N8
+id: simple_timeline_item
+label: 'Timeline Item'
+revision: 0
+description: ''

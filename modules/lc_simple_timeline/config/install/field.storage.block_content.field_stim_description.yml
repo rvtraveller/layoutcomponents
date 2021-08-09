@@ -1,0 +1,21 @@
+uuid: 37d48648-c396-484e-9aeb-956dea36b5f7
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+_core:
+  default_config_hash: _LSCq7EGtzf1o4j5sobrAoQMhsxcCds1nGfKqUTV9hM
+id: block_content.field_stim_description
+field_name: field_stim_description
+entity_type: block_content
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

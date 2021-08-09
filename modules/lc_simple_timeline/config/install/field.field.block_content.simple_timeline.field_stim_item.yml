@@ -1,0 +1,33 @@
+uuid: a9c21014-d264-4674-8e89-c7046a73db3a
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_timeline
+    - block_content.type.simple_timeline_item
+    - field.storage.block_content.field_stim_item
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: szglPoM7MZF_v1ph1wfKsiRBBvE_-pUu2cozc37mZbo
+id: block_content.simple_timeline.field_stim_item
+field_name: field_stim_item
+entity_type: block_content
+bundle: simple_timeline
+label: Item
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      simple_timeline_item: simple_timeline_item
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: simple_timeline
+field_type: entity_reference_revisions

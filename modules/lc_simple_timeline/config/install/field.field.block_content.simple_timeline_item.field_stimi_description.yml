@@ -1,0 +1,21 @@
+uuid: 3cf522e9-0447-4fe9-a4e4-af3eaa0fc03c
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_timeline_item
+    - field.storage.block_content.field_stimi_description
+_core:
+  default_config_hash: K3HYANCp4AzIjmYnT8dHCpAWNeH4P6DmAPTeb008080
+id: block_content.simple_timeline_item.field_stimi_description
+field_name: field_stimi_description
+entity_type: block_content
+bundle: simple_timeline_item
+label: Description
+description: 'Set the description of this timeline item'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

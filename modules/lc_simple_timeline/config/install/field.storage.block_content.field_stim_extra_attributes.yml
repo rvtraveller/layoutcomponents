@@ -1,0 +1,23 @@
+uuid: f20ddb66-925c-42a4-ad22-d4862d762450
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+_core:
+  default_config_hash: vw6kO3JBNCvn9gsCzDSoilrIUQiJ0NK2RleH1m6en54
+id: block_content.field_stim_extra_attributes
+field_name: field_stim_extra_attributes
+entity_type: block_content
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

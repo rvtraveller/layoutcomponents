@@ -1,0 +1,21 @@
+uuid: e27b88a8-c082-495a-8a62-ccf21f0ed5c8
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_timeline
+    - field.storage.block_content.field_stim_title
+_core:
+  default_config_hash: SiyNfkLL3v445SCWD1keax-vavorh6OZ5mwoZax9RAk
+id: block_content.simple_timeline.field_stim_title
+field_name: field_stim_title
+entity_type: block_content
+bundle: simple_timeline
+label: Title
+description: 'Set the title of this timeline'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: bacaeaf0-0148-4a2a-a5f4-9e1bad3780c4
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_timeline
+    - field.storage.block_content.field_stim_extra_attributes
+_core:
+  default_config_hash: 7PW76_623NmMe5-mLyJFz_knLMp8Bsu6IkA29ghACx0
+id: block_content.simple_timeline.field_stim_extra_attributes
+field_name: field_stim_extra_attributes
+entity_type: block_content
+bundle: simple_timeline
+label: 'Extra attributes'
+description: 'Set the extra attributes of this timeline, ej. attr1|value'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

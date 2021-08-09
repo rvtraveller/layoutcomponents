@@ -1,0 +1,33 @@
+uuid: fb25cf89-a569-4c38-9247-d8e18e0077ce
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_timeline_item
+    - field.field.block_content.simple_timeline_item.field_stimi_description
+    - field.field.block_content.simple_timeline_item.field_stimi_title
+_core:
+  default_config_hash: 3QXUO2760CQ1Mcpkb82OPvsyQKgs06RJUb0GJ0sUhBI
+id: block_content.simple_timeline_item.default
+targetEntityType: block_content
+bundle: simple_timeline_item
+mode: default
+content:
+  field_stimi_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_stimi_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

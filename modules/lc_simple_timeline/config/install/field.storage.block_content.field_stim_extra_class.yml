@@ -1,0 +1,23 @@
+uuid: 4be7937f-47e0-44e9-8c3c-8def5cab6c47
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+_core:
+  default_config_hash: mMEsmTDzct19CGRCcN8JalwsiuhlGMUeCvPayABIbbI
+id: block_content.field_stim_extra_class
+field_name: field_stim_extra_class
+entity_type: block_content
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
