@@ -2,6 +2,8 @@ uuid: 7eb06fe2-ab2e-40b9-92a8-7c99145ee06b
 langcode: es
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: asrHP_m4RTuClJgw9fYY1ZByLIdfOYpW0ejeBwGcPeI
 id: simple_image_with_top_float_text
 label: 'Image with top float text'
 revision: 1

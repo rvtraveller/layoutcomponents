@@ -1,0 +1,18 @@
+uuid: cd94ce7e-2e39-4eac-9a8e-da2049ef363f
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.field_iwtft_right_position
+field_name: field_iwtft_right_position
+entity_type: block_content
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

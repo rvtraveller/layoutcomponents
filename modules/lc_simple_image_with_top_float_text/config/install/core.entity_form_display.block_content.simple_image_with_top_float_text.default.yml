@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_extra_attributes
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_extra_class
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_image
+    - field.field.block_content.simple_image_with_top_float_text.field_iwtft_right_position
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_text
   module:
     - field_group
@@ -43,6 +44,7 @@ third_party_settings:
       label: General
     group_styles:
       children:
+        - field_iwtft_right_position
         - field_iwtft_extra_attributes
         - field_iwtft_extra_class
       parent_name: group_info
@@ -56,13 +58,15 @@ third_party_settings:
         formatter: closed
         required_fields: true
       label: Styles
+_core:
+  default_config_hash: 9wUtJR0T6UGYPmnEJMtiP3ag24pywB7pRMNmmr9B_ak
 id: block_content.simple_image_with_top_float_text.default
 targetEntityType: block_content
 bundle: simple_image_with_top_float_text
 mode: default
 content:
   field_iwtft_extra_attributes:
-    weight: 26
+    weight: 29
     settings:
       size: 60
       placeholder: ''
@@ -70,7 +74,7 @@ content:
     type: string_textfield
     region: content
   field_iwtft_extra_class:
-    weight: 27
+    weight: 30
     settings:
       size: 60
       placeholder: ''
@@ -83,6 +87,13 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+    region: content
+  field_iwtft_right_position:
+    weight: 28
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_iwtft_text:
     weight: 4

@@ -7,7 +7,10 @@ dependencies:
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_extra_attributes
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_extra_class
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_image
+    - field.field.block_content.simple_image_with_top_float_text.field_iwtft_right_position
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_text
+_core:
+  default_config_hash: hHzSGfoeSVJ30cJ13Rklv5JiFAJROSXvQjBEZ9vSbXE
 id: block_content.simple_image_with_top_float_text.default
 targetEntityType: block_content
 bundle: simple_image_with_top_float_text
@@ -37,6 +40,16 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
+  field_iwtft_right_position:
+    weight: 4
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_iwtft_text:
     weight: 1

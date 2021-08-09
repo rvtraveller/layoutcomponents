@@ -1,0 +1,23 @@
+uuid: 75e67654-0d3f-45f2-ad77-fe19f5934dc3
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_with_top_float_text
+    - field.storage.block_content.field_iwtft_right_position
+id: block_content.simple_image_with_top_float_text.field_iwtft_right_position
+field_name: field_iwtft_right_position
+entity_type: block_content
+bundle: simple_image_with_top_float_text
+label: 'Right Position'
+description: 'Set the position of the text, checked = Right and uncheked = left'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: right
+  off_label: left
+field_type: boolean

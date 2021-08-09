@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - block_content
+_core:
+  default_config_hash: jn3736xDbyC7y2O3sa0kuVIIr6M669nZgqjQx5orWtA
 id: block_content.field_iwtft_text
 field_name: field_iwtft_text
 entity_type: block_content
