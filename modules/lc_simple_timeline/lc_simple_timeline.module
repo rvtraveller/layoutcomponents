@@ -2,7 +2,7 @@
 
 /**
  * @file
- * LC Simple text module file.
+ * LC Simple timeline module file.
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
