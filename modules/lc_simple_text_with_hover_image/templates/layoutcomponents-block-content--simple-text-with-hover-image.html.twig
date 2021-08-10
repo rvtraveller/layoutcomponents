@@ -29,11 +29,22 @@
  * @ingroup themeable
  */
 #}
+{%
+  set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  'block-layoutcomponents',
+  'block-layoutcomponents-parent'
+]
+%}
+
 
 {% set color = content['#block_content'].field_stwi_background_color.color  %}
 {% set uri = content['#block_content'].field_stwi_link.0.uri  %}
 
-<div{{attributes}} style="background: {{ color }}">
+<div{{ attributes.addClass(classes) }}>
+
   {{ title_prefix }}
   {% if label %}
     <h2{{title_attributes}}>{{ label }}</h2>

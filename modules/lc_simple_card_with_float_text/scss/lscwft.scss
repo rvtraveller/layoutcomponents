@@ -1,0 +1,54 @@
+.scwft-block{
+  text-align: center;
+  .scwft-title{
+    text-transform: uppercase;
+  }
+  .scwft-subtitle{
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .scwft-descrip{
+    margin-bottom: 20px;
+  }
+  .scwft-img {
+    position: relative;
+    .field--name-field-scwft-media{
+      width: 80%;
+      margin: 0 auto;
+    }
+    img{
+      width: 100%;
+      height: auto;
+
+    }
+    .scwft-shortdescrip{
+      position: absolute;
+      padding: 20px;
+      width: 30%;
+      min-height: 150px;
+      text-align: left;
+      &.b-lef{
+        bottom: -20%;
+        left: 0;
+      }
+      &.b-rig{
+        bottom: -20%;
+        right: 0;
+      }
+    }
+  }
+  .scwft-longdescrip{
+    text-align: left;
+    padding: 20px;
+    padding-top: 60px;
+    margin-top: -40px;
+    width: 70%;
+    &.b-lef{
+      float: left;
+    }
+    &.b-rig{
+      float: right;
+    }
+  }
+
+}
