@@ -57,14 +57,14 @@
       {% set longdescrip = 'b-lef' %}
     {% endif %}
 
-
     <div class="scwft-block">
       <h3 class="scwft-title" style="color:{{ content.field_scwft_title_color.0['#markup'] }}; ">{{ content.field_scwft_title }}</h3>
       <div class="scwft-subtitle">{{ content.field_scwft_subtitle }}</div>
       <div class="scwft-descrip">{{ content.field_scwft_description }}</div>
       <div class="scwft-img">
         {{ content.field_scwft_media }}
-        <div class="scwft-shortdescrip {{ shortdescrip }}"  style="background:{{ content.field_scwft_short_description_ba.0['#markup'] }};">{{ content.field_scwft_short_description.0}}</div>
+        <div class="scwft-shortdescrip {{ shortdescrip }}"  style="background:{{ content.field_scwft_short_description_ba.0['#markup'] }};
+                color:{{ content.field_scwft_sft_color.0['#markup'] }};">{{ content.field_scwft_short_description.0}}</div>
       </div>
       <div class="scwft-longdescrip {{ longdescrip }}"  style="background:{{ content.field_scwft_long_description_bac.0['#markup'] }};">{{ content.field_scwft_long_description.0 }}</div>
     </div>

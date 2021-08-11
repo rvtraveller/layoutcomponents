@@ -23,19 +23,18 @@
   height: auto;
 }
 .scwft-block .scwft-img .scwft-shortdescrip {
-  position: absolute;
+  position: relative;
   padding: 20px;
   width: 30%;
   min-height: 150px;
   text-align: left;
 }
 .scwft-block .scwft-img .scwft-shortdescrip.b-lef {
-  bottom: -20%;
-  left: 0;
+  float: left;
 }
 .scwft-block .scwft-img .scwft-shortdescrip.b-rig {
-  bottom: -20%;
-  right: 0;
+  float: right;
+  margin-top: -20px;
 }
 .scwft-block .scwft-longdescrip {
   text-align: left;
