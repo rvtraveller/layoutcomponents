@@ -47,7 +47,6 @@
   {{ title_suffix }}
   {% block content %}
 
-    {{ drupal_dump(content.field_scwft_short_position.0['#markup']) }}
     {% set shortdescrip = '' %}
     {% set longdescrip = '' %}
     {% if content.field_scwft_short_position.0['#markup'] == 'left' %}
