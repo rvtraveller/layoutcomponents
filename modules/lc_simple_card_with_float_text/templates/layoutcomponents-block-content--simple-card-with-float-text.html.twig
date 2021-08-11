@@ -47,19 +47,17 @@
   {{ title_suffix }}
   {% block content %}
 
+    {{ drupal_dump(content.field_scwft_short_position.0['#markup']) }}
     {% set shortdescrip = '' %}
-    {% if content.field_scwft_sft_position.0['#markup'] == 'Bottom Left' %}
+    {% set longdescrip = '' %}
+    {% if content.field_scwft_short_position.0['#markup'] == 'left' %}
       {% set shortdescrip = 'b-lef' %}
-    {% elseif content.field_scwft_sft_position.0['#markup'] == 'Bottom Right'  %}
+      {% set longdescrip = 'b-rig' %}
+    {% elseif content.field_scwft_short_position.0['#markup'] == 'right'  %}
       {% set shortdescrip = 'b-rig' %}
+      {% set longdescrip = 'b-lef' %}
     {% endif %}
 
-    {% set longdescrip = '' %}
-    {% if content.field_lft_position.0['#markup'] == 'Bottom Left' %}
-      {% set longdescrip = 'b-lef' %}
-    {% elseif content.field_lft_position.0['#markup'] == 'Bottom Right'  %}
-      {% set longdescrip = 'b-rig' %}
-    {% endif %}
 
     <div class="scwft-block">
       <h3 class="scwft-title" style="color:{{ content.field_scwft_title_color.0['#markup'] }}; ">{{ content.field_scwft_title }}</h3>
