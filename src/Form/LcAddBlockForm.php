@@ -49,25 +49,10 @@ class LcAddBlockForm extends AddBlockForm {
     // Label display config.
     $build['settings']['label_display']['#default_value'] = FALSE;
 
-    // Hidde block configuration if is new.
-    $build['settings']['block_form']['#access'] = FALSE;
-
     // Add custom libraries.
     $build['#attached']['library'][] = 'layoutcomponents/layoutcomponents.lateral';
 
     return $build;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function successfulAjaxSubmit(array $form, FormStateInterface $form_state) {
-    $response = $this->rebuildAndClose($this->sectionStorage);
-    $section = $this->sectionStorage->getSection($this->delta);
-    $selector = $this->sectionStorage->getStorageId() . '/' . $this->delta . '/' . $section->getComponent($this->uuid)->getRegion() . '/' . $section->getComponent($this->uuid)->getUuid();
-    $response->addCommand(new InvokeCommand('a[href*="' . $selector . '"].layout-builder__block_link-configure', 'click', []));
-
-    return $response;
   }
 
 }
