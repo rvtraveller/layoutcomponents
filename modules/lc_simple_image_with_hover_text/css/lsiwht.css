@@ -1,3 +1,36 @@
-.text {
-  color: red;
+.siwht {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  align-items: center;
+  text-align: center;
+  display: inline-grid;
 }
+.siwht a {
+  color: initial;
+}
+.siwht .content-overlay {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 20px;
+  align-items: center;
+  display: inline-grid;
+  word-break: break-all;
+}
+.siwht .field--name-field-siwht-image img {
+  width: 100%;
+  height: auto;
+}
+.siwht:hover .content-overlay {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=lsiwht.css.map */

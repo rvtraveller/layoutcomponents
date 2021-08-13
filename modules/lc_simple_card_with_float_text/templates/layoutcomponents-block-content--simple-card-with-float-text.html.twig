@@ -29,23 +29,45 @@
  * @ingroup themeable
  */
 #}
-<div{{attributes}}>
+{%
+  set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  'block-layoutcomponents',
+  'block-layoutcomponents-parent'
+]
+%}
+
+<div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}
     <h2{{title_attributes}}>{{ label }}</h2>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    {{ content.field_scwft_title }}
-    {{ content.field_scwft_title_color }}
-    {{ content.field_scwft_subtitle }}
-    {{ content.field_scwft_description }}
-    {{ content.field_scwft_media }}
-    {{ content.field_scwft_short_description }}
-    {{ content.field_scwft_short_description_ba }}
-    {{ content.field_scwft_sft_position }}
-    {{ content.field_scwft_long_description }}
-    {{ content.field_scwft_long_description_bac }}
-    {{ content.field_lft_position }}
+
+    {% set shortdescrip = '' %}
+    {% set longdescrip = '' %}
+    {% if content.field_scwft_short_position.0['#markup'] == 'left' %}
+      {% set shortdescrip = 'b-lef' %}
+      {% set longdescrip = 'b-rig' %}
+    {% elseif content.field_scwft_short_position.0['#markup'] == 'right'  %}
+      {% set shortdescrip = 'b-rig' %}
+      {% set longdescrip = 'b-lef' %}
+    {% endif %}
+
+    <div class="scwft-block">
+      <h3 class="scwft-title" style="color:{{ content.field_scwft_title_color.0['#markup'] }}; ">{{ content.field_scwft_title }}</h3>
+      <div class="scwft-subtitle">{{ content.field_scwft_subtitle }}</div>
+      <div class="scwft-descrip">{{ content.field_scwft_description }}</div>
+      <div class="scwft-img">
+        {{ content.field_scwft_media }}
+        <div class="scwft-shortdescrip {{ shortdescrip }}"  style="background:{{ content.field_scwft_short_description_ba.0['#markup'] }};
+                color:{{ content.field_scwft_sft_color.0['#markup'] }};">{{ content.field_scwft_short_description.0}}</div>
+      </div>
+      <div class="scwft-longdescrip {{ longdescrip }}"  style="background:{{ content.field_scwft_long_description_bac.0['#markup'] }};">{{ content.field_scwft_long_description.0 }}</div>
+    </div>
+
   {% endblock %}
 </div>

@@ -29,16 +29,34 @@
  * @ingroup themeable
  */
 #}
-<div{{attributes}}>
+{%
+  set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  'block-layoutcomponents',
+  'block-layoutcomponents-parent',
+  'back-greyback'
+]
+%}
+
+{% set color = content['#block_content'].field_siwht_background_color.color  %}
+{% set uri = content['#block_content'].field_siwht_link.0.uri  %}
+
+<div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}
     <h2{{title_attributes}}>{{ label }}</h2>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    {{ content.field_siwht_link }}
-    {{ content.field_siwht_text }}
-    {{ content.field_siwht_image }}
-    {{ content.field_siwht_background_color }}
+
+    <div class="siwht">
+      <a href="{{ uri }}">
+        {{ content.field_siwht_image }}
+        <div class="content-overlay" style="background: {{ color }}">  {{ content.field_siwht_text }} </div>
+      </a>
+    </div>
+
   {% endblock %}
 </div>
