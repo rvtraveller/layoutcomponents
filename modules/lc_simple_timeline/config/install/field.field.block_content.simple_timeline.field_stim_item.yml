@@ -9,7 +9,7 @@ dependencies:
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: szglPoM7MZF_v1ph1wfKsiRBBvE_-pUu2cozc37mZbo
+  default_config_hash: BJ2XPnQ0YUGmssmNGt-maw3qGGui-gSSPRXhYa___2c
 id: block_content.simple_timeline.field_stim_item
 field_name: field_stim_item
 entity_type: block_content

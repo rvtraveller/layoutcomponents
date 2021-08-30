@@ -5,7 +5,7 @@ dependencies:
   module:
     - block_content
 _core:
-  default_config_hash: e3GQgI-rcLNy6qrjBc-8B5j_56bLoHNRMyWC0Ev9-tc
+  default_config_hash: UY7oRUGbSIrTHKHYkKskhhsjZXSk7qUEWH_PNU8WQTA
 id: block_content.field_stimi_description
 field_name: field_stimi_description
 entity_type: block_content

@@ -6,7 +6,7 @@ dependencies:
     - block_content.type.simple_timeline
     - field.storage.block_content.field_stim_title
 _core:
-  default_config_hash: SiyNfkLL3v445SCWD1keax-vavorh6OZ5mwoZax9RAk
+  default_config_hash: PxkVPVxK6d7RCpi1ONrC-OOuNI_vDNkK2gk-vw6hWes
 id: block_content.simple_timeline.field_stim_title
 field_name: field_stim_title
 entity_type: block_content

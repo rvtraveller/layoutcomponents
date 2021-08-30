@@ -6,7 +6,7 @@ dependencies:
     - block_content.type.simple_timeline_item
     - field.storage.block_content.field_stimi_description
 _core:
-  default_config_hash: K3HYANCp4AzIjmYnT8dHCpAWNeH4P6DmAPTeb008080
+  default_config_hash: a_8AJDsHgF2EBYULtzrXKf0cGGSXzr72QYsbkoMEsSo
 id: block_content.simple_timeline_item.field_stimi_description
 field_name: field_stimi_description
 entity_type: block_content

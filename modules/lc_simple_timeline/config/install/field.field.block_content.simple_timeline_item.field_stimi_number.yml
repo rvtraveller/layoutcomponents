@@ -1,0 +1,23 @@
+uuid: 40f22610-efa4-45bd-bdfa-65d2f66edcb6
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_timeline_item
+    - field.storage.block_content.field_stimi_number
+id: block_content.simple_timeline_item.field_stimi_number
+field_name: field_stimi_number
+entity_type: block_content
+bundle: simple_timeline_item
+label: Number
+description: 'Set the number of this item'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
