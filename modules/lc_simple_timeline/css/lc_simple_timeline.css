@@ -1,3 +1,59 @@
-
+/* ================ The Timeline ================ */
+.stim ul.timeline-list {
+  padding: 0;
+  margin: 0;
+}
+.stim ul.timeline-list li {
+  width: 2px;
+  padding: 1em 0;
+  margin: 0 auto;
+  position: relative;
+  background-color: black;
+  list-style-type: none;
+}
+.stim ul.timeline-list li:last-child {
+  background-color: transparent;
+}
+.stim ul.timeline-list li .timeline-icon {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  margin-top: -1em;
+  margin-left: -1em;
+  display: block;
+  position: absolute;
+  left: 0;
+  padding-top: 0.2em;
+  color: white;
+  text-align: center;
+}
+.stim ul.timeline-list li .timeline-content {
+  width: calc(50vw - 6em);
+  height: auto;
+  padding: 1em;
+  padding-top: 0;
+  position: relative;
+  margin-top: -1em;
+}
+.stim ul.timeline-list li .timeline-content .stim-item-title {
+  font-weight: 600;
+}
+.stim ul.timeline-list li:nth-child(odd) .timeline-content {
+  left: 2em;
+  text-align: left;
+}
+.stim ul.timeline-list li:nth-child(even) .timeline-content {
+  left: calc(-50vw + 2em);
+  text-align: right;
+}
+@media screen and (max-width: 768px) {
+  .stim ul.timeline-list li {
+    margin: 1em;
+  }
+  .stim ul.timeline-list li:nth-child(even) .timeline-content {
+    left: 2em;
+    text-align: left;
+  }
+}
 
 /*# sourceMappingURL=lc_simple_timeline.css.map */

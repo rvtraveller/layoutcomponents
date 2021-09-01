@@ -29,18 +29,17 @@
  * @ingroup themeable
  */
 #}
-{%
-  set classes = [
+{% set classes = [
   'block',
   'block-' ~ configuration.provider|clean_class,
   'block-' ~ plugin_id|clean_class,
   'block-layoutcomponents',
-  'block-layoutcomponents-parent'
-]
-%}
+  'block-layoutcomponents-parent',
+  'stim'
+] %}
 
-  {%  set stimitemtitle = '' %}
-  {%  set stimitembody = '' %}
+  {% set stimitemtitle = '' %}
+  {% set stimitembody = '' %}
 
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
@@ -49,19 +48,29 @@
   {% endif %}
   {{ title_suffix }}
   {% block content %}
+    <h3 style="text-align: center">{{ content.field_stim_title }}</h3>
+    <div class="stim-body" style="text-align: center"><p>{{ content.field_stim_description }}</p></div>
+    <div class="wrapper">
+      <ul class="timeline-list">
+        {% for items in content.field_stim_item %}
+          {% set item = items['#block_content'] %}
+          {% if item %}
+            {% set stimitemtitle = item.field_stimi_title.0.value %}
+            {% set stimitembody = item.field_stimi_description.0.value %}
+            {% set stimitemcolor = item.field_stimi_color.0.value.color %}
+            {% set stimitemnumber = item.field_stimi_number.0.value %}
+            {% set direction = cycle(['direction-l odd', 'direction-r even'], loop.index0) %}
+            <li>
+              <div class="timeline-icon" style="background-color: {{ stimitemcolor }};"> {{ stimitemnumber }}</div>
+              <div class="timeline-content">
+                <div class="stim-item-title" style="color: {{ stimitemcolor }}"><h3>{{ stimitemtitle }}</h3></div>
+                <div class="stim-item-body">{{ stimitembody }}</div>
+              </div>
+            </li>
 
-    <h3>{{ content.field_stim_title }}</h3>
-    <div class="stim-body">{{ content.field_stim_description }}</div>
-    {% for items in content.field_stim_item %}
-      {%  set item = items['#block_content'] %}
-      {% if item %}
-        {%  set stimitemtitle = item.field_stimi_title.0.value %}
-        {%  set stimitembody = item.field_stimi_description.0.value %}
-        <div class="stim-item-title">{{ stimitemtitle }}</div>
-        <div class="stim-item-body">{{ stimitembody }}</div>
-      {% endif %}
-    {%  endfor %}
-
-
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
   {% endblock %}
 </div>
