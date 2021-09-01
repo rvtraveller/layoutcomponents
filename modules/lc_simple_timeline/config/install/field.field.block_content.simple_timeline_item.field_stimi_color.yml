@@ -1,0 +1,22 @@
+uuid: cef37d75-1b84-49cf-a1ed-f8c4d22ab7ae
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_timeline_item
+    - field.storage.block_content.field_stimi_color
+  module:
+    - color_field
+id: block_content.simple_timeline_item.field_stimi_color
+field_name: field_stimi_color
+entity_type: block_content
+bundle: simple_timeline_item
+label: Color
+description: 'Set the color of this item'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

@@ -1,0 +1,20 @@
+uuid: 3fda15c0-3aeb-426e-904f-47dd012ea7b3
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+    - color_field
+id: block_content.field_stimi_color
+field_name: field_stimi_color
+entity_type: block_content
+type: color_field_type
+settings:
+  format: '#HEXHEX'
+module: color_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

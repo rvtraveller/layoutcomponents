@@ -29,7 +29,8 @@
  * @ingroup themeable
  */
 #}
-{% set classes = [
+{%
+  set classes = [
   'block',
   'block-' ~ configuration.provider|clean_class,
   'block-' ~ plugin_id|clean_class,
@@ -38,8 +39,8 @@
   'stim'
 ] %}
 
-  {% set stimitemtitle = '' %}
-  {% set stimitembody = '' %}
+  {%  set stimitemtitle = '' %}
+  {%  set stimitembody = '' %}
 
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}

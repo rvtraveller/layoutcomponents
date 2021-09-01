@@ -4,15 +4,32 @@ status: true
 dependencies:
   config:
     - block_content.type.simple_timeline_item
+    - field.field.block_content.simple_timeline_item.field_stimi_color
     - field.field.block_content.simple_timeline_item.field_stimi_description
+    - field.field.block_content.simple_timeline_item.field_stimi_number
     - field.field.block_content.simple_timeline_item.field_stimi_title
+  module:
+    - color_field
 _core:
-  default_config_hash: GLLvjvoeuMjDczzXMjKx4S6zh42efpIW4BjKPFdp5bo
+  default_config_hash: zdGwCvzmcNcsEek61RK3_erd3l7RCMDbP8i5qV5sOG8
 id: block_content.simple_timeline_item.default
 targetEntityType: block_content
 bundle: simple_timeline_item
 mode: default
 content:
+  field_stimi_color:
+    weight: 29
+    settings:
+      default_colors: |-
+
+        #ac725e,#d06b64,#f83a22,#fa573c,#ff7537,#ffad46
+        #42d692,#16a765,#7bd148,#b3dc6c,#fbe983
+        #92e1c0,#9fe1e7,#9fc6e7,#4986e7,#9a9cff
+        #b99aff,#c2c2c2,#cabdbf,#cca6ac,#f691b2
+        #cd74e6,#a47ae2
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
   field_stimi_description:
     weight: 27
     settings:
@@ -20,6 +37,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
+  field_stimi_number:
+    weight: 28
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
     region: content
   field_stimi_title:
     weight: 26
