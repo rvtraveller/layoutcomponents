@@ -1,11 +1,25 @@
 (function ($, Drupal) {
   Drupal.behaviors.VideoVeil = {
     attach: function (context, settings) {
-      $('.block-inline-blocksimple-video', context).once('VideoVeil').each(function () {
+      // $('.block-inline-blocksimple-video', context).once('VideoVeil').each(function () {
+      // Fix selector to get one element
+      $('.block-inline-blocksimple-video .videoimage', context).once('VideoVeil').each(function () {
         var vid = $(this).find('video').get(0);
         var image = $(this).find('.field--name-field-sv-image').get(0);
         var veil = $(this).find('.lc-video-bg').get(0);
         $(veil).on('click', function () {
+          // Stop all playing videos
+          $('iframe.lc_playing', context).each(function () {
+            $(this)[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+          });
+          $('video.lc_playing', context).each(function () {
+            $(this).get(0).pause();
+          });
+          // Show video wrapper.
+          $(veil).find('iframe').show();
+          $(veil).find('video').show();
+          $(veil).parent().addClass('relative')
+
           $(image).addClass('hidden');
           // Remove overlay.
           $(this).addClass("no-bg");
@@ -27,6 +41,8 @@
             // If is a HTML video.
             vid.play();
           }
+          // Add playing class to video
+          $(vid).addClass("lc_playing");
         });
       });
     }

@@ -30,27 +30,33 @@
  */
 #}
 {%
-  set classes = [
+    set classes = [
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
     'block-layoutcomponents',
     'block-layoutcomponents-parent'
-  ]
+]
 %}
+{{ attach_library('grupojorge/simplevideo') }}
 
 <div{{attributes.addClass(classes)}}>
-	{{ title_prefix }}
-	{% if label %}
-		<h2{{title_attributes}}>{{ label }}</h2>
-	{% endif %}
-	{{ title_suffix }}
-	{% block content %}
-    {{ content|without('field_sv_video_type', 'field_sv_upload_video', 'field_sv_video') }}
-    {% if content.field_sv_video_type['#items'][0].value == 'video_url' %}
-      {{ content.field_sv_video }}
-    {% else %}
-      {{ content.field_sv_upload_video }}
+    {{ title_prefix }}
+    {% if label %}
+        <h2{{title_attributes}}>{{ label }}</h2>
     {% endif %}
-	{% endblock %}
+    {{ title_suffix }}
+    {% block content %}
+
+        <div class="videoimage">
+            {{ content.field_sv_image }}
+            {#      {{ content|without('field_sv_video_type', 'field_sv_upload_video', 'field_sv_video') }}#}
+            {% if content.field_sv_video_type['#items'][0].value == 'video_url' %}
+                {{ content.field_sv_video }}
+            {% else %}
+                {{ content.field_sv_upload_video }}
+            {% endif %}
+        </div>
+
+    {% endblock %}
 </div>
