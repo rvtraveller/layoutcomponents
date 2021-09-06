@@ -1,6 +1,15 @@
 (function ($, Drupal) {
   Drupal.behaviors.VideoVeil = {
     attach: function (context, settings) {
+
+      var stopAllYouTubeVideos = () => {
+        var iframes = document.querySelectorAll('iframe');
+        Array.prototype.forEach.call(iframes, iframe => {
+          iframe.contentWindow.postMessage(JSON.stringify({ event: 'command',
+            func: 'stopVideo' }), '*');
+        });
+      }
+      stopAllYouTubeVideos();
       // Fix selector to get one element
       $('.block-inline-blocksimple-video .videoimage', context).once('VideoVeil').each(function () {
         var vid = $(this).find('video').get(0);
@@ -23,6 +32,8 @@
 
         var veil = $(this).find('.lc-video-bg').get(0);
         $(veil).on('click', function () {
+          // Remove absolute class
+          $(video).removeClass('absolute');
           // Stop all playing videos
           $('iframe.lc_playing', context).each(function () {
             $(this)[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
@@ -37,7 +48,6 @@
 
           $(image).addClass('hidden');
           // Remove overlay.
-
           $(this).addClass("no-bg");
           // Check if is a HTML video or an iframe.
           if (typeof vid === "undefined") {
