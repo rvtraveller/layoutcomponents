@@ -1,11 +1,26 @@
 (function ($, Drupal) {
   Drupal.behaviors.VideoVeil = {
     attach: function (context, settings) {
-      // $('.block-inline-blocksimple-video', context).once('VideoVeil').each(function () {
       // Fix selector to get one element
       $('.block-inline-blocksimple-video .videoimage', context).once('VideoVeil').each(function () {
         var vid = $(this).find('video').get(0);
         var image = $(this).find('.field--name-field-sv-image').get(0);
+        var video = $(this).find('.field--name-field-sv-video').get(0);
+        // If have image to show hide the video
+        if(typeof image != "undefined") {
+          $(this).find('.embed-responsive-item').hide();
+          $(video).addClass('absolute');
+          // If have image show the veil even is not mark as the veil property
+          $(this).find('.embed-responsive').addClass("lc-video-bg");
+        } else {
+          // If there is not image set video at correct  way
+          $(video).addClass('relative');
+        }
+        // Set the height the image like video to show the veil correct height
+        if($(video).height() > $(this).height()) {
+          $(image).find('img').height($(video).height());
+        }
+
         var veil = $(this).find('.lc-video-bg').get(0);
         $(veil).on('click', function () {
           // Stop all playing videos
@@ -16,12 +31,13 @@
             $(this).get(0).pause();
           });
           // Show video wrapper.
-          $(veil).find('iframe').show();
-          $(veil).find('video').show();
+          $(veil).find('.embed-responsive-item').show();
+          //$(veil).find('video').show();
           $(veil).parent().addClass('relative')
 
           $(image).addClass('hidden');
           // Remove overlay.
+
           $(this).addClass("no-bg");
           // Check if is a HTML video or an iframe.
           if (typeof vid === "undefined") {
