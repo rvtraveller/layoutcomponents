@@ -35,6 +35,10 @@
 .videoimage .embed-responsive .hidden {
   display: none;
 }
+.videoimage .embed-responsive:before {
+  opacity: 0.4;
+  height: 100%;
+}
 .videoimage .field--name-field-sv-upload-video {
   width: 100%;
 }

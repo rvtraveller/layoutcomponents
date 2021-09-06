@@ -37,6 +37,10 @@
     .hidden {
       display: none;
     }
+    &:before{
+      opacity: 0.4;
+      height: 100%;
+    }
   }
   .field--name-field-sv-upload-video {
     width: 100%;
