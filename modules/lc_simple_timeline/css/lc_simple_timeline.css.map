@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"lc_simple_timeline.css"}
+{"version":3,"sourceRoot":"","sources":["../scss/lc_simple_timeline.scss"],"names":[],"mappings":"AAEA;AAEE;EACE;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;;AAKF;EACE;EACA;;AAIF;EACE;EACA;;AAMR;EAEI;IACE;;EAEE;IACE;IACA","file":"lc_simple_timeline.css"}

@@ -1,18 +1,56 @@
-.block--type--simple-video video {
-  width: 100%;
+.videoimage {
+  position: relative;
+}
+.videoimage .field--name-field-media-image img {
   height: auto;
+  width: 100%;
 }
-
-.lc-video-bg:before {
-  content: "";
+.videoimage .field--name-field-sv-video {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+.videoimage .field--name-field-sv-video .embed-responsive {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+.videoimage .field--name-field-sv-video.relative {
+  position: relative;
+}
+.videoimage .field--name-field-sv-video.absolute {
+  position: absolute;
+}
+.videoimage .embed-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  background: #004f91;
-  opacity: 0.4;
-  z-index: 9000;
+  border: 0;
+}
+.videoimage .embed-responsive video {
+  width: 100%;
+}
+.videoimage .embed-responsive .hidden {
+  display: none;
+}
+.videoimage .field--name-field-sv-upload-video {
+  width: 100%;
+}
+.videoimage .field--name-field-sv-upload-video .embed-responsive {
+  display: block !important;
 }
 
-#drupal-off-canvas ul li a.inline-block-list__item.simple_video:before {
-  content: "\f04b";
-  font-family: FontAwesome;
-  font-size: 60px;
+.block-inline-blocksimple-video .videoimage .embed-responsive:before {
+  position: absolute;
+  top: 0;
+  opacity: 0.4;
+  height: 100%;
 }
+.block-inline-blocksimple-video .videoimage .embed-responsive:after {
+  color: #FFF;
+  background: transparent;
+}
+
+/*# sourceMappingURL=lc_simple_video.css.map */
