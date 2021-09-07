@@ -244,6 +244,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         'styles' => [
           'background' => [
             'image' => '',
+            'image_full' => (int) 0,
             'background_color' => [
               'settings' => [
                 'color' => $lc->get('background_color')['settings']['color'],
@@ -1433,6 +1434,21 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
               ],
             ],
             'class' => 'background-image',
+          ]
+        ),
+        'image_full' => $this->lcApiCheckbox->normal(
+          [
+            'id' => 'section',
+            'title' => $this->t('Is a normal image'),
+            'description' => $this->t('If this check is checked, the image will be showed as normal image instead of a container background'),
+            'default_value' => $styles['background']['image_full'],
+            'attributes' => [
+              'lc' => [
+                'type' => 'class',
+                'style' => 'checkbox',
+              ],
+            ],
+            'class' => 'section-image_full',
           ]
         ),
         'background_color' => $this->lcApiColor->colorPicker(

@@ -358,6 +358,7 @@ class LcLayout {
 
     // Set background image.
     $background_image_fid = $this->getSetting('section.styles.background.image', []);
+    $background_image_full = $this->getSetting('section.styles.background.image_full', []);
     if (!empty($background_image_fid)) {
       $media = Media::load($background_image_fid);
       if (!empty($media)) {
@@ -365,26 +366,34 @@ class LcLayout {
         $file = File::load($background_image_fid);
         $url = Url::fromUri(file_create_url($file->getFileUri()))->getUri();
         if (!empty($url)) {
-          $bg_image_ouput = 'background:';
-          $attributes->setAttribute('data-image-src', $url);
-          // Set parallax.
-          $parallax = $this->getSetting('section.styles.misc.parallax', NULL);
-          if (!empty($parallax)) {
-            $attributes->addClass('parallax-window');
-            $attributes->setAttribute('data-parallax', 'scroll');
-            if (isset($background_color) && !empty($background_color)) {
-              $bg_image_ouput .= "linear-gradient(" . $background_color . "," . $background_color . ")";
-            }
-            $wrapper_style[] = $bg_image_ouput;
-            $bg_wrapper = FALSE;
+          if (boolval($background_image_full)) {
+            // Background as normal image.
+            $this->setSetting('section.styles.background.image', $url);
+            $attributes->addClass('lc-background-full');
           }
-          // Set bg image.
           else {
-            if (isset($background_color) && !empty($background_color)) {
-              $bg_image_ouput .= "linear-gradient(" . $background_color . "," . $background_color . "), ";
+            // Background as container background.
+            $bg_image_ouput = 'background:';
+            $attributes->setAttribute('data-image-src', $url);
+            // Set parallax.
+            $parallax = $this->getSetting('section.styles.misc.parallax', NULL);
+            if (!empty($parallax)) {
+              $attributes->addClass('parallax-window');
+              $attributes->setAttribute('data-parallax', 'scroll');
+              if (isset($background_color) && !empty($background_color)) {
+                $bg_image_ouput .= "linear-gradient(" . $background_color . "," . $background_color . ")";
+              }
+              $wrapper_style[] = $bg_image_ouput;
+              $bg_wrapper = FALSE;
             }
-            $wrapper_style[] = $bg_image_ouput . 'url(' . $url . ')';
-            $bg_wrapper = TRUE;
+            // Set bg image.
+            else {
+              if (isset($background_color) && !empty($background_color)) {
+                $bg_image_ouput .= "linear-gradient(" . $background_color . "," . $background_color . "), ";
+              }
+              $wrapper_style[] = $bg_image_ouput . 'url(' . $url . ')';
+              $bg_wrapper = TRUE;
+            }
           }
         }
       }

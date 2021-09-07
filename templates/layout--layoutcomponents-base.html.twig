@@ -23,6 +23,9 @@
 {% set regions = lc_data.output.regions %}
 
 <{{ section.general.basic.section_type }}{{ section.attributes }}>
+  {% if section.styles.background.image_full == 1 %}
+    <img src="{{ section.styles.background.image }}">
+  {% endif %}
   {% if title.general.title %}
   <div {{ section.title_container_attr }}>
     <div {{ title.styles.attr_class.container }} {{ title.styles.attr_styles.container }}>
