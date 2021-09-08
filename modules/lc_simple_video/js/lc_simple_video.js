@@ -21,6 +21,8 @@
           $(video).addClass('absolute');
           // If have image show the veil even is not mark as the veil property
           $(this).find('.embed-responsive').addClass("lc-video-bg");
+          // Fix image height to adjust to video container
+          $(image).find('img').css('max-height', $(video).height());
         } else {
           // If there is not image set video at correct  way
           $(video).addClass('relative');

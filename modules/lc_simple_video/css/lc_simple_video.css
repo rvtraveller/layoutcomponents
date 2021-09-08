@@ -4,6 +4,7 @@
 .videoimage .field--name-field-media-image img {
   height: auto;
   width: 100%;
+  overflow: hidden;
 }
 .videoimage .field--name-field-sv-video {
   width: 100%;
