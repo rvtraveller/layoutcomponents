@@ -3643,6 +3643,17 @@
   margin: 0 0 20px 0;
 }
 
+.lc-background-full img {
+  position: relative;
+  width: 100%;
+}
+.lc-background-full .container {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
 @media screen and (max-width: 991px) {
   .lc {
     width: 100%;

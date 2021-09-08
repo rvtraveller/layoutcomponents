@@ -3270,6 +3270,22 @@ $tertiary-dark:$orange-dark;
 
 
 
+.lc-background-full{
+  img{
+    position: relative;
+    width: 100%;
+  }
+
+  .container{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+}
+
+
+
 //--------------------------------------------------------------------- RESPONSIVE
 
 //---------------------------------------- Extra small screen - Mobile
