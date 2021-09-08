@@ -3647,7 +3647,7 @@
   position: relative;
   width: 100%;
 }
-.lc-background-full .container {
+.lc-background-full .lc-inline_container-section-edit {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;

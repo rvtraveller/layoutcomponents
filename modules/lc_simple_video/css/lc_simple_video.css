@@ -46,8 +46,8 @@
 .block-inline-blocksimple-video .videoimage .embed-responsive:before {
   position: absolute;
   top: 0;
-  opacity: 0.4;
   height: 100%;
+  opacity: 0.4;
 }
 .block-inline-blocksimple-video .videoimage .embed-responsive:after {
   color: #FFF;
