@@ -3643,6 +3643,9 @@
   margin: 0 0 20px 0;
 }
 
+.lc-background-full {
+  position: relative;
+}
 .lc-background-full img {
   position: relative;
   width: 100%;
