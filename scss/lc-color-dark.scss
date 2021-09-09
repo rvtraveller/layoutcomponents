@@ -3272,6 +3272,8 @@ $tertiary-dark:$orange-dark;
 
 .lc-background-full{
   position: relative;
+  padding-right: var(--bs-gutter-x,.75rem);
+  padding-left: var(--bs-gutter-x,.75rem);
   img{
     position: relative;
     width: 100%;
