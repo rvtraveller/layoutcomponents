@@ -15,6 +15,10 @@
         var vid = $(this).find('video').get(0);
         var image = $(this).find('.field--name-field-sv-image').get(0);
         var video = $(this).find('.field--name-field-sv-video').get(0);
+        // if no veil marked set class no-veil for transparency mode actived
+        if(!$(this).find('.embed-responsive').hasClass("lc-video-bg")) {
+          $(this).find('.embed-responsive').addClass("no-veil");
+        }
         // If have image to show hide the video
         if(typeof image != "undefined") {
           $(this).find('.embed-responsive-item').hide();

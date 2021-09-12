@@ -38,6 +38,11 @@
     .hidden {
       display: none;
     }
+    .no-veil{
+      &:before {
+        background: transparent;
+      }
+    }
   }
   .field--name-field-sv-upload-video {
     width: 100%;
