@@ -17,6 +17,7 @@ dependencies:
     - field.field.block_content.simple_card_with_float_text.field_scwft_subtitle
     - field.field.block_content.simple_card_with_float_text.field_scwft_title
     - field.field.block_content.simple_card_with_float_text.field_scwft_title_color
+    - field.field.block_content.simple_card_with_float_text.field_scwft_two_columns
   module:
     - color_field
 id: block_content.simple_card_with_float_text.default
@@ -132,6 +133,16 @@ content:
       opacity: true
     third_party_settings: {  }
     type: color_field_formatter_text
+    region: content
+  field_scwft_two_columns:
+    weight: 16
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
 hidden:
   langcode: true

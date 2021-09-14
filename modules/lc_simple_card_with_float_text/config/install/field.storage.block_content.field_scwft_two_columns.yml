@@ -1,0 +1,18 @@
+uuid: c12d6e70-6df1-48c2-bd70-a8fa589cf353
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.field_scwft_two_columns
+field_name: field_scwft_two_columns
+entity_type: block_content
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

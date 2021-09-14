@@ -17,6 +17,7 @@ dependencies:
     - field.field.block_content.simple_card_with_float_text.field_scwft_subtitle
     - field.field.block_content.simple_card_with_float_text.field_scwft_title
     - field.field.block_content.simple_card_with_float_text.field_scwft_title_color
+    - field.field.block_content.simple_card_with_float_text.field_scwft_two_columns
   module:
     - color_field
     - field_group
@@ -60,6 +61,7 @@ third_party_settings:
         - group_background_color
         - group_short_float_text
         - group_long_float_text
+        - group_display
         - group_misc
       parent_name: group_info
       weight: 13
@@ -91,7 +93,7 @@ third_party_settings:
         - field_scwft_extra_classes
         - field_scwft_extra_attributes
       parent_name: group_styles
-      weight: 25
+      weight: 26
       format_type: details
       region: content
       format_settings:
@@ -131,6 +133,21 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Long Float Text'
+    group_display:
+      children:
+        - field_scwft_two_columns
+      parent_name: group_styles
+      weight: 25
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Display
 id: block_content.simple_card_with_float_text.default
 targetEntityType: block_content
 bundle: simple_card_with_float_text
@@ -234,6 +251,13 @@ content:
     third_party_settings: {  }
     type: color_field_widget_box
     region: content
+  field_scwft_two_columns:
+    weight: 29
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   info:
     type: string_textfield
     weight: 0
@@ -241,6 +265,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   langcode: true
