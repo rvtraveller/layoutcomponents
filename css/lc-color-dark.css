@@ -3645,8 +3645,9 @@
 
 .lc-background-full {
   position: relative;
-  padding-right: var(--bs-gutter-x, 0.75rem);
-  padding-left: var(--bs-gutter-x, 0.75rem);
+  padding-right: 0;
+  padding-left: 0;
+  height: auto !important;
 }
 .lc-background-full img {
   position: relative;
