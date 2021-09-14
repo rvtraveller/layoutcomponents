@@ -3643,6 +3643,24 @@
   margin: 0 0 20px 0;
 }
 
+.lc-background-full {
+  position: relative;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  height: auto !important;
+}
+.lc-background-full > img {
+  position: relative;
+  width: 100%;
+  filter: brightness(75%);
+}
+.lc-background-full .lc-inline_container-section-edit {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
 @media screen and (max-width: 991px) {
   .lc {
     width: 100%;

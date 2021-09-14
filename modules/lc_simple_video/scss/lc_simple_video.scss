@@ -4,6 +4,7 @@
     img {
       height: auto;
       width: 100%;
+      overflow: hidden;
     }
   }
   .field--name-field-sv-video {
@@ -37,6 +38,11 @@
     .hidden {
       display: none;
     }
+    .no-veil{
+      &:before {
+        background: transparent;
+      }
+    }
   }
   .field--name-field-sv-upload-video {
     width: 100%;
@@ -51,8 +57,8 @@
       &:before {
         position: absolute;
         top: 0;
-        opacity: 0.4;
         height: 100%;
+        opacity: 0.4;
       }
       &:after {
         color: #FFF;

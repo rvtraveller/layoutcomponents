@@ -3270,6 +3270,27 @@ $tertiary-dark:$orange-dark;
 
 
 
+.lc-background-full{
+  position: relative;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  height: auto !important;
+  >img{
+    position: relative;
+    width: 100%;
+    filter: brightness(75%);
+  }
+
+  .lc-inline_container-section-edit{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+}
+
+
+
 //--------------------------------------------------------------------- RESPONSIVE
 
 //---------------------------------------- Extra small screen - Mobile
