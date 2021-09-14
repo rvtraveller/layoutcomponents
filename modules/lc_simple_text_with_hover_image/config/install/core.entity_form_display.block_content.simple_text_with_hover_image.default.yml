@@ -15,6 +15,7 @@ dependencies:
     - field_group
     - link
     - media_library
+    - text
 third_party_settings:
   field_group:
     group_info:
@@ -100,7 +101,7 @@ content:
   field_stwi_background_color:
     weight: 21
     settings:
-      default_colors: '#ac725e,#d06b64,#f83a22,#fa573c,#ff7537,#ffad46,#42d692,#16a765,#7bd148,#b3dc6c,#fbe983,#92e1c0,#9fe1e7,#9fc6e7,#4986e7,#9a9cff,#b99aff,#c2c2c2,#cabdbf,#cca6ac,#f691b2,#cd74e6,#a47ae2'
+      default_colors: '#a49c82,#658e69,#2a6677,#f2f2ec,#981e32,#000000,#ffffff'
     third_party_settings: {  }
     type: color_field_widget_box
     region: content
@@ -122,13 +123,13 @@ content:
     region: content
   field_stwi_image:
     type: media_library_widget
-    weight: 4
+    weight: 27
     settings:
       media_types: {  }
     third_party_settings: {  }
     region: content
   field_stwi_link:
-    weight: 5
+    weight: 28
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -136,12 +137,12 @@ content:
     type: link_default
     region: content
   field_stwi_text:
-    weight: 3
+    weight: 26
     settings:
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: text_textarea
     region: content
   info:
     type: string_textfield
@@ -150,6 +151,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   langcode: true

@@ -13,6 +13,7 @@ dependencies:
   module:
     - color_field
     - link
+    - text
 _core:
   default_config_hash: 5w-sjHTdz3i06sR4oA5Pfdqp4yFUJ9IDiCzOfhmoack
 id: block_content.simple_text_with_hover_image.default
@@ -69,10 +70,10 @@ content:
   field_stwi_text:
     weight: 0
     label: hidden
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
-    type: string
+    type: text_default
     region: content
 hidden:
   langcode: true
+  search_api_excerpt: true

@@ -1,12 +1,12 @@
-uuid: 82e8312f-c2c3-46f5-9846-5765fec4271e
+uuid: 50bf6cfc-e24f-472b-960d-4d09b45a6271
 langcode: es
 status: true
 dependencies:
   config:
     - block_content.type.simple_text_with_hover_image
     - field.storage.block_content.field_stwi_text
-_core:
-  default_config_hash: HKJZ6gvQeM8CXK3zvFAnm_P1f-UjXq4bM4ZBwrzs33Q
+  module:
+    - text
 id: block_content.simple_text_with_hover_image.field_stwi_text
 field_name: field_stwi_text
 entity_type: block_content
@@ -18,4 +18,4 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string
+field_type: text_long
