@@ -6,12 +6,11 @@ dependencies:
     - block_content.type.simple_image_with_top_float_text
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_extra_attributes
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_extra_class
-    - field.field.block_content.simple_image_with_top_float_text.field_iwtft_image
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_right_position
     - field.field.block_content.simple_image_with_top_float_text.field_iwtft_text
+    - field.field.block_content.simple_image_with_top_float_text.field_iwtft_video
   module:
     - field_group
-    - media_library
 third_party_settings:
   field_group:
     group_info:
@@ -30,7 +29,7 @@ third_party_settings:
     group_general:
       children:
         - field_iwtft_text
-        - field_iwtft_image
+        - field_iwtft_video
       parent_name: group_info
       weight: 5
       format_type: tab
@@ -59,7 +58,7 @@ third_party_settings:
         required_fields: true
       label: Styles
 _core:
-  default_config_hash: 9wUtJR0T6UGYPmnEJMtiP3ag24pywB7pRMNmmr9B_ak
+  default_config_hash: GWXA-Dkg5sgSFng8wwVkndXazIvlNEETHm_yYFb-7go
 id: block_content.simple_image_with_top_float_text.default
 targetEntityType: block_content
 bundle: simple_image_with_top_float_text
@@ -81,13 +80,6 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_iwtft_image:
-    type: media_library_widget
-    weight: 5
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-    region: content
   field_iwtft_right_position:
     weight: 28
     settings:
@@ -103,6 +95,14 @@ content:
     third_party_settings: {  }
     type: string_textarea
     region: content
+  field_iwtft_video:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   info:
     type: string_textfield
     weight: 0
@@ -117,5 +117,10 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden: {  }
