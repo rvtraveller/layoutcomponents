@@ -3275,9 +3275,10 @@ $tertiary-dark:$orange-dark;
   padding-right: 0;
   padding-left: 0;
   height: auto !important;
-  img{
+  >img{
     position: relative;
     width: 100%;
+    filter: brightness(75%);
   }
 
   .lc-inline_container-section-edit{
