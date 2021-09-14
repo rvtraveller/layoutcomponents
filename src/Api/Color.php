@@ -45,12 +45,12 @@ class Color {
     $data['attributes']['lc']['depend']['opacity']['color'] = 'lc-inline_' . $data['id'] . '-' . $data['class'];
     $data['attributes']['opacity'] = [
       'input' => 'opacity',
-      'lc' => [
+      /*'lc' => [
         'id' => 'lc-inline_' . $data['id'],
         'type' => 'style',
         'style' => 'opacity',
         'depend' => $data['attributes']['lc']['depend']['opacity'],
-      ],
+      ],*/
       'class' => 'lc-inline_' . $data['id'] . '-' . $data['class'] . '-opacity',
     ];
 

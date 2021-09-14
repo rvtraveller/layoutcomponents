@@ -100,7 +100,8 @@ class LcColorField extends FormElement {
     if (isset($element['#attributes']) && is_array($element['#attributes'])) {
       $element['settings']['color']['#attributes'] = NestedArray::mergeDeepArray([$element['#attributes']], TRUE);
       if (array_key_exists('opacity', $element['#attributes'])) {
-        $element['settings']['opacity']['#attributes']['lc'] = Json::encode(NestedArray::mergeDeepArray([$element['#attributes']['opacity']['lc']], TRUE));
+        // TODO: Removed by improvements.
+        //$element['settings']['opacity']['#attributes']['lc'] = Json::encode(NestedArray::mergeDeepArray([$element['#attributes']['opacity']['lc']], TRUE));
         $element['settings']['opacity']['#attributes']['class'][] = $element['#attributes']['opacity']['class'];
         $element['settings']['opacity']['#attributes']['input'] = $element['#attributes']['opacity']['input'];
       }
