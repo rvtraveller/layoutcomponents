@@ -1,0 +1,21 @@
+uuid: 105699ff-d485-4543-8c65-fe8bff6aa048
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_two_text_columns
+    - field.storage.block_content.field_sittc_text_right
+  module:
+    - text
+id: block_content.simple_image_two_text_columns.field_sittc_text_right
+field_name: field_sittc_text_right
+entity_type: block_content
+bundle: simple_image_two_text_columns
+label: 'Text right'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

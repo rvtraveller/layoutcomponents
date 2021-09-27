@@ -1,0 +1,8 @@
+uuid: ecf30a90-5cdc-4f98-908d-cef302b36084
+langcode: es
+status: true
+dependencies: {  }
+id: simple_image_two_text_columns
+label: 'Image and two text columns'
+revision: 0
+description: ''

@@ -1,0 +1,19 @@
+uuid: 12c03b3c-0a67-4f5d-a453-dceaaa0010fb
+langcode: es
+status: true
+dependencies:
+  module:
+    - block_content
+    - text
+id: block_content.field_sittc_text_right
+field_name: field_sittc_text_right
+entity_type: block_content
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

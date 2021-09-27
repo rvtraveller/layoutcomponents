@@ -1,0 +1,24 @@
+uuid: c6bf1984-c9e2-4b25-a2ef-226b965dfaa3
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_two_text_columns
+    - field.storage.block_content.field_sittc_background_color
+  module:
+    - color_field
+_core:
+  default_config_hash: 80FD1PRSkSnP4jEa-6qXzZNhUJCC_HmYrpcIUjLrUdY
+id: block_content.simple_image_two_text_columns.field_sittc_background_color
+field_name: field_sittc_background_color
+entity_type: block_content
+bundle: simple_image_two_text_columns
+label: Color
+description: 'Set the background color of this component.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

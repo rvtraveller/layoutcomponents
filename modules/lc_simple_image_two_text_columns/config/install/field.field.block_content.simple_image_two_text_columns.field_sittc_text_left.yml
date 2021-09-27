@@ -1,0 +1,21 @@
+uuid: 49b1cf8a-5b2d-47f7-8952-2ff2ddcdab5c
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_image_two_text_columns
+    - field.storage.block_content.field_sittc_text_left
+  module:
+    - text
+id: block_content.simple_image_two_text_columns.field_sittc_text_left
+field_name: field_sittc_text_left
+entity_type: block_content
+bundle: simple_image_two_text_columns
+label: 'Text left'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
