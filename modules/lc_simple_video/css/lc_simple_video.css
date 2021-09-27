@@ -36,7 +36,7 @@
 .videoimage .embed-responsive .hidden {
   display: none;
 }
-.videoimage .embed-responsive .no-veil:before {
+.videoimage .no-veil:before {
   background: transparent;
 }
 .videoimage .field--name-field-sv-upload-video {

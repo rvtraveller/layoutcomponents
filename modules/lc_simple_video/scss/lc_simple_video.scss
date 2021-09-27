@@ -38,10 +38,10 @@
     .hidden {
       display: none;
     }
-    .no-veil{
-      &:before {
-        background: transparent;
-      }
+  }
+  .no-veil{
+    &:before {
+      background: transparent;
     }
   }
   .field--name-field-sv-upload-video {
