@@ -22,6 +22,7 @@ dependencies:
     - color_field
     - field_group
     - media_library
+    - text
 third_party_settings:
   field_group:
     group_info:
@@ -183,7 +184,7 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textarea
+    type: text_textarea
     region: content
   field_scwft_long_description_bac:
     weight: 7

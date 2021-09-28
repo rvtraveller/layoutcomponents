@@ -20,6 +20,7 @@ dependencies:
     - field.field.block_content.simple_card_with_float_text.field_scwft_two_columns
   module:
     - color_field
+    - text
 id: block_content.simple_card_with_float_text.default
 targetEntityType: block_content
 bundle: simple_card_with_float_text
@@ -33,7 +34,7 @@ content:
     type: basic_string
     region: content
   field_scwft_extra_attributes:
-    weight: 10
+    weight: 9
     label: hidden
     settings:
       link_to_entity: false
@@ -41,7 +42,7 @@ content:
     type: string
     region: content
   field_scwft_extra_classes:
-    weight: 9
+    weight: 8
     label: hidden
     settings:
       link_to_entity: false
@@ -50,10 +51,10 @@ content:
     region: content
   field_scwft_long_description:
     weight: 4
-    label: hidden
+    label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    type: text_default
     region: content
   field_scwft_long_description_bac:
     weight: 5
@@ -74,7 +75,7 @@ content:
     third_party_settings: {  }
     region: content
   field_scwft_sft_color:
-    weight: 15
+    weight: 12
     label: hidden
     settings:
       format: hex
@@ -100,7 +101,7 @@ content:
     type: color_field_formatter_text
     region: content
   field_scwft_short_position:
-    weight: 14
+    weight: 11
     label: hidden
     settings:
       format: default
@@ -110,7 +111,7 @@ content:
     type: boolean
     region: content
   field_scwft_subtitle:
-    weight: 13
+    weight: 10
     label: hidden
     settings:
       link_to_entity: false
@@ -135,7 +136,7 @@ content:
     type: color_field_formatter_text
     region: content
   field_scwft_two_columns:
-    weight: 16
+    weight: 13
     label: above
     settings:
       format: default

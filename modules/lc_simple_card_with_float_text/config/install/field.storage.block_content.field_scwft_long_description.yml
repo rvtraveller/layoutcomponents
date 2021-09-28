@@ -1,16 +1,16 @@
-uuid: 67af54d7-8ced-48bb-9af0-b786224aa7d6
+uuid: e13e7bae-950d-4007-a854-dce4bdc6afc1
 langcode: es
 status: true
 dependencies:
   module:
     - block_content
+    - text
 id: block_content.field_scwft_long_description
 field_name: field_scwft_long_description
 entity_type: block_content
-type: string_long
-settings:
-  case_sensitive: false
-module: core
+type: text_long
+settings: {  }
+module: text
 locked: false
 cardinality: 1
 translatable: true
