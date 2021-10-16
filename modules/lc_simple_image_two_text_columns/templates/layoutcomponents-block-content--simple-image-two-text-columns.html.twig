@@ -29,6 +29,10 @@
  * @ingroup themeable
  */
 #}
+
+{% set color = content['#block_content'].field_sittc_background_color.color  %}
+
+
 <div{{attributes}}>
   {{ title_prefix }}
   {% if label %}
@@ -36,11 +40,20 @@
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    {{ content.field_sittc_background_color }}
-    {{ content.field_sittc_extra_attributes }}
-    {{ content.field_sittc_extra_classes }}
-    {{ content.field_sittc_image }}
-    {{ content.field_sittc_text_left }}
-    {{ content.field_sittc_text_right }}
+    <div class="sittc {{ content.field_sittc_extra_classes }}" {{ attributes.add(content.field_sittc_extra_attributes) }}>
+      <div class="row sittc__row sittc__media">
+        <div class="col sittc__col">
+          {{ content.field_sittc_image }}
+        </div>
+      </div>
+      <div class="row sittc__row sittc__text" style="background: {{ color }}">
+        <div class="col-12 col-sm-6 sittc__col sittc__col--left">
+          {{ content.field_sittc_text_left }}
+        </div>
+        <div class="col-12 col-sm-6 sittc__col sittc__col--right">
+          {{ content.field_sittc_text_right }}
+        </div>
+      </div>
+    </div>
   {% endblock %}
 </div>

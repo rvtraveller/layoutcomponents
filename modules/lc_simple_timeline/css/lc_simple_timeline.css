@@ -1,4 +1,3 @@
-/* ================ The Timeline ================ */
 .stim ul.timeline-list {
   padding: 0;
   margin: 0;
@@ -10,6 +9,11 @@
   position: relative;
   background-color: black;
   list-style-type: none;
+}
+@media screen and (max-width: 576px) {
+  .stim ul.timeline-list li {
+    margin: 0 1em;
+  }
 }
 .stim ul.timeline-list li:last-child {
   background-color: transparent;
@@ -28,12 +32,17 @@
   text-align: center;
 }
 .stim ul.timeline-list li .timeline-content {
-  width: calc(50vw - 6em);
   height: auto;
   padding: 1em;
   padding-top: 0;
   position: relative;
   margin-top: -1em;
+  width: 30vw;
+}
+@media screen and (max-width: 576px) {
+  .stim ul.timeline-list li .timeline-content {
+    width: calc(100vw - 6em);
+  }
 }
 .stim ul.timeline-list li .timeline-content .stim-item-title {
   font-weight: 600;
@@ -43,15 +52,14 @@
   text-align: left;
 }
 .stim ul.timeline-list li:nth-child(even) .timeline-content {
-  left: calc(-50vw + 2em);
   text-align: right;
+  left: -2em;
+  transform: translateX(-100%);
 }
-@media screen and (max-width: 768px) {
-  .stim ul.timeline-list li {
-    margin: 1em;
-  }
+@media screen and (max-width: 576px) {
   .stim ul.timeline-list li:nth-child(even) .timeline-content {
     left: 2em;
+    transform: translateX(0%);
     text-align: left;
   }
 }

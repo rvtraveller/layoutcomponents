@@ -1,0 +1,43 @@
+/*** Simple image two text columns ***/
+.sittc__col--left {
+  text-align: right;
+}
+@media screen and (max-width: 576px) {
+  .sittc__col--left {
+    text-align: center;
+  }
+}
+.sittc__col--right {
+  text-align: left;
+}
+@media screen and (max-width: 576px) {
+  .sittc__col--right {
+    text-align: center;
+  }
+}
+.sittc__media {
+  margin-bottom: -5.5rem;
+}
+.sittc__media .field--name-field-sittc-image {
+  margin: 0;
+}
+.sittc__media img {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+@media screen and (max-width: 576px) {
+  .sittc__media img {
+    width: 100%;
+  }
+}
+.sittc__text {
+  padding: 8.5rem 4rem 3rem;
+}
+@media screen and (max-width: 576px) {
+  .sittc__text {
+    padding: 7rem 3rem 2rem;
+  }
+}
+
+/*# sourceMappingURL=sittc.css.map */

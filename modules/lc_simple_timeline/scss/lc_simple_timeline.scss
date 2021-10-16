@@ -1,6 +1,3 @@
-
-
-/* ================ The Timeline ================ */
 .stim{
   ul.timeline-list {
     padding: 0;
@@ -12,6 +9,9 @@
       position: relative;
       background-color: black;
       list-style-type: none;
+      @media screen and (max-width:576px) {
+        margin: 0 1em;
+      }
       &:last-child{
         background-color: transparent;
       }
@@ -29,15 +29,17 @@
         text-align: center;
       }
       .timeline-content {
-        width: calc(50vw - 6em);
         height: auto;
         padding: 1em;
         padding-top: 0;
         position: relative;
         margin-top: -1em;
+        width:30vw;
+        @media screen and (max-width:576px) {
+          width: calc(100vw - 6em);
+        }
         .stim-item-title{
           font-weight: 600;
-
         }
       }
       &:nth-child(odd) {
@@ -48,20 +50,12 @@
       }
       &:nth-child(even) {
         .timeline-content {
-          left: calc(-50vw + 2em);
           text-align: right;
-        }
-      }
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    ul.timeline-list {
-      li {
-        margin: 1em;
-        &:nth-child(even) {
-          .timeline-content {
-            left: 2em;
+          left:-2em;
+          transform:translateX(-100%);
+          @media screen and (max-width:576px) {
+            left:2em;
+            transform:translateX(0%);
             text-align: left;
           }
         }
