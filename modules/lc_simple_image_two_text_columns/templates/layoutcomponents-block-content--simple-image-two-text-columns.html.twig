@@ -46,12 +46,18 @@
           {{ content.field_sittc_image }}
         </div>
       </div>
-      <div class="row sittc__row sittc__text" style="background: {{ color }}">
-        <div class="col-12 col-sm-6 sittc__col sittc__col--left">
-          {{ content.field_sittc_text_left }}
-        </div>
-        <div class="col-12 col-sm-6 sittc__col sittc__col--right">
-          {{ content.field_sittc_text_right }}
+      <div class="row sittc__row--full">
+        <div class="col-12">
+          <div class="container">
+            <div class="row sittc__row sittc__text" style="background: {{ color }}">
+              <div class="col-12 col-sm-6 sittc__col sittc__col--left">
+                {{ content.field_sittc_text_left }}
+              </div>
+              <div class="col-12 col-sm-6 sittc__col sittc__col--right">
+                {{ content.field_sittc_text_right }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
