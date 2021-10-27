@@ -1,3 +1,174 @@
+Raquel Rial
+#6297
+Working
+
+
+
+Mensaje directo
+Jesus Maria Jorquera Santiso
+Alias
+Josu Jorquera
+Buscar
+
+25 de octubre de 2021
+
+Raquel Rial — 25/10/2021
+
+
+Jesus Maria Jorquera Santiso — 25/10/2021
+no, no lo solucioné, me puse con el resto de cosas y eso está pendiente. Ahora mismo lo arreglo.
+Lo único, tendré que generarme una rama nueva, ya que en la mia está lo del webform a medias y quizás no queremos que se vea a medias
+
+Raquel Rial — 25/10/2021
+si si, subelo a medias
+[11:43]
+que total esa pagina no la revisaran
+
+Jesus Maria Jorquera Santiso — 25/10/2021
+ok! pues me pongo con eso en la misma rama,marchando!
+
+Raquel Rial — 25/10/2021
+gracias
+[11:45]
+eso urge asi que priorizalo
+[11:45]
+primero subir lo que hiciste por si ven la web no lo den como fallo
+[11:45]
+segundo las animaciones
+[11:45]
+que mañana enviare mail de recuerdo para que manden QA
+
+Jesus Maria Jorquera Santiso — 25/10/2021
+hecho!
+
+Raquel Rial — 25/10/2021
+avisadme cuando este desplegado
+
+Jesus Maria Jorquera Santiso — 25/10/2021
+tengo lo de la imagen que se descolocaba, he tardado un poco porque requiere tocar varias cosas y porque he estado echando una mano a Salva.
+
+He tenido que toca el layout-builder, el twig y estilos. El layout-builder lo toco arriba también para dejarlo igual, y lo otro ¿lo meto todo en una PR y te la asigno?
+
+Raquel Rial — 25/10/2021
+y aceptate la pr
+[13:56]
+si ahya algo que cambiar se cambia despues
+[13:57]
+no problem
+[13:57]
+urge lo del time line tb
+
+Jesus Maria Jorquera Santiso — 25/10/2021
+ok, que me haga un juan palomo, cambio lo de arriba y me apruebo la pr
+si, ahora me pongo con el time line, como habías dado prioridad a esto por delante del timeline, he hecho esto primero.
+
+Raquel Rial — 25/10/2021
+si si,e so canta mas ejeje
+
+Jesus Maria Jorquera Santiso — 25/10/2021
+cuando tengas un momento me dices que necesito preguntarte una cosa y creo que va a ser mejor compartiendo pantalla
+
+Raquel Rial — 25/10/2021
+10 min
+[14:29]
+;)
+
+Jesus Maria Jorquera Santiso — 25/10/2021
+sin problema, mil gracias
+
+Raquel Rial — 25/10/2021
+https://michalsnik.github.io/aos/
+AOS - Animate on scroll library
+AOS - Animate On Scroll library using CSS3
+
+Raquel Rial — 25/10/2021
+https://ayudatpymes.com/gestron/vender-por-internet-sin-ser-autonomo/
+GesTron
+¿Se puede vender por Internet sin ser autónomo?
+¿Quieres vender u ofrecer servicios por Internet y no sabes si darte de alta o no? En este artículo te explicaré todo lo que debes saber del tema.
+
+26 de octubre de 2021
+
+Raquel Rial — ayer a las 8:31
+f
+[8:31]
+
+[8:32]
+
+[8:32]
+https://grupojorge.efor.es/innovacion-y-calidad
+[8:34]
+border
+
+[8:34]
+https://grupojorge.efor.es/sostenibilidad
+[8:35]
+
+[8:39]
+https://grupojorge.efor.es/covid-19
+[8:40]
+no-veil
+[8:41]
+
+[8:42]
+
+
+Jesus Maria Jorquera Santiso — ayer a las 9:58
+cuando andes por aquí dime por favor,  que te quiero preguntar una cosa rápida
+
+Jesus Maria Jorquera Santiso — ayer a las 11:43
+cuando puedas hablar un momento me dices, que creo que podría dar una solución al timeline bastante mas controlable y que solo requiere tocar estilos, no haría falta modificar el twig
+
+Raquel Rial — ayer a las 21:45
+Buenas!
+Fallos en EFOR, como anonimo:
+
+[21:45]
+https://grupojorge.efor.es/quienes-somos
+
+[21:46]
+benner azul
+
+[21:47]
+paadings en todos los bloques de este tipo :
+[21:47]
+
+[21:50]
+
+27 de octubre de 2021
+
+Jesus Maria Jorquera Santiso — hoy a las 7:58
+si puedes, cambia el twig de imagen mas dos columnas de texto por este, please
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+Expandir
+layoutcomponents-block-content--simple-image-two-text-columns.html.twig
+3 KB
+
+Raquel Rial — hoy a las 9:44
+ven a la reu
+[9:44]
+porfa
+[9:44]
+te he invitado
+
+Jesus Maria Jorquera Santiso — hoy a las 10:09
+puedo comentar lo del boton go to top?
+
+Raquel Rial — hoy a las 10:09
+si
+
+Enviar mensaje a @Jesus Maria Jorquera Santiso
+﻿
+
+
+
+
+ para seleccionar
 {#
 /**
  * @file
@@ -41,9 +212,15 @@
   {{ title_suffix }}
   {% block content %}
     <div class="sittc {{ content.field_sittc_extra_classes }}" {{ attributes.add(content.field_sittc_extra_attributes) }}>
-      <div class="row sittc__row sittc__media">
-        <div class="col sittc__col">
-          {{ content.field_sittc_image }}
+      <div class="row sittc__row">
+        <div class="col-12">
+          <div class="container">
+            <div class="row sittc__row sittc__media">
+              <div class="col sittc__col">
+                {{ content.field_sittc_image }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row sittc__row--full">
