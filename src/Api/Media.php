@@ -29,6 +29,9 @@ class Media {
     // Define the attributes.
     $data['attributes']['lc']['input'] = (empty($input)) ? 'image' : $input;
 
+    // Include videos.
+    $data['allowed_bundles'][] = 'video';
+
     // Default values.
     $element = [
       '#type' => (empty($type)) ? 'media_library' : $type,
