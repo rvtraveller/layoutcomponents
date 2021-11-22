@@ -243,6 +243,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         ],
         'styles' => [
           'background' => [
+            'external_video' => '',
             'image' => '',
             'image_full' => (int) 0,
             'background_color' => [
