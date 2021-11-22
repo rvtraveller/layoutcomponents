@@ -1416,6 +1416,18 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         '#type' => 'details',
         '#title' => $this->t('Background'),
         '#group' => 'section',
+        'external_video' => $this->lcApiText->plainText(
+          [
+            'id' => 'section',
+            'title' => $this->t('External video'),
+            'description' => $this->t('Display an external video as background'),
+            'default_value' => $styles['background']['external_video'],
+            'attributes' => [
+              'placeholder' => $this->t(''),
+            ],
+            'class' => 'external_video',
+          ]
+        ),
         'image' => $this->lcApiMedia->mediaLibrary(
           [
             'id' => 'section',
