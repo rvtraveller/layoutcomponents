@@ -398,7 +398,7 @@ class LcLayout {
             }
           }
         }
-        elseif ($media->bundle() == 'video') {
+        elseif ($media->bundle() == 'video' || $media->bundle() == 'remote_video') {
           $build = \Drupal::entityTypeManager()->getViewBuilder('media')->view($media);
           $this->setSetting('section.styles.background.video', $build);
         }

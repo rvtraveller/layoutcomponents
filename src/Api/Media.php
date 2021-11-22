@@ -32,6 +32,9 @@ class Media {
     // Include videos.
     $data['allowed_bundles'][] = 'video';
 
+    // Include remote videos.
+    $data['allowed_bundles'][] = 'remote_video';
+
     // Default values.
     $element = [
       '#type' => (empty($type)) ? 'media_library' : $type,
