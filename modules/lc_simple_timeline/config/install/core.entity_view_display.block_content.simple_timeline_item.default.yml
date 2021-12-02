@@ -6,19 +6,20 @@ dependencies:
     - block_content.type.simple_timeline_item
     - field.field.block_content.simple_timeline_item.field_stimi_color
     - field.field.block_content.simple_timeline_item.field_stimi_description
+    - field.field.block_content.simple_timeline_item.field_stimi_image
     - field.field.block_content.simple_timeline_item.field_stimi_number
     - field.field.block_content.simple_timeline_item.field_stimi_title
   module:
     - color_field
 _core:
-  default_config_hash: U9MfAU1cwB6iI4y_2o14dSgB3J5sur4eg5qiKdNn3BQ
+  default_config_hash: DbVQFHknL-MSkwWNlm2M0Eu4ixSTaEjhdHVgaeUeJUY
 id: block_content.simple_timeline_item.default
 targetEntityType: block_content
 bundle: simple_timeline_item
 mode: default
 content:
   field_stimi_color:
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       format: hex
@@ -32,6 +33,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
+  field_stimi_image:
+    type: entity_reference_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
     region: content
   field_stimi_number:
     weight: 2

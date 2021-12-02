@@ -6,19 +6,21 @@ dependencies:
     - block_content.type.simple_timeline_item
     - field.field.block_content.simple_timeline_item.field_stimi_color
     - field.field.block_content.simple_timeline_item.field_stimi_description
+    - field.field.block_content.simple_timeline_item.field_stimi_image
     - field.field.block_content.simple_timeline_item.field_stimi_number
     - field.field.block_content.simple_timeline_item.field_stimi_title
   module:
     - color_field
+    - media_library
 _core:
-  default_config_hash: zdGwCvzmcNcsEek61RK3_erd3l7RCMDbP8i5qV5sOG8
+  default_config_hash: C8rX-qjjnegSh9Neob0O99FzkCNsZtjap2Z5y4PlQ9o
 id: block_content.simple_timeline_item.default
 targetEntityType: block_content
 bundle: simple_timeline_item
 mode: default
 content:
   field_stimi_color:
-    weight: 29
+    weight: 6
     settings:
       default_colors: |-
 
@@ -31,22 +33,29 @@ content:
     type: color_field_widget_box
     region: content
   field_stimi_description:
-    weight: 27
+    weight: 3
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
     region: content
+  field_stimi_image:
+    type: media_library_widget
+    weight: 5
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
   field_stimi_number:
-    weight: 28
+    weight: 4
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_stimi_title:
-    weight: 26
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -55,7 +64,7 @@ content:
     region: content
   info:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
@@ -63,7 +72,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 1
     region: content
     settings:
       include_locked: true

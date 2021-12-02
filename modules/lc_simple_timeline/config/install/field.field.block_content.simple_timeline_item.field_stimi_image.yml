@@ -1,0 +1,29 @@
+uuid: 73e0c3ef-cb7e-40f4-9a43-be66d635f1dd
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_timeline_item
+    - field.storage.block_content.field_stimi_image
+    - media.type.image
+id: block_content.simple_timeline_item.field_stimi_image
+field_name: field_stimi_image
+entity_type: block_content
+bundle: simple_timeline_item
+label: Image
+description: 'Set the image of this item, if a image is selected, this will replace the number.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
