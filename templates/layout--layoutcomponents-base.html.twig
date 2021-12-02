@@ -18,13 +18,23 @@
  * - content: The content to go inside the wrapper for this region.
  */
 #}
+
+
 {% set section = lc_data.output.section %}
 {% set title = lc_data.output.title %}
 {% set regions = lc_data.output.regions %}
-
-<{{ section.general.basic.section_type }}{{ section.attributes }}>
+  {% if section.styles.background.video or section.styles.background.external_video %}
+    <{{ section.general.basic.section_type }}{{ section.attributes.addClass('lc-background-full') }}>
+  {% else %}
+    <{{ section.general.basic.section_type }}{{ section.attributes }}>
+  {% endif %}
   {% if section.styles.background.image_full == 1 %}
     <img src="{{ section.styles.background.image }}">
+  {% endif %}
+  {% if section.styles.background.external_video %}
+    <video no-controls loop autoplay muted>
+      <source src="{{ section.styles.background.external_video }}" type="video/mp4" />
+    </video>
   {% endif %}
   {% if section.styles.background.video %}
     {{ section.styles.background.video }}
@@ -41,11 +51,11 @@
   {{ title_suffix.contextual_links }}
   <div {{ section.row }}>
     {% if section.general.structure.section_carousel == 1 and lc_admin == false %}
-    {{ regions.slick }}
+      {{ regions.slick }}
     {% else %}
-    {% for key, region in regions %}
-    {{ region }}
-    {% endfor %}
+      {% for key, region in regions %}
+        {{ region }}
+      {% endfor %}
     {% endif %}
   </div>
 </div>
