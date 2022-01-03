@@ -488,8 +488,10 @@ class LcLayout {
         $path = 'regions.' . $name;
 
         $item = $this->getSetting($path);
+        
         unset($item['layout_builder-configuration']);
-        $item['#title'] = $item['title'];
+        //$item['#title'] = $item['title'];
+
         $items[] = [
           'slide' => [
             '#type' => 'container',
