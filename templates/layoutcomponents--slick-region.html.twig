@@ -1,12 +1,12 @@
-<div {{ content.styles.column_attr.addClass('col-md-12') }}>
-  <div {{ content.styles.title_wrap_attr.addClass('quemeaspen') }}>
-    <{{ content.styles.title_wrapper }} {{ content.styles.title_attr }}>
-      {{ content.general.title }}
-    </{{ content.styles.title_wrapper }}>
+<div {{ content['#region'].styles.column_attr.addClass('col-md-12') }}>
+  <div {{ content['#region'].styles.title_wrap_attr }}>
+    <{{ content['#region'].styles.title_wrapper }} {{ content['#region'].styles.title_attr }}>
+      {{ content['#region'].general.title }}
+    </{{ content['#region'].styles.title_wrapper }}>
   </div>
-  {% if content.content %}
+  {% if content['#region'].content %}
   <div class="lc-inline_column-content">
-    {{ content.content }}
+    {{ content['#region'].content }}
   </div>
   {% endif %}
 </div>
