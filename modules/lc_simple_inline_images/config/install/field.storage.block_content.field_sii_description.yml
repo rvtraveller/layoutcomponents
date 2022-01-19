@@ -1,19 +1,18 @@
-uuid: 7558d43a-5893-49c9-88f1-5d3d5fe4b0c6
+uuid: 2fd60cd6-1e80-4cec-9ee7-54b038772d14
 langcode: es
 status: true
 dependencies:
   module:
     - block_content
-    - media
-id: block_content.field_sii_image
-field_name: field_sii_image
+id: block_content.field_sii_description
+field_name: field_sii_description
 entity_type: block_content
-type: entity_reference
+type: string_long
 settings:
-  target_type: media
+  case_sensitive: false
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

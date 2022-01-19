@@ -1,0 +1,19 @@
+uuid: 53c8ff6c-bce6-462e-82e7-8eb1ec235122
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_inline_images
+    - field.storage.block_content.field_sii_description
+id: block_content.simple_inline_images.field_sii_description
+field_name: field_sii_description
+entity_type: block_content
+bundle: simple_inline_images
+label: Description
+description: 'Set the description of this component'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

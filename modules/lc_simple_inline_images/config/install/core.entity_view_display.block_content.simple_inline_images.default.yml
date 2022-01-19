@@ -4,22 +4,39 @@ status: true
 dependencies:
   config:
     - block_content.type.simple_inline_images
+    - field.field.block_content.simple_inline_images.field_field_sii_title
+    - field.field.block_content.simple_inline_images.field_sii_description
     - field.field.block_content.simple_inline_images.field_sii_image
-  module:
-    - entity_reference_revisions
+_core:
+  default_config_hash: l1BJmEM9i3XUnAdcVXSydWD7RDyvfPelGC3l9TMO5qQ
 id: block_content.simple_inline_images.default
 targetEntityType: block_content
 bundle: simple_inline_images
 mode: default
 content:
-  field_sii_image:
+  field_field_sii_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
     weight: 0
-    label: above
+    region: content
+  field_sii_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_sii_image:
+    type: entity_reference_entity_view
+    label: hidden
     settings:
       view_mode: default
-      link: ''
+      link: false
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    weight: 2
     region: content
 hidden:
   langcode: true

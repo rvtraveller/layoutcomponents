@@ -4,64 +4,76 @@ status: true
 dependencies:
   config:
     - block_content.type.simple_inline_images
+    - field.field.block_content.simple_inline_images.field_field_sii_title
+    - field.field.block_content.simple_inline_images.field_sii_description
     - field.field.block_content.simple_inline_images.field_sii_image
   module:
     - field_group
-    - inline_entity_form
+    - media_library
 third_party_settings:
   field_group:
     group_info:
       children:
         - group_general
+      label: Info
+      region: content
       parent_name: ''
       weight: 0
       format_type: tabs
-      region: content
       format_settings:
+        classes: ''
         show_empty_fields: false
         id: ''
-        classes: ''
         direction: horizontal
         width_breakpoint: 640
-      label: Info
     group_general:
       children:
         - info
+        - field_field_sii_title
+        - field_sii_description
         - field_sii_image
+      label: General
+      region: content
       parent_name: group_info
       weight: 4
       format_type: tab
-      region: content
       format_settings:
+        classes: ''
         show_empty_fields: true
         id: ''
-        classes: ''
-        description: ''
         formatter: open
+        description: ''
         required_fields: true
-      label: General
+_core:
+  default_config_hash: 6C5Y0FHgXJaRDMhMzA_UBuU6Fz8truOaZCbRapYLWJ0
 id: block_content.simple_inline_images.default
 targetEntityType: block_content
 bundle: simple_inline_images
 mode: default
 content:
-  field_sii_image:
+  field_field_sii_title:
+    type: string_textfield
     weight: 1
-    settings:
-      form_mode: default
-      label_singular: ''
-      label_plural: ''
-      allow_new: true
-      allow_existing: true
-      match_operator: CONTAINS
-      revision: false
-      override_labels: false
-      collapsible: false
-      collapsed: false
-      allow_duplicate: false
-    third_party_settings: {  }
-    type: inline_entity_form_complex
     region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_sii_description:
+    type: string_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_sii_image:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   info:
     type: string_textfield
     weight: 0
