@@ -182,7 +182,7 @@ class Component implements ContainerInjectionInterface {
         $element['opacity']['#attributes'] = [
           'edit' => 'layout-builder-configure-block',
           'input' => 'opacity',
-          'lc' => Json::encode($new_element['#attributes']['opacity']['lc']),
+          'lc' => isset($new_element['#attributes']['opacity']['lc']) ? Json::encode($new_element['#attributes']['opacity']['lc']) : '',
           'class' => $new_element['#attributes']['class'][0] . '-opacity',
         ];
 
