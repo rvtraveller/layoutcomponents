@@ -488,7 +488,7 @@ class LcLayout {
         $path = 'regions.' . $name;
 
         $item = $this->getSetting($path);
-        
+
         unset($item['layout_builder-configuration']);
         //$item['#title'] = $item['title'];
 
@@ -692,14 +692,21 @@ class LcLayout {
               }
             }
           }
+
           $classes[] = 'lc-inline_block_' . md5($uuid) . '-edit';
           $classes = array_unique($classes);
+
           if (!isset($content[$uuid]['#attributes'])) {
             $content[$uuid]['#attributes'] = new Attribute();
             $content[$uuid]['#attributes']->addClass($classes);
           }
           else {
-            $content[$uuid]['#attributes']['class'] = array_merge($content[$uuid]['#attributes']['class'], $classes);
+            if (array_key_exists('class', $content[$uuid]['#attributes'])) {
+              $content[$uuid]['#attributes']['class'] = array_merge($content[$uuid]['#attributes']['class'], $classes);
+            }
+            else {
+              $content[$uuid]['#attributes']['class'] = $classes;
+            }
           }
           $subregion_content[] = $content[$uuid];
           unset($content[$uuid]);
