@@ -1,0 +1,74 @@
+uuid: 8efa7bcf-f95f-46ed-8145-2414747c59c1
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_inline_images
+    - field.field.block_content.simple_inline_images.field_sii_image
+  module:
+    - field_group
+    - inline_entity_form
+third_party_settings:
+  field_group:
+    group_info:
+      children:
+        - group_general
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        direction: horizontal
+        width_breakpoint: 640
+      label: Info
+    group_general:
+      children:
+        - info
+        - field_sii_image
+      parent_name: group_info
+      weight: 4
+      format_type: tab
+      region: content
+      format_settings:
+        show_empty_fields: true
+        id: ''
+        classes: ''
+        description: ''
+        formatter: open
+        required_fields: true
+      label: General
+id: block_content.simple_inline_images.default
+targetEntityType: block_content
+bundle: simple_inline_images
+mode: default
+content:
+  field_sii_image:
+    weight: 1
+    settings:
+      form_mode: default
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      revision: false
+      override_labels: false
+      collapsible: false
+      collapsed: false
+      allow_duplicate: false
+    third_party_settings: {  }
+    type: inline_entity_form_complex
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true

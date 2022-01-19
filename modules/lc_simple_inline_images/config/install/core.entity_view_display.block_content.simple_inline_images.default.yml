@@ -1,0 +1,26 @@
+uuid: 3cfd1df8-b330-4764-985b-1da38ce1cc3c
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_inline_images
+    - field.field.block_content.simple_inline_images.field_sii_image
+  module:
+    - entity_reference_revisions
+id: block_content.simple_inline_images.default
+targetEntityType: block_content
+bundle: simple_inline_images
+mode: default
+content:
+  field_sii_image:
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true
