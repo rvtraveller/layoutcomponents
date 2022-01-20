@@ -1,0 +1,8 @@
+name: Layout Components - Simple Inline Images
+type: module
+description: Simple inline images block type
+package: LayoutComponents
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - lc_simple_image:lc_simple_image
+  - inline_entity_form:inline_entity_form

@@ -1,0 +1,8 @@
+uuid: 28801eac-01be-46fb-92d2-fae9a1782e6f
+langcode: es
+status: true
+dependencies: {  }
+id: simple_inline_images
+label: 'Inline Images'
+revision: 0
+description: ''

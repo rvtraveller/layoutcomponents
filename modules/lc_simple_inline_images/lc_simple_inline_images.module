@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function lc_simple_inline_images_theme($existing, $type, $theme, $path) {
+  return [
+    'layoutcomponents_block_content__simple_inline_images' => [
+      'base hook' => 'block',
+    ],
+  ];
+}

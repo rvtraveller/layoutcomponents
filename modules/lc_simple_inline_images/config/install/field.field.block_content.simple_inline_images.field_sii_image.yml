@@ -1,0 +1,29 @@
+uuid: 2f8e2eb7-b0c7-4d25-9fb9-d715830b99a7
+langcode: es
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_inline_images
+    - field.storage.block_content.field_sii_image
+    - media.type.image
+id: block_content.simple_inline_images.field_sii_image
+field_name: field_sii_image
+entity_type: block_content
+bundle: simple_inline_images
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
