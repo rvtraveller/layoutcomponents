@@ -682,6 +682,7 @@
   border-radius: 4px;
   margin: 1%;
   padding: 15px;
+  position: relative;
 }
 #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column:hover {
   box-sizing: border-box;
