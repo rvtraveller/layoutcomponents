@@ -818,6 +818,7 @@ $tertiary-dark:$orange-dark;
           border-radius: $border-radius-base;
           margin: 1%;
           padding: 15px;
+          position: relative;
 
           &:hover{
             box-sizing: border-box;
@@ -3332,5 +3333,9 @@ $tertiary-dark:$orange-dark;
       flex-basis: 100%;
     }
   }
+}
+
+.layout-builder__configure-block{
+  display: table !important;
 }
 
