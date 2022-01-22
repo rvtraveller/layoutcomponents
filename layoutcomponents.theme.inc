@@ -24,8 +24,8 @@ function _layoutcomponents_preprocess_layout(array &$variables) {
     unset($variables['attributes']['data-quickedit-entity-id']);
   }
 
-  // Custom render class.
-  $layout = new LcLayout($layout_definition->id(), $variables['settings'], $variables['content'], $variables['attributes']);
+  /** @var \Drupal\layoutcomponents\LcLayoutRender $layout */
+  $layout = \Drupal::service('layoutcomponents.render');
 
   // Dispatch the event.
   $event = new LcPreprocessLayoutEvent($layout);
@@ -38,7 +38,18 @@ function _layoutcomponents_preprocess_layout(array &$variables) {
     $variables['lc_admin'] = array_key_exists('section_storage', $route->getOption('parameters'));
   }
 
-  // Set new variables.
-  $variables['lc_data'] = $layout->render();
-  $variables['#attached']['drupalSettings']['lc'] = $layout->getJsSettings();
+  $render = $layout->render(
+    [
+      'id' => $layout_definition->id(),
+      'settings' => $variables['settings'],
+      'content' => $variables['content'],
+      'default' => $variables['attributes'],
+    ]
+  );
+
+  if (isset($render) && !empty($render)) {
+    // Set new variables.
+    $variables['lc_data'] = $render;
+    $variables['#attached']['drupalSettings']['lc'] = $layout->getJsSettings();
+  }
 }

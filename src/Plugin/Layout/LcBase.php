@@ -240,6 +240,9 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'section_carousel' => boolval(0),
             'section_carousel_slick' => 'none',
           ],
+          'context' => [
+            'rol' => [],
+          ],
         ],
         'styles' => [
           'background' => [
@@ -393,6 +396,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
     if (array_key_exists('general', $config)) {
       $general = $config['general'];
     }
+
     $groups = isset($config['subcolumn']['groups']) ? $config['subcolumn']['groups'] : [];
     $types = isset($config['subcolumn']['types']) ? $config['subcolumn']['types'] : [];
     $classes = isset($config['subcolumn']['classes']) ? $config['subcolumn']['classes'] : [];
@@ -1404,6 +1408,21 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
               ],
             ],
             'class' => 'column-size',
+          ]
+        ),
+      ],
+      'context' => [
+        '#type' => 'details',
+        '#title' => $this->t('Permissions'),
+        '#group' => 'section',
+        'rol' => $this->lcApiSelect->multiple(
+          [
+            'id' => 'row',
+            'title' => $this->t('Rol'),
+            'description' => $this->t('Select the role that can see this section'),
+            'default_value' => $general['context']['rol'],
+            'options' => $this->manager->getSystemRoles(),
+            'class' => 'section-role',
           ]
         ),
       ],

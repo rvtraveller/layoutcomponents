@@ -23,6 +23,7 @@
 {% set section = lc_data.output.section %}
 {% set title = lc_data.output.title %}
 {% set regions = lc_data.output.regions %}
+{% if section %}
   {% if section.styles.background.video or section.styles.background.external_video %}
     <{{ section.general.basic.section_type }}{{ section.attributes.addClass('lc-background-full') }}>
   {% else %}
@@ -47,16 +48,17 @@
     </div>
     </div>
   {% endif %}
-<div {{ section.container }}>
-  {{ title_suffix.contextual_links }}
-  <div {{ section.row }}>
-    {% if section.general.structure.section_carousel == 1 and lc_admin == false %}
-      {{ regions.slick }}
-    {% else %}
-      {% for key, region in regions %}
-        {{ region }}
-      {% endfor %}
-    {% endif %}
+  <div {{ section.container }}>
+    {{ title_suffix.contextual_links }}
+    <div {{ section.row }}>
+      {% if section.general.structure.section_carousel == 1 and lc_admin == false %}
+        {{ regions.slick }}
+      {% else %}
+        {% for key, region in regions %}
+          {{ region }}
+        {% endfor %}
+      {% endif %}
+    </div>
   </div>
-</div>
-</{{ section.general.basic.section_type }}>
+  </{{ section.general.basic.section_type }}>
+{% endif %}

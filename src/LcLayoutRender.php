@@ -3,17 +3,21 @@
 namespace Drupal\layoutcomponents;
 
 use Drupal\Component\Utility\DiffArray;
-use Drupal\Component\Utility\NestedArray;
-use Drupal\Core\Template\Attribute;
 use Drupal\Component\Utility\Html;
-use Drupal\media\Entity\Media;
-use Drupal\file\Entity\File;
+use Drupal\Component\Utility\NestedArray;
+use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
+use Drupal\file\Entity\File;
+use Drupal\media\Entity\Media;
 
 /**
- * General class for LC layouts.
+ * LayoutComponents render class.
  */
-class LcLayout {
+class LcLayoutRender {
 
   /**
    * The layout data.
@@ -38,26 +42,34 @@ class LcLayout {
   protected $delta;
 
   /**
-   * LcLayout constructor.
+   * The entity type manager.
    *
-   * @param string $id
-   *   The layout identifier.
-   * @param array $settings
-   *   The layout settings.
-   * @param array $content
-   *   The new content.
-   * @param array $default
-   *   The default content.
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  public function __construct($id, array $settings, array $content, array $default) {
-    $this->data = [
-      'id' => $id,
-      'settings' => $settings,
-      'content' => $content,
-      'default' => $default,
-    ];
-    $this->original = $this->data;
+  protected $entityTypeManager;
+
+  /**
+   * The current user.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $account;
+
+  /**
+   * The route match interface object.
+   *
+   * @var \Drupal\Core\Routing\RouteMatchInterface
+   */
+  protected $routeMatch;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, AccountInterface $account, RouteMatchInterface $route_match_interface) {
     $this->delta = mt_rand(1, 1000);
+    $this->entityTypeManager = $entity_type_manager;
+    $this->account = $account;
+    $this->routeMatch = $route_match_interface;
   }
 
   /**
@@ -299,13 +311,59 @@ class LcLayout {
   }
 
   /**
-   * Render the new element.
+   * Check if is a admin layout page.
+   *
+   * @return bool
+   *   True or false.
+   */
+  public function isAdminLayoutPage() {
+    if (array_key_exists('section_storage', $this->routeMatch->getRouteObject()->getOption('parameters'))) {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  /**
+   * Get the access by rol context.
+   *
+   * @param string $data
+   *   The settings path.
+   *
+   * @return bool
+   *   If the user has access.
+   */
+  public function getAccessByRol($settings) {
+    $context_rol = $this->getSetting($settings, []);
+    if (!empty($context_rol) && !in_array('anonymous', $context_rol)) {
+      if (!in_array($context_rol, $this->account->getRoles()) && !in_array('administrator', $this->account->getRoles())) {
+        return FALSE;
+      }
+    }
+
+    return TRUE;
+  }
+
+  /**
+   * Normalize and render the LC output.
+   *
+   * @param array $data
+   *   The array with all configuration.
    *
    * @return array
-   *   The complete element.
+   *   A parsed data array.
    */
-  public function render() {
+  public function render(array $data) {
+    $this->data = $data;
     $output = [];
+
+    if (!$this->isAdminLayoutPage()) {
+      // Context.
+      if (!$this->getAccessByRol('section.general.context.rol')) {
+        // Hidde the section if is marked by rol context.
+        return NULL;
+      }
+    }
 
     $wrapper_style = [];
     $bg_wrapper = FALSE;
@@ -465,7 +523,6 @@ class LcLayout {
 
     $cont = 0;
     foreach ($this->getSetting('regions') as $name => $column) {
-
       // Set Column Title.
       $this->setColumnTitle($name);
 
