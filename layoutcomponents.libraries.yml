@@ -6,7 +6,7 @@ layoutcomponents:
     js/parallax.min.js: {}
   css:
     component:
-      css/lc-color-dark.css: {}
+      css/lc-color-dark.css: { weight: 201 }
 
 layoutcomponents.editform:
   js:

@@ -129,3 +129,24 @@ function layoutcomponents_entity_type_alter(array &$entity_types) {
     ->getInstanceFromDefinition(LcEntity::class)
     ->entityTypeAlter($entity_types);
 }
+
+/**
+ * Implements hook_css_alter().
+ */
+function layoutcomponents_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {
+  $route = \Drupal::routeMatch()->getRouteObject();
+  if (array_key_exists('section_storage', $route->getOption('parameters'))) {
+    // Remove all off-canvas styles while we repair the broken menu.
+    unset($css['core/misc/dialog/off-canvas.base.css']);
+    unset($css['core/misc/dialog/off-canvas.css']);
+    unset($css['core/misc/dialog/off-canvas.theme.css']);
+    unset($css['core/misc/dialog/off-canvas.motion.css']);
+    unset($css['core/misc/dialog/off-canvas.button.css']);
+    unset($css['core/misc/dialog/off-canvas.form.css']);
+    unset($css['core/misc/dialog/off-canvas.table.css']);
+    unset($css['core/misc/dialog/off-canvas.details.css']);
+    unset($css['core/misc/dialog/off-canvas.tabledrag.css']);
+    unset($css['core/misc/dialog/off-canvas.dropbutton.css']);
+    unset($css['core/misc/dialog/off-canvas.layout.css']);
+  }
+}
