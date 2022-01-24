@@ -22,3 +22,7 @@ services:
 
   layoutcomponents.section:
     class: \Drupal\layoutcomponents\LcSectionManager
+
+  layoutcomponents.render:
+    class: \Drupal\layoutcomponents\LcLayoutRender
+    arguments: [ '@entity_type.manager', '@current_user', '@current_route_match' ]
