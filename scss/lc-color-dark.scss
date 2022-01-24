@@ -3290,6 +3290,23 @@ $tertiary-dark:$orange-dark;
   }
 }
 
+.layout-builder__configure-block{
+  display: table !important;
+}
+
+.lc-ui-dialog,
+.lc-lateral-container{
+  .lc-lateral-info,
+  a,
+  label,
+  summary{
+    color: white;
+  }
+  textarea{
+    background: #b7b6b6;
+  }
+}
+
 
 
 //--------------------------------------------------------------------- RESPONSIVE
@@ -3333,9 +3350,5 @@ $tertiary-dark:$orange-dark;
       flex-basis: 100%;
     }
   }
-}
-
-.layout-builder__configure-block{
-  display: table !important;
 }
 

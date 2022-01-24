@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layout-selection li a div,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * .layout-selection li a div,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details .layout-selection li a div,
@@ -173,7 +172,7 @@
   background-color: white;
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-checkbox input[type=checkbox]:checked:after, .layout-builder-form .form-type-vertical-tabs .vertical-tabs .vertical-tabs__panes .details-wrapper .form-item.form-type-checkbox input:checked:after, .layout-builder-form .form-actions input[type=checkbox]:checked:after {
-  content: "";
+  content: "\f00c";
   position: absolute;
   display: block;
   font-size: 11px;
@@ -323,7 +322,7 @@
 }
 .block-inline-blocksimple-video .lc-video-bg:after {
   position: absolute;
-  content: "";
+  content: "\f144";
   background: white;
   color: #0196CE;
   border-radius: 40px;
@@ -442,7 +441,7 @@
   display: none !important;
 }
 #layout-builder.layout-builder a.lc-clipboard:after {
-  content: "";
+  content: "\f24d";
   margin-left: 10px;
 }
 #layout-builder.layout-builder a.lc-clipboard:hover {
@@ -511,7 +510,7 @@
   color: white;
 }
 #layout-builder.layout-builder a.layout-builder__section_link-move:before, #layout-builder.layout-builder a.layout-builder__block_link-move:before {
-  content: "";
+  content: "\f0b2";
   cursor: move;
   color: #E0EFF4;
 }
@@ -519,7 +518,7 @@
   text-decoration: none;
 }
 #layout-builder.layout-builder a.layout-builder__section_link-move:before {
-  content: "";
+  content: "\f338";
   cursor: pointer;
   color: #E0EFF4;
 }
@@ -530,24 +529,24 @@
   color: white;
 }
 #layout-builder.layout-builder a.layout-builder__section_link-remove:before, #layout-builder.layout-builder a.layout-builder__block_link-remove:before {
-  content: "";
+  content: "\f2ed";
   color: #E0EFF4;
 }
 #layout-builder.layout-builder a.layout-builder__section_link-update:before {
-  content: "";
+  content: "\f362";
 }
 #layout-builder.layout-builder a.layout-builder__section_link-copy:before, #layout-builder.layout-builder a.layout-builder__block_link-copy:before {
-  content: "";
+  content: "\f24d";
 }
 #layout-builder.layout-builder a.layout-builder__column_link-copy:before {
-  content: "";
+  content: "\f24d";
   margin-left: 7.5px;
 }
 #layout-builder.layout-builder a.layout-builder__link-add:before, #layout-builder.layout-builder a.layout-builder__link-add-section:before, #layout-builder.layout-builder a.layout-builder__column_link-add:before {
-  content: "";
+  content: "\f067";
 }
 #layout-builder.layout-builder a.layout-builder__section_link-configure:before, #layout-builder.layout-builder a.layout-builder__column_link-configure:before, #layout-builder.layout-builder a.layout-builder__block_link-configure:before {
-  content: "";
+  content: "\f0ad";
 }
 #layout-builder.layout-builder a.layout-builder__add-block {
   color: #02202B;
@@ -596,7 +595,7 @@
   background: #FD850B;
 }
 #layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link.lc-copy:before {
-  content: "";
+  content: "\f24d";
   color: white;
   background: transparent !important;
   display: block;
@@ -696,7 +695,7 @@
 #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column a.lc-copy:before {
   position: absolute;
   display: block;
-  content: "";
+  content: "\f24d";
   color: white !important;
   display: block;
   background: #FD850B;
@@ -833,7 +832,7 @@
   background: #FD850B;
 }
 #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block a.layout-builder__column_link-add.lc-copy:before {
-  content: "";
+  content: "\f24d";
   color: white;
   background: transparent !important;
   display: block;
@@ -884,7 +883,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close:after {
   cursor: pointer;
   font-size: 18px;
-  content: "";
+  content: "\f00d";
   color: #b2d3f3;
   display: inline-block;
   line-height: 22px;
@@ -1069,7 +1068,7 @@
   right: 10px;
   bottom: 0px;
   color: #02202B;
-  content: "";
+  content: "\f078";
   line-height: 40px;
   float: right;
   top: -35px;
@@ -1190,7 +1189,7 @@
   height: 38px;
   border-radius: 38px;
   background: #FD850B;
-  content: "";
+  content: "\f24d";
   color: white;
   text-align: center;
   line-height: 40px;
@@ -1394,7 +1393,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper a[data-drupal-selector*=back]:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label a[data-drupal-selector*=back]:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) a[data-drupal-selector*=back]:before {
-  content: "";
+  content: "\f30a";
   font-size: 14px;
   margin-right: 5px;
   color: white;
@@ -1455,7 +1454,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper button[data-drupal-selector*=remove-button]:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label button[data-drupal-selector*=remove-button]:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) button[data-drupal-selector*=remove-button]:before {
-  content: "";
+  content: "\f2ed";
   font-size: 11px;
   margin-right: 5px;
 }
@@ -1769,7 +1768,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul li a.inline-block-list__item.simple_accordion::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul li a.inline-block-list__item.simple_accordion::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item.simple_accordion::before {
-  content: "";
+  content: "\f03c";
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.basic::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * ul li a.inline-block-list__item.basic::before,
@@ -1777,7 +1776,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul li a.inline-block-list__item.basic::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul li a.inline-block-list__item.basic::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item.basic::before {
-  content: "";
+  content: "\f096";
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_button::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * ul li a.inline-block-list__item.simple_button::before,
@@ -1798,7 +1797,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul li a.inline-block-list__item.simple_countdown::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul li a.inline-block-list__item.simple_countdown::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item.simple_countdown::before {
-  content: "";
+  content: "\f254";
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_iframe::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * ul li a.inline-block-list__item.simple_iframe::before,
@@ -1806,7 +1805,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul li a.inline-block-list__item.simple_iframe::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul li a.inline-block-list__item.simple_iframe::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item.simple_iframe::before {
-  content: "";
+  content: "\f2d0";
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_image::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * ul li a.inline-block-list__item.simple_image::before,
@@ -1814,7 +1813,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul li a.inline-block-list__item.simple_image::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul li a.inline-block-list__item.simple_image::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item.simple_image::before {
-  content: "";
+  content: "\f03e";
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_tabs::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * ul li a.inline-block-list__item.simple_tabs::before,
@@ -1822,7 +1821,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul li a.inline-block-list__item.simple_tabs::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul li a.inline-block-list__item.simple_tabs::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item.simple_tabs::before {
-  content: "";
+  content: "\f0ce";
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_text::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * ul li a.inline-block-list__item.simple_text::before,
@@ -1830,7 +1829,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul li a.inline-block-list__item.simple_text::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul li a.inline-block-list__item.simple_text::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item.simple_text::before {
-  content: "";
+  content: "\f031";
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_title::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * ul li a.inline-block-list__item.simple_title::before,
@@ -1851,7 +1850,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul li a.inline-block-list__item.simple_video::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul li a.inline-block-list__item.simple_video::before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item.simple_video::before {
-  content: "";
+  content: "\f03d";
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * ul li a.inline-block-list__item:before,
@@ -1859,7 +1858,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul li a.inline-block-list__item:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul li a.inline-block-list__item:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item:before {
-  content: "";
+  content: "\f00d";
   color: white;
   font-size: 60px;
   display: block;
@@ -2068,7 +2067,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) .lc-lateral-info:after {
   cursor: pointer;
   font-size: 18px;
-  content: "";
+  content: "\f05a";
   color: #b2d3f3;
   display: inline-block;
   line-height: 18px;
@@ -2522,7 +2521,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper fieldset.js-form-type-search .form-type-search:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label fieldset.js-form-type-search .form-type-search:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) fieldset.js-form-type-search .form-type-search:before {
-  content: "";
+  content: "\f002";
   font-size: 25px;
   display: inline-table;
   margin: 0 auto;
@@ -2817,7 +2816,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) label.js-form-type-checkbox span.lc-lateral-info:after {
   cursor: pointer;
   font-size: 18px;
-  content: "";
+  content: "\f05a";
   color: #b2d3f3;
   display: inline-block;
   line-height: 18px;
@@ -2867,7 +2866,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) label[for^=edit-settings-block-] > span.lc-lateral-info:after {
   cursor: pointer;
   font-size: 18px;
-  content: "";
+  content: "\f05a";
   color: #b2d3f3;
   display: inline-block;
   margin-right: 5px;
@@ -2879,7 +2878,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper button.color_field_widget_box__square.active:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label button.color_field_widget_box__square.active:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) button.color_field_widget_box__square.active:before {
-  content: "";
+  content: "\f00c";
   font-size: 14px;
   color: white;
 }
@@ -2921,7 +2920,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper.media-library-item button.media-library-item__remove:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label.media-library-item button.media-library-item__remove:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div).media-library-item button.media-library-item__remove:before {
-  content: "";
+  content: "\f2ed";
   font-size: 11px;
   margin-right: 5px;
 }
@@ -2987,7 +2986,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper .customblock-menuitem-modal:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label .customblock-menuitem-modal:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) .customblock-menuitem-modal:before {
-  content: "";
+  content: "\f067";
   display: inline-block;
   color: #E0EFF4;
   margin-right: 10px;
@@ -3662,6 +3661,25 @@
   left: 50%;
 }
 
+.layout-builder__configure-block {
+  display: table !important;
+}
+
+.lc-ui-dialog .lc-lateral-info,
+.lc-ui-dialog a,
+.lc-ui-dialog label,
+.lc-ui-dialog summary,
+.lc-lateral-container .lc-lateral-info,
+.lc-lateral-container a,
+.lc-lateral-container label,
+.lc-lateral-container summary {
+  color: white;
+}
+.lc-ui-dialog textarea,
+.lc-lateral-container textarea {
+  background: #b7b6b6;
+}
+
 @media screen and (max-width: 991px) {
   .lc {
     width: 100%;
@@ -3672,7 +3690,5 @@
     flex-basis: 100%;
   }
 }
-
-.layout-builder__configure-block{display: table !important; }
 
 /*# sourceMappingURL=lc-color-dark.css.map */
