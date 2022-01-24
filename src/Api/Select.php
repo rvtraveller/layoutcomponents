@@ -33,4 +33,25 @@ class Select {
     return $this->getElement($data, $element);
   }
 
+  /**
+   * Provide a multiple select form element processed.
+   *
+   * @param array $data
+   *   The complete data.
+   */
+  public function multiple(array $data) {
+    $data['attributes']['lc']['input'] = 'select';
+    $data['attributes']['class'] = ['form-select', 'form-control'];
+
+    // Default values.
+    $element = [
+      '#type' => 'select',
+      '#options' => $data['options'],
+      '#multiple' => TRUE,
+    ];
+
+    // Return new element.
+    return $this->getElement($data, $element);
+  }
+
 }

@@ -335,7 +335,7 @@ class LcLayoutRender {
    */
   public function getAccessByRol($settings) {
     $context_rol = $this->getSetting($settings, []);
-    if (!empty($context_rol) && !in_array('anonymous', $context_rol)) {
+    if (!empty($context_rol) && is_array($context_rol) && !in_array('anonymous', $context_rol)) {
       if (!in_array($context_rol, $this->account->getRoles()) && !in_array('administrator', $this->account->getRoles())) {
         return FALSE;
       }

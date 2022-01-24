@@ -2,7 +2,7 @@
 
 namespace Drupal\layoutcomponents\Event;
 
-use Drupal\layoutcomponents\LcLayout;
+use Drupal\layoutcomponents\LcLayoutRender;
 use Symfony\Contracts\EventDispatcher\Event;
 
 /**
@@ -15,24 +15,24 @@ class LcPreprocessLayoutEvent extends Event {
   /**
    * The layout array.
    *
-   * @var \Drupal\layoutcomponents\LcLayout
+   * @var \Drupal\layoutcomponents\LcLayoutRender
    */
   protected $layout;
 
   /**
    * Constructs the object.
    *
-   * @param \Drupal\layoutcomponents\LcLayout $layout
+   * @param \Drupal\layoutcomponents\LcLayoutRender $layout
    *   The complete object with the data.
    */
-  public function __construct(LcLayout $layout) {
+  public function __construct(LcLayoutRender $layout) {
     $this->layout = $layout;
   }
 
   /**
    * Get the layout object.
    *
-   * @return \Drupal\layoutcomponents\LcLayout
+   * @return \Drupal\layoutcomponents\LcLayoutRender
    */
   public function getLayout() {
     return $this->layout;
@@ -41,10 +41,10 @@ class LcPreprocessLayoutEvent extends Event {
   /**
    * Set the layout object.
    *
-   * @param \Drupal\layoutcomponents\LcLayout $layout
+   * @param \Drupal\layoutcomponents\LcLayoutRender $layout
    *   The complete layout object.
    */
-  public function setLayout(LcLayout $layout) {
+  public function setLayout(LcLayoutRender $layout) {
     $this->layout = $layout;
   }
 

@@ -12,6 +12,7 @@ use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\Component\Uuid\UuidInterface;
+use Drupal\user\Entity\Role;
 
 /**
  * Class LCLayoutsManager.
@@ -527,6 +528,21 @@ class LcLayoutsManager {
       $background_color = 'rgb(' . $r . ',' . $g . ',' . $b . ')';
     }
     return $background_color;
+  }
+
+  /**
+   * Get the system roles.
+   *
+   * @return array
+   *   The array with roles.
+   */
+  public function getSystemRoles() {
+    $roles = [];
+    foreach (Role::loadMultiple() as $role) {
+      $roles[$role->id()] = $role->label();
+    }
+
+    return $roles;
   }
 
   /**
