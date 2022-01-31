@@ -242,6 +242,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
           ],
           'context' => [
             'rol' => [],
+            'rol_condition' => '=='
           ],
         ],
         'styles' => [
@@ -1423,6 +1424,19 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'default_value' => $general['context']['rol'],
             'options' => $this->manager->getSystemRoles(),
             'class' => 'section-role',
+          ]
+        ),
+        'rol_condition' => $this->lcApiSelect->normal(
+          [
+            'id' => 'row',
+            'title' => $this->t('Rol condition'),
+            'description' => $this->t('Select the condition that should apply'),
+            'default_value' => $general['context']['rol_condition'],
+            'options' => [
+              'equal' => 'Is equal to',
+              'notequal' => 'Is not equal to',
+            ],
+            'class' => 'section-role_condition',
           ]
         ),
       ],

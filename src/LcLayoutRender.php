@@ -333,15 +333,39 @@ class LcLayoutRender {
    * @return bool
    *   If the user has access.
    */
-  public function getAccessByRol($settings) {
+  public function getAccessByRol($settings, $condition) {
+    // Adminsitrator have access.
+    if (in_array('administrator', $this->account->getRoles())) {
+      return TRUE;
+    }
+
     $context_rol = $this->getSetting($settings, []);
+    $context_rol_condition = $this->getSetting($condition, []);
+    if (empty($context_rol)) {
+      // If the section doesnt have configuration, all have access.
+      return TRUE;
+    }
+
     if (!empty($context_rol) && is_array($context_rol) && !in_array('anonymous', $context_rol)) {
-      if (!in_array($context_rol, $this->account->getRoles()) && !in_array('administrator', $this->account->getRoles())) {
-        return FALSE;
+      if ($context_rol_condition == 'equal') {
+        foreach ($context_rol as $rol) {
+          if (in_array($rol, $this->account->getRoles())) {
+            // Has acces if the user has the role.
+            return TRUE;
+          }
+        }
+      }
+      else {
+        foreach ($context_rol as $rol) {
+          if (in_array($rol, $this->account->getRoles())) {
+            return FALSE;
+          }
+        }
+        return TRUE;
       }
     }
 
-    return TRUE;
+    return FALSE;
   }
 
   /**
@@ -359,7 +383,7 @@ class LcLayoutRender {
 
     if (!$this->isAdminLayoutPage()) {
       // Context.
-      if (!$this->getAccessByRol('section.general.context.rol')) {
+      if (!$this->getAccessByRol('section.general.context.rol', 'section.general.context.rol_condition')) {
         // Hidde the section if is marked by rol context.
         return NULL;
       }
