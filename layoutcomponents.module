@@ -136,7 +136,7 @@ function layoutcomponents_entity_type_alter(array &$entity_types) {
 function layoutcomponents_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets) {
   $route = \Drupal::routeMatch()->getRouteObject();
   $parameters = $route->getOption('parameters');
-  if ($parameters) {
+  if (isset($parameters)) {
     if (array_key_exists('section_storage', $parameters)) {
       // Remove all off-canvas styles while we repair the broken menu.
       unset($css['core/misc/dialog/off-canvas.base.css']);
