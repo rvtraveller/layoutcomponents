@@ -150,6 +150,7 @@ function layoutcomponents_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInte
       unset($css['core/misc/dialog/off-canvas.tabledrag.css']);
       unset($css['core/misc/dialog/off-canvas.dropbutton.css']);
       unset($css['core/misc/dialog/off-canvas.layout.css']);
+      unset($css['core/misc/dialog/off-canvas.reset.css']);
     }
   }
 }

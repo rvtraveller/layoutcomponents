@@ -141,7 +141,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details ul li a.inline-block-list__item:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul li a.inline-block-list__item:before,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul li a.inline-block-list__item:before,
-.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_video::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_text::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_tabs::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_image::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_iframe::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_countdown::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.basic::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_accordion::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*=remove-button]:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector*=back]:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-block span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-section span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-column span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-select:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close:after, #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block a.layout-builder__column_link-add.lc-copy:before, #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column a.lc-copy:before, #layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link.lc-copy:before, #layout-builder.layout-builder a.layout-builder__section_link-configure:before, #layout-builder.layout-builder a.layout-builder__column_link-configure:before, #layout-builder.layout-builder a.layout-builder__block_link-configure:before, #layout-builder.layout-builder a.layout-builder__link-add:before, #layout-builder.layout-builder a.layout-builder__link-add-section:before, #layout-builder.layout-builder a.layout-builder__column_link-add:before, #layout-builder.layout-builder a.layout-builder__column_link-copy:before, #layout-builder.layout-builder a.layout-builder__section_link-copy:before, #layout-builder.layout-builder a.layout-builder__block_link-copy:before, #layout-builder.layout-builder a.layout-builder__section_link-update:before, #layout-builder.layout-builder a.layout-builder__section_link-remove:before, #layout-builder.layout-builder a.layout-builder__block_link-remove:before, #layout-builder.layout-builder a.layout-builder__section_link-move:before, #layout-builder.layout-builder a.layout-builder__block_link-move:before, #layout-builder.layout-builder a.lc-clipboard:after, .block-inline-blocksimple-video .lc-video-bg:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-checkbox input[type=checkbox]:checked:after, .layout-builder-form .form-type-vertical-tabs .vertical-tabs .vertical-tabs__panes .details-wrapper .form-item.form-type-checkbox input:checked:after, .layout-builder-form .form-actions input[type=checkbox]:checked:after {
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul li a.inline-block-list__item:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_video::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_text::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_tabs::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_image::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_iframe::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_countdown::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.basic::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li a.inline-block-list__item.simple_accordion::before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas button[data-drupal-selector*=remove-button]:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas a[data-drupal-selector*=back]:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-block span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-section span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .layoutcomponents-copy-column span.lc-copy:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-select:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form input:checked:before, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close:after, #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column .layout-builder__region .layout-builder__add-block a.layout-builder__column_link-add.lc-copy:before, #layout-builder.layout-builder .layout-builder__section .layout-builder__layout .layoutcomponent-column a.lc-copy:before, #layout-builder.layout-builder .layout-builder__add-section a.layout-builder__link.lc-copy:before, #layout-builder.layout-builder a.layout-builder__section_link-configure:before, #layout-builder.layout-builder a.layout-builder__column_link-configure:before, #layout-builder.layout-builder a.layout-builder__block_link-configure:before, #layout-builder.layout-builder a.layout-builder__link-add:before, #layout-builder.layout-builder a.layout-builder__link-add-section:before, #layout-builder.layout-builder a.layout-builder__column_link-add:before, #layout-builder.layout-builder a.layout-builder__column_link-copy:before, #layout-builder.layout-builder a.layout-builder__section_link-copy:before, #layout-builder.layout-builder a.layout-builder__block_link-copy:before, #layout-builder.layout-builder a.layout-builder__section_link-update:before, #layout-builder.layout-builder a.layout-builder__section_link-remove:before, #layout-builder.layout-builder a.layout-builder__block_link-remove:before, #layout-builder.layout-builder a.layout-builder__section_link-move:before, #layout-builder.layout-builder a.layout-builder__block_link-move:before, #layout-builder.layout-builder a.lc-clipboard:after, .block-inline-blocksimple-video .lc-video-bg:after, .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .form-type-checkbox input[type=checkbox]:checked:after, .layout-builder-form .form-type-vertical-tabs .vertical-tabs .vertical-tabs__panes .details-wrapper .form-item.form-type-checkbox input:checked:after, .layout-builder-form .form-actions input[type=checkbox]:checked:after {
   font-family: "FontAwesome";
 }
 
@@ -425,9 +425,6 @@
   border-radius: 4px;
   color: #02202B;
 }
-#layout-builder.layout-builder .row {
-  margin: 0;
-}
 #layout-builder.layout-builder a {
   word-break: break-word;
 }
@@ -655,6 +652,12 @@
 #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items a.layout-builder__section_link:hover, #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items a.layout-builder__column_link:hover, #layout-builder.layout-builder .layout-builder__section .layout_builder__configure_section_items a.layout-builder__block_link:hover {
   color: white;
 }
+#layout-builder.layout-builder .layout-builder__section .lc-inline_container-section-edit {
+  max-width: 100%;
+}
+#layout-builder.layout-builder .layout-builder__section .lc-inline_container-section-edit > .lc-inline_row-edit {
+  max-width: 100%;
+}
 #layout-builder.layout-builder .layout-builder__section .layout-builder__layout {
   margin: auto;
   margin-bottom: 10px;
@@ -863,7 +866,7 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar {
   background: #0077A2 !important;
   color: #E0EFF4;
-  border-bottom: none !important;
+  border: none;
   font-size: 14px;
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar span.ui-dialog-title {
@@ -872,6 +875,8 @@
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close {
   background-image: none;
+  background: none;
+  border: none;
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar .ui-dialog-titlebar-close:hover {
   background-image: none;
@@ -904,6 +909,43 @@
   overflow-x: visible !important;
   font-size: 14px;
   background: inherit;
+}
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * form,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details form,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper form,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label form,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) form {
+  margin: 10px;
+}
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form input,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * form input,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details form input,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper form input,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label form input,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) form input {
+  background: white;
+}
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form input:checked:before,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * form input:checked:before,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details form input:checked:before,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper form input:checked:before,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label form input:checked:before,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) form input:checked:before {
+  cursor: pointer;
+  font-size: 16px;
+  content: "\f00d";
+  color: black;
+  margin-top: -5px;
+  position: absolute;
+}
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas form p.media-library-form-element-empty-text,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * form p.media-library-form-element-empty-text,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details form p.media-library-form-element-empty-text,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper form p.media-library-form-element-empty-text,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label form p.media-library-form-element-empty-text,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) form p.media-library-form-element-empty-text {
+  color: #b2d3f3;
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas .link,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * .link,
@@ -1734,6 +1776,14 @@
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul.inline-block-list {
   display: flex;
   flex-flow: row wrap;
+}
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul.inline-block-list li,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * ul.inline-block-list li,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas details ul.inline-block-list li,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas div.details-wrapper ul.inline-block-list li,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas fieldset label ul.inline-block-list li,
+.lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas *:not(div) ul.inline-block-list li {
+  list-style: none;
 }
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas ul li,
 .lc-ui-dialog.ui-dialog.ui-dialog-off-canvas #drupal-off-canvas * ul li,
