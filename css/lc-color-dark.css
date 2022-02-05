@@ -3699,6 +3699,7 @@
   padding-left: 0 !important;
   height: auto !important;
 }
+.lc-background-full > video,
 .lc-background-full > img {
   position: relative;
   width: 100%;

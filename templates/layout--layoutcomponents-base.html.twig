@@ -38,7 +38,9 @@
     </video>
   {% endif %}
   {% if section.styles.background.video %}
-    {{ section.styles.background.video }}
+    <video no-controls loop autoplay muted>
+      <source src=" {{ file_url(section.styles.background.video['#media'].field_media_video_file.entity.fileuri) }}" type="video/mp4" />
+    </video>
   {% endif %}
   {% if title.general.title %}
     <div {{ section.title_container_attr }}>
