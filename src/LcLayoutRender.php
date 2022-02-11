@@ -647,6 +647,8 @@ class LcLayoutRender {
     $border_radius_top_right = $this->getSetting($path . '.styles.border.radius_top_right');
     $border_radius_bottom_left = $this->getSetting($path . '.styles.border.radius_bottom_left');
     $border_radius_bottom_right = $this->getSetting($path . '.styles.border.radius_bottom_right');
+    $background_image_fid = $this->getSetting($path . '.styles.background.image', []);
+    $background_image_full = $this->getSetting($path . '.styles.background.image_full', []);
     $background_color = $this->getSetting($path . '.styles.background.color.settings.color');
     $background_opacity = $this->getSetting($path . '.styles.background.color.settings.opacity');
     $remove_paddings = $this->getSetting($path . '.styles.spacing.paddings');
@@ -656,6 +658,7 @@ class LcLayoutRender {
 
     $column_classes = new Attribute();
     $column_styles = [];
+    $bg_wrapper = FALSE;
 
     // Column default classes.
     $column_classes->addClass('lc-inline_column_' . $name . '-edit');
@@ -707,8 +710,40 @@ class LcLayoutRender {
     }
 
     // Column background.
-    if (!empty($background_color) && !empty($background_opacity)) {
+    if (!empty($background_image_fid)) {
+      $media = Media::load($background_image_fid);
+      if (!empty($media)) {
+        if ($media->bundle() == 'image') {
+          $background_image_fid = $media->getSource()->getSourceFieldValue($media);
+          $file = File::load($background_image_fid);
+          $url = Url::fromUri(file_create_url($file->getFileUri()))->getUri();
+          if (!empty($url)) {
+            if (boolval($background_image_full)) {
+              // Background as normal image.
+              $this->setSetting('section.styles.background.image', $url);
+              $column_classes->addClass('lc-background-full');
+            }
+            else {
+              // Background as container background.
+              $bg_image_ouput = 'background:';
+              $column_classes->setAttribute('data-image-src', $url);
+              if (isset($background_color) && !empty($background_color)) {
+                $background_color = $this->hexToRgba($background_color, $background_opacity);
+                $bg_image_ouput .= "linear-gradient(" . $background_color . "," . $background_color . "), ";
+              }
+              $column_styles[] = $bg_image_ouput . 'url(' . $url . ')';
+              $bg_wrapper = TRUE;
+            }
+          }
+        }
+      }
+    }
+    elseif (isset($background_color) && !empty($background_color)) {
       $column_styles[] = 'background-color: ' . $this->hexToRgba($background_color, $background_opacity);
+    }
+
+    if ($bg_wrapper == TRUE) {
+      $column_styles[] = 'background-position: 50% 50%; background-size: cover';
     }
 
     $column_styles[] = 'z-index: 1';

@@ -155,6 +155,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
           'radius_bottom_right' => $lc->get('border_radius_bottom_right'),
         ],
         'background' => [
+          'image' => '',
           'color' => [
             'settings' => [
               'color' => $lc->get('background_color')['settings']['color'],
@@ -842,6 +843,26 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
         '#type' => 'details',
         '#title' => $this->t('Background'),
         '#group' => 'regions',
+        'image' => $this->lcApiMedia->mediaLibrary(
+          [
+            'id' => 'section',
+            'title' => $this->t('Image'),
+            'description' => $this->t('Upload a background image'),
+            'default_value' => $styles['background']['image'],
+            'allowed_bundles' => ['image'],
+            'attributes' => [
+              'lc' => [
+                'type' => 'style',
+                'style' => 'background',
+                'depend' => [
+                  'color' => 'lc-inline_section-background-color',
+                  'opacity' => 'lc-inline_section-background-color-opacity',
+                ],
+              ],
+            ],
+            'class' => 'background-image',
+          ]
+        ),
         'color' => $this->lcApiColor->colorPicker(
           [
             'id' => 'column_' . $region,
