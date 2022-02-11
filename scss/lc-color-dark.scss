@@ -433,7 +433,7 @@ $tertiary-dark:$orange-dark;
     //---------------------------------------- Adjust
 
     .row{
-      margin: 0;
+      //margin: 0;
     }
 
     //---------------------------------------- Copy clipboard
@@ -784,7 +784,12 @@ $tertiary-dark:$orange-dark;
       //---------------------------------------- Column
 
       //---------------------------------------- Margins
-
+      .lc-inline_container-section-edit{
+        max-width: 100%;
+        >.lc-inline_row-edit{
+          max-width: 100%;
+        }
+      }
       .layout-builder__layout{
 
         margin: auto;
@@ -1075,7 +1080,7 @@ $tertiary-dark:$orange-dark;
         @extend %librefranklin;
         background: $primary-color-medium !important;
         color:$primary-color-bg-border;
-        border-bottom: none !important;
+        border: none ;
         font-size: $font-size-base;
 
         span{
@@ -1089,6 +1094,9 @@ $tertiary-dark:$orange-dark;
 
         .ui-dialog-titlebar-close{
           background-image: none;
+          background: none;
+          border: none;
+
 
           &:hover{
             background-image: none;
@@ -1133,7 +1141,28 @@ $tertiary-dark:$orange-dark;
 
 
         //---------------------------------------------------- GENERAL
-
+        form{
+          margin: 10px;
+          input{
+            background: white;
+            &:checked{
+              &:before{
+                cursor: pointer;
+                font-size: 16px;
+                content: "\f00d";
+                color: black;
+                @extend %fontawesome;
+                margin-top: -5px;
+                position: absolute;
+              }
+            }
+          }
+          p{
+            &.media-library-form-element-empty-text{
+              color: $blue-soft;
+            }
+          }
+        }
         //-------------------------- Link
 
         .link {
@@ -1666,6 +1695,9 @@ $tertiary-dark:$orange-dark;
           &.inline-block-list{
             display: flex;
             flex-flow: row wrap;
+            li{
+              list-style: none;
+            }
           }
 
           li{
@@ -3276,6 +3308,7 @@ $tertiary-dark:$orange-dark;
   padding-right: 0 !important;
   padding-left: 0 !important;
   height: auto !important;
+  > video,
   >img{
     position: relative;
     width: 100%;
@@ -3351,4 +3384,3 @@ $tertiary-dark:$orange-dark;
     }
   }
 }
-
