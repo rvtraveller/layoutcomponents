@@ -85,7 +85,9 @@ trait LcDisplayHelperTrait {
             continue;
           }
           $d_delta = $section_delta;
-          $this->arrayInsert($n_sections, $d_delta, $defaults[$delta]);
+          if (isset($section_delta)) {
+            $this->arrayInsert($n_sections, $d_delta, $defaults[$delta]);
+          }
         }
       }
     }
