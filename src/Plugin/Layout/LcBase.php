@@ -119,6 +119,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
     return [
       'title' => [
         'title' => $lc->get('title_text'),
+        'tab_title' => $lc->get('tab_title'),
       ],
       'styles' => [
         'title' => [
@@ -240,6 +241,7 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
             'section_structure_xl' => 'none',
             'section_carousel' => boolval(0),
             'section_carousel_slick' => 'none',
+            'section_tabs' => boolval(0),
           ],
           'context' => [
             'rol' => [],
@@ -419,6 +421,20 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
           'default_value' => (isset($general['title'])) ? $general['title'] : '',
           'attributes' => [
             'placeholder' => $this->t('Title'),
+            'lc' => [
+              'type' => 'text',
+            ],
+          ],
+        ]
+      ),
+      'tab_title' => $this->lcApiText->plainText(
+        [
+          'id' => 'column_' . $region . '-tab_title',
+          'title' => $this->t('Tab title'),
+          'description' => $this->t('Set the title of the tab if the option in section is enabled. No not use spaces or special characters'),
+          'default_value' => (isset($general['tab_title'])) ? $general['tab_title'] : '',
+          'attributes' => [
+            'placeholder' => $this->t('Tab 1'),
             'lc' => [
               'type' => 'text',
             ],
@@ -1430,6 +1446,15 @@ class LcBase extends LayoutDefault implements ContainerFactoryPluginInterface {
               ],
             ],
             'class' => 'column-size',
+          ]
+        ),
+        'section_tabs' => $this->lcApiCheckbox->normal(
+          [
+            'id' => 'section',
+            'title' => $this->t('Show as tabs'),
+            'description' => $this->t('If you check this chekbox, the columns of this section will be show as tabs'),
+            'default_value' => $general['structure']['section_tabs'],
+            'class' => 'section-tabs',
           ]
         ),
       ],

@@ -55,6 +55,20 @@
     <div {{ section.row }}>
       {% if section.general.structure.section_carousel == 1 and lc_admin == false %}
         {{ regions.slick }}
+      {% elseif section.general.structure.section_tabs == 1 %}
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          {% for key, region in regions %}
+            <li class="nav-item" role="presentation">
+              <button class="nav-link {{ key == 'first' ? 'active' : '' }}" id="{{ region['#region'].general.tab_title }}-tab" data-bs-toggle="tab" data-bs-target="#{{ region['#region'].general.tab_title }}" type="button" role="tab" aria-controls="{{ region['#region'].general.tab_title }}" aria-selected="true">{{ region['#region'].general.tab_title }}</button>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <div class="tab-content">
+          {% for key, region in regions %}
+            <div class="tab-pane  {{ key == 'first' ? 'active' : '' }}" id="{{ region['#region'].general.tab_title }}" role="tabpanel" aria-labelledby="{{ region['#region'].general.tab_title }}-tab">{{ region }}</div>
+          {% endfor %}
+        </div>
       {% else %}
         {% for key, region in regions %}
           {{ region }}
