@@ -45,7 +45,7 @@
         "drupal/video_embed_field": "*",
         "drupal/viewsreference": "*",
         "drupal/ctools": "*",
-        "drupal/media_library_form_element": "^1.0",
+        "drupal/media_library_form_element": "^1.0 || ^2.0",
         "drupal/inline_entity_form": "*",
         "drupal/entity_reference_revisions": "^1.7",
         "drupal/jquery_ui_slider": "^1.1"
@@ -56,7 +56,7 @@
                 "Reorder sections": "https://www.drupal.org/files/issues/2020-03-20/layout_builder_3080606-reorder-layout-sections-29_1.patch"
             },
             "drupal/inline_entity_form": {
-                "Block form not saved": "https://www.drupal.org/files/issues/2020-03-04/fix-ief-layout-block-3117510-4.patch"
+                "Block form not saved": "https://www.drupal.org/files/issues/2022-07-27/fix-ief-layout-block-3117510-8.patch"
             }
         },
         "installer-paths": {
